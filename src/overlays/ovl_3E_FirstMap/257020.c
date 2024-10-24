@@ -151,7 +151,7 @@ void func_800F6B0C_FirstMap(void) {
     s32 i;
     
     for (i = 0; i < 4; i++) {
-        GetPlayerStruct(i)->unk_06 |= 1;
+        GetPlayerStruct(i)->flags |= 1;
     }
 }
 
@@ -255,7 +255,7 @@ void func_800F6F38_FirstMap(void) {
     for (i = 0; i < 4; i++) {
         player = GetPlayerStruct(i);
         player->turn_status = 0;
-        player->unk_06 &= ~0x2;
+        player->flags &= ~0x2;
     }
 }
 

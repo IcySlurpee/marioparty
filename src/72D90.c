@@ -1306,7 +1306,7 @@ s32 func_80076174(void) {
             }
 
             for (i = 0; i < MAX_PLAYERS; i++) {
-                if (D_800EDEB4[gPlayers[i].flags] & 0xC000) {
+                if (D_800EDEB4[gPlayers[i].port] & 0xC000) {
                     return 0;
                 }
             }

@@ -304,10 +304,10 @@ typedef struct playerMain {
 /* 0x00 */ u8 unk_00;
 /* 0x01 */ u8 cpuDifficulty;
 /* 0x02 */ u8 cpuDifficultyCopy;
-/* 0x03 */ u8 flags; //including CPU flag
+/* 0x03 */ u8 port; //controller port
 /* 0x04 */ u8 characterID;
 /* 0x05 */ char unk_05;
-/* 0x06 */ u16 unk_06;
+/* 0x06 */ u16 flags; // (flags) including CPU flag
 /* 0x08 */ s16 coinAmount;
 /* 0x0A */ s16 miniGameCoins; //coins to give to player after minigame
 /* 0x0C */ s16 starAmount;
@@ -323,13 +323,13 @@ typedef struct playerMain {
 /* 0x20 */ Object* playerObj; //ptr to playerObj on heap
 /* 0x24 */ u16 totalMinigameCoins;
 /* 0x26 */ s16 coinPeak;
-/* 0x28 */ u8 happeningSpacesTotal;
-/* 0x29 */ u8 redSpacesTotal;
-/* 0x2A */ u8 blueSpacesTotal;
-/* 0x2B */ u8 minigameSpacesTotal;
-/* 0x2C */ u8 chanceSpacesTotal;
-/* 0x2D */ u8 mushroomSpacesTotal;
-/* 0x2E */ u8 bowserSpacesTotal;
+/* 0x28 */ u8 happening_count;
+/* 0x29 */ u8 red_count;
+/* 0x2A */ u8 blue_count;
+/* 0x2B */ u8 minigame_count;
+/* 0x2C */ u8 chance_count;
+/* 0x2D */ u8 mushroom_count;
+/* 0x2E */ u8 bowser_count;
 /* 0x2F */ char unk_2F;
 } playerMain; //sizeof 0x30
 //P1 800F32B0, P2 800F32E0, P3 800F3310, P4 800F3340

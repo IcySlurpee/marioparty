@@ -107,7 +107,7 @@ void func_800F922C_PlatformPeril(omObjData* arg0, s32 arg1, s32 arg2, u16 arg3, 
     arg0->func_ptr = &func_800F979C_PlatformPeril;
     arg0->work[0] = arg3;
     
-    if (gPlayers[arg3].unk_06 & 1) { //checking if CPU?
+    if (gPlayers[arg3].flags & 1) { //checking if CPU?
         arg0->work[1] = 1;
     } else {
         arg0->work[1] = 0;

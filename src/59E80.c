@@ -21,6 +21,7 @@ u32* func_80059520(s16);
 void func_80059354(s16 param_1, s16 *param_2, s16 *param_3);
 void func_80059768(s16 index, s16 param_2);
 void func_8005963C(s16 index, u16 param_2);
+s32 GetSaveFileChecksum(u16 checksumAddrOffset, u16 size);
 
 void func_80059280(void) {
     s32 temp_s1;
@@ -471,7 +472,9 @@ INCLUDE_ASM("asm/nonmatchings/59E80", func_8005AE88);
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005AF60);
 
-INCLUDE_ASM("asm/nonmatchings/59E80", func_8005AFC8);
+u16 func_8005AFC8(void) {
+    return GetSaveFileChecksum(0, (EEPROM_MAXBLOCKS * EEPROM_BLOCK_SIZE) - 0x10);
+}
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005AFEC);
 

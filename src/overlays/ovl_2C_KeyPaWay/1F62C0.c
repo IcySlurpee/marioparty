@@ -15,7 +15,7 @@ void func_800F65E0_KeyPaWay(void) {
     D_800FF538_KeyPaWay = 0;
     
     for (i = 0; i < 4; i++) {
-        if (!(gPlayers[i].unk_06 & 1)) {
+        if (!(gPlayers[i].flags & 1)) {
             D_800FF538_KeyPaWay += 1;
         }
     }

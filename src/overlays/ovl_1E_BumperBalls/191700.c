@@ -10,7 +10,7 @@ void func_800F65E0_BumperBalls(void) {
     D_800FCD1E_BumperBalls = 4;
     
     for (i = 0; i < 4; i++) {
-        if (gPlayers[i].unk_06 & 1) {
+        if (gPlayers[i].flags & 1) {
             D_800FCD1E_BumperBalls--;
         }
     }

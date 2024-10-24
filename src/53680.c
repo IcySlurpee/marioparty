@@ -34,7 +34,7 @@ u32 PlayerStructIsCurrent(playerMain* player) {
 }
 
 u32 PlayerIsCPU(s16 index) {
-    return GetPlayerStruct(index)->unk_06 & 1;
+    return GetPlayerStruct(index)->flags & 1;
 }
 
 /*
@@ -99,7 +99,7 @@ void func_80052D34(void) {
 
     while (1) {
         HuPrcVSleep();
-        while (((flags = player->unk_06) & 4) != 0) {
+        while (((flags = player->flags) & 4) != 0) {
             HuPrcVSleep();
         }
 

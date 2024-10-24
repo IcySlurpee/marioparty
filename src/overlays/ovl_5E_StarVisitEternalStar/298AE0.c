@@ -129,15 +129,15 @@ s32 func_800F66D8_StarVisitEternalStar(s32 arg0) {
     
     for (i = 0; i < 4; i++) {
         if (i == D_800F7F00_StarVisitEternalStar) {
-            if (gPlayers[i].unk_06 & 1) {
+            if (gPlayers[i].flags & 1) {
                 var_s3 = 1;
-                sp18[gPlayers[i].flags] = -0x8000;
+                sp18[gPlayers[i].port] = -0x8000;
             } else {
-                func_8007155C(arg0, sp20[gPlayers[i].flags]);
-                sp18[gPlayers[i].flags] = -1;
+                func_8007155C(arg0, sp20[gPlayers[i].port]);
+                sp18[gPlayers[i].port] = -1;
             }
         } else {
-            sp18[gPlayers[i].flags] = -0;
+            sp18[gPlayers[i].port] = -0;
         }
     }
     if (var_s3 != 0) {
@@ -183,7 +183,7 @@ void func_800F6898_StarVisitEternalStar(void) {
     while (var_s0 != 2) {
         switch (var_s0) {
         case 0:
-            if (((gPlayers[D_800F7F00_StarVisitEternalStar].unk_06 & 1) && (var_s2 >= 0xF)) || (!(gPlayers[D_800F7F00_StarVisitEternalStar].unk_06 & 1) && (D_800F5460[gPlayers[D_800F7F00_StarVisitEternalStar].flags] & 0x8000))) {
+            if (((gPlayers[D_800F7F00_StarVisitEternalStar].flags & 1) && (var_s2 >= 0xF)) || (!(gPlayers[D_800F7F00_StarVisitEternalStar].flags & 1) && (D_800F5460[gPlayers[D_800F7F00_StarVisitEternalStar].port] & 0x8000))) {
                 var_s0 = 1;
                 func_8003E81C(D_800F7F08_StarVisitEternalStar, 2, 0);
                 func_8004F40C(D_800F7F08_StarVisitEternalStar, 1, 2);

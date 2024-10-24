@@ -229,13 +229,13 @@ void func_80056B78(void) {
             temp_v0->poisonedFlag = 0;
             temp_v0->totalMinigameCoins = 0;
             temp_v0->coinPeak = 0;
-            temp_v0->happeningSpacesTotal = 0;
-            temp_v0->redSpacesTotal = 0;
-            temp_v0->blueSpacesTotal = 0;
-            temp_v0->minigameSpacesTotal = 0;
-            temp_v0->chanceSpacesTotal = 0;
-            temp_v0->mushroomSpacesTotal = 0;
-            temp_v0->bowserSpacesTotal = 0;
+            temp_v0->happening_count = 0;
+            temp_v0->red_count = 0;
+            temp_v0->blue_count = 0;
+            temp_v0->minigame_count = 0;
+            temp_v0->chance_count = 0;
+            temp_v0->mushroom_count = 0;
+            temp_v0->bowser_count = 0;
         }
         
         for (i = 0; i < ARRAY_COUNT(D_800ED100.boardRam); i++) {
@@ -352,7 +352,7 @@ void func_800582E4(void) {
     HuPrcVSleep();
     func_8004A520();
     func_8004B5C4(3.0f);
-    func_800591E0(gPlayers[D_800ED5DC].flags); //TODO: what arg type should this take?
+    func_800591E0(gPlayers[D_800ED5DC].port); //TODO: what arg type should this take?
     func_80056AF4();
     omOvlReturnEx(1);
     omOvlKill();

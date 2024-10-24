@@ -239,7 +239,7 @@ void func_800F6EC4_BuriedTreasure(omObjData* arg0) {
 
     temp_s1->unk_50 = 0;
     temp_s1->unk_52 = 0;
-    temp_s1->unk_56 = gPlayers[D_800FC02C_BuriedTreasure].flags;
+    temp_s1->unk_56 = gPlayers[D_800FC02C_BuriedTreasure].port;
     temp_s1->unk_C0 = 65535;
 
     func_8001874C(arg0, 0, temp_s2 | 0x40, 1, 0);

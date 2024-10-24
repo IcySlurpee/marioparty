@@ -49,15 +49,15 @@ s32 func_800F66D8_ShortcutRouletteMagmaMountain(s32 arg0) {
     
     for (i = 0; i < 4; i++) {
         if (i == D_800F7310_ShortcutRouletteMagmaMountain) {
-            if (gPlayers[i].unk_06 & 1) {
+            if (gPlayers[i].flags & 1) {
                 var_s3 = 1;
-                sp18[gPlayers[i].flags] = -0x8000;
+                sp18[gPlayers[i].port] = -0x8000;
             } else {
-                func_8007155C(arg0, sp20.unk_00[gPlayers[i].flags]);
-                sp18[gPlayers[i].flags] = -1;
+                func_8007155C(arg0, sp20.unk_00[gPlayers[i].port]);
+                sp18[gPlayers[i].port] = -1;
             }
         } else {
-            sp18[gPlayers[i].flags] = -0;
+            sp18[gPlayers[i].port] = -0;
         }
     }
     
@@ -126,7 +126,7 @@ void func_800F6898_ShortcutRouletteMagmaMountain(void) {
         while (var_s1 != 2) {
             switch (var_s1) {
             case 0:
-                if (((gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].unk_06 & 1) && (temp_s2 >= 0xF)) || (!(gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].unk_06 & 1) && (D_800F5460[gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].flags] & 0x8000))) {
+                if (((gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (D_800F5460[gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].port] & 0x8000))) {
                     var_s1 = 1;
                     func_8003E81C(D_800F7314_ShortcutRouletteMagmaMountain, 2, 0);
                     func_8004F40C(D_800F7314_ShortcutRouletteMagmaMountain, 1, 2);

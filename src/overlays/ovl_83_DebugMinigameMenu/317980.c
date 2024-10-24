@@ -290,6 +290,6 @@ void func_800F9810_DebugMinigameMenu(void) {
             }
         }
         sp10[randByte] = 1;
-        D_800FAC60_DebugMinigameMenu[i].flags = randByte;
+        D_800FAC60_DebugMinigameMenu[i].port = randByte;
     }
 }

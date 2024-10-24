@@ -145,13 +145,13 @@ void func_8001A498(void) {
     for (i = 0; i < MAX_PLAYERS; i++) {
         if (i < D_800F3778) {
             D_800ED558[i] = 0;
-            gPlayers[i].unk_06 = gPlayers[i].unk_06 & ~1;
+            gPlayers[i].flags = gPlayers[i].flags & ~1;
         } else {
             D_800ED558[i] = 1;
-            gPlayers[i].unk_06 = gPlayers[i].unk_06 | 1;
+            gPlayers[i].flags = gPlayers[i].flags | 1;
         }
         
-        gPlayers[i].flags = i;
+        gPlayers[i].port = i;
         gPlayers[i].coinAmount = 10;
         gPlayers[i].miniGameCoins = 0;
         gPlayers[i].unk_00 = i;
