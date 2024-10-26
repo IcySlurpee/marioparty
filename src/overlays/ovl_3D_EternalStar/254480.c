@@ -824,7 +824,7 @@ Object* func_800F7D6C_EternalStar(s16 arg0) {
     Object* temp_s0;
     playerMain* temp_s1 = GetPlayerStruct(arg0);
 
-    if (temp_s1->playerIndex == GetCurrentPlayerIndex()) {
+    if (temp_s1->player_index == GetCurrentPlayerIndex()) {
         temp_s0 = CreateObject(temp_s1->characterID, NULL);
     } else {
         temp_s0 = CreateObject(func_80052F6C(arg0), NULL);
@@ -921,9 +921,9 @@ void func_800F8130_EternalStar(void) {
             D_800ED100.boardRam[i] = 1;
 
             SetNextChainAndSpace(-1, D_800F8ED8_EternalStar[i][D_800ED100.boardRam[15]], 0);
-            func_800405DC(player->playerIndex);
+            func_800405DC(player->player_index);
             func_800F7F7C_EternalStar();
-            func_8003FEFC(player->playerIndex);
+            func_8003FEFC(player->player_index);
             break;
         }        
     }
@@ -1000,7 +1000,7 @@ void func_800F8298_EternalStar(void) {
     
     func_8006E070(textWindowID, 0);
     ShowTextWindow(textWindowID);
-    func_8004DBD4(textWindowID, player->playerIndex);
+    func_8004DBD4(textWindowID, player->player_index);
     HideTextWindow(textWindowID);
     EndProcess(NULL);
 }
@@ -1030,7 +1030,7 @@ void func_800F8588_EternalStar(void) {
     }
     
     HuPrcSleep(5);
-    playerIndex = curPlayer->playerIndex;
+    playerIndex = curPlayer->player_index;
     objectStructs[playerIndex] = func_800F7D6C_EternalStar(playerIndex);
     PlaySound(0x47);
 

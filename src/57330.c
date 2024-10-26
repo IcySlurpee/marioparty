@@ -227,8 +227,8 @@ void func_80056B78(void) {
             temp_v0 = GetPlayerStruct(i);
             temp_v0->starAmount = 0;
             temp_v0->poisonedFlag = 0;
-            temp_v0->totalMinigameCoins = 0;
-            temp_v0->coinPeak = 0;
+            temp_v0->coins_total = 0;
+            temp_v0->coins_max = 0;
             temp_v0->happening_count = 0;
             temp_v0->red_count = 0;
             temp_v0->blue_count = 0;

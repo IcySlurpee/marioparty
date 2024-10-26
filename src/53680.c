@@ -30,7 +30,7 @@ s16 PlayerIsCurrent(s16 index) {
 // Returns true if the given player is the same as the current player.
 u32 PlayerStructIsCurrent(playerMain* player) {
   s16 cur_index = GetCurrentPlayerIndex();
-  return player->playerIndex == cur_index;
+  return player->player_index == cur_index;
 }
 
 u32 PlayerIsCPU(s16 index) {
@@ -42,16 +42,16 @@ u32 PlayerIsCPU(s16 index) {
 */
 void AdjustPlayerCoins(s32 index, s32 count) {
     playerMain* player = GetPlayerStruct(index);
-    player->coinAmount += count;
-    if (player->coinAmount >= 1000) {
-        player->coinAmount = 999;
+    player->coins += count;
+    if (player->coins >= 1000) {
+        player->coins = 999;
     }
-    if (player->coinAmount < 0) {
-        player->coinAmount = 0;
+    if (player->coins < 0) {
+        player->coins = 0;
     }
 
-    if (player->coinPeak <= player->coinAmount) {
-        player->coinPeak = player->coinAmount;
+    if (player->coins_max <= player->coins) {
+        player->coins_max = player->coins;
     }
 }
 
@@ -60,7 +60,7 @@ void AdjustPlayerCoins(s32 index, s32 count) {
 */
 s32 PlayerHasCoins(s32 index, s32 count) {
     playerMain* player = GetPlayerStruct(index);
-    return player->coinAmount >= count;
+    return player->coins >= count;
 }
 
 /*
@@ -119,7 +119,7 @@ void func_80052DC8(s16 index, void *param_2) {
     Process* process;
 
     playerMain* player = GetPlayerStruct(index);
-    player->playerIndex = index;
+    player->player_index = index;
 
     // This was hard to match, seems awkward still.
     if (D_800D8380 != 0) {

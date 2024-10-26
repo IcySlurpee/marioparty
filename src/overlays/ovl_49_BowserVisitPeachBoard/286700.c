@@ -38,7 +38,7 @@ void func_800F66BC_BowserVisitPeachBoard(void) {
     HuPrcSleep(0x10);
     PlaySound(0x46A);
     HuPrcSleep(0xA);
-    if (gPlayers[D_800F7180_BowserVisitPeachBoard].coinAmount == 0) {
+    if (gPlayers[D_800F7180_BowserVisitPeachBoard].coins == 0) {
         temp_s1 = CreateTextWindow(0x3C, 0x28, 0x10, 3);
         LoadStringIntoWindow(temp_s1, (void* )0x1A0, -1, -1);
         func_8006E070(temp_s1, 0);
@@ -52,7 +52,7 @@ void func_800F66BC_BowserVisitPeachBoard(void) {
         PlaySound(0x46A);
         func_8004DBD4(temp_s1, D_800F7180_BowserVisitPeachBoard);
         HideTextWindow(temp_s1);
-    } else if (!(gPlayers[D_800F7180_BowserVisitPeachBoard].coinAmount >= 20)) {
+    } else if (!(gPlayers[D_800F7180_BowserVisitPeachBoard].coins >= 20)) {
         temp_s1 = CreateTextWindow(0x37, 0x28, 0x10, 3);
         LoadStringIntoWindow(temp_s1, (void* )0x19D, -1, -1);
         func_8006E070(temp_s1, 0);
@@ -68,7 +68,7 @@ void func_800F66BC_BowserVisitPeachBoard(void) {
         func_8003E81C(D_800F7184_BowserVisitPeachBoard, 1, 0);
         func_8004F40C(D_800F7184_BowserVisitPeachBoard, 0, 2);
         func_8003E81C(D_800F718C_BowserVisitPeachBoard, 1, 0);
-        func_80055960(D_800F7180_BowserVisitPeachBoard, -gPlayers[D_800F7180_BowserVisitPeachBoard].coinAmount);
+        func_80055960(D_800F7180_BowserVisitPeachBoard, -gPlayers[D_800F7180_BowserVisitPeachBoard].coins);
         func_800503B0(D_800F7180_BowserVisitPeachBoard, 5);
         func_80060618(0x44A, D_800F7180_BowserVisitPeachBoard);
         HuPrcSleep(0x1E);

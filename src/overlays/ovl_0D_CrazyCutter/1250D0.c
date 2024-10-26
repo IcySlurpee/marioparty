@@ -262,7 +262,7 @@ void func_800FAA18_CrazyCutter(Object* arg0) {
     if (func_80072718() == 0) {
         for (i = 0; i < 4; i++) {
             if (func_800FAAB0_CrazyCutter(i, 0x4000) == 0) {
-                gPlayers[i].miniGameCoins += 10; 
+                gPlayers[i].coins_mg += 10; 
             }
         }
         func_800601D4(0x28);

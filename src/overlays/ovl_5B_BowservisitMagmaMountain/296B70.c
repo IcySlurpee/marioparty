@@ -54,7 +54,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
     PlaySound(0x46A);
     HuPrcSleep(0xA);
 
-    if (gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount != 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].coinAmount == 0) {
+    if (gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount != 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].coins == 0) {
         windowID = CreateTextWindow(0x3C, 0x3C, 0x12, 3);
         LoadStringIntoWindow(windowID, (void* )0x1EE, -1, -1);
         func_8006E070(windowID, 0);
@@ -116,12 +116,12 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
             D_800F759C_BowservisitMagmaMountain = NULL;
     }
 
-    else if (gPlayers[D_800F7650_BowservisitMagmaMountain].coinAmount != 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount == 0) {
+    else if (gPlayers[D_800F7650_BowservisitMagmaMountain].coins != 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount == 0) {
         windowID = CreateTextWindow(0x3C, 0x3C, 0x12, 3);
-        if (!(gPlayers[D_800F7650_BowservisitMagmaMountain].coinAmount < 0x14)) {
+        if (!(gPlayers[D_800F7650_BowservisitMagmaMountain].coins < 0x14)) {
             var_s2 = 0x14;
         } else {
-            var_s2 = gPlayers[D_800F7650_BowservisitMagmaMountain].coinAmount;
+            var_s2 = gPlayers[D_800F7650_BowservisitMagmaMountain].coins;
         }
         sprintf(&sp10, "%d", var_s2);
         func_8006DA5C(windowID, &sp10, 0);
@@ -140,7 +140,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
         HuPrcSleep(0x1E);
     }
 
-    else if (gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount == 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].coinAmount == 0) {
+    else if (gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount == 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].coins == 0) {
         windowID = CreateTextWindow(0x3C, 0x3C, 0x11, 3);
         LoadStringIntoWindow(windowID, (void*)0x1EA, -1, -1);
         func_8006E070(windowID, 0);
@@ -181,10 +181,10 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
 
         if (func_80041624(D_800F7650_BowservisitMagmaMountain) == 0) {
             windowID = CreateTextWindow(0x46, 0x41, 0xE, 2);
-            if (!(gPlayers[D_800F7650_BowservisitMagmaMountain].coinAmount < 0x14)) {
+            if (!(gPlayers[D_800F7650_BowservisitMagmaMountain].coins < 0x14)) {
                 var_s2 = 0x14;
             } else {
-                var_s2 = gPlayers[D_800F7650_BowservisitMagmaMountain].coinAmount;
+                var_s2 = gPlayers[D_800F7650_BowservisitMagmaMountain].coins;
             }
 
             sprintf(&sp10, "%d", var_s2);

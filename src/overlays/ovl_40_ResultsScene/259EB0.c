@@ -6,7 +6,7 @@ void func_800F65E0_ResultsScene(void) {
     omInitObjMan(0x64, 0x50);
     D_800FC440_ResultsScene = 0;
     for (i = 0; i < 4; i++) {
-        D_800FC430_ResultsScene[D_800ED100.boardRam[i]] = gPlayers[D_800ED100.boardRam[i]].coinAmount;
+        D_800FC430_ResultsScene[D_800ED100.boardRam[i]] = gPlayers[D_800ED100.boardRam[i]].coins;
         if (!(gPlayers[D_800ED100.boardRam[i]].flags & 1)) {
             D_800FC440_ResultsScene += D_800FC430_ResultsScene[D_800ED100.boardRam[i]];
         }

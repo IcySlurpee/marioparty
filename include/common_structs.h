@@ -308,8 +308,8 @@ typedef struct playerMain {
 /* 0x04 */ u8 characterID;
 /* 0x05 */ char unk_05;
 /* 0x06 */ u16 flags; // (flags) including CPU flag
-/* 0x08 */ s16 coinAmount;
-/* 0x0A */ s16 miniGameCoins; //coins to give to player after minigame
+/* 0x08 */ s16 coins; //player's current coins
+/* 0x0A */ s16 coins_mg; //coins to give to player after minigame
 /* 0x0C */ s16 starAmount;
 /* 0x0E */ s16 curChainIndex;
 /* 0x10 */ u16 curSpaceIndex;
@@ -317,12 +317,12 @@ typedef struct playerMain {
 /* 0x14 */ u16 nextSpaceIndex;
 /* 0x16 */ u8 poisonedFlag;
 /* 0x17 */ u8 turn_status; //space type player landed on
-/* 0x18 */ u8 playerIndex; //0, 1, 2, or 3
+/* 0x18 */ u8 player_index; //0, 1, 2, or 3
 /* 0x19 */ char unk_19[3]; //likely padding
 /* 0x1C */ Process* process; //some heap instance
 /* 0x20 */ Object* playerObj; //ptr to playerObj on heap
-/* 0x24 */ u16 totalMinigameCoins;
-/* 0x26 */ s16 coinPeak;
+/* 0x24 */ s16 coins_total; //how many coins a player has won/lost in minigames
+/* 0x26 */ s16 coins_max; //highest amount of coins player has held
 /* 0x28 */ u8 happening_count;
 /* 0x29 */ u8 red_count;
 /* 0x2A */ u8 blue_count;

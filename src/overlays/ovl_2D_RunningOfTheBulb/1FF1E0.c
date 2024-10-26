@@ -650,7 +650,7 @@ s32 func_800FDDC0_RunningOfTheBulb(omObjData* arg0) {
                     temp_v0 = D_800FE460_RunningOfTheBulb[i];
                     temp_s0->unk_3C = func_800B0CD8(0.0f - temp_v0->trans.x, -2235.0f - temp_v0->trans.z);
                     func_80009E20(D_800FE460_RunningOfTheBulb[i]);
-                    gPlayers[i].miniGameCoins += 10;
+                    gPlayers[i].coins_mg += 10;
                 }
                 if (temp_s3->unk0 & 0x40) {
                     func_800186E4(D_800FE460_RunningOfTheBulb[i], 1, 0x23);

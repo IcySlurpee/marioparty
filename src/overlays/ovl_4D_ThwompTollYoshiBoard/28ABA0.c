@@ -28,7 +28,7 @@ s32 func_800F68C8_ThwompTollYoshiBoard(void) { //slightly odd match with assignm
     s32 var_v0;
 
     temp_v0 = func_8005021C(100.0f);
-    if ((D_800ED100.boardRam[D_800ED100.boardRam[2]] + 40) < gPlayers[D_800F76B0_ThwompTollYoshiBoard].coinAmount) {
+    if ((D_800ED100.boardRam[D_800ED100.boardRam[2]] + 40) < gPlayers[D_800F76B0_ThwompTollYoshiBoard].coins) {
         if (gPlayers[D_800F76B0_ThwompTollYoshiBoard].cpuDifficultyCopy == 0) {
             var_v0 = 1;
             if (temp_v0 >= 80) {
@@ -50,7 +50,7 @@ s32 func_800F68C8_ThwompTollYoshiBoard(void) { //slightly odd match with assignm
         }
 
     } else {
-        if ((D_800ED100.boardRam[D_800ED100.boardRam[2]] + 20) < gPlayers[D_800F76B0_ThwompTollYoshiBoard].coinAmount) {
+        if ((D_800ED100.boardRam[D_800ED100.boardRam[2]] + 20) < gPlayers[D_800F76B0_ThwompTollYoshiBoard].coins) {
             if (gPlayers[D_800F76B0_ThwompTollYoshiBoard].cpuDifficultyCopy != 0) {
                 if (temp_v0 >= 70) {
                     var_v0 = (-(temp_v0 >= 90) & 3) | 2;
@@ -76,8 +76,8 @@ s32 func_800F68C8_ThwompTollYoshiBoard(void) { //slightly odd match with assignm
         var_v0 = 50;
     }
     
-    if (gPlayers[D_800F76B0_ThwompTollYoshiBoard].coinAmount < var_v0) {
-        var_v0 = gPlayers[D_800F76B0_ThwompTollYoshiBoard].coinAmount;
+    if (gPlayers[D_800F76B0_ThwompTollYoshiBoard].coins < var_v0) {
+        var_v0 = gPlayers[D_800F76B0_ThwompTollYoshiBoard].coins;
     }
     
     return var_v0;

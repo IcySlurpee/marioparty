@@ -393,7 +393,7 @@ void func_800F76D4_StarVisitEternalStar(void) {
         func_8004DBD4(windowID, D_800F7F00_StarVisitEternalStar);
         HideTextWindow(windowID);
     }
-    else if (gPlayers[D_800F7F00_StarVisitEternalStar].coinAmount < 20) {
+    else if (gPlayers[D_800F7F00_StarVisitEternalStar].coins < 20) {
         windowID = CreateTextWindow(0x78, 0x28, 0xC, 6);
         LoadStringIntoWindow(windowID, (void*)0x200, -1, -1);
         func_8006E070(windowID, 0);

@@ -43,7 +43,7 @@ void func_800F7198_MoveDoorsLuigiBoard(void) {
     
     temp_v0 = CreateTextWindow(0x3C, 0x28, 0x11, 7);
     
-    if (gPlayers[D_800F7820_MoveDoorsLuigiBoard].coinAmount < 0x14) {
+    if (gPlayers[D_800F7820_MoveDoorsLuigiBoard].coins < 0x14) {
         func_8006DA5C(temp_v0, &D_800F7810_MoveDoorsLuigiBoard, 0);
         sp10[0] = 0;
     } else {

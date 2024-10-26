@@ -152,8 +152,8 @@ void func_8001A498(void) {
         }
         
         gPlayers[i].port = i;
-        gPlayers[i].coinAmount = 10;
-        gPlayers[i].miniGameCoins = 0;
+        gPlayers[i].coins = 10;
+        gPlayers[i].coins_mg = 0;
         gPlayers[i].unk_00 = i;
         func_80052CCC(i, 1);
         gPlayers[i].starAmount = 0;

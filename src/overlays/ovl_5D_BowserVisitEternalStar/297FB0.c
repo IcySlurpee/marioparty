@@ -136,7 +136,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
         HuPrcSleep(30);     
     }
 
-    else if (gPlayers[D_800F7110_BowserVisitEternalStar].coinAmount == 0) {
+    else if (gPlayers[D_800F7110_BowserVisitEternalStar].coins == 0) {
         windowID = CreateTextWindow(0x3C, 0x28, 0x14, 3);
         LoadStringIntoWindow(windowID, (void* )0x1FB, -1, -1);
         func_8006E070(windowID, 0);
@@ -147,7 +147,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
         HuPrcSleep(30);
     } else {
         windowID = CreateTextWindow(0x28, 0x28, 0x15, 3);
-        temp = gPlayers[D_800F7110_BowserVisitEternalStar].coinAmount;
+        temp = gPlayers[D_800F7110_BowserVisitEternalStar].coins;
         
         if (temp < 20) {
             var_s2 = temp;

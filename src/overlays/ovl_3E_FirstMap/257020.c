@@ -530,7 +530,7 @@ void func_800F852C_FirstMap(void) {
         player = GetPlayerStruct(i);
         func_8003E174(player->playerObj);
         player->playerObj->unk_0A |= 2;
-        player->coinAmount = 0xA;
+        player->coins = 0xA;
     }
 
     func_800F676C_FirstMap();

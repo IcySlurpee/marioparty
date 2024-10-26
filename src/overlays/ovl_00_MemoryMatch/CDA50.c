@@ -155,7 +155,7 @@ void func_800F7874_MemoryMatch(omObjData* arg0) {
     case 0:
         func_80075CCC(2);
         if (D_800FE30E_MemoryMatch < 2) {
-            gPlayers[D_800FE30C_MemoryMatch].miniGameCoins += 2;
+            gPlayers[D_800FE30C_MemoryMatch].coins_mg += 2;
         }
         D_800FD878_MemoryMatch++;
         break;

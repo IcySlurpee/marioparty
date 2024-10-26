@@ -50,7 +50,7 @@ void func_800F66BC_BowserVisitDKBoard(void) {
     HuPrcSleep(0x10);
     PlaySound(0x46A);
     HuPrcSleep(0xA);
-    if (gPlayers[D_800F7170_ovl48].coinAmount == 0) {
+    if (gPlayers[D_800F7170_ovl48].coins == 0) {
         temp_s1 = CreateTextWindow(0x28, 0x28, 0x10, 2);
         LoadStringIntoWindow(temp_s1, (void* )0x192, -1, -1);
         func_8006E070(temp_s1, 0);
@@ -64,7 +64,7 @@ void func_800F66BC_BowserVisitDKBoard(void) {
         PlaySound(0x46A);
         func_8004DBD4(temp_s1, D_800F7170_ovl48);
         HideTextWindow(temp_s1);
-    } else if (!(gPlayers[D_800F7170_ovl48].coinAmount >= 0xA)) {
+    } else if (!(gPlayers[D_800F7170_ovl48].coins >= 0xA)) {
         temp_s1 = CreateTextWindow(0x28, 0x28, 0x10, 2);
         LoadStringIntoWindow(temp_s1, (void* )0x18F, -1, -1);
         func_8006E070(temp_s1, 0);
@@ -80,7 +80,7 @@ void func_800F66BC_BowserVisitDKBoard(void) {
         func_8003E81C(D_800F7174_ovl48, 1, 0);
         func_8004F40C(D_800F7174_ovl48, 0, 2);
         func_8003E81C(D_800F717C_ovl48, 1, 0);
-        func_80055960(D_800F7170_ovl48, -gPlayers[D_800F7170_ovl48].coinAmount);
+        func_80055960(D_800F7170_ovl48, -gPlayers[D_800F7170_ovl48].coins);
         func_800503B0(D_800F7170_ovl48, 5);
         func_80060618(0x44A, D_800F7170_ovl48);
         HuPrcSleep(0x1E);

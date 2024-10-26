@@ -189,13 +189,13 @@ void func_800555D0(omObjData* arg0) {
                     var_s1 = 1;
                     arg0->scale.z -= 3.0f;
                 }
-                if (arg0->trans.x == 0.0f || gPlayers[arg0->work[0]].coinAmount == 0) {
+                if (arg0->trans.x == 0.0f || gPlayers[arg0->work[0]].coins == 0) {
                     PlaySound(0x58);
                 }
             }                
         }
         
-        if (arg0->trans.x == 0.0f || gPlayers[arg0->work[0]].coinAmount == 0) {
+        if (arg0->trans.x == 0.0f || gPlayers[arg0->work[0]].coins == 0) {
             D_800D84D0[arg0->work[0]] = 0;
             omDelObj(arg0);
             return;
