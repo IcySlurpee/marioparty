@@ -23,10 +23,10 @@ void func_800F65E0_BowservisitMagmaMountain(void) {
     func_800F74C0_BowservisitMagmaMountain();
     func_800F7120_BowservisitMagmaMountain();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     func_8003FCD4();
     omAddPrcObj(func_800F66C4_BowservisitMagmaMountain, 0x300, 0, 0);
@@ -54,7 +54,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
     PlaySound(0x46A);
     HuPrcSleep(0xA);
 
-    if (gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount != 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].coins == 0) {
+    if (GwPlayer[D_800F7650_BowservisitMagmaMountain].stars != 0 && GwPlayer[D_800F7650_BowservisitMagmaMountain].coins == 0) {
         windowID = CreateTextWindow(0x3C, 0x3C, 0x12, 3);
         LoadStringIntoWindow(windowID, (void* )0x1EE, -1, -1);
         func_8006E070(windowID, 0);
@@ -72,7 +72,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
         func_80025798(D_800F7598_BowservisitMagmaMountain, D_800F765C_BowservisitMagmaMountain->coords.x, D_800F765C_BowservisitMagmaMountain->coords.y, D_800F765C_BowservisitMagmaMountain->coords.z);
         func_80025830(D_800F7598_BowservisitMagmaMountain, 0.5f, 0.5f, 0.5f);
         func_80055994(D_800F7650_BowservisitMagmaMountain, 2);
-        gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount--;
+        GwPlayer[D_800F7650_BowservisitMagmaMountain].stars--;
         func_800503B0(D_800F7650_BowservisitMagmaMountain, 6);
         func_80060618(0x44A, D_800F7650_BowservisitMagmaMountain);
         PlaySound(0x79);
@@ -116,12 +116,12 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
             D_800F759C_BowservisitMagmaMountain = NULL;
     }
 
-    else if (gPlayers[D_800F7650_BowservisitMagmaMountain].coins != 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount == 0) {
+    else if (GwPlayer[D_800F7650_BowservisitMagmaMountain].coins != 0 && GwPlayer[D_800F7650_BowservisitMagmaMountain].stars == 0) {
         windowID = CreateTextWindow(0x3C, 0x3C, 0x12, 3);
-        if (!(gPlayers[D_800F7650_BowservisitMagmaMountain].coins < 0x14)) {
+        if (!(GwPlayer[D_800F7650_BowservisitMagmaMountain].coins < 0x14)) {
             var_s2 = 0x14;
         } else {
-            var_s2 = gPlayers[D_800F7650_BowservisitMagmaMountain].coins;
+            var_s2 = GwPlayer[D_800F7650_BowservisitMagmaMountain].coins;
         }
         sprintf(&sp10, "%d", var_s2);
         func_8006DA5C(windowID, &sp10, 0);
@@ -140,7 +140,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
         HuPrcSleep(0x1E);
     }
 
-    else if (gPlayers[D_800F7650_BowservisitMagmaMountain].starAmount == 0 && gPlayers[D_800F7650_BowservisitMagmaMountain].coins == 0) {
+    else if (GwPlayer[D_800F7650_BowservisitMagmaMountain].stars == 0 && GwPlayer[D_800F7650_BowservisitMagmaMountain].coins == 0) {
         windowID = CreateTextWindow(0x3C, 0x3C, 0x11, 3);
         LoadStringIntoWindow(windowID, (void*)0x1EA, -1, -1);
         func_8006E070(windowID, 0);
@@ -160,7 +160,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
         while (tempVar != 2) {
             switch (tempVar) {
             case 0:
-                if (((gPlayers[D_800F7650_BowservisitMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(gPlayers[D_800F7650_BowservisitMagmaMountain].flags & 1) && (D_800F5460[gPlayers[D_800F7650_BowservisitMagmaMountain].port] & 0x8000))) {
+                if (((GwPlayer[D_800F7650_BowservisitMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(GwPlayer[D_800F7650_BowservisitMagmaMountain].flags & 1) && (D_800F5460[GwPlayer[D_800F7650_BowservisitMagmaMountain].port] & 0x8000))) {
                     tempVar = 1;
                     func_8004F4D4(D_800F7658_BowservisitMagmaMountain, 1, 0);
                     func_8004F40C(D_800F7658_BowservisitMagmaMountain, 3, 2); 
@@ -181,10 +181,10 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
 
         if (func_80041624(D_800F7650_BowservisitMagmaMountain) == 0) {
             windowID = CreateTextWindow(0x46, 0x41, 0xE, 2);
-            if (!(gPlayers[D_800F7650_BowservisitMagmaMountain].coins < 0x14)) {
+            if (!(GwPlayer[D_800F7650_BowservisitMagmaMountain].coins < 0x14)) {
                 var_s2 = 0x14;
             } else {
-                var_s2 = gPlayers[D_800F7650_BowservisitMagmaMountain].coins;
+                var_s2 = GwPlayer[D_800F7650_BowservisitMagmaMountain].coins;
             }
 
             sprintf(&sp10, "%d", var_s2);
@@ -264,16 +264,16 @@ void func_800F7120_BowservisitMagmaMountain(void) {
     func_80025F60(*D_800F7658_BowservisitMagmaMountain->unk_3C->unk_40, 0);
     func_800258EC(*D_800F7658_BowservisitMagmaMountain->unk_40->unk_40, 0x180, 0x80);
     func_80025AD4(*D_800F7658_BowservisitMagmaMountain->unk_40->unk_40);
-    D_800F765C_BowservisitMagmaMountain = CreateObject(func_80052F04(D_800F7650_BowservisitMagmaMountain), D_800F7620_BowservisitMagmaMountain[gPlayers[D_800F7650_BowservisitMagmaMountain].characterID]);
+    D_800F765C_BowservisitMagmaMountain = CreateObject(func_80052F04(D_800F7650_BowservisitMagmaMountain), D_800F7620_BowservisitMagmaMountain[GwPlayer[D_800F7650_BowservisitMagmaMountain].character]);
     func_80025B34(*D_800F765C_BowservisitMagmaMountain->unk_3C->unk_40);
     VEC3F_COPY_TO_OBJ(D_800F765C_BowservisitMagmaMountain, D_800F75B8_BowservisitMagmaMountain);
     func_8004CCD0(&D_800F765C_BowservisitMagmaMountain->coords, &D_800F7658_BowservisitMagmaMountain->coords, &D_800F765C_BowservisitMagmaMountain->unk_18);
     func_8004CCD0(&D_800F7658_BowservisitMagmaMountain->coords, &D_800F765C_BowservisitMagmaMountain->coords, &D_800F7658_BowservisitMagmaMountain->unk_18);
     func_80052E84(D_800F7650_BowservisitMagmaMountain);
-    func_8003E664(gPlayers[D_800F7650_BowservisitMagmaMountain].playerObj);
-    (gPlayers[D_800F7650_BowservisitMagmaMountain].playerObj)->coords.x = D_800F75AC_BowservisitMagmaMountain.x;
-    (gPlayers[D_800F7650_BowservisitMagmaMountain].playerObj)->coords.y = D_800F75AC_BowservisitMagmaMountain.y;
-    (gPlayers[D_800F7650_BowservisitMagmaMountain].playerObj)->coords.z = D_800F75AC_BowservisitMagmaMountain.z;
+    func_8003E664(GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj);
+    (GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj)->coords.x = D_800F75AC_BowservisitMagmaMountain.x;
+    (GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj)->coords.y = D_800F75AC_BowservisitMagmaMountain.y;
+    (GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj)->coords.z = D_800F75AC_BowservisitMagmaMountain.z;
 }
 
 void func_800F7404_BowservisitMagmaMountain(void) {

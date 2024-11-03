@@ -16,16 +16,16 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_62_BoardIntro/2A2500", func_800F65E0_
 // }
 
 void func_800F6660_BoardIntro(s32 arg0, s32 arg1) {
-    playerMain* temp_s1;
-    playerMain* temp_s2;
-    playerMain* temp_v0;
+    GW_PLAYER* temp_s1;
+    GW_PLAYER* temp_s2;
+    GW_PLAYER* temp_v0;
 
     temp_s1 = GetPlayerStruct(arg0);
     temp_s2 = GetPlayerStruct(arg1);
-    temp_v0 = HuMemDirectMalloc(sizeof(playerMain));
-    bcopy(temp_s1, temp_v0, sizeof(playerMain));
-    bcopy(temp_s2, temp_s1, sizeof(playerMain));
-    bcopy(temp_v0, temp_s2, sizeof(playerMain));
+    temp_v0 = HuMemDirectMalloc(sizeof(GW_PLAYER));
+    bcopy(temp_s1, temp_v0, sizeof(GW_PLAYER));
+    bcopy(temp_s2, temp_s1, sizeof(GW_PLAYER));
+    bcopy(temp_v0, temp_s2, sizeof(GW_PLAYER));
     HuMemDirectFree(temp_v0);
 }
 

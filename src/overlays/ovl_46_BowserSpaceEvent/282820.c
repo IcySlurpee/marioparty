@@ -48,10 +48,10 @@ void func_800F65E0_BowserSpaceEvent(void) {
     func_800F8DF4_BowserSpaceEvent();
     func_800F8C6C_BowserSpaceEvent();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     HidePlayerHUDVisibility(0, 1);
     HidePlayerHUDVisibility(1, 1);
     HidePlayerHUDVisibility(2, 1);
@@ -91,7 +91,7 @@ void func_800F677C_BowserSpaceEvent(void) {
     s32 windowID;
     s32 var_s0;
 
-    if (func_800F66FC_BowserSpaceEvent() > gPlayers[D_800F8FF1_BowserSpaceEvent].coins ) {
+    if (func_800F66FC_BowserSpaceEvent() > GwPlayer[D_800F8FF1_BowserSpaceEvent].coins ) {
         windowID = CreateTextWindow(40, 60, 18, 3);
         LoadStringIntoWindow(windowID, (void*)0xCD, -1, -1);
         func_8006E070(windowID, 0);
@@ -99,7 +99,7 @@ void func_800F677C_BowserSpaceEvent(void) {
         PlaySound(145);
         func_8004DBD4(windowID, D_800F8FF1_BowserSpaceEvent);
         HideTextWindow(windowID);
-        var_s0 = gPlayers[D_800F8FF1_BowserSpaceEvent].coins;
+        var_s0 = GwPlayer[D_800F8FF1_BowserSpaceEvent].coins;
     } else {
         windowID = CreateTextWindow(40, 60, 19, 3);
         sprintf(&sp10, "%d", func_800F66FC_BowserSpaceEvent());
@@ -115,7 +115,7 @@ void func_800F677C_BowserSpaceEvent(void) {
     func_800F6744_BowserSpaceEvent();
     func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
     func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
-    func_80060468(0x44A, gPlayers[D_800F8FF1_BowserSpaceEvent].characterID);
+    func_80060468(0x44A, GwPlayer[D_800F8FF1_BowserSpaceEvent].character);
     func_80055960(D_800F8FF1_BowserSpaceEvent, -var_s0);
     func_800503B0(D_800F8FF1_BowserSpaceEvent, 5);
     func_8004F504(D_800F8FF4_BowserSpaceEvent);
@@ -144,9 +144,9 @@ void func_800F69F0_BowserSpaceEvent(void) {
 
     for (i = 0; i < 4; i++) {
         if (i == D_800F8FF1_BowserSpaceEvent) {
-            gPlayers[i].unk_00 = 0;
+            GwPlayer[i].group = 0;
         } else {
-            gPlayers[i].unk_00 = 1;
+            GwPlayer[i].group = 1;
         }        
     }
     D_800F8ED0_BowserSpaceEvent = 1;
@@ -193,7 +193,7 @@ void func_800F6AF8_BowserSpaceEvent(void) {
     temp_s2 = 0;
     
     for (i = 0; i < 4; i++) {
-        temp_s2 += gPlayers[i].coins;
+        temp_s2 += GwPlayer[i].coins;
     }
 
     if (temp_s2 >= 0) {
@@ -204,9 +204,9 @@ void func_800F6AF8_BowserSpaceEvent(void) {
     
     temp_s2 = var_s0 >> 2;
     
-    if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins < temp_s2) {
+    if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins < temp_s2) {
         var_s3 = 1;
-    } else if (temp_s2 < gPlayers[D_800F8FF1_BowserSpaceEvent].coins) {
+    } else if (temp_s2 < GwPlayer[D_800F8FF1_BowserSpaceEvent].coins) {
         var_s3 = 2;
     }
     
@@ -214,23 +214,23 @@ void func_800F6AF8_BowserSpaceEvent(void) {
     var_v1 = 0;
 
     for (i = 0; i < 4; i++) {
-        if (var_v1 < (temp_s2 - gPlayers[i].coins)) {
+        if (var_v1 < (temp_s2 - GwPlayer[i].coins)) {
             if (var_a0 != -1) {
                 D_800F8FFC_BowserSpaceEvent[var_a0] = 0;
             }
             D_800F8FFC_BowserSpaceEvent[i] = 1;
             var_a0 = i;
-            var_v1 = temp_s2 - gPlayers[i].coins;
+            var_v1 = temp_s2 - GwPlayer[i].coins;
         } else {
             D_800F8FFC_BowserSpaceEvent[i] = 0;
         }
     }
 
-    temp_s4 = gPlayers[D_800F8FF1_BowserSpaceEvent].coins;
+    temp_s4 = GwPlayer[D_800F8FF1_BowserSpaceEvent].coins;
     
     for (i = 0; i < 4; i++) {
-        func_80055810(i, temp_s2 - gPlayers[i].coins, D_800F8FFC_BowserSpaceEvent[i]);
-        if ((temp_s2 - gPlayers[i].coins) < 0) {
+        func_80055810(i, temp_s2 - GwPlayer[i].coins, D_800F8FFC_BowserSpaceEvent[i]);
+        if ((temp_s2 - GwPlayer[i].coins) < 0) {
             func_800503B0(i, 5);
         }
     }
@@ -243,10 +243,10 @@ void func_800F6AF8_BowserSpaceEvent(void) {
         HuPrcVSleep();
     }
  
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_80055544(0);
     func_80055544(1);
     func_80055544(2);
@@ -262,15 +262,15 @@ void func_800F6AF8_BowserSpaceEvent(void) {
     switch (var_s3) {
     case 1:
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 3, 0);
-        if (temp_s4 + 10 <= gPlayers[D_800F8FF1_BowserSpaceEvent].coins) {
-            func_80060468(0x451, gPlayers[D_800F8FF1_BowserSpaceEvent].characterID);
+        if (temp_s4 + 10 <= GwPlayer[D_800F8FF1_BowserSpaceEvent].coins) {
+            func_80060468(0x451, GwPlayer[D_800F8FF1_BowserSpaceEvent].character);
             HuPrcSleep(10);
         }
         break;
     case 2:
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
-        if (temp_s4 - 10 >= gPlayers[D_800F8FF1_BowserSpaceEvent].coins) {
-            func_80060468(0x44A, gPlayers[D_800F8FF1_BowserSpaceEvent].characterID);
+        if (temp_s4 - 10 >= GwPlayer[D_800F8FF1_BowserSpaceEvent].coins) {
+            func_80060468(0x44A, GwPlayer[D_800F8FF1_BowserSpaceEvent].character);
             HuPrcSleep(10); 
         }
         break;
@@ -296,9 +296,9 @@ void func_800F7044_BowserSpaceEvent(void) {
         
         for (i = 0; i < 4; i++) {
             if (i == D_800F8FF1_BowserSpaceEvent)
-                gPlayers[i].unk_00 = 0;
+                GwPlayer[i].group = 0;
             else {
-                gPlayers[i].unk_00 = 1;
+                GwPlayer[i].group = 1;
             }
             
         }
@@ -309,7 +309,7 @@ void func_800F7044_BowserSpaceEvent(void) {
         return;
     }
 
-    if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins_mg == 0) {
+    if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg == 0) {
         windowID = CreateTextWindow(80, 60, 14, 3);
         LoadStringIntoWindow(windowID, (void*)0xD9, -1, -1);
         func_8006E070(windowID, 0);
@@ -320,7 +320,7 @@ void func_800F7044_BowserSpaceEvent(void) {
         var_s0_2 = 0xF;
     } else {
         windowID = CreateTextWindow(60, 60, 16, 3);
-        var_a2 = gPlayers[D_800F8FF1_BowserSpaceEvent].coins_mg;
+        var_a2 = GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg;
         
         if (var_a2 < 0) {
             var_a2 = -var_a2;
@@ -334,14 +334,14 @@ void func_800F7044_BowserSpaceEvent(void) {
         PlaySound(0x4D);
         func_8004DBD4(windowID, D_800F8FF1_BowserSpaceEvent);
         HideTextWindow(windowID);
-        var_s0_2 = -gPlayers[D_800F8FF1_BowserSpaceEvent].coins_mg;
+        var_s0_2 = -GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg;
     }
 
     func_800F6744_BowserSpaceEvent();
     func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
     func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
     if (var_s0_2 >= 10) {
-        func_80060468(0x44A, gPlayers[D_800F8FF1_BowserSpaceEvent].characterID);
+        func_80060468(0x44A, GwPlayer[D_800F8FF1_BowserSpaceEvent].character);
     }
 
     func_80055960(D_800F8FF1_BowserSpaceEvent, -var_s0_2);
@@ -349,7 +349,7 @@ void func_800F7044_BowserSpaceEvent(void) {
 
     for (i = 0; i < 4; i++) {
         if (i != D_800F8FF1_BowserSpaceEvent) {
-            func_80055810(i, gPlayers[i].coins_mg, 0);
+            func_80055810(i, GwPlayer[i].coins_mg, 0);
         }        
     }
 
@@ -386,7 +386,7 @@ void func_800F7410_BowserSpaceEvent(void) {
         HideTextWindow(var_s1);
         
         for (i = 0; i < 4; i++) {
-            gPlayers[i].unk_00 = i;
+            GwPlayer[i].group = i;
         }
         
         D_800F8ED0_BowserSpaceEvent = 3;
@@ -398,7 +398,7 @@ void func_800F7410_BowserSpaceEvent(void) {
     var_s4 = 0;
     
     for (i = 0; i < 4; i++) {
-        switch (gPlayers[i].coins_mg) {
+        switch (GwPlayer[i].coins_mg) {
         case 0:
             var_s4++;
         }
@@ -421,8 +421,8 @@ void func_800F7410_BowserSpaceEvent(void) {
         sprintf(&sp10, "%d", func_800F66FC_BowserSpaceEvent());
         func_8006DA5C(var_s1, &sp10, 0);
         for (i = 0, var_s2 = 1; i < 4; i++) {
-            if (gPlayers[i].coins_mg == 0) {
-                func_8006DA5C(var_s1, D_800C5218[gPlayers[i].characterID], var_s2++);
+            if (GwPlayer[i].coins_mg == 0) {
+                func_8006DA5C(var_s1, D_800C5218[GwPlayer[i].character], var_s2++);
             }
         }
         LoadStringIntoWindow(var_s1, (void*)0xDC, -1, -1);
@@ -437,8 +437,8 @@ void func_800F7410_BowserSpaceEvent(void) {
         sprintf(&sp10, "%d", func_800F66FC_BowserSpaceEvent());
         func_8006DA5C(var_s1, &sp10, 0);
         for (i = 0, var_s2 = 1; i < 4; i++) {
-            if (gPlayers[i].coins_mg == 0) {
-                func_8006DA5C(var_s1, D_800C5218[gPlayers[i].characterID], var_s2++);
+            if (GwPlayer[i].coins_mg == 0) {
+                func_8006DA5C(var_s1, D_800C5218[GwPlayer[i].character], var_s2++);
             }
         }
         LoadStringIntoWindow(var_s1, (void*)0xDD, -1, -1);
@@ -455,8 +455,8 @@ void func_800F7410_BowserSpaceEvent(void) {
         i = 0;
         var_s2 = 1;
         for (; i < 4; i++) {
-            if (gPlayers[i].coins_mg == 0) {
-                func_8006DA5C(var_s1, D_800C5218[gPlayers[i].characterID], var_s2++);
+            if (GwPlayer[i].coins_mg == 0) {
+                func_8006DA5C(var_s1, D_800C5218[GwPlayer[i].character], var_s2++);
             }
         }
         LoadStringIntoWindow(var_s1, (void*)0xDE, -1, -1);
@@ -468,8 +468,8 @@ void func_800F7410_BowserSpaceEvent(void) {
         break;
     default:
         var_s1 = CreateTextWindow(60, 60, 16, 4);
-        if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins < func_800F66FC_BowserSpaceEvent()) {
-            var_s2 = gPlayers[D_800F8FF1_BowserSpaceEvent].coins;
+        if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins < func_800F66FC_BowserSpaceEvent()) {
+            var_s2 = GwPlayer[D_800F8FF1_BowserSpaceEvent].coins;
         } else {
             var_s2 = func_800F66FC_BowserSpaceEvent();
         }
@@ -488,19 +488,19 @@ void func_800F7410_BowserSpaceEvent(void) {
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
         func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
         func_80055960(D_800F8FF1_BowserSpaceEvent, -var_s2);
-        if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins != 0) {
+        if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins != 0) {
             func_800503B0(D_800F8FF1_BowserSpaceEvent, 5);
         }
     } else {
         for (i = 0; i < 4; i++) {
-            if (gPlayers[i].coins_mg == 0) {
+            if (GwPlayer[i].coins_mg == 0) {
                 func_80054868(i + 10);
             }            
         }
         
         HuPrcSleep(0x14);
         
-        if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins_mg == 0) {
+        if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg == 0) {
             func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
         }
         func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0U);
@@ -510,12 +510,12 @@ void func_800F7410_BowserSpaceEvent(void) {
         
     
         for (i = 0; i < 4; i++) {
-            if ((gPlayers[i].coins_mg == 0) && (var_a1_2 < gPlayers[i].coins)) {
+            if ((GwPlayer[i].coins_mg == 0) && (var_a1_2 < GwPlayer[i].coins)) {
                 if (tempVar != -1) {
                     D_800F8FFC_BowserSpaceEvent[tempVar] = 0;
                 }
                 D_800F8FFC_BowserSpaceEvent[i] = 1;
-                var_a1_2 = gPlayers[i].coins;
+                var_a1_2 = GwPlayer[i].coins;
                 tempVar = i;
             } else {
                 D_800F8FFC_BowserSpaceEvent[i] = 0;
@@ -524,9 +524,9 @@ void func_800F7410_BowserSpaceEvent(void) {
         }
 
         for (i = 0; i < 4; i++) {
-            if (gPlayers[i].coins_mg == 0) {
+            if (GwPlayer[i].coins_mg == 0) {
                 func_80055810(i, -func_800F66FC_BowserSpaceEvent(), D_800F8FFC_BowserSpaceEvent[i]);
-                if (gPlayers[i].coins != 0) {
+                if (GwPlayer[i].coins != 0) {
                     func_800503B0(i, 5);
                 }
             }
@@ -563,9 +563,9 @@ void func_800F7BFC_BowserSpaceEvent(void) {
         HideTextWindow(temp_s1);
         for (i = 0; i < 4; i++) {
             if (i == D_800F8FF1_BowserSpaceEvent) {
-                gPlayers[i].unk_00 = 0;
+                GwPlayer[i].group = 0;
             } else {
-                gPlayers[i].unk_00 = 1;
+                GwPlayer[i].group = 1;
             }
         }
         D_800F8ED0_BowserSpaceEvent = 4;
@@ -573,7 +573,7 @@ void func_800F7BFC_BowserSpaceEvent(void) {
         HuPrcSleep(0x1E);
         return;
     }
-    if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins_mg < 0) {
+    if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg < 0) {
         temp_s1 = CreateTextWindow(60, 60, 16, 3);
         sprintf(&sp10, "%d", func_800F66FC_BowserSpaceEvent());
         func_8006DA5C(temp_s1, &sp10, 0);
@@ -583,7 +583,7 @@ void func_800F7BFC_BowserSpaceEvent(void) {
         PlaySound(0x4D);
         func_8004DBD4(temp_s1, D_800F8FF1_BowserSpaceEvent);
         HideTextWindow(temp_s1);
-    } else if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins_mg > 0) {
+    } else if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg > 0) {
         temp_s1 = CreateTextWindow(60, 60, 16, 3);
         sprintf(&sp10, "%d", func_800F66FC_BowserSpaceEvent());
         func_8006DA5C(temp_s1, &sp10, 0);
@@ -606,14 +606,14 @@ void func_800F7BFC_BowserSpaceEvent(void) {
     }
 
     for (i = 0; i < 4; i++) {
-       if (gPlayers[i].coins_mg <= 0) {
+       if (GwPlayer[i].coins_mg <= 0) {
            func_80054868(i + 10);
        }
     }
     
     HuPrcSleep(20);
     
-    if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins_mg <= 0) {
+    if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg <= 0) {
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
     }
     
@@ -624,12 +624,12 @@ void func_800F7BFC_BowserSpaceEvent(void) {
     
 
     for (i = 0; i < 4; i++) {
-        if ((gPlayers[i].coins_mg <= 0) && (var_a1_2 < gPlayers[i].coins)) {
+        if ((GwPlayer[i].coins_mg <= 0) && (var_a1_2 < GwPlayer[i].coins)) {
             if (tempVar != -1) {
                 D_800F8FFC_BowserSpaceEvent[tempVar] = 0;
             }
             D_800F8FFC_BowserSpaceEvent[i] = 1;
-            var_a1_2 = gPlayers[i].coins;
+            var_a1_2 = GwPlayer[i].coins;
             tempVar = i;
         } else {
             D_800F8FFC_BowserSpaceEvent[i] = 0;
@@ -638,11 +638,11 @@ void func_800F7BFC_BowserSpaceEvent(void) {
     }
     
     for (i = 0; i < 4; i++) {
-        if (gPlayers[i].coins_mg > 0) {
+        if (GwPlayer[i].coins_mg > 0) {
             continue;
         } else {
             func_80055810(i, -(func_800F66FC_BowserSpaceEvent()), D_800F8FFC_BowserSpaceEvent[i]);
-            if (gPlayers[i].coins) {
+            if (GwPlayer[i].coins) {
                 func_800503B0(i, 5);
             }
         }
@@ -680,9 +680,9 @@ void func_800F80EC_BowserSpaceEvent(void) {
         
         for (i = 0; i < 4; i++) {
             if (i == D_800F8FF1_BowserSpaceEvent) {
-                gPlayers[i].unk_00 = 0;
+                GwPlayer[i].group = 0;
             } else {
-                gPlayers[i].unk_00 = 1;
+                GwPlayer[i].group = 1;
             }
         }
         
@@ -693,7 +693,7 @@ void func_800F80EC_BowserSpaceEvent(void) {
     }
 
     for (i = 0; i < 4; i++) {
-        if (gPlayers[i].coins_mg != 0) {
+        if (GwPlayer[i].coins_mg != 0) {
             break;
         }
     }
@@ -704,8 +704,8 @@ void func_800F80EC_BowserSpaceEvent(void) {
         func_8006DA5C(var_s1, &sp10, 0);
 
         for (i = 0, var_s2 = 1; i < 4; i++) {
-            if (gPlayers[i].coins_mg == 0) {
-                func_8006DA5C(var_s1, D_800C5218[gPlayers[i].characterID], var_s2++);
+            if (GwPlayer[i].coins_mg == 0) {
+                func_8006DA5C(var_s1, D_800C5218[GwPlayer[i].character], var_s2++);
             }
         }
 
@@ -728,13 +728,13 @@ void func_800F80EC_BowserSpaceEvent(void) {
     }
 
     for (i = 0; i < 4; i++) {
-        if (gPlayers[i].coins_mg == 0) {
+        if (GwPlayer[i].coins_mg == 0) {
             func_80054868(i + 10);
         }        
     }
     
     HuPrcSleep(20);
-    if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins_mg == 0) {
+    if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg == 0) {
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
     }
     
@@ -744,13 +744,13 @@ void func_800F80EC_BowserSpaceEvent(void) {
     var_a1_2 = 0;
 
     for (i = 0; i < 4; i++) {
-        if ((gPlayers[i].coins_mg == 0) && (var_a1_2 < gPlayers[i].coins)) {
+        if ((GwPlayer[i].coins_mg == 0) && (var_a1_2 < GwPlayer[i].coins)) {
             if (tempVar != -1) {
                 D_800F8FFC_BowserSpaceEvent[tempVar] = 0;
             }
             
             D_800F8FFC_BowserSpaceEvent[i] = 1;
-            var_a1_2 = gPlayers[i].coins;
+            var_a1_2 = GwPlayer[i].coins;
             tempVar = i;
         } else {
             D_800F8FFC_BowserSpaceEvent[i] = 0;
@@ -758,9 +758,9 @@ void func_800F80EC_BowserSpaceEvent(void) {
     }
 
     for (i = 0; i < 4; i++) {
-        if (gPlayers[i].coins_mg == 0) {
+        if (GwPlayer[i].coins_mg == 0) {
             func_80055810(i, -func_800F66FC_BowserSpaceEvent(), D_800F8FFC_BowserSpaceEvent[i]);
-            if (gPlayers[i].coins != 0) {
+            if (GwPlayer[i].coins != 0) {
                 func_800503B0(i, 5);
             }
         }
@@ -789,8 +789,8 @@ void func_800F8608_BowserSpaceEvent(void) {
         func_8004935C();
         func_800499CC(D_800F8FF1_BowserSpaceEvent);
         HuPrcSleep(0x1A);
-        if (gPlayers[D_800F8FF1_BowserSpaceEvent].coins == 0) {
-            if (gPlayers[D_800F8FF1_BowserSpaceEvent].starAmount == 0) {
+        if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins == 0) {
+            if (GwPlayer[D_800F8FF1_BowserSpaceEvent].stars == 0) {
                 windowID = CreateTextWindow(80, 60, 14, 4);
                 LoadStringIntoWindow(windowID, (void*)0xCA, -1, -1);
                 func_8006E070(windowID, 0);
@@ -823,7 +823,7 @@ void func_800F8608_BowserSpaceEvent(void) {
                 func_8003E81C(D_800F8FF8_BowserSpaceEvent, 1, 0);
                 func_80055994(D_800F8FF1_BowserSpaceEvent, 2);
                 new_var2 = D_800F8FF1_BowserSpaceEvent; //?
-                gPlayers[new_var2].starAmount--;
+                GwPlayer[new_var2].stars--;
                 func_80060618(0x44A, D_800F8FF1_BowserSpaceEvent);
                 func_80055960(D_800F8FF1_BowserSpaceEvent, 10);
                 func_800503B0(D_800F8FF1_BowserSpaceEvent, 6);
@@ -886,7 +886,7 @@ void func_800F8608_BowserSpaceEvent(void) {
     }
 
     for (i = 0; i < 4; i++) {
-        gPlayers[i].coins_mg = 0;
+        GwPlayer[i].coins_mg = 0;
     }
     
     D_800F5144 = 1;
@@ -954,11 +954,11 @@ void func_800F8C6C_BowserSpaceEvent(void) {
     D_800F8FF4_BowserSpaceEvent->coords.y = D_800F8EF4_BowserSpaceEvent.y;
     D_800F8FF4_BowserSpaceEvent->coords.z = D_800F8EF4_BowserSpaceEvent.z;
     D_800F8FF4_BowserSpaceEvent->xScale = D_800F8FF4_BowserSpaceEvent->yScale = D_800F8FF4_BowserSpaceEvent->zScale = 1.5f;
-    D_800F8FF8_BowserSpaceEvent = CreateObject(func_80052F04(D_800F8FF1_BowserSpaceEvent), D_800F8F9C_BowserSpaceEvent[gPlayers[D_800F8FF1_BowserSpaceEvent].characterID]);
+    D_800F8FF8_BowserSpaceEvent = CreateObject(func_80052F04(D_800F8FF1_BowserSpaceEvent), D_800F8F9C_BowserSpaceEvent[GwPlayer[D_800F8FF1_BowserSpaceEvent].character]);
     D_800F8FF8_BowserSpaceEvent->coords.x = D_800F8F00_BowserSpaceEvent.x;
     D_800F8FF8_BowserSpaceEvent->coords.y = D_800F8F00_BowserSpaceEvent.y;
     D_800F8FF8_BowserSpaceEvent->coords.z = D_800F8F00_BowserSpaceEvent.z;
-    func_80021B14(*D_800F8FF8_BowserSpaceEvent->unk_3C->unk_40, gPlayers[D_800F8FF1_BowserSpaceEvent].characterID, 0x80);
+    func_80021B14(*D_800F8FF8_BowserSpaceEvent->unk_3C->unk_40, GwPlayer[D_800F8FF1_BowserSpaceEvent].character, 0x80);
     func_8004CCD0(&D_800F8FF8_BowserSpaceEvent->coords, &D_800F8FF4_BowserSpaceEvent->coords, &D_800F8FF8_BowserSpaceEvent->unk_18);
     func_8004CCD0(&D_800F8FF4_BowserSpaceEvent->coords, &D_800F8FF8_BowserSpaceEvent->coords, &D_800F8FF4_BowserSpaceEvent->unk_18);
 }

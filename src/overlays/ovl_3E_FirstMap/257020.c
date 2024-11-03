@@ -18,7 +18,7 @@ void func_800F664C_FirstMap(void) {
     func_800F6B0C_FirstMap();
     
     for (i = 0; i < MAX_PLAYERS; i++) {
-        GetPlayerStruct(i)->characterID = D_800F8750_FirstMap[i];
+        GetPlayerStruct(i)->character = D_800F8750_FirstMap[i];
     }
 
     omOvlReturnEx(1);
@@ -229,7 +229,7 @@ void func_800F6E20_FirstMap(void) {
     func_8004B838(4.0f);
     while (1) {
         if (D_800F88A0_FirstMap < 0) {
-            func_8004B5DC(&GetPlayerStruct(CURRENT_PLAYER)->playerObj->coords);
+            func_8004B5DC(&GetPlayerStruct(CURRENT_PLAYER)->player_obj->coords);
         } else {
             func_8004B5DC(&GetSpaceData(D_800F88A0_FirstMap)->coords);
         }
@@ -249,7 +249,7 @@ void func_800F6EFC_FirstMap(void) {
 }
 
 void func_800F6F38_FirstMap(void) {
-    playerMain* player;
+    GW_PLAYER* player;
     s32 i;
 
     for (i = 0; i < 4; i++) {
@@ -269,7 +269,7 @@ void func_800F6F80_FirstMap(void) {
 }
 
 void func_800F6FC4_FirstMap(void) {
-    playerMain* temp_s0;
+    GW_PLAYER* temp_s0;
     s32 i;
 
     if (++D_800ED5DC >= 4) {
@@ -280,9 +280,9 @@ void func_800F6FC4_FirstMap(void) {
         func_80052FD4(i);
         func_80052E84(i);
         temp_s0 = GetPlayerStruct(i);
-        func_8003E174(temp_s0->playerObj);
-        temp_s0->playerObj->unk_0A |= 2;
-        func_8004CC8C(i, GetAbsSpaceIndexFromChainSpaceIndex(temp_s0->curChainIndex, temp_s0->curSpaceIndex));
+        func_8003E174(temp_s0->player_obj);
+        temp_s0->player_obj->unk_0A |= 2;
+        func_8004CC8C(i, GetAbsSpaceIndexFromChainSpaceIndex(temp_s0->cur_chain, temp_s0->cur_space));
         func_8004CDA0(i);
     }
 }
@@ -312,8 +312,8 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_3E_FirstMap/257020", func_800F714C_Fi
 
 void func_800F73A0_FirstMap(void) {
     GameStatus* gameStatus = &D_800ED5C0;
-    playerMain* player = GetPlayerStruct(CURRENT_PLAYER);
-    SpaceData* space = GetSpaceData(GetAbsSpaceIndexFromChainSpaceIndex(player->curChainIndex, player->curSpaceIndex));
+    GW_PLAYER* player = GetPlayerStruct(CURRENT_PLAYER);
+    SpaceData* space = GetSpaceData(GetAbsSpaceIndexFromChainSpaceIndex(player->cur_chain, player->cur_space));
 
     SetPlayerLandedSpaceType(-1, space->spaceType);
     func_800546B4(D_800ED5DC, player->turn_status);
@@ -508,7 +508,7 @@ void func_800F83D4_FirstMap(void) {
 }
 
 void func_800F852C_FirstMap(void) {
-    playerMain* player;
+    GW_PLAYER* player;
     s32 i;
     s16 absSpaceIndex;
 
@@ -528,8 +528,8 @@ void func_800F852C_FirstMap(void) {
 
     for (i = 0; i < 4; i++) {
         player = GetPlayerStruct(i);
-        func_8003E174(player->playerObj);
-        player->playerObj->unk_0A |= 2;
+        func_8003E174(player->player_obj);
+        player->player_obj->unk_0A |= 2;
         player->coins = 0xA;
     }
 
@@ -541,7 +541,7 @@ void func_800F852C_FirstMap(void) {
     
     for (i = 0; i < 4; i++) {
         player = GetPlayerStruct(i);
-        absSpaceIndex = GetAbsSpaceIndexFromChainSpaceIndex(player->curChainIndex, player->curSpaceIndex);
+        absSpaceIndex = GetAbsSpaceIndexFromChainSpaceIndex(player->cur_chain, player->cur_space);
         func_8004CC8C(i, absSpaceIndex);
         func_8004CDA0(i);
     }
@@ -549,7 +549,7 @@ void func_800F852C_FirstMap(void) {
     func_8004A510();
     func_8004B5C4(1.0f);
     func_8004B838(-1.0f);
-    func_8004B5DC(&GetPlayerStruct(CURRENT_PLAYER)->playerObj->coords);
+    func_8004B5DC(&GetPlayerStruct(CURRENT_PLAYER)->player_obj->coords);
     omAddPrcObj(func_800F77B4_FirstMap, 0x1005, 0, 0);
     omAddPrcObj(func_800F6E20_FirstMap, 0x1005, 0, 0);
     omPrcSetStatBit(omAddPrcObj(func_800F83D4_FirstMap, 0x1005, 0, 0), 0x80);

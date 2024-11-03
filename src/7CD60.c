@@ -66,7 +66,7 @@ extern Tree D_800E4E80;
 extern Tree D_800E5690;
 extern Tree D_800E5EA0;
 extern Tree D_800E66B0;
-extern u16 D_800E6EB2;
+extern s16 D_800E6EB2;
 extern s16 D_800E6EB4;
 extern s16 D_800E6EB6;
 extern u16* D_800E6EB8;
@@ -93,7 +93,38 @@ extern unkStruct_D_800E6EC8 D_800E6F10;
 /* Globals */
 
 
-INCLUDE_ASM("asm/nonmatchings/7CD60", func_8007C160);
+static inline u8 getBit(BitStream *buf)
+{
+    u32 ret;
+    if (buf->bit == 0)
+    {
+        buf->value = *buf->pos++;
+        buf->bit = 0x80000000;
+    }
+    ret = (buf->value & buf->bit) != 0;
+    buf->bit >>= 1;
+    return ret;
+}
+
+static inline s16 getByte(BitStream *buf)
+{
+    return (getBit(buf) << 7) | (getBit(buf) << 6) | (getBit(buf) << 5) | (getBit(buf) << 4) | (getBit(buf) << 3) | (getBit(buf) << 2) | (getBit(buf) << 1) | getBit(buf);
+}
+
+u32 func_8007C160(BitStream* arg0, Tree* arg1)
+{
+    if (getBit(arg0)) {
+        s32 pos = D_800E6EB2++;
+        // read the 0 side of the tree
+        arg1->array[0][pos] = func_8007C160(arg0, arg1);
+        // read the 1 side of the tree
+        arg1->array[1][pos] = func_8007C160(arg0, arg1);
+
+        return pos;
+    }
+
+    return getByte(arg0);
+}
 
 INCLUDE_ASM("asm/nonmatchings/7CD60", func_8007C434);
 
@@ -175,11 +206,19 @@ INCLUDE_ASM("asm/nonmatchings/7CD60", func_8007D470);
 INCLUDE_ASM("asm/nonmatchings/7CD60", func_8007DA48);
 
 /* color conversion */
+extern u8  D_800E7730[];
+
+#define tempMacro(y, pixY1, outbuf) \
+    do { \
+        y = *pixY1++ << 6; \
+        outbuf += D_800E7A30; \
+    } while (0)
+
 #define UV_BASE ((s32)(16384*(513.0/512.0))) // 0x4020
 #define CONVERT(U,V,UPTR,VPTR,R,G,B)\
-  V = *VPTR - 128;\
+  V = *(VPTR) - 128;\
   R = 90 * v + UV_BASE;\
-  U = *UPTR - 128;\
+  U = *(UPTR) - 128;\
   G = -22 * U + -46 * V + UV_BASE;\
   B = 113 * U + UV_BASE;
 
@@ -190,9 +229,6 @@ static inline u16 getRGB(s16 y, s16 ruv, s16 guv, s16 buv) {
             (D_800E7730[(y + buv) >> 6] >> 2);
 }
 
-#ifndef NON_MATCHING
-INCLUDE_ASM("asm/nonmatchings/7CD60", func_8007DC58);
-#else
 void func_8007DC58(u16* outbuf, u16* pixY, u16* pixU, u16* pixV) {
     s32 i;
     u16* pixY0, *pixY1, *pixY2;
@@ -201,127 +237,88 @@ void func_8007DC58(u16* outbuf, u16* pixY, u16* pixU, u16* pixV) {
         ruv2, guv2, buv2,
         ruv3, guv3, buv3,
         ruv4, guv4, buv4;
+        u16* curoutbuf = outbuf;
 
     pixY1 = pixY;
     pixY2 = pixY = pixY + 16;
 
     i = 4;
     while (i > 0) {
-        CONVERT(u, v, pixU, pixV, ruv1, guv1, buv1); pixV++; pixU++;
-        y = *pixY1++ << 6;
-        outbuf[0] = getRGB(y, ruv1, guv1, buv1);
-        y = *pixY1++ << 6;
-        outbuf[1] = getRGB(y, ruv1, guv1, buv1);
+        curoutbuf = outbuf;
+        CONVERT(u, v, pixU++, pixV++, ruv1, guv1, buv1);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv1, guv1, buv1);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv1, guv1, buv1);
         
-        CONVERT(u, v, pixU, pixV, ruv2, guv2, buv2); pixV++; pixU++;
-        y = *pixY1++ << 6;
-        outbuf[2] = getRGB(y, ruv2, guv2, buv2);
-        y = *pixY1++ << 6;
-        outbuf[3] = getRGB(y, ruv2, guv2, buv2);
+        CONVERT(u, v, pixU++, pixV++, ruv2, guv2, buv2);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv2, guv2, buv2);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv2, guv2, buv2);
 
-        CONVERT(u, v, pixU, pixV, ruv3, guv3, buv3); pixV++; pixU++;
-        y = *pixY2++ << 6;
-        outbuf[4] = getRGB(y, ruv3, guv3, buv3);
-        y = *pixY2++ << 6;
-        outbuf[5] = getRGB(y, ruv3, guv3, buv3);
+        CONVERT(u, v, pixU++, pixV++, ruv3, guv3, buv3);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv3, guv3, buv3);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv3, guv3, buv3);
         
-        CONVERT(u, v, pixU, pixV, ruv4, guv4, buv4); pixV++; pixU++;
-        y = *pixY2++ << 6;
-        outbuf[6] = getRGB(y, ruv4, guv4, buv4);
-        y = *pixY2++ << 6;
-        outbuf[7] = getRGB(y, ruv4, guv4, buv4);
-        
-        do {
-            y = *pixY1++ << 6;
-            outbuf += D_800E7A30;            
-        } while (0);
+        CONVERT(u, v, pixU++, pixV++, ruv4, guv4, buv4);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv4, guv4, buv4);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv4, guv4, buv4);
 
+        outbuf += D_800E7A30;
+        curoutbuf = outbuf;
 
-
-        outbuf[0] = getRGB(y, ruv1, guv1, buv1);
-        y = *pixY1++ << 6;
-        outbuf[1] = getRGB(y, ruv1, guv1, buv1);
-        y = *pixY1++ << 6;
-        outbuf[2] = getRGB(y, ruv2, guv2, buv2);
-        y = *pixY1++ << 6;
-        outbuf[3] = getRGB(y, ruv2, guv2, buv2);
-        y = *pixY2++ << 6;
-        outbuf[4] = getRGB(y, ruv3, guv3, buv3);
-        y = *pixY2++ << 6;
-        outbuf[5] = getRGB(y, ruv3, guv3, buv3);
-        y = *pixY2++ << 6;
-        outbuf[6] = getRGB(y, ruv4, guv4, buv4);
-        y = *pixY2++ << 6;
-        outbuf[7] = getRGB(y, ruv4, guv4, buv4);
-
-        i-= 2;
-
-        do {
-            outbuf += D_800E7A30;
-        } while (0);
-        
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv1, guv1, buv1);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv1, guv1, buv1);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv2, guv2, buv2);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv2, guv2, buv2);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv3, guv3, buv3);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv3, guv3, buv3);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv4, guv4, buv4);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv4, guv4, buv4);
+        i-=2;
+        outbuf += D_800E7A30;
     }
 
-    pixY1 = pixY +  16;
-    pixY2 = pixY1 + 32;
+    pixY = pixY + 16;
+    pixY1 = pixY;
+    pixY2 = pixY + 16;
 
     i = 4;
     while (i > 0) {
-        y = *pixY1++ << 6;
+        curoutbuf = outbuf;
+        CONVERT(u, v, pixU++, pixV++, ruv1, guv1, buv1);
+
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv1, guv1, buv1);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv1, guv1, buv1);
+
+        CONVERT(u, v, pixU++, pixV++, ruv2, guv2, buv2);
+
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv2, guv2, buv2);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv2, guv2, buv2);
+
+        CONVERT(u, v, pixU++, pixV++, ruv3, guv3, buv3);
+
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv3, guv3, buv3);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv3, guv3, buv3);
+
+        CONVERT(u, v, pixU++, pixV++, ruv4, guv4, buv4);
+
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv4, guv4, buv4);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv4, guv4, buv4);
         
-        CONVERT(u, v, pixU, pixV, ruv1, guv1, buv1); pixV++; pixU++;
+        outbuf += D_800E7A30;
+        curoutbuf = outbuf;
 
-        outbuf[0] = getRGB(y, ruv1, guv1, buv1);
-        y = *pixY1++ << 6;
-        outbuf[1] = getRGB(y, ruv1, guv1, buv1);
-
-        y = *pixY1++ << 6;
-        CONVERT(u, v, pixU, pixV, ruv2, guv2, buv2); pixV++; pixU++;
-
-        outbuf[2] = getRGB(y, ruv2, guv2, buv2);
-        y = *pixY1++ << 6;
-        outbuf[3] = getRGB(y, ruv2, guv2, buv2);
-
-        y = *pixY2++ << 6;
-        CONVERT(u, v, pixU, pixV, ruv3, guv3, buv3); pixV++; pixU++;
-
-        outbuf[4] = getRGB(y, ruv3, guv3, buv3);
-        y = *pixY2++ << 6;
-        outbuf[5] = getRGB(y, ruv3, guv3, buv3);
-
-        y = *pixY2++ << 6;
-        CONVERT(u, v, pixU, pixV, ruv4, guv4, buv4); pixV++; pixU++;
-
-        outbuf[6] = getRGB(y, ruv4, guv4, buv4);
-        y = *pixY2++ << 6;
-        outbuf[7] = getRGB(y, ruv4, guv4, buv4);
-
-        y = *pixY1++ << 6;
-        {outbuf += D_800E7A30;}
-
-        outbuf[0] = getRGB(y, ruv1, guv1, buv1);
-        y = *pixY1++ << 6;
-        outbuf[1] = getRGB(y, ruv1, guv1, buv1);
-        y = *pixY1++ << 6;
-        outbuf[2] = getRGB(y, ruv2, guv2, buv2);
-        y = *pixY1++ << 6;
-        outbuf[3] = getRGB(y, ruv2, guv2, buv2);
-        y = *pixY2++ << 6;
-        outbuf[4] = getRGB(y, ruv3, guv3, buv3);
-        y = *pixY2++ << 6;
-        outbuf[5] = getRGB(y, ruv3, guv3, buv3);
-        y = *pixY2++ << 6;
-        outbuf[6] = getRGB(y, ruv4, guv4, buv4);
-        y = *pixY2++ << 6;
-        outbuf[7] = getRGB(y, ruv4, guv4, buv4);
-        i-= 2;
-        do {
-            outbuf += D_800E7A30;
-        } while (0);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv1, guv1, buv1);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv1, guv1, buv1);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv2, guv2, buv2);
+        *curoutbuf++ = getRGB(*pixY1++ << 6, ruv2, guv2, buv2);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv3, guv3, buv3);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv3, guv3, buv3);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv4, guv4, buv4);
+        *curoutbuf++ = getRGB(*pixY2++ << 6, ruv4, guv4, buv4);
+        
+        i-=2;
+        outbuf += D_800E7A30;
     }
-    
 }
-#endif
 
 extern void func_8007EE54(u16*);
 INCLUDE_ASM("asm/nonmatchings/7CD60", func_8007EE54);
@@ -377,7 +374,7 @@ void func_8007F2FC(u16* arg0) {
 }
 
 /* DECODE */
-extern u16 func_8007C160(BitStream*, Tree*);
+extern u32 func_8007C160(BitStream*, Tree*);
 extern void func_8007C434(); 
 extern void func_8007CA90();
 

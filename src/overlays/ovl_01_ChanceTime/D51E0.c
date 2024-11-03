@@ -19,7 +19,7 @@ void func_800F7818_ChanceTime(s32 arg0) {
     s32 temp_a1;
     s32 temp_a2;
 
-    temp_v0 = gPlayers[D_80101AAE_ChanceTime].characterID;
+    temp_v0 = GwPlayer[D_80101AAE_ChanceTime].character;
     temp_a1 = D_800C59AC[temp_v0].unk_00;
     temp_a2 = D_800C59AC[temp_v0].unk_04;
     
@@ -41,7 +41,7 @@ void func_800F80D8_ChanceTime(s32 arg0) {
     s32 temp2;
     s32 temp3;
 
-    temp_v1 = gPlayers[D_80101AAF_ChanceTime].characterID;
+    temp_v1 = GwPlayer[D_80101AAF_ChanceTime].character;
     temp2 = D_800C59AC[temp_v1].unk_00;
     temp3 = D_800C59AC[temp_v1].unk_04;
     func_800F7E08_ChanceTime(arg0, temp2, temp3, D_80101AAF_ChanceTime, -800.0f, 10.0f, 800.0f);
@@ -52,7 +52,7 @@ void func_800F8168_ChanceTime(s32 arg0) {
     s32 temp2;
     s32 temp3;
 
-    temp_v1 = gPlayers[D_80101AB0_ChanceTime].characterID;
+    temp_v1 = GwPlayer[D_80101AB0_ChanceTime].character;
     temp2 = D_800C59AC[temp_v1].unk_00;
     temp3 = D_800C59AC[temp_v1].unk_04;
     func_800F7E08_ChanceTime(arg0, temp2, temp3, D_80101AB0_ChanceTime, -700.0f, 10.0f, 800.0f);
@@ -63,7 +63,7 @@ void func_800F81F8_ChanceTime(s32 arg0) {
     s32 temp2;
     s32 temp3;
 
-    temp_v1 = gPlayers[D_80101AB1_ChanceTime].characterID;
+    temp_v1 = GwPlayer[D_80101AB1_ChanceTime].character;
     temp2 = D_800C59AC[temp_v1].unk_00;
     temp3 = D_800C59AC[temp_v1].unk_04;
     func_800F7E08_ChanceTime(arg0, temp2, temp3, D_80101AB1_ChanceTime, -600.0f, 10.0f, 800.0f);
@@ -143,11 +143,11 @@ void func_800F9B50_ChanceTime(void) {
 
     ShowTextWindow(var_s0);
     if (D_8010175C_ChanceTime == 0) {
-        func_8006DA5C(var_s0, D_80101330_ChanceTime[gPlayers[D_801012E0_ChanceTime].characterID], 0);
-        func_8006DA5C(var_s0, D_80101330_ChanceTime[gPlayers[D_801012E1_ChanceTime].characterID], 1);
+        func_8006DA5C(var_s0, D_80101330_ChanceTime[GwPlayer[D_801012E0_ChanceTime].character], 0);
+        func_8006DA5C(var_s0, D_80101330_ChanceTime[GwPlayer[D_801012E1_ChanceTime].character], 1);
     } else {
-        func_8006DA5C(var_s0, D_80101330_ChanceTime[gPlayers[D_801012E1_ChanceTime].characterID], 0);
-        func_8006DA5C(var_s0, D_80101330_ChanceTime[gPlayers[D_801012E0_ChanceTime].characterID], 1);
+        func_8006DA5C(var_s0, D_80101330_ChanceTime[GwPlayer[D_801012E1_ChanceTime].character], 0);
+        func_8006DA5C(var_s0, D_80101330_ChanceTime[GwPlayer[D_801012E0_ChanceTime].character], 1);
     }
 
     if (D_801011F6_ChanceTime == 0) {

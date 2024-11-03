@@ -1306,7 +1306,7 @@ s32 func_80076174(void) {
             }
 
             for (i = 0; i < MAX_PLAYERS; i++) {
-                if (D_800EDEB4[gPlayers[i].port] & 0xC000) {
+                if (D_800EDEB4[GwPlayer[i].port] & 0xC000) {
                     return 0;
                 }
             }
@@ -2466,8 +2466,8 @@ void func_8007B52C(void) {
 
         if (D_800C6268[temp_fp].unk_00 == 2) {
             for (i = 0, var_a0 = 0; i < MAX_PLAYERS; i++) {
-                if (var_a0 < gPlayers[i].unk_00) {
-                    var_a0 = gPlayers[i].unk_00;
+                if (var_a0 < GwPlayer[i].group) {
+                    var_a0 = GwPlayer[i].group;
                 }
             }
 
@@ -2475,18 +2475,18 @@ void func_8007B52C(void) {
                 var_s3 = 0;
                 var_s2 = 2;
                 for (i = 0; i < MAX_PLAYERS; i++) {
-                    if (gPlayers[i].unk_00 == 0) {
-                        func_8006DA5C(temp_v0, (void*) (s32) gPlayers[i].characterID + 44, var_s3);
-                        func_8006DA5C(var_s6, (void*) (s32) gPlayers[i].characterID + 44, var_s3++);
+                    if (GwPlayer[i].group == 0) {
+                        func_8006DA5C(temp_v0, (void*) (s32) GwPlayer[i].character + 44, var_s3);
+                        func_8006DA5C(var_s6, (void*) (s32) GwPlayer[i].character + 44, var_s3++);
                     } else {
-                        func_8006DA5C(temp_v0, (void*) (s32) gPlayers[i].characterID + 44, var_s2);
-                        func_8006DA5C(var_s6, (void*) (s32) gPlayers[i].characterID + 44, var_s2++);
+                        func_8006DA5C(temp_v0, (void*) (s32) GwPlayer[i].character + 44, var_s2);
+                        func_8006DA5C(var_s6, (void*) (s32) GwPlayer[i].character + 44, var_s2++);
                     }
                 }
             } else {
                 for (i = 0; i < MAX_PLAYERS; i++) {
-                    func_8006DA5C(temp_v0, (void*) (s32) gPlayers[i].characterID + 44, gPlayers[i].unk_00);
-                    func_8006DA5C(var_s6, (void*) (s32) gPlayers[i].characterID + 44, gPlayers[i].unk_00);
+                    func_8006DA5C(temp_v0, (void*) (s32) GwPlayer[i].character + 44, GwPlayer[i].group);
+                    func_8006DA5C(var_s6, (void*) (s32) GwPlayer[i].character + 44, GwPlayer[i].group);
                 }
             }
         } else {
@@ -2494,15 +2494,15 @@ void func_8007B52C(void) {
                 var_s3 = 0;
                 var_s2 = 1;
                 for (i = 0; i < MAX_PLAYERS; i++) {
-                    if (gPlayers[i].unk_00 == 0) {
-                        func_8006DA5C(temp_v0, (void*) (s32) gPlayers[i].characterID + 44, var_s3++);
+                    if (GwPlayer[i].group == 0) {
+                        func_8006DA5C(temp_v0, (void*) (s32) GwPlayer[i].character + 44, var_s3++);
                     } else {
-                        func_8006DA5C(var_s6, (void*) (s32) gPlayers[i].characterID + 44, var_s2++);
+                        func_8006DA5C(var_s6, (void*) (s32) GwPlayer[i].character + 44, var_s2++);
                     }
                 }
             } else {
                 for (i = 0; i < MAX_PLAYERS; i++) {
-                    func_8006DA5C(temp_v0, (void*) (s32) gPlayers[i].characterID + 44, i);
+                    func_8006DA5C(temp_v0, (void*) (s32) GwPlayer[i].character + 44, i);
                 }
             }
         }

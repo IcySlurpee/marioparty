@@ -26,10 +26,10 @@ void func_800F65E0_ShortcutRouletteMagmaMountain(void) {
     func_800F711C_ShortcutRouletteMagmaMountain();
     func_800F6F5C_ShortcutRouletteMagmaMountain();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     func_8003FCD4();
     omAddPrcObj(func_800F6898_ShortcutRouletteMagmaMountain, 0x300, 0, 0);
@@ -49,15 +49,15 @@ s32 func_800F66D8_ShortcutRouletteMagmaMountain(s32 arg0) {
     
     for (i = 0; i < 4; i++) {
         if (i == D_800F7310_ShortcutRouletteMagmaMountain) {
-            if (gPlayers[i].flags & 1) {
+            if (GwPlayer[i].flags & 1) {
                 var_s3 = 1;
-                sp18[gPlayers[i].port] = -0x8000;
+                sp18[GwPlayer[i].port] = -0x8000;
             } else {
-                func_8007155C(arg0, sp20.unk_00[gPlayers[i].port]);
-                sp18[gPlayers[i].port] = -1;
+                func_8007155C(arg0, sp20.unk_00[GwPlayer[i].port]);
+                sp18[GwPlayer[i].port] = -1;
             }
         } else {
-            sp18[gPlayers[i].port] = -0;
+            sp18[GwPlayer[i].port] = -0;
         }
     }
     
@@ -126,7 +126,7 @@ void func_800F6898_ShortcutRouletteMagmaMountain(void) {
         while (var_s1 != 2) {
             switch (var_s1) {
             case 0:
-                if (((gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (D_800F5460[gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].port] & 0x8000))) {
+                if (((GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (D_800F5460[GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].port] & 0x8000))) {
                     var_s1 = 1;
                     func_8003E81C(D_800F7314_ShortcutRouletteMagmaMountain, 2, 0);
                     func_8004F40C(D_800F7314_ShortcutRouletteMagmaMountain, 1, 2);
@@ -153,7 +153,7 @@ void func_800F6898_ShortcutRouletteMagmaMountain(void) {
             ShowTextWindow(windowID);
             PlaySound(0xE6);
             func_8004F4D4(D_800F7314_ShortcutRouletteMagmaMountain, 6, 0);
-            func_80060468(0x44A, gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].characterID);
+            func_80060468(0x44A, GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].character);
         } else {
             windowID = CreateTextWindow(0x60, 0x3C, 0xA, 2);
             LoadStringIntoWindow(windowID, (void* )0x1F4, -1, -1);
@@ -161,7 +161,7 @@ void func_800F6898_ShortcutRouletteMagmaMountain(void) {
             ShowTextWindow(windowID);
             PlaySound(0xE6);
             func_8004F4D4(D_800F7314_ShortcutRouletteMagmaMountain, 5, 0);
-            func_80060468(0x451, gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].characterID);
+            func_80060468(0x451, GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].character);
         }
         func_8004DBD4(windowID, D_800F7310_ShortcutRouletteMagmaMountain);
         HideTextWindow(windowID);
@@ -221,13 +221,13 @@ void func_800F6F5C_ShortcutRouletteMagmaMountain(void) {
     func_8004F2AC();
     func_8004F8DC();
     D_800F7318_ShortcutRouletteMagmaMountain = func_8004F954(0x26, 0x20);
-    D_800F7314_ShortcutRouletteMagmaMountain = CreateObject(func_80052F04(D_800F7310_ShortcutRouletteMagmaMountain), D_800F72E8_ShortcutRouletteMagmaMountain[gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].characterID]);
+    D_800F7314_ShortcutRouletteMagmaMountain = CreateObject(func_80052F04(D_800F7310_ShortcutRouletteMagmaMountain), D_800F72E8_ShortcutRouletteMagmaMountain[GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].character]);
     VEC3F_COPY_TO_OBJ(D_800F7314_ShortcutRouletteMagmaMountain, D_800F7210_ShortcutRouletteMagmaMountain);
-    func_80021B14(*D_800F7314_ShortcutRouletteMagmaMountain->unk_3C->unk_40, gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].characterID, 0x80);
+    func_80021B14(*D_800F7314_ShortcutRouletteMagmaMountain->unk_3C->unk_40, GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].character, 0x80);
     func_8004CCD0(&D_800F7314_ShortcutRouletteMagmaMountain->coords, &D_800F7204_ShortcutRouletteMagmaMountain, &D_800F7314_ShortcutRouletteMagmaMountain->unk_18);
     func_80052E84(D_800F7310_ShortcutRouletteMagmaMountain);
-    func_8003E664(gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].playerObj);
-    VEC3F_COPY_TO_OBJ(gPlayers[D_800F7310_ShortcutRouletteMagmaMountain].playerObj, D_800F721C_ShortcutRouletteMagmaMountain);
+    func_8003E664(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].player_obj);
+    VEC3F_COPY_TO_OBJ(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].player_obj, D_800F721C_ShortcutRouletteMagmaMountain);
 }
 
 void func_800F70E8_ShortcutRouletteMagmaMountain(void) {

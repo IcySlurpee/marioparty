@@ -145,18 +145,18 @@ void func_8001A498(void) {
     for (i = 0; i < MAX_PLAYERS; i++) {
         if (i < D_800F3778) {
             D_800ED558[i] = 0;
-            gPlayers[i].flags = gPlayers[i].flags & ~1;
+            GwPlayer[i].flags = GwPlayer[i].flags & ~1;
         } else {
             D_800ED558[i] = 1;
-            gPlayers[i].flags = gPlayers[i].flags | 1;
+            GwPlayer[i].flags = GwPlayer[i].flags | 1;
         }
         
-        gPlayers[i].port = i;
-        gPlayers[i].coins = 10;
-        gPlayers[i].coins_mg = 0;
-        gPlayers[i].unk_00 = i;
+        GwPlayer[i].port = i;
+        GwPlayer[i].coins = 10;
+        GwPlayer[i].coins_mg = 0;
+        GwPlayer[i].group = i;
         func_80052CCC(i, 1);
-        gPlayers[i].starAmount = 0;
+        GwPlayer[i].stars = 0;
     }
     
     func_800594E4(0, 0x4650);

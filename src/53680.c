@@ -15,11 +15,11 @@ s16 GetCurrentPlayerIndex(void) {
     return D_800ED5DC;
 }
 
-playerMain* GetPlayerStruct(s32 index) {
+GW_PLAYER* GetPlayerStruct(s32 index) {
     if (index < 0) {
         index = GetCurrentPlayerIndex();
     }
-    return &gPlayers[index];
+    return &GwPlayer[index];
 }
 
 // Returns true if the given index matches the current player index.
@@ -28,7 +28,7 @@ s16 PlayerIsCurrent(s16 index) {
 }
 
 // Returns true if the given player is the same as the current player.
-u32 PlayerStructIsCurrent(playerMain* player) {
+u32 PlayerStructIsCurrent(GW_PLAYER* player) {
   s16 cur_index = GetCurrentPlayerIndex();
   return player->player_index == cur_index;
 }
@@ -41,7 +41,7 @@ u32 PlayerIsCPU(s16 index) {
  * Adjust's a player's coin total by a given count.
 */
 void AdjustPlayerCoins(s32 index, s32 count) {
-    playerMain* player = GetPlayerStruct(index);
+    GW_PLAYER* player = GetPlayerStruct(index);
     player->coins += count;
     if (player->coins >= 1000) {
         player->coins = 999;
@@ -59,7 +59,7 @@ void AdjustPlayerCoins(s32 index, s32 count) {
  * Returns true if a player has at least the given coin count.
 */
 s32 PlayerHasCoins(s32 index, s32 count) {
-    playerMain* player = GetPlayerStruct(index);
+    GW_PLAYER* player = GetPlayerStruct(index);
     return player->coins >= count;
 }
 
@@ -67,33 +67,33 @@ s32 PlayerHasCoins(s32 index, s32 count) {
  * Updates the given player's current animation.
 */
 void SetPlayerAnimation(s32 index, s16 animation, s32 unk) {
-    playerMain* player = GetPlayerStruct(index);
+    GW_PLAYER* player = GetPlayerStruct(index);
     if (player == GetPlayerStruct(-1)) {
-        func_8003E81C(player->playerObj, animation, unk);
+        func_8003E81C(player->player_obj, animation, unk);
     }
 }
 
 void func_80052C44(s32 index, s16 a, s16 b, s16 c, u16 d) {
-    playerMain* player = GetPlayerStruct(index);
+    GW_PLAYER* player = GetPlayerStruct(index);
     if (player == GetPlayerStruct(-1)) {
-        func_8003E8B8(player->playerObj, a, b, c, d);
+        func_8003E8B8(player->player_obj, a, b, c, d);
     }
 }
 
 void func_80052CCC(s32 index, u8 b) {
-    playerMain* player = GetPlayerStruct(index);
-    player->cpuDifficultyCopy = b;
+    GW_PLAYER* player = GetPlayerStruct(index);
+    player->cpu_difficulty_copy = b;
     if (!IsFlagSet(44)) {
-        player->cpuDifficulty = D_800C53E0[b];
+        player->cpu_difficulty = D_800C53E0[b];
     }
     else {
-        player->cpuDifficulty = D_800C53E4[b];
+        player->cpu_difficulty = D_800C53E4[b];
     }
 }
 
 void func_80052D34(void) {
     Process* process = HuPrcCurrentGet();
-    playerMain* player = (playerMain*)process->user_data;
+    GW_PLAYER* player = (GW_PLAYER*)process->user_data;
     u16 flags;
     f32 val;
 
@@ -109,7 +109,7 @@ void func_80052D34(void) {
             val = 0.7f;
         }
 
-        func_800A0D00(&player->playerObj->xScale, val, val, val);
+        func_800A0D00(&player->player_obj->xScale, val, val, val);
         
     }
 }
@@ -118,23 +118,23 @@ void func_80052DC8(s16 index, void *param_2) {
     u8 character;
     Process* process;
 
-    playerMain* player = GetPlayerStruct(index);
+    GW_PLAYER* player = GetPlayerStruct(index);
     player->player_index = index;
 
     // This was hard to match, seems awkward still.
     if (D_800D8380 != 0) {
         if (PlayerIsCurrent(index) != 0) {
-            character = player->characterID;
+            character = player->character;
         }
         else {
             character = func_80052F6C(index);
         }
     }
     else {
-        character = player->characterID;
+        character = player->character;
     }
 
-    player->playerObj = CreateObject(character, param_2);
+    player->player_obj = CreateObject(character, param_2);
 
     process = omAddPrcObj(func_80052D34, 0x5000, 0, 0);
     player->process = process;
@@ -142,18 +142,18 @@ void func_80052DC8(s16 index, void *param_2) {
 }
 
 void func_80052E84(s16 index) {
-    playerMain* player = GetPlayerStruct(index);
-    func_80052DC8(index, D_800C5490[player->characterID]);
+    GW_PLAYER* player = GetPlayerStruct(index);
+    func_80052DC8(index, D_800C5490[player->character]);
 }
 
 void func_80052ECC(s16 index, u8 param_2) {
-    playerMain* player = GetPlayerStruct(index);
-    func_8003E1BC(player->playerObj, param_2);
+    GW_PLAYER* player = GetPlayerStruct(index);
+    func_8003E1BC(player->player_obj, param_2);
 }
 
 u8 func_80052F04(s16 index) {
-    playerMain* player = GetPlayerStruct(index);
-    return D_800C54A8[player->characterID];
+    GW_PLAYER* player = GetPlayerStruct(index);
+    return D_800C54A8[player->character];
 }
 
 void func_80052F34(s16 index) {
@@ -162,8 +162,8 @@ void func_80052F34(s16 index) {
 }
 
 u8 func_80052F6C(s16 index) {
-    playerMain* player = GetPlayerStruct(index);
-    return D_800C54B0[player->characterID];
+    GW_PLAYER* player = GetPlayerStruct(index);
+    return D_800C54B0[player->character];
 }
 
 void func_80052F9C(s16 index) {
@@ -172,21 +172,21 @@ void func_80052F9C(s16 index) {
 }
 
 void func_80052FD4(s16 index) {
-    playerMain* player = GetPlayerStruct(index);
-    if (player->playerObj != NULL) {
+    GW_PLAYER* player = GetPlayerStruct(index);
+    if (player->player_obj != NULL) {
         EndProcess(player->process);
-        DestroyObject(player->playerObj);
-        player->playerObj = NULL;
+        DestroyObject(player->player_obj);
+        player->player_obj = NULL;
     }
 }
 
 void func_80053020(void) {
     s32 i;
-    playerMain* player;
+    GW_PLAYER* player;
 
     for (i = 0; i < MAX_PLAYERS; i++) {
         player = GetPlayerStruct(i);
-        player->playerObj = NULL;
+        player->player_obj = NULL;
     }
     D_800D8380 = 0;
 }

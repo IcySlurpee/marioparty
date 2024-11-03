@@ -170,7 +170,7 @@ void func_80056AF4(void) {
 }
 
 void func_80056B78(void) {
-    playerMain* temp_v0;
+    GW_PLAYER* temp_v0;
     GameStatus* gameStatus = &D_800ED5C0;
     s32 i;
 
@@ -225,8 +225,8 @@ void func_80056B78(void) {
         
         for (i = 0; i < MAX_PLAYERS; i++) {
             temp_v0 = GetPlayerStruct(i);
-            temp_v0->starAmount = 0;
-            temp_v0->poisonedFlag = 0;
+            temp_v0->stars = 0;
+            temp_v0->poisoned_flag = 0;
             temp_v0->coins_total = 0;
             temp_v0->coins_max = 0;
             temp_v0->happening_count = 0;
@@ -291,7 +291,7 @@ void func_80056E6C(void) {
     while (1) {
         switch (D_800D86FA) {
         case 1:
-            func_8004B5DC(&gPlayers[D_800ED5DC].playerObj->coords);
+            func_8004B5DC(&GwPlayer[D_800ED5DC].player_obj->coords);
             break;
         case 2:
             func_8004B5DC(&D_800D86FC);
@@ -352,7 +352,7 @@ void func_800582E4(void) {
     HuPrcVSleep();
     func_8004A520();
     func_8004B5C4(3.0f);
-    func_800591E0(gPlayers[D_800ED5DC].port); //TODO: what arg type should this take?
+    func_800591E0(GwPlayer[D_800ED5DC].port); //TODO: what arg type should this take?
     func_80056AF4();
     omOvlReturnEx(1);
     omOvlKill();
@@ -406,7 +406,7 @@ void func_8005884C(Vec3f *coords) {
     func_8004A510();
 
     if (coords == NULL) {
-        coords = &GetPlayerStruct(-1)->playerObj->coords;
+        coords = &GetPlayerStruct(-1)->player_obj->coords;
     }
 
     func_8004B5DC(coords);

@@ -28,7 +28,7 @@ s32 func_800F6AB4_name_79(void) {
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_79/3005B0", func_800F6B00_name_79);
 
 void func_800F6D18_name_79(s16 arg0) {
-    s16 thing = 1 << gPlayers[0].port;
+    s16 thing = 1 << GwPlayer[0].port;
     func_8007155C(arg0, thing);
 }
 

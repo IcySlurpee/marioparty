@@ -76,7 +76,7 @@ void func_800F922C_PlatformPeril(omObjData* arg0, s32 arg1, s32 arg2, u16 arg3, 
     s32 temp = 0x699;
 
     func_8000979C(arg0, arg1, arg2, arg3, temp, temp);
-    D_800FE2A0_PlatformPeril[arg3] = gPlayers[arg3].cpuDifficulty;
+    D_800FE2A0_PlatformPeril[arg3] = GwPlayer[arg3].cpu_difficulty;
     func_800187D0(arg0, 0, arg1, 1, 0);
     func_800187D0(arg0, 1, arg1 | 1, 1, 0);
     func_800187D0(arg0, 2, arg1 | 3, 1, 0);
@@ -107,7 +107,7 @@ void func_800F922C_PlatformPeril(omObjData* arg0, s32 arg1, s32 arg2, u16 arg3, 
     arg0->func_ptr = &func_800F979C_PlatformPeril;
     arg0->work[0] = arg3;
     
-    if (gPlayers[arg3].flags & 1) { //checking if CPU?
+    if (GwPlayer[arg3].flags & 1) { //checking if CPU?
         arg0->work[1] = 1;
     } else {
         arg0->work[1] = 0;

@@ -39,7 +39,7 @@ void func_8004CC14(s16 arg0, s16 arg1, Vec3f* arg2) {
 }
 
 void func_8004CC8C(s16 arg0, s16 arg1) {
-    func_8004CB70(arg0, arg1, &gPlayers[arg0].playerObj->coords);
+    func_8004CB70(arg0, arg1, &GwPlayer[arg0].player_obj->coords);
 }
 
 void func_8004CCD0(Vec3f* arg0, Vec3f* arg1, Vec3f* arg2) {
@@ -50,7 +50,7 @@ void func_8004CCD0(Vec3f* arg0, Vec3f* arg1, Vec3f* arg2) {
 void func_8004CD08(s16 arg0, Vec3f* arg1) {
     Object* playerObject;
 
-    playerObject = GetPlayerStruct(arg0)->playerObj;
+    playerObject = GetPlayerStruct(arg0)->player_obj;
     func_8004CCD0(&playerObject->coords, arg1, &playerObject->unk_18);
 }
 
@@ -65,7 +65,7 @@ void func_8004CD84(Vec3f* arg0) {
 }
 
 void func_8004CDA0(s16 arg0) {
-    func_8004CD84(&GetPlayerStruct(arg0)->playerObj->unk_18);
+    func_8004CD84(&GetPlayerStruct(arg0)->player_obj->unk_18);
 }
 
 void func_8004CDCC(Object* unk) {
@@ -83,28 +83,28 @@ void func_8004CDCC(Object* unk) {
 }
 
 void SwapPlayerLocationData(s16 arg0, s16 arg1) {
-    playerMain* player1;
-    playerMain* player2;
+    GW_PLAYER* player1;
+    GW_PLAYER* player2;
     u16 temp;
 
     player1 = GetPlayerStruct(arg0);
     player2 = GetPlayerStruct(arg1);
-    temp = player1->curChainIndex;
-    player1->curChainIndex = player2->curChainIndex;
-    player2->curChainIndex = temp;
-    temp = player1->curSpaceIndex;
-    player1->curSpaceIndex = player2->curSpaceIndex;
-    player2->curSpaceIndex = temp;
-    temp = player1->nextChainIndex;
-    player1->nextChainIndex = player2->nextChainIndex;
-    player2->nextChainIndex = temp;
-    temp = player1->nextSpaceIndex;
-    player1->nextSpaceIndex = player2->nextSpaceIndex;
-    player2->nextSpaceIndex = temp;
+    temp = player1->cur_chain;
+    player1->cur_chain = player2->cur_chain;
+    player2->cur_chain = temp;
+    temp = player1->cur_space;
+    player1->cur_space = player2->cur_space;
+    player2->cur_space = temp;
+    temp = player1->next_chain;
+    player1->next_chain = player2->next_chain;
+    player2->next_chain = temp;
+    temp = player1->next_space;
+    player1->next_space = player2->next_space;
+    player2->next_space = temp;
 }
 
 void SetPlayerLandedSpaceType(s16 playerIndex, s16 spaceType) {
-    playerMain* player = GetPlayerStruct(playerIndex);
+    GW_PLAYER* player = GetPlayerStruct(playerIndex);
     s32 spaceTemp;
     
     switch(--spaceType) {
@@ -136,7 +136,7 @@ s16 GetSumOfPlayerStars(void) {
     s32 i;
 
     for (i = 0; i < MAX_PLAYERS; i++) {
-        starTotal += GetPlayerStruct(i)->starAmount;
+        starTotal += GetPlayerStruct(i)->stars;
     }
     
     return starTotal;
@@ -218,12 +218,12 @@ Process* func_8004D1EC(Vec3f* arg0, Vec3f* arg1, Vec3f* arg2, s32 arg3) {
 void func_8004D2A4(s16 arg0, s32 arg1, s16 arg2) {
     Vec3f sp10;
     Vec3f* temp_a2;
-    playerMain* temp_s1;
+    GW_PLAYER* temp_s1;
 
     temp_s1 = GetPlayerStruct(arg0);
-    func_800A0E80(&sp10, &GetSpaceData(arg2)->coords, &temp_s1->playerObj->coords);
+    func_800A0E80(&sp10, &GetSpaceData(arg2)->coords, &temp_s1->player_obj->coords);
     func_8003D408(&sp10);
-    temp_a2 = &temp_s1->playerObj->unk_18;
+    temp_a2 = &temp_s1->player_obj->unk_18;
     func_8004D1EC(temp_a2, &sp10, temp_a2, arg1);
 }
 
@@ -259,14 +259,14 @@ Process* func_8004D3F4(Vec3f* arg0, Vec3f* arg1, Vec3f* arg2, s32 arg3) {
 void func_8004D4A8(s16 arg0, s32 arg1) {
     Vec3f sp10;
     Vec3f sp20;
-    playerMain* temp_v0;
+    GW_PLAYER* temp_v0;
     Process* process;
 
     temp_v0 = GetPlayerStruct(arg0);
-    func_8004CB70(arg0, GetAbsSpaceIndexFromChainSpaceIndex(temp_v0->curChainIndex, temp_v0->curSpaceIndex), &sp10);
-    func_8004CB70(arg0, GetAbsSpaceIndexFromChainSpaceIndex(temp_v0->nextChainIndex, temp_v0->nextSpaceIndex), &sp20);
-    func_8004CCD0(&sp10, &sp20, &temp_v0->playerObj->unk_18);
-    process = func_8004D3F4(&sp10, &sp20, &temp_v0->playerObj->coords, arg1);
+    func_8004CB70(arg0, GetAbsSpaceIndexFromChainSpaceIndex(temp_v0->cur_chain, temp_v0->cur_space), &sp10);
+    func_8004CB70(arg0, GetAbsSpaceIndexFromChainSpaceIndex(temp_v0->next_chain, temp_v0->next_space), &sp20);
+    func_8004CCD0(&sp10, &sp20, &temp_v0->player_obj->unk_18);
+    process = func_8004D3F4(&sp10, &sp20, &temp_v0->player_obj->coords, arg1);
     HuPrcChildLink(HuPrcCurrentGet(), process);
     HuPrcChildWatch();
 }
@@ -308,39 +308,39 @@ Process* func_8004D648(Vec3f* arg0, Vec3f* arg1, Vec3f* arg2, f32 arg3) {
 void func_8004D6FC(s16 arg0, f32 arg1) {
     Vec3f sp10;
     Vec3f sp20;
-    playerMain* temp_v0;
+    GW_PLAYER* temp_v0;
     Process* process;
 
     temp_v0 = GetPlayerStruct(arg0);
-    func_8004CB70(arg0, GetAbsSpaceIndexFromChainSpaceIndex(temp_v0->curChainIndex, temp_v0->curSpaceIndex), &sp10);
-    func_8004CB70(arg0, GetAbsSpaceIndexFromChainSpaceIndex(temp_v0->nextChainIndex, temp_v0->nextSpaceIndex), &sp20);
-    func_8004CCD0(&sp10, &sp20, &temp_v0->playerObj->unk_18);
-    process = func_8004D648(&sp10, &sp20, &temp_v0->playerObj->coords, arg1);
+    func_8004CB70(arg0, GetAbsSpaceIndexFromChainSpaceIndex(temp_v0->cur_chain, temp_v0->cur_space), &sp10);
+    func_8004CB70(arg0, GetAbsSpaceIndexFromChainSpaceIndex(temp_v0->next_chain, temp_v0->next_space), &sp20);
+    func_8004CCD0(&sp10, &sp20, &temp_v0->player_obj->unk_18);
+    process = func_8004D648(&sp10, &sp20, &temp_v0->player_obj->coords, arg1);
     HuPrcChildLink(HuPrcCurrentGet(), process);
     HuPrcChildWatch();
 }
 
 void SetPlayerOntoChain(s16 player, s16 chain_index, s16 space_index) {
-    playerMain* temp_v1 = GetPlayerStruct(player);
+    GW_PLAYER* temp_v1 = GetPlayerStruct(player);
 
     if (chain_index >= 0) {
-        temp_v1->curChainIndex = chain_index;
-        temp_v1->nextChainIndex = chain_index;
+        temp_v1->cur_chain = chain_index;
+        temp_v1->next_chain = chain_index;
     }
     if (space_index >= 0) {
-        temp_v1->curSpaceIndex = space_index;
-        temp_v1->nextSpaceIndex = space_index + 1;
+        temp_v1->cur_space = space_index;
+        temp_v1->next_space = space_index + 1;
     }
 }
 
 void SetNextChainAndSpace(s16 arg0, s16 arg1, s16 arg2) {
-    playerMain* temp_v0 = GetPlayerStruct(arg0);
+    GW_PLAYER* temp_v0 = GetPlayerStruct(arg0);
 
     if (arg1 >= 0) {
-        temp_v0->nextChainIndex = arg1;
+        temp_v0->next_chain = arg1;
     }
     if (arg2 >= 0) {
-        temp_v0->nextSpaceIndex = arg2;
+        temp_v0->next_space = arg2;
     }
 }
 

@@ -104,7 +104,7 @@ void func_800F6E50_ShyGuySays(omObjData* arg0) {
         func_80075CCC(2);
         temp_v1_2 = &D_800FD9C0_ShyGuySays[D_800FDC1E_ShyGuySays];
         if ((temp_v1_2->unk_00 != 0) && (temp_v1_2->unk_04 != 0x200)) {
-            gPlayers[D_800FDC1E_ShyGuySays].coins_mg += 10;
+            GwPlayer[D_800FDC1E_ShyGuySays].coins_mg += 10;
         }
         D_800FD5CE_ShyGuySays++;
         return;

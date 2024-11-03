@@ -40,7 +40,7 @@ void func_800F6610_name_74(void) {
 
 void func_800F666C_name_74(void) {
     Object* temp_v1;
-    playerMain* player;
+    GW_PLAYER* player;
 
     omInitObjMan(0x50, 0x28);
     func_80060088();
@@ -52,8 +52,8 @@ void func_800F666C_name_74(void) {
     func_8005C3FC(0x51, 0x50);
     func_80052E84(0);
     player = GetPlayerStruct(0);
-    func_8003E174(player->playerObj);
-    player->playerObj->unk_0A |= 2;
+    func_8003E174(player->player_obj);
+    player->player_obj->unk_0A |= 2;
     func_800F68E8_name_74();
     func_800F6988_name_74();
     func_800F6C88_name_74();
@@ -79,12 +79,12 @@ void func_800F67A0_name_74(void) {
 
 void func_800F67CC_name_74(void) {
     unkUserData* temp_s1 = HuPrcCurrentGet()->user_data;
-    playerMain* temp_s2 = GetPlayerStruct(-1);
+    GW_PLAYER* temp_s2 = GetPlayerStruct(-1);
     Vec3f* vec = &temp_s1->vec2;
 
     while (1) {
         HuPrcVSleep();
-        func_800A0E80(vec, &temp_s2->playerObj->coords, &temp_s1->vec1);
+        func_800A0E80(vec, &temp_s2->player_obj->coords, &temp_s1->vec1);
         func_8003D408(vec);        
     }
 }

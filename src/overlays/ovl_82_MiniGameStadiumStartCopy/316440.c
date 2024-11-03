@@ -11,16 +11,16 @@ void func_800F65E0_MiniGameStadiumStartCopy(void) {
 }
 
 void func_800F6650_MiniGameStadiumStartCopy(s32 arg0, s32 arg1) {
-    playerMain* temp_s0;
-    playerMain* temp_s1;
+    GW_PLAYER* temp_s0;
+    GW_PLAYER* temp_s1;
     void* temp_s2;
 
     temp_s1 = GetPlayerStruct(arg0);
     temp_s2 = GetPlayerStruct(arg1);
-    temp_s0 = HuMemDirectMalloc(sizeof(playerMain));
-    bcopy(temp_s1, temp_s0, sizeof(playerMain));
-    bcopy(temp_s2, temp_s1, sizeof(playerMain));
-    bcopy(temp_s0, temp_s2, sizeof(playerMain));
+    temp_s0 = HuMemDirectMalloc(sizeof(GW_PLAYER));
+    bcopy(temp_s1, temp_s0, sizeof(GW_PLAYER));
+    bcopy(temp_s2, temp_s1, sizeof(GW_PLAYER));
+    bcopy(temp_s0, temp_s2, sizeof(GW_PLAYER));
     HuMemDirectFree(temp_s0);
 }
 

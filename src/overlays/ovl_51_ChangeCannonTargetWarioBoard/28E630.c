@@ -26,10 +26,10 @@ void func_800F65E0_ChangeCannonTargetWarioBoard(void) {
     func_800F6B30_ChangeCannonTargetWarioBoard();
     func_800F69D8_ChangeCannonTargetWarioBoard(1);
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     omAddPrcObj(func_800F66B4_ChangeCannonTargetWarioBoard, 0x300, 0, 0);
     omAddObj(0x1000, 0, 0, -1, &func_800F6994_ChangeCannonTargetWarioBoard);

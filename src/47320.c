@@ -167,7 +167,7 @@ void func_8004746C(s32 arg0) {
     } else if (arg0 == 5) {
         arg0 = 8;
     } else {
-        arg0 = gPlayers[arg0].characterID + 1;
+        arg0 = GwPlayer[arg0].character + 1;
     }
     
     D_800D6502 = func_80064EF4(2, 5);
@@ -203,7 +203,7 @@ void func_80047694(s32 arg0) {
         if (arg0 >= 4) {
             temp_v0->rot.x = D_800C4EF6;
         } else {
-            temp_v0->rot.x = D_800C4EF0[gPlayers[arg0].characterID];
+            temp_v0->rot.x = D_800C4EF0[GwPlayer[arg0].character];
         }
 
         temp_v0->mdlcnt = 0;
@@ -231,7 +231,7 @@ void func_800479B8(s32 arg0) {
     if (arg0 == 6) {
         file = ReadMainFS(copyTempTest[6] | 0xA0000);
     } else {
-        file = ReadMainFS(copyTempTest[gPlayers[arg0].characterID] | 0xA0000);
+        file = ReadMainFS(copyTempTest[GwPlayer[arg0].character] | 0xA0000);
     }
     D_800D6504.x = func_800678A4(file);
     FreeMainFS(file);

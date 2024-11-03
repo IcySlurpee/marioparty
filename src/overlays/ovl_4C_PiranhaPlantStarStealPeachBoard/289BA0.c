@@ -58,10 +58,10 @@ void func_800F65E0_PiranhaPlantStarStealPeachBoard(void) {
     func_800F741C_PiranhaPlantStarStealPeachBoard();
     func_800F718C_PiranhaPlantStarStealPeachBoard();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     omAddPrcObj(func_800F66B4_PiranhaPlantStarStealPeachBoard, 0x300, 0, 0);
     omAddObj(0x1000, 0, 0, -1, &func_800F7020_PiranhaPlantStarStealPeachBoard);
@@ -81,7 +81,7 @@ void func_800F66B4_PiranhaPlantStarStealPeachBoard(void) {
     func_800421E0();
     HuPrcSleep(0x1A);
     
-    if (gPlayers[D_800F75E0_PiranhaPlantStarStealPeachBoard].starAmount == 0) {
+    if (GwPlayer[D_800F75E0_PiranhaPlantStarStealPeachBoard].stars == 0) {
         func_8004EE14(0, &D_800F7550_PiranhaPlantStarStealPeachBoard, 5, D_800F74F0_PiranhaPlantStarStealPeachBoard);
         HuPrcSleep(0x14);
         PlaySound(0x96);
@@ -133,7 +133,7 @@ void func_800F66B4_PiranhaPlantStarStealPeachBoard(void) {
         func_80025798(D_800F750C_PiranhaPlantStarStealPeachBoard, D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.x, D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.y, D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.z);
         func_80025830(D_800F750C_PiranhaPlantStarStealPeachBoard, 0.5f, 0.5f, 0.5f);
         func_80055994(D_800F75E0_PiranhaPlantStarStealPeachBoard, 2);
-        gPlayers[D_800F75E0_PiranhaPlantStarStealPeachBoard].starAmount -= 1;
+        GwPlayer[D_800F75E0_PiranhaPlantStarStealPeachBoard].stars -= 1;
         func_80060618(0x44A, new_var = D_800F75E0_PiranhaPlantStarStealPeachBoard); //func_80060618(0x44A, D_800F75E0_PiranhaPlantStarStealPeachBoard);
         func_800503B0(D_800F75E0_PiranhaPlantStarStealPeachBoard, 6);
         PlaySound(0x6D);
@@ -187,11 +187,11 @@ void func_800F66B4_PiranhaPlantStarStealPeachBoard(void) {
         D_800F74F0_PiranhaPlantStarStealPeachBoard = NULL;
         D_800F74F4_PiranhaPlantStarStealPeachBoard = NULL;
         func_800F7120_PiranhaPlantStarStealPeachBoard();
-        D_800F75E4_PiranhaPlantStarStealPeachBoard = CreateObject(func_80052F04(D_800ED100.boardRam[D_800ED100.boardRam[14]]), D_800F75A4_PiranhaPlantStarStealPeachBoard[gPlayers[D_800ED100.boardRam[D_800ED100.boardRam[14]]].characterID]);
+        D_800F75E4_PiranhaPlantStarStealPeachBoard = CreateObject(func_80052F04(D_800ED100.boardRam[D_800ED100.boardRam[14]]), D_800F75A4_PiranhaPlantStarStealPeachBoard[GwPlayer[D_800ED100.boardRam[D_800ED100.boardRam[14]]].character]);
         D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.x = 0.0f;
         D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.y = D_800F752C_PiranhaPlantStarStealPeachBoard.y;
         D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.z = D_800F752C_PiranhaPlantStarStealPeachBoard.z;
-        func_80021B14(*D_800F75E4_PiranhaPlantStarStealPeachBoard->unk_3C->unk_40, gPlayers[D_800ED100.boardRam[D_800ED100.boardRam[14]]].characterID, 0x80);
+        func_80021B14(*D_800F75E4_PiranhaPlantStarStealPeachBoard->unk_3C->unk_40, GwPlayer[D_800ED100.boardRam[D_800ED100.boardRam[14]]].character, 0x80);
         func_8004CCD0(&D_800F75E4_PiranhaPlantStarStealPeachBoard->coords, &D_800F32A0->coords, &D_800F75E4_PiranhaPlantStarStealPeachBoard->unk_18);
         SetFadeInTypeAndTime(0, 0x10);
         HuPrcSleep(0x1A);
@@ -218,15 +218,15 @@ void func_800F66B4_PiranhaPlantStarStealPeachBoard(void) {
         func_800427D4(D_800F7510_PiranhaPlantStarStealPeachBoard);
         D_800F7510_PiranhaPlantStarStealPeachBoard = NULL;
         func_8003E81C(D_800F75E4_PiranhaPlantStarStealPeachBoard, 1, 0U);
-        func_80021CDC(*D_800F75E4_PiranhaPlantStarStealPeachBoard->unk_3C->unk_40, gPlayers[D_800ED100.boardRam[D_800ED100.boardRam[14]]].characterID, 0x81);
+        func_80021CDC(*D_800F75E4_PiranhaPlantStarStealPeachBoard->unk_3C->unk_40, GwPlayer[D_800ED100.boardRam[D_800ED100.boardRam[14]]].character, 0x81);
         func_80055994(D_800ED100.boardRam[D_800ED100.boardRam[14]], 1);
 
-        if (gPlayers[D_800ED100.boardRam[D_800ED100.boardRam[14]]].starAmount < 99) {
-            gPlayers[D_800ED100.boardRam[D_800ED100.boardRam[14]]].starAmount++;
+        if (GwPlayer[D_800ED100.boardRam[D_800ED100.boardRam[14]]].stars < 99) {
+            GwPlayer[D_800ED100.boardRam[D_800ED100.boardRam[14]]].stars++;
         }
         
         HuPrcSleep(0x24);
-        func_80060468(0x443, gPlayers[D_800ED100.boardRam[D_800ED100.boardRam[14]]].characterID);
+        func_80060468(0x443, GwPlayer[D_800ED100.boardRam[D_800ED100.boardRam[14]]].character);
         HuPrcSleep(0x30);
         func_80050160();
         D_800ED100.boardRam[D_800ED100.boardRam[14]] = -1;
@@ -292,12 +292,12 @@ void func_800F718C_PiranhaPlantStarStealPeachBoard(void) {
     D_800F74F8_PiranhaPlantStarStealPeachBoard->coords.y = D_800F7544_PiranhaPlantStarStealPeachBoard.y;
     D_800F74F8_PiranhaPlantStarStealPeachBoard->coords.z = D_800F7544_PiranhaPlantStarStealPeachBoard.z;
     func_8004CCD0(&D_800F74F8_PiranhaPlantStarStealPeachBoard->coords, &D_800F32A0->coords, &D_800F74F8_PiranhaPlantStarStealPeachBoard->unk_18);
-    D_800F75E4_PiranhaPlantStarStealPeachBoard = CreateObject(func_80052F04(D_800F75E0_PiranhaPlantStarStealPeachBoard), D_800F75A4_PiranhaPlantStarStealPeachBoard[gPlayers[D_800F75E0_PiranhaPlantStarStealPeachBoard].characterID]);
+    D_800F75E4_PiranhaPlantStarStealPeachBoard = CreateObject(func_80052F04(D_800F75E0_PiranhaPlantStarStealPeachBoard), D_800F75A4_PiranhaPlantStarStealPeachBoard[GwPlayer[D_800F75E0_PiranhaPlantStarStealPeachBoard].character]);
     D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.x = D_800F752C_PiranhaPlantStarStealPeachBoard.x;
     D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.y = D_800F752C_PiranhaPlantStarStealPeachBoard.y;
     D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.z = D_800F752C_PiranhaPlantStarStealPeachBoard.z;
     func_8004CCD0(&D_800F75E4_PiranhaPlantStarStealPeachBoard->coords, &D_800F74F0_PiranhaPlantStarStealPeachBoard->coords, &D_800F75E4_PiranhaPlantStarStealPeachBoard->unk_18);
-    D_800F74F4_PiranhaPlantStarStealPeachBoard = CreateObject((gPlayers[D_800ED100.boardRam[D_800ED100.boardRam[14]]].characterID + 0x1D), NULL);
+    D_800F74F4_PiranhaPlantStarStealPeachBoard = CreateObject((GwPlayer[D_800ED100.boardRam[D_800ED100.boardRam[14]]].character + 0x1D), NULL);
     D_800F74F4_PiranhaPlantStarStealPeachBoard->coords.x = D_800F7538_PiranhaPlantStarStealPeachBoard.x;
     D_800F74F4_PiranhaPlantStarStealPeachBoard->coords.y = D_800F7538_PiranhaPlantStarStealPeachBoard.y;
     D_800F74F4_PiranhaPlantStarStealPeachBoard->coords.z = D_800F7538_PiranhaPlantStarStealPeachBoard.z;

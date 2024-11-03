@@ -38,10 +38,10 @@ void func_800F65E0_BowserVisitEternalStar(void) {
     func_800F6F90_BowserVisitEternalStar();
     func_800F6DD4_BowserVisitEternalStar();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     omAddPrcObj(func_800F66BC_BowserVisitEternalStar, 0x300, 0x2000, 0);
     omAddObj(0x1000, 0, 0, -1, &func_800F6D88_BowserVisitEternalStar);
@@ -66,7 +66,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
     PlaySound(0x46A);
     HuPrcSleep(0xA);
 
-    if (gPlayers[D_800F7110_BowserVisitEternalStar].starAmount != 0) {
+    if (GwPlayer[D_800F7110_BowserVisitEternalStar].stars != 0) {
         windowID = CreateTextWindow(0x28, 0x28, 0x15, 3);
         LoadStringIntoWindow(windowID, (void* )0x1F8, -1, -1);
         func_8006E070(windowID, 0);
@@ -83,7 +83,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
         func_80025798(D_800F7068_BowserVisitEternalStar, D_800F7118_BowserVisitEternalStar->coords.x, D_800F7118_BowserVisitEternalStar->coords.y, D_800F7118_BowserVisitEternalStar->coords.z);
         func_80025830(D_800F7068_BowserVisitEternalStar, 0.5f, 0.5f, 0.5f);
         func_80055994(D_800F7110_BowserVisitEternalStar, 2);
-        gPlayers[D_800F7110_BowserVisitEternalStar].starAmount--;
+        GwPlayer[D_800F7110_BowserVisitEternalStar].stars--;
         func_800503B0(D_800F7110_BowserVisitEternalStar, 6);
         func_80060618(0x44A, D_800F7110_BowserVisitEternalStar);
         PlaySound(0x79);
@@ -136,7 +136,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
         HuPrcSleep(30);     
     }
 
-    else if (gPlayers[D_800F7110_BowserVisitEternalStar].coins == 0) {
+    else if (GwPlayer[D_800F7110_BowserVisitEternalStar].coins == 0) {
         windowID = CreateTextWindow(0x3C, 0x28, 0x14, 3);
         LoadStringIntoWindow(windowID, (void* )0x1FB, -1, -1);
         func_8006E070(windowID, 0);
@@ -147,7 +147,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
         HuPrcSleep(30);
     } else {
         windowID = CreateTextWindow(0x28, 0x28, 0x15, 3);
-        temp = gPlayers[D_800F7110_BowserVisitEternalStar].coins;
+        temp = GwPlayer[D_800F7110_BowserVisitEternalStar].coins;
         
         if (temp < 20) {
             var_s2 = temp;
@@ -221,7 +221,7 @@ void func_800F6DD4_BowserVisitEternalStar(void) {
     D_800F7114_BowserVisitEternalStar->zScale = 1.5f;
     D_800F7114_BowserVisitEternalStar->yScale = 1.5f;
     D_800F7114_BowserVisitEternalStar->xScale = 1.5f;
-    D_800F7118_BowserVisitEternalStar = CreateObject(func_80052F04(D_800F7110_BowserVisitEternalStar), D_800F70E4_BowserVisitEternalStar[gPlayers[D_800F7110_BowserVisitEternalStar].characterID]);
+    D_800F7118_BowserVisitEternalStar = CreateObject(func_80052F04(D_800F7110_BowserVisitEternalStar), D_800F70E4_BowserVisitEternalStar[GwPlayer[D_800F7110_BowserVisitEternalStar].character]);
     D_800F7118_BowserVisitEternalStar->coords.x = D_800F707C_BowserVisitEternalStar.x;
     D_800F7118_BowserVisitEternalStar->coords.y = D_800F707C_BowserVisitEternalStar.y;
     D_800F7118_BowserVisitEternalStar->coords.z = D_800F707C_BowserVisitEternalStar.z;

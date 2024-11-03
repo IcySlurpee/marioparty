@@ -20,10 +20,10 @@ void func_800F65E0_BowserVisitPeachBoard(void) {
     func_800F7008_BowserVisitPeachBoard();
     func_800F6E18_BowserVisitPeachBoard();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     omAddPrcObj(func_800F66BC_BowserVisitPeachBoard, 0x300, 0, 0);
     omAddObj(0x1000, 0, 0, -1, &func_800F6DCC_BowserVisitPeachBoard);
@@ -38,7 +38,7 @@ void func_800F66BC_BowserVisitPeachBoard(void) {
     HuPrcSleep(0x10);
     PlaySound(0x46A);
     HuPrcSleep(0xA);
-    if (gPlayers[D_800F7180_BowserVisitPeachBoard].coins == 0) {
+    if (GwPlayer[D_800F7180_BowserVisitPeachBoard].coins == 0) {
         temp_s1 = CreateTextWindow(0x3C, 0x28, 0x10, 3);
         LoadStringIntoWindow(temp_s1, (void* )0x1A0, -1, -1);
         func_8006E070(temp_s1, 0);
@@ -52,7 +52,7 @@ void func_800F66BC_BowserVisitPeachBoard(void) {
         PlaySound(0x46A);
         func_8004DBD4(temp_s1, D_800F7180_BowserVisitPeachBoard);
         HideTextWindow(temp_s1);
-    } else if (!(gPlayers[D_800F7180_BowserVisitPeachBoard].coins >= 20)) {
+    } else if (!(GwPlayer[D_800F7180_BowserVisitPeachBoard].coins >= 20)) {
         temp_s1 = CreateTextWindow(0x37, 0x28, 0x10, 3);
         LoadStringIntoWindow(temp_s1, (void* )0x19D, -1, -1);
         func_8006E070(temp_s1, 0);
@@ -68,7 +68,7 @@ void func_800F66BC_BowserVisitPeachBoard(void) {
         func_8003E81C(D_800F7184_BowserVisitPeachBoard, 1, 0);
         func_8004F40C(D_800F7184_BowserVisitPeachBoard, 0, 2);
         func_8003E81C(D_800F718C_BowserVisitPeachBoard, 1, 0);
-        func_80055960(D_800F7180_BowserVisitPeachBoard, -gPlayers[D_800F7180_BowserVisitPeachBoard].coins);
+        func_80055960(D_800F7180_BowserVisitPeachBoard, -GwPlayer[D_800F7180_BowserVisitPeachBoard].coins);
         func_800503B0(D_800F7180_BowserVisitPeachBoard, 5);
         func_80060618(0x44A, D_800F7180_BowserVisitPeachBoard);
         HuPrcSleep(0x1E);
@@ -193,7 +193,7 @@ void func_800F6E18_BowserVisitPeachBoard(void) {
     D_800F7190_BowserVisitPeachBoard->rot.y = 0.0f;
     D_800F7190_BowserVisitPeachBoard->work[0] = 0;
     D_800F7188_BowserVisitPeachBoard->unk_0A |= 1;
-    D_800F718C_BowserVisitPeachBoard = CreateObject(func_80052F04(D_800F7180_BowserVisitPeachBoard), D_800F7158_BowserVisitPeachBoard[gPlayers[D_800F7180_BowserVisitPeachBoard].characterID]);
+    D_800F718C_BowserVisitPeachBoard = CreateObject(func_80052F04(D_800F7180_BowserVisitPeachBoard), D_800F7158_BowserVisitPeachBoard[GwPlayer[D_800F7180_BowserVisitPeachBoard].character]);
     D_800F718C_BowserVisitPeachBoard->coords.x = D_800F70F4_BowserVisitPeachBoard.x;
     D_800F718C_BowserVisitPeachBoard->coords.y = D_800F70F4_BowserVisitPeachBoard.y;
     D_800F718C_BowserVisitPeachBoard->coords.z = D_800F70F4_BowserVisitPeachBoard.z;

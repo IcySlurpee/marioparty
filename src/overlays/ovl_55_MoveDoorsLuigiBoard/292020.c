@@ -7,10 +7,10 @@ void func_800F65E0_MoveDoorsLuigiBoard(void) {
     func_800F765C_MoveDoorsLuigiBoard();
     func_800F7528_MoveDoorsLuigiBoard();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     omAddPrcObj(func_800F7198_MoveDoorsLuigiBoard, 0x300, 0, 0);
     omAddObj(0x1000, 0, 0, -1, &func_800F74C8_MoveDoorsLuigiBoard);
@@ -43,7 +43,7 @@ void func_800F7198_MoveDoorsLuigiBoard(void) {
     
     temp_v0 = CreateTextWindow(0x3C, 0x28, 0x11, 7);
     
-    if (gPlayers[D_800F7820_MoveDoorsLuigiBoard].coins < 0x14) {
+    if (GwPlayer[D_800F7820_MoveDoorsLuigiBoard].coins < 0x14) {
         func_8006DA5C(temp_v0, &D_800F7810_MoveDoorsLuigiBoard, 0);
         sp10[0] = 0;
     } else {
@@ -129,7 +129,7 @@ void func_800F7528_MoveDoorsLuigiBoard(void) {
     D_800F7824_MoveDoorsLuigiBoard->coords.y = D_800F7724_MoveDoorsLuigiBoard.y;
     D_800F7824_MoveDoorsLuigiBoard->coords.z = D_800F7724_MoveDoorsLuigiBoard.z;
     func_8003E81C(D_800F7824_MoveDoorsLuigiBoard, 1, 2);
-    D_800F7828_MoveDoorsLuigiBoard = CreateObject(func_80052F04(D_800F7820_MoveDoorsLuigiBoard), D_800C5490[gPlayers[D_800F7820_MoveDoorsLuigiBoard].characterID]);
+    D_800F7828_MoveDoorsLuigiBoard = CreateObject(func_80052F04(D_800F7820_MoveDoorsLuigiBoard), D_800C5490[GwPlayer[D_800F7820_MoveDoorsLuigiBoard].character]);
     D_800F7828_MoveDoorsLuigiBoard->coords.x = D_800F7730_MoveDoorsLuigiBoard.x;
     D_800F7828_MoveDoorsLuigiBoard->coords.y = D_800F7730_MoveDoorsLuigiBoard.y;
     D_800F7828_MoveDoorsLuigiBoard->coords.z = D_800F7730_MoveDoorsLuigiBoard.z;

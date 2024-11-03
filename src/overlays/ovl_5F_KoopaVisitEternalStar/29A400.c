@@ -59,10 +59,10 @@ void func_800F65E0_KoopaVisitEternalStar(void) {
     func_800F6B80_KoopaVisitEternalStar();
     func_800F69CC_KoopaVisitEternalStar();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     omAddPrcObj(&func_800F673C_KoopaVisitEternalStar, 0x300, 0, 0);
     omAddObj(0x1000, 0, 0, -1, &func_800F6988_KoopaVisitEternalStar);
@@ -100,7 +100,7 @@ void func_800F673C_KoopaVisitEternalStar(void) {
     
     func_8004CCD0(&D_800F6D18_KoopaVisitEternalStar->coords, &D_800F32A0->coords, &D_800F6D18_KoopaVisitEternalStar->unk_18);
     func_8004F4D4(D_800F6D18_KoopaVisitEternalStar, 0, 0);
-    func_80060468(0x451, gPlayers[D_800F6D11_KoopaVisitEternalStar].characterID);
+    func_80060468(0x451, GwPlayer[D_800F6D11_KoopaVisitEternalStar].character);
     func_80055960(D_800F6D11_KoopaVisitEternalStar, D_800F6C60_KoopaVisitEternalStar[D_800F6D12_KoopaVisitEternalStar]);
     HuPrcSleep(0x28);
     D_800F5144 = 1;
@@ -139,11 +139,11 @@ void func_800F69CC_KoopaVisitEternalStar(void) {
     D_800F6D14_KoopaVisitEternalStar->coords.x = D_800F6C94_KoopaVisitEternalStar.x;
     D_800F6D14_KoopaVisitEternalStar->coords.y = D_800F6C94_KoopaVisitEternalStar.y;
     D_800F6D14_KoopaVisitEternalStar->coords.z = D_800F6C94_KoopaVisitEternalStar.z;
-    D_800F6D18_KoopaVisitEternalStar = CreateObject(func_80052F04(D_800F6D11_KoopaVisitEternalStar), D_800F6CDC_KoopaVisitEternalStar[gPlayers[D_800F6D11_KoopaVisitEternalStar].characterID]);
+    D_800F6D18_KoopaVisitEternalStar = CreateObject(func_80052F04(D_800F6D11_KoopaVisitEternalStar), D_800F6CDC_KoopaVisitEternalStar[GwPlayer[D_800F6D11_KoopaVisitEternalStar].character]);
     D_800F6D18_KoopaVisitEternalStar->coords.x = D_800F6CA0_KoopaVisitEternalStar.x;
     D_800F6D18_KoopaVisitEternalStar->coords.y = D_800F6CA0_KoopaVisitEternalStar.y;
     D_800F6D18_KoopaVisitEternalStar->coords.z = D_800F6CA0_KoopaVisitEternalStar.z;
-    func_80021B14(*D_800F6D18_KoopaVisitEternalStar->unk_3C->unk_40, gPlayers[D_800F6D11_KoopaVisitEternalStar].characterID, 0x80);
+    func_80021B14(*D_800F6D18_KoopaVisitEternalStar->unk_3C->unk_40, GwPlayer[D_800F6D11_KoopaVisitEternalStar].character, 0x80);
     func_8004CCD0(&D_800F6D14_KoopaVisitEternalStar->coords, &D_800F6D18_KoopaVisitEternalStar->coords, &D_800F6D14_KoopaVisitEternalStar->unk_18);
     func_8004CCD0(&D_800F6D18_KoopaVisitEternalStar->coords, &D_800F6D14_KoopaVisitEternalStar->coords, &D_800F6D18_KoopaVisitEternalStar->unk_18);
 }

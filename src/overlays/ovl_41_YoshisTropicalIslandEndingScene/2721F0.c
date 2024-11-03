@@ -1,25 +1,25 @@
 #include "2721F0.h"
 
 void func_80108B60_YoshisTropicalIslandEndingScene(omObjData* arg0) {
-    if ((gPlayers[arg0->work[0]].playerObj->unk_34 <= 0.0f) && (gPlayers[arg0->work[0]].playerObj->unk_30 <= 0.0f)) {
-        gPlayers[arg0->work[0]].playerObj->unk_30 = 0.0f;
+    if ((GwPlayer[arg0->work[0]].player_obj->unk_34 <= 0.0f) && (GwPlayer[arg0->work[0]].player_obj->unk_30 <= 0.0f)) {
+        GwPlayer[arg0->work[0]].player_obj->unk_30 = 0.0f;
         return;
     }
     
-    gPlayers[arg0->work[0]].playerObj->unk_38 = -4.0f;
-    gPlayers[arg0->work[0]].playerObj->unk_34 += gPlayers[arg0->work[0]].playerObj->unk_38;
-    gPlayers[arg0->work[0]].playerObj->unk_30 += gPlayers[arg0->work[0]].playerObj->unk_34;
+    GwPlayer[arg0->work[0]].player_obj->unk_38 = -4.0f;
+    GwPlayer[arg0->work[0]].player_obj->unk_34 += GwPlayer[arg0->work[0]].player_obj->unk_38;
+    GwPlayer[arg0->work[0]].player_obj->unk_30 += GwPlayer[arg0->work[0]].player_obj->unk_34;
 
-    if (gPlayers[arg0->work[0]].playerObj->unk_30 < 0.0f) {
-        gPlayers[arg0->work[0]].playerObj->unk_30 = 0.0f;
+    if (GwPlayer[arg0->work[0]].player_obj->unk_30 < 0.0f) {
+        GwPlayer[arg0->work[0]].player_obj->unk_30 = 0.0f;
     }
-    func_800A0D00(&gPlayers[arg0->work[0]].playerObj->coords, gPlayers[arg0->work[0]].playerObj->coords.x, gPlayers[arg0->work[0]].playerObj->unk_30, gPlayers[arg0->work[0]].playerObj->coords.z);
+    func_800A0D00(&GwPlayer[arg0->work[0]].player_obj->coords, GwPlayer[arg0->work[0]].player_obj->coords.x, GwPlayer[arg0->work[0]].player_obj->unk_30, GwPlayer[arg0->work[0]].player_obj->coords.z);
 }
 
 void func_80108CB8_YoshisTropicalIslandEndingScene(omObjData* arg0) {
-    gPlayers[arg0->work[0]].playerObj->unk_30 = 0;
-    gPlayers[arg0->work[0]].playerObj->unk_34 = 15.0f;
-    gPlayers[arg0->work[0]].playerObj->unk_38 = -4.0f;
+    GwPlayer[arg0->work[0]].player_obj->unk_30 = 0;
+    GwPlayer[arg0->work[0]].player_obj->unk_34 = 15.0f;
+    GwPlayer[arg0->work[0]].player_obj->unk_38 = -4.0f;
     arg0->func_ptr = &func_80108B60_YoshisTropicalIslandEndingScene;
 }
 

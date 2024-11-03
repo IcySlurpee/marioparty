@@ -8,9 +8,9 @@ void func_80045500(omObjData* arg0) {
     Vec3f sp10;
     Vec2f sp20;
 
-    sp10.x = (gPlayers[arg0->work[3]].playerObj)->coords.x;
-    sp10.y = (gPlayers[arg0->work[3]].playerObj)->coords.y + 250.0f;
-    sp10.z = (gPlayers[arg0->work[3]].playerObj)->coords.z;
+    sp10.x = (GwPlayer[arg0->work[3]].player_obj)->coords.x;
+    sp10.y = (GwPlayer[arg0->work[3]].player_obj)->coords.y + 250.0f;
+    sp10.z = (GwPlayer[arg0->work[3]].player_obj)->coords.z;
     func_8004B730(&sp10, &sp20);
     if (arg0->work[0] < 30) {
         if (arg0->rot.x > 0.0f) {
@@ -67,9 +67,9 @@ void ShowPlayerCoinChange(s32 arg0, s32 arg1) {
     s32 var_s4 = 0;
 
     if (D_800D6470 == -1) {
-        sp18.x = (gPlayers[arg0].playerObj)->coords.x;
-        sp18.y = (gPlayers[arg0].playerObj)->coords.y + 250.0f;
-        sp18.z = (gPlayers[arg0].playerObj)->coords.z;
+        sp18.x = (GwPlayer[arg0].player_obj)->coords.x;
+        sp18.y = (GwPlayer[arg0].player_obj)->coords.y + 250.0f;
+        sp18.z = (GwPlayer[arg0].player_obj)->coords.z;
         func_8004B730(&sp18, &sp28);
         D_800D6478 = omAddObj(-0x8000, 0, 0, -1, &func_80045500);
         D_800D6478->work[0] = 0;

@@ -98,17 +98,17 @@ void func_8004E248(omObjData* arg0) {
     
     if (temp_v1 == NULL) {
         if (arg0->work[1] == 0) {
-            gPlayers[arg0->work[0]].playerObj->coords.x = arg0->trans.x;
-            gPlayers[arg0->work[0]].playerObj->coords.y = arg0->trans.y;
-            gPlayers[arg0->work[0]].playerObj->coords.z = arg0->trans.z;
+            GwPlayer[arg0->work[0]].player_obj->coords.x = arg0->trans.x;
+            GwPlayer[arg0->work[0]].player_obj->coords.y = arg0->trans.y;
+            GwPlayer[arg0->work[0]].player_obj->coords.z = arg0->trans.z;
             omDelObj(arg0);
             return;
         }
-        temp_v0 = gPlayers[arg0->work[0]].playerObj;
+        temp_v0 = GwPlayer[arg0->work[0]].player_obj;
         temp_v0->coords.x = temp_v0->coords.x + arg0->scale.x;
-        temp_v0 = gPlayers[arg0->work[0]].playerObj;
+        temp_v0 = GwPlayer[arg0->work[0]].player_obj;
         temp_v0->coords.y = temp_v0->coords.y + arg0->scale.y;
-        temp_v0 = gPlayers[arg0->work[0]].playerObj;
+        temp_v0 = GwPlayer[arg0->work[0]].player_obj;
         temp_v0->coords.z = temp_v0->coords.z + arg0->scale.z;
         return;
     }
@@ -139,9 +139,9 @@ omObjData* func_8004E3E0(s32 arg0, Vec3f* arg1, s32 arg2, void* arg3) { //fix ar
     obj->trans.y = arg1->y;
     obj->trans.z = arg1->z;
     if (arg3 == NULL) {
-        obj->scale.x = (arg1->x - gPlayers[arg0].playerObj->coords.x) / arg2;
-        obj->scale.y = (arg1->y - gPlayers[arg0].playerObj->coords.y) / arg2;
-        obj->scale.z = (arg1->z - gPlayers[arg0].playerObj->coords.z) / arg2;
+        obj->scale.x = (arg1->x - GwPlayer[arg0].player_obj->coords.x) / arg2;
+        obj->scale.y = (arg1->y - GwPlayer[arg0].player_obj->coords.y) / arg2;
+        obj->scale.z = (arg1->z - GwPlayer[arg0].player_obj->coords.z) / arg2;
     } else {
         obj->scale.x = (arg1->x - ((unkGlobalStruct_00*)arg3)->unk_0C) / arg2;
         obj->scale.y = (arg1->y - ((unkGlobalStruct_00*)arg3)->unk_10) / arg2;
@@ -201,24 +201,24 @@ void func_8004E564(omObjData* arg0) { //matches, needs rodata support
     
     if (var_s0 == NULL) {
         if (arg0->work[1] == 0) {
-            gPlayers[arg0->work[0]].playerObj->coords.x = arg0->trans.x;
-            gPlayers[arg0->work[0]].playerObj->coords.y = arg0->trans.y;
-            gPlayers[arg0->work[0]].playerObj->coords.z = arg0->trans.z;
+            GwPlayer[arg0->work[0]].player_obj->coords.x = arg0->trans.x;
+            GwPlayer[arg0->work[0]].player_obj->coords.y = arg0->trans.y;
+            GwPlayer[arg0->work[0]].player_obj->coords.z = arg0->trans.z;
             omDelObj(arg0);
             return;
         }
         
-        gPlayers[arg0->work[0]].playerObj->coords.x = gPlayers[arg0->work[0]].playerObj->coords.x + arg0->scale.x;
-        gPlayers[arg0->work[0]].playerObj->coords.y = gPlayers[arg0->work[0]].playerObj->coords.y + arg0->scale.y;
-        gPlayers[arg0->work[0]].playerObj->coords.z = gPlayers[arg0->work[0]].playerObj->coords.z + arg0->scale.z;   
-        new_var = gPlayers[arg0->work[0]].playerObj;
+        GwPlayer[arg0->work[0]].player_obj->coords.x = GwPlayer[arg0->work[0]].player_obj->coords.x + arg0->scale.x;
+        GwPlayer[arg0->work[0]].player_obj->coords.y = GwPlayer[arg0->work[0]].player_obj->coords.y + arg0->scale.y;
+        GwPlayer[arg0->work[0]].player_obj->coords.z = GwPlayer[arg0->work[0]].player_obj->coords.z + arg0->scale.z;   
+        new_var = GwPlayer[arg0->work[0]].player_obj;
         temp_v0 = new_var;
         temp_f20 = fsin(arg0->work[1] * 180.0f / arg0->work[2] * (M_PI/180)) * arg0->rot.x;
         temp_v0->coords.x += temp_f20 - (fsin((arg0->work[1] + 1) * 180.0f / arg0->work[2] * (M_PI/180)) * arg0->rot.x);
-        temp_v0 = gPlayers[arg0->work[0]].playerObj;
+        temp_v0 = GwPlayer[arg0->work[0]].player_obj;
         temp_f20_2 = fsin(arg0->work[1] * 180.0f / arg0->work[2] * (M_PI/180)) * arg0->rot.y;
         temp_v0->coords.y += temp_f20_2 - (fsin((arg0->work[1] + 1) * 180.0f / arg0->work[2] * (M_PI/180)) * arg0->rot.y);
-        var_s0 = gPlayers[arg0->work[0]].playerObj;
+        var_s0 = GwPlayer[arg0->work[0]].player_obj;
         temp_f20_5 = fsin(arg0->work[1] * 180.0f / arg0->work[2] * (M_PI/180))* arg0->rot.z;
         temp_f20_5 = temp_f20_5 - (fsin(( (((arg0->work[1] + 1) * 180.0f) / arg0->work[2]) * (M_PI/180))) * arg0->rot.z);
         temp_f20_5 += var_s0->coords.z;

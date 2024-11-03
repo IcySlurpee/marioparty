@@ -7,10 +7,10 @@ void func_800F65E0_GoombaCoinStealPeachBoard(void) {
     func_800F7A00_GoombaCoinStealPeachBoard();
     func_800F77D0_GoombaCoinStealPeachBoard();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     omAddPrcObj(&func_800F6CB0_GoombaCoinStealPeachBoard, 0x300, 0, 0);
     omAddObj(0x1000, 0, 0, -1, &func_800F7688_GoombaCoinStealPeachBoard);
@@ -94,7 +94,7 @@ void func_800F77D0_GoombaCoinStealPeachBoard(void) {
         D_800F7BE4_GoombaCoinStealPeachBoard->coords.z = D_800F7B04_GoombaCoinStealPeachBoard.z;
     }
 
-    D_800F7BE8_GoombaCoinStealPeachBoard = CreateObject(func_80052F04(D_800F7BE0_GoombaCoinStealPeachBoard), D_800F7B88_GoombaCoinStealPeachBoard[gPlayers[D_800F7BE0_GoombaCoinStealPeachBoard].characterID]);
+    D_800F7BE8_GoombaCoinStealPeachBoard = CreateObject(func_80052F04(D_800F7BE0_GoombaCoinStealPeachBoard), D_800F7B88_GoombaCoinStealPeachBoard[GwPlayer[D_800F7BE0_GoombaCoinStealPeachBoard].character]);
     D_800F7BE8_GoombaCoinStealPeachBoard->coords.x = D_800F7B1C_GoombaCoinStealPeachBoard.x;
     D_800F7BE8_GoombaCoinStealPeachBoard->coords.y = D_800F7B1C_GoombaCoinStealPeachBoard.y;
     D_800F7BE8_GoombaCoinStealPeachBoard->coords.z = D_800F7B1C_GoombaCoinStealPeachBoard.z;

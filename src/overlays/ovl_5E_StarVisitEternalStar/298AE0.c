@@ -106,10 +106,10 @@ void func_800F65E0_StarVisitEternalStar(void) {
     func_800F7CF8_StarVisitEternalStar();
     func_800F7A90_StarVisitEternalStar();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     func_8003FCD4();
     omAddPrcObj(func_800F76D4_StarVisitEternalStar, 0x300, 0x2000, 0);
@@ -129,15 +129,15 @@ s32 func_800F66D8_StarVisitEternalStar(s32 arg0) {
     
     for (i = 0; i < 4; i++) {
         if (i == D_800F7F00_StarVisitEternalStar) {
-            if (gPlayers[i].flags & 1) {
+            if (GwPlayer[i].flags & 1) {
                 var_s3 = 1;
-                sp18[gPlayers[i].port] = -0x8000;
+                sp18[GwPlayer[i].port] = -0x8000;
             } else {
-                func_8007155C(arg0, sp20[gPlayers[i].port]);
-                sp18[gPlayers[i].port] = -1;
+                func_8007155C(arg0, sp20[GwPlayer[i].port]);
+                sp18[GwPlayer[i].port] = -1;
             }
         } else {
-            sp18[gPlayers[i].port] = -0;
+            sp18[GwPlayer[i].port] = -0;
         }
     }
     if (var_s3 != 0) {
@@ -183,7 +183,7 @@ void func_800F6898_StarVisitEternalStar(void) {
     while (var_s0 != 2) {
         switch (var_s0) {
         case 0:
-            if (((gPlayers[D_800F7F00_StarVisitEternalStar].flags & 1) && (var_s2 >= 0xF)) || (!(gPlayers[D_800F7F00_StarVisitEternalStar].flags & 1) && (D_800F5460[gPlayers[D_800F7F00_StarVisitEternalStar].port] & 0x8000))) {
+            if (((GwPlayer[D_800F7F00_StarVisitEternalStar].flags & 1) && (var_s2 >= 0xF)) || (!(GwPlayer[D_800F7F00_StarVisitEternalStar].flags & 1) && (D_800F5460[GwPlayer[D_800F7F00_StarVisitEternalStar].port] & 0x8000))) {
                 var_s0 = 1;
                 func_8003E81C(D_800F7F08_StarVisitEternalStar, 2, 0);
                 func_8004F40C(D_800F7F08_StarVisitEternalStar, 1, 2);
@@ -304,20 +304,20 @@ void func_800F6898_StarVisitEternalStar(void) {
         D_800F7DC0_StarVisitEternalStar = NULL;
         func_800427D4(D_800F7DC4_StarVisitEternalStar);
         D_800F7DC4_StarVisitEternalStar = NULL;
-        func_80021CDC(*D_800F7F08_StarVisitEternalStar->unk_3C->unk_40, gPlayers[D_800F7F00_StarVisitEternalStar].characterID, 0x81);
+        func_80021CDC(*D_800F7F08_StarVisitEternalStar->unk_3C->unk_40, GwPlayer[D_800F7F00_StarVisitEternalStar].character, 0x81);
         func_8004CCD0(&D_800F7F08_StarVisitEternalStar->coords, &D_800F32A0->coords, &D_800F7F08_StarVisitEternalStar->unk_18);
         func_8003E81C(D_800F7F08_StarVisitEternalStar, 4, 0U);
-        gPlayers[D_800F7F00_StarVisitEternalStar].starAmount++;
+        GwPlayer[D_800F7F00_StarVisitEternalStar].stars++;
         D_800F7DD0_StarVisitEternalStar = func_8004D8A4();
         HuPrcSleep(0x24);
-        func_80060468(0x443, gPlayers[D_800F7F00_StarVisitEternalStar].characterID);
+        func_80060468(0x443, GwPlayer[D_800F7F00_StarVisitEternalStar].character);
         HuPrcSleep(0x30);
         func_80050160();
         D_800F7DCC_StarVisitEternalStar = 1;
         return;
     }
     
-    if (gPlayers[D_800F7F00_StarVisitEternalStar].starAmount == 0) {
+    if (GwPlayer[D_800F7F00_StarVisitEternalStar].stars == 0) {
         windowID = CreateTextWindow(0x50, 0x3C, 0xE, 3);
         LoadStringIntoWindow(windowID, (void* )0x204, -1, -1);
         func_8006E070(windowID, 0);
@@ -337,11 +337,11 @@ void func_800F6898_StarVisitEternalStar(void) {
     func_8004F4D4(D_800F7F08_StarVisitEternalStar, 5, 0);
     func_8004F504(D_800F7F08_StarVisitEternalStar);
     
-    if (gPlayers[D_800F7F00_StarVisitEternalStar].starAmount != 0) {
+    if (GwPlayer[D_800F7F00_StarVisitEternalStar].stars != 0) {
         func_800500A4();
         PlaySound(0x44);
         PlaySound(0x6D);
-        gPlayers[D_800F7F00_StarVisitEternalStar].starAmount--;
+        GwPlayer[D_800F7F00_StarVisitEternalStar].stars--;
         func_800503B0((s32) D_800F7F00_StarVisitEternalStar, 6);
         D_800F7DC0_StarVisitEternalStar = CreateObject(0x40U, NULL);
         func_800A0D00(&D_800F7DC0_StarVisitEternalStar->coords, D_800F7DE0_StarVisitEternalStar.x, D_800F7DE0_StarVisitEternalStar.y + 200.0f, D_800F7DE0_StarVisitEternalStar.z);
@@ -385,7 +385,7 @@ void func_800F76D4_StarVisitEternalStar(void) {
         HuPrcSleep(8);
     }
     
-    if (gPlayers[D_800F7F00_StarVisitEternalStar].starAmount >= 99) {
+    if (GwPlayer[D_800F7F00_StarVisitEternalStar].stars >= 99) {
         windowID = CreateTextWindow(0x78, 0x3C, 0xC, 4);
         LoadStringIntoWindow(windowID, (void*)0x207, -1, -1);
         func_8006E070(windowID, 0);
@@ -393,7 +393,7 @@ void func_800F76D4_StarVisitEternalStar(void) {
         func_8004DBD4(windowID, D_800F7F00_StarVisitEternalStar);
         HideTextWindow(windowID);
     }
-    else if (gPlayers[D_800F7F00_StarVisitEternalStar].coins < 20) {
+    else if (GwPlayer[D_800F7F00_StarVisitEternalStar].coins < 20) {
         windowID = CreateTextWindow(0x78, 0x28, 0xC, 6);
         LoadStringIntoWindow(windowID, (void*)0x200, -1, -1);
         func_8006E070(windowID, 0);
@@ -485,18 +485,18 @@ void func_800F7A90_StarVisitEternalStar(void) {
     D_800F7F04_StarVisitEternalStar->coords.y = D_800F7DD4_StarVisitEternalStar.y;
     D_800F7F04_StarVisitEternalStar->coords.z = D_800F7DD4_StarVisitEternalStar.z;
     D_800F7F04_StarVisitEternalStar->xScale = D_800F7F04_StarVisitEternalStar->yScale = D_800F7F04_StarVisitEternalStar->zScale = 1.5f;
-    D_800F7F08_StarVisitEternalStar = CreateObject(func_80052F04(D_800F7F00_StarVisitEternalStar), D_800F7EB4_StarVisitEternalStar[gPlayers[D_800F7F00_StarVisitEternalStar].characterID]);
+    D_800F7F08_StarVisitEternalStar = CreateObject(func_80052F04(D_800F7F00_StarVisitEternalStar), D_800F7EB4_StarVisitEternalStar[GwPlayer[D_800F7F00_StarVisitEternalStar].character]);
     D_800F7F08_StarVisitEternalStar->coords.x = D_800F7DE0_StarVisitEternalStar.x;
     D_800F7F08_StarVisitEternalStar->coords.y = D_800F7DE0_StarVisitEternalStar.y;
     D_800F7F08_StarVisitEternalStar->coords.z = D_800F7DE0_StarVisitEternalStar.z;
-    func_80021B14(*D_800F7F08_StarVisitEternalStar->unk_3C->unk_40, gPlayers[D_800F7F00_StarVisitEternalStar].characterID, 0x80);
+    func_80021B14(*D_800F7F08_StarVisitEternalStar->unk_3C->unk_40, GwPlayer[D_800F7F00_StarVisitEternalStar].character, 0x80);
     func_8004CCD0(&D_800F7F08_StarVisitEternalStar->coords, &D_800F7F04_StarVisitEternalStar->coords, &D_800F7F08_StarVisitEternalStar->unk_18);
     func_8004CCD0(&D_800F7F04_StarVisitEternalStar->coords, &D_800F7F08_StarVisitEternalStar->coords, &D_800F7F04_StarVisitEternalStar->unk_18);
     func_80052E84(D_800F7F00_StarVisitEternalStar);
-    func_8003E664(gPlayers[D_800F7F00_StarVisitEternalStar].playerObj);
-    (gPlayers[D_800F7F00_StarVisitEternalStar].playerObj)->coords.x = D_800F7DEC_StarVisitEternalStar.x;
-    (gPlayers[D_800F7F00_StarVisitEternalStar].playerObj)->coords.y = D_800F7DEC_StarVisitEternalStar.y;
-    (gPlayers[D_800F7F00_StarVisitEternalStar].playerObj)->coords.z = D_800F7DEC_StarVisitEternalStar.z;
+    func_8003E664(GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj);
+    (GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj)->coords.x = D_800F7DEC_StarVisitEternalStar.x;
+    (GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj)->coords.y = D_800F7DEC_StarVisitEternalStar.y;
+    (GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj)->coords.z = D_800F7DEC_StarVisitEternalStar.z;
 }
 
 void func_800F7C88_StarVisitEternalStar(void) {

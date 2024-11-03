@@ -32,10 +32,10 @@ void func_800F65E0_BowserVisitDKBoard(void) {
     func_800F6FF8_BowserVisitDKBoard();
     func_800F6E1C_BowserVisitDKBoard();
     func_800544E4();
-    func_800546B4(0, gPlayers[0].turn_status);
-    func_800546B4(1, gPlayers[1].turn_status);
-    func_800546B4(2, gPlayers[2].turn_status);
-    func_800546B4(3, gPlayers[3].turn_status);
+    func_800546B4(0, GwPlayer[0].turn_status);
+    func_800546B4(1, GwPlayer[1].turn_status);
+    func_800546B4(2, GwPlayer[2].turn_status);
+    func_800546B4(3, GwPlayer[3].turn_status);
     func_8006CEA0();
     omAddPrcObj(func_800F66BC_BowserVisitDKBoard, 0x300, 0, 0);
     omAddObj(0x1000, 0, 0, -1, &func_800F6DD0_BowserVisitDKBoard);
@@ -50,7 +50,7 @@ void func_800F66BC_BowserVisitDKBoard(void) {
     HuPrcSleep(0x10);
     PlaySound(0x46A);
     HuPrcSleep(0xA);
-    if (gPlayers[D_800F7170_ovl48].coins == 0) {
+    if (GwPlayer[D_800F7170_ovl48].coins == 0) {
         temp_s1 = CreateTextWindow(0x28, 0x28, 0x10, 2);
         LoadStringIntoWindow(temp_s1, (void* )0x192, -1, -1);
         func_8006E070(temp_s1, 0);
@@ -64,7 +64,7 @@ void func_800F66BC_BowserVisitDKBoard(void) {
         PlaySound(0x46A);
         func_8004DBD4(temp_s1, D_800F7170_ovl48);
         HideTextWindow(temp_s1);
-    } else if (!(gPlayers[D_800F7170_ovl48].coins >= 0xA)) {
+    } else if (!(GwPlayer[D_800F7170_ovl48].coins >= 0xA)) {
         temp_s1 = CreateTextWindow(0x28, 0x28, 0x10, 2);
         LoadStringIntoWindow(temp_s1, (void* )0x18F, -1, -1);
         func_8006E070(temp_s1, 0);
@@ -80,7 +80,7 @@ void func_800F66BC_BowserVisitDKBoard(void) {
         func_8003E81C(D_800F7174_ovl48, 1, 0);
         func_8004F40C(D_800F7174_ovl48, 0, 2);
         func_8003E81C(D_800F717C_ovl48, 1, 0);
-        func_80055960(D_800F7170_ovl48, -gPlayers[D_800F7170_ovl48].coins);
+        func_80055960(D_800F7170_ovl48, -GwPlayer[D_800F7170_ovl48].coins);
         func_800503B0(D_800F7170_ovl48, 5);
         func_80060618(0x44A, D_800F7170_ovl48);
         HuPrcSleep(0x1E);
@@ -204,7 +204,7 @@ void func_800F6E1C_BowserVisitDKBoard(void) {
     D_800F7180_ovl48->rot.x = -12.0f;
     D_800F7180_ovl48->rot.y = 0.0f;
     D_800F7180_ovl48->work[0] = 0;
-    D_800F717C_ovl48 = CreateObject(func_80052F04(D_800F7170_ovl48), D_800F7148_BowserVisitDKBoard[gPlayers[D_800F7170_ovl48].characterID]);
+    D_800F717C_ovl48 = CreateObject(func_80052F04(D_800F7170_ovl48), D_800F7148_BowserVisitDKBoard[GwPlayer[D_800F7170_ovl48].character]);
     D_800F717C_ovl48->coords.x = D_800F70E4_BowserVisitDKBoard.x;
     D_800F717C_ovl48->coords.y = D_800F70E4_BowserVisitDKBoard.y;
     D_800F717C_ovl48->coords.z = D_800F70E4_BowserVisitDKBoard.z;

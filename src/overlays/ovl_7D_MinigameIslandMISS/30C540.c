@@ -55,5 +55,5 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_7D_MinigameIslandMISS/30C540", func_8
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_7D_MinigameIslandMISS/30C540", func_800F9020_MinigameIslandMISS);
 
 s32 func_800F90F0_MinigameIslandMISS(s16 arg0) {
-    return (D_800F91B0_MinigameIslandMISS[arg0].unk_00 > gPlayers[0].coins_mg) ^ 1;
+    return (D_800F91B0_MinigameIslandMISS[arg0].unk_00 > GwPlayer[0].coins_mg) ^ 1;
 }

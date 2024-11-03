@@ -106,7 +106,7 @@ s16 RunDecisionTree(DecisionTreeNonLeafNode* currentNode) {
         if ((s32)phi_s1->node_data2.data < 0) {
             phi_s1 = (DecisionTreeNonLeafNode*)phi_s1->node_data2.data - 1;
         } else {
-            if (GetPlayerStruct(-1)->cpuDifficultyCopy == 0) {
+            if (GetPlayerStruct(-1)->cpu_difficulty_copy == 0) {
                 phi_a0 = phi_s1->node_data2.data & 0xFF;
             } else {
                 phi_a0 = (phi_s1->node_data2.data >> 8);

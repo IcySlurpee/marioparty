@@ -300,27 +300,27 @@ typedef struct Object {
 /* 0x8C */ struct Object* unk_8C;
 } Object; // //sizeof 0xAC? (this and mpSource_object are the same struct)
 
-typedef struct playerMain {
-/* 0x00 */ u8 unk_00;
-/* 0x01 */ u8 cpuDifficulty;
-/* 0x02 */ u8 cpuDifficultyCopy;
+typedef struct GW_PLAYER {
+/* 0x00 */ u8 group;
+/* 0x01 */ u8 cpu_difficulty;
+/* 0x02 */ u8 cpu_difficulty_copy;
 /* 0x03 */ u8 port; //controller port
-/* 0x04 */ u8 characterID;
-/* 0x05 */ char unk_05;
+/* 0x04 */ u8 character;
+/* 0x05 */ char unk_05; //likely padding
 /* 0x06 */ u16 flags; // (flags) including CPU flag
 /* 0x08 */ s16 coins; //player's current coins
 /* 0x0A */ s16 coins_mg; //coins to give to player after minigame
-/* 0x0C */ s16 starAmount;
-/* 0x0E */ s16 curChainIndex;
-/* 0x10 */ u16 curSpaceIndex;
-/* 0x12 */ u16 nextChainIndex;
-/* 0x14 */ u16 nextSpaceIndex;
-/* 0x16 */ u8 poisonedFlag;
+/* 0x0C */ s16 stars;
+/* 0x0E */ s16 cur_chain;
+/* 0x10 */ u16 cur_space;
+/* 0x12 */ u16 next_chain;
+/* 0x14 */ u16 next_space;
+/* 0x16 */ u8 poisoned_flag;
 /* 0x17 */ u8 turn_status; //space type player landed on
 /* 0x18 */ u8 player_index; //0, 1, 2, or 3
 /* 0x19 */ char unk_19[3]; //likely padding
 /* 0x1C */ Process* process; //some heap instance
-/* 0x20 */ Object* playerObj; //ptr to playerObj on heap
+/* 0x20 */ Object* player_obj; //ptr to player_obj on heap
 /* 0x24 */ s16 coins_total; //how many coins a player has won/lost in minigames
 /* 0x26 */ s16 coins_max; //highest amount of coins player has held
 /* 0x28 */ u8 happening_count;
@@ -331,7 +331,7 @@ typedef struct playerMain {
 /* 0x2D */ u8 mushroom_count;
 /* 0x2E */ u8 bowser_count;
 /* 0x2F */ char unk_2F;
-} playerMain; //sizeof 0x30
+} GW_PLAYER __attribute__((aligned(4))); //sizeof 0x30
 //P1 800F32B0, P2 800F32E0, P3 800F3310, P4 800F3340
 
 //sprite related

@@ -352,7 +352,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_36_DKsJungleAdventure/2418D0", func_8
 
 // void func_800F7024_DKsJungleAdventure(void) { //ov054_SetupRoutine
 //     s32 player_index;
-//     playerMain* player;
+//     GW_PLAYER* player;
 
 //     omInitObjMan(80, 40); // InitObjectSystem
 //     func_80060088();
@@ -371,7 +371,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_36_DKsJungleAdventure/2418D0", func_8
 //     for (player_index = 0; player_index < 4; player_index++) {
 //         player = GetPlayerStruct(player_index);
 //         func_8003E174(player->obj);
-//         player->playerObj->unk_0A |= 2;
+//         player->player_obj->unk_0A |= 2;
 //     }
 
 //     if (IsFlagSet(0x4e)) {

@@ -33,7 +33,7 @@ void func_800F6610_name_76(void) {
 }
 
 void func_800F666C_name_76(void) {
-    playerMain* player;
+    GW_PLAYER* player;
 
     omInitObjMan(0x50, 0x28);
     func_80060088();
@@ -45,8 +45,8 @@ void func_800F666C_name_76(void) {
     func_8005C3FC(0x53, 0x52);
     func_80052E84(0);
     player = GetPlayerStruct(0);
-    func_8003E174(player->playerObj);
-    player->playerObj->unk_0A |= 2;
+    func_8003E174(player->player_obj);
+    player->player_obj->unk_0A |= 2;
     EventTableHydrate(&D_800F6A9C_name_76);
     func_800F6610_name_76();
     func_8005CC3C();

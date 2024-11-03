@@ -132,8 +132,8 @@ loop_1:
         break;
     case 1:
         if (func_80054FA8() == 0) {
-            if (temp[gPlayers[temp_s0->unk_04].port] & 0x8000) {
-                if (!(gPlayers[temp_s0->unk_04].flags & 1)) {    
+            if (temp[GwPlayer[temp_s0->unk_04].port] & 0x8000) {
+                if (!(GwPlayer[temp_s0->unk_04].flags & 1)) {    
                     func_80043D68();
                     func_80054868(5);
                     temp_s0->unk_00++;
@@ -141,7 +141,7 @@ loop_1:
                 }
             }
             
-            if (gPlayers[temp_s0->unk_04].flags & 1) {
+            if (GwPlayer[temp_s0->unk_04].flags & 1) {
                 func_80043D68();
                 func_80054868(5);
                 temp_s0->unk_00++;

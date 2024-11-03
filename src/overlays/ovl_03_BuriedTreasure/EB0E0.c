@@ -510,7 +510,7 @@ void func_800FA0B4_BuriedTreasure(void) {
     func_800FA90C_BuriedTreasure();
 
     if (D_800FC5EC_BuriedTreasure < 0 && func_800FB780_BuriedTreasure() == 2) {
-        gPlayers[D_800FC5EC_BuriedTreasure].coins_mg += 10;
+        GwPlayer[D_800FC5EC_BuriedTreasure].coins_mg += 10;
         func_80060F04(D_800FC5EC_BuriedTreasure, 20, 0, 20);
     }
 }
