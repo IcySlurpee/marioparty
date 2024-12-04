@@ -887,7 +887,7 @@ typedef struct omOvlHisData { //Object Manager History Data
 } omOvlHisData; //sizeof 0x08
 
 typedef struct BoardData {
-/* 0x00 */ s8 unk0;
+/* 0x00 */ u8 unk0;
 /* 0x01 */ char unk_01[1];
 /* 0x02 */ s16 unk_02[8];
 /* 0x12 */ u8 unk_12[7];

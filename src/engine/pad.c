@@ -224,7 +224,7 @@ void func_800141C4(void) {
     D_800D12CC = 0;
 }
 
-u8 func_800141FC(s16 arg0) {
+s32 func_800141FC(s16 arg0) {
     return D_800D12BA[arg0];
 }
 

@@ -10,6 +10,6 @@ board_overlay_entrypoint D_800F6690_MinigameIslandOverworld[] = {
 };
 
 void func_800F65E0_MinigameIslandOverworld(void) {
-    ExecBoardScene(&D_800F6690_MinigameIslandOverworld, D_800C597A);
+    ExecBoardScene(D_800F6690_MinigameIslandOverworld, D_800C597A);
 }
 

@@ -1,6 +1,15 @@
 #include "common.h"
 #include "PR/os.h"
 
+extern u8 D_800D8720;
+extern s8 D_800C572F;
+s32 func_800141FC(s16 arg0);
+s32 func_80019408(char*);
+s32 func_8005AFEC(void);
+s32 func_800195A4(s32, u8*, s32);
+void func_8005B060(void);
+void func_8000B364(s32);
+
 #define HEAP_CONSTANT 0xA5
 #define MIN_ALLOC_SIZE 16
 #define MIN_HEAP_NODE_SIZE sizeof(struct HeapNode) + MIN_ALLOC_SIZE
@@ -482,7 +491,54 @@ INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B024);
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B060);
 
-INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B0C4);
+s32 func_8005B0C4(void) {
+    char sp10[4]; //unk type and size
+    s32 i;
+    u16 temp_s1;
+    s32 var_s1;
+
+    for (i = 0; i < 4; i++) {
+        if (func_800141FC(i) == 1) {
+            break;
+        }
+    }
+    if (i == 4) {
+        D_800C572F = 1;
+    }
+    
+    var_s1 = func_80019408(sp10);
+    
+    if (var_s1 != 0) {
+        D_800D8720 = 0;
+    } else {
+        D_800D8720 = 1;
+    }
+    if (D_800D8720 != 0) {
+        var_s1 = func_800195A4(0, (u8*)&D_800ED100.unk0, 0x94);
+        var_s1 = var_s1 | func_800195A4(0x94, (u8*)GwPlayer, sizeof(GwPlayer));
+        var_s1 = var_s1 | func_800195A4(0x154, (u8*)&D_800ED5C0, sizeof(GameStatus));
+        var_s1 = var_s1 | func_800195A4(0x17A, D_800F37B8, sizeof(D_800F37B8));
+    }
+    
+    D_800ED5DE = 0;
+    
+    if (var_s1 == 0) {
+        temp_s1 = func_8005AFEC();
+        if ((temp_s1) != (func_8005AFC8())) {
+            var_s1 = 1;
+        }
+    }
+    if (((D_800ED100.unk0 != 0x12) | (var_s1 != 0)) != 0) {
+        func_8005B060();
+    }
+    
+    if (IsFlagSet(16) != 0) {
+        func_8000B364(0);
+    } else {
+        func_8000B364(1);
+    }
+    return (D_800ED100.unk0 == 0x12) & (var_s1 != 0);
+}
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B244);
 
