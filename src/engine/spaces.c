@@ -468,11 +468,11 @@ void SetEventReturnFlag(s32 flags) {
 }
 
 void SetCurrentSpaceIndex(s16 spaceIndex) {
-   D_800ED5E0 = spaceIndex;
+   GwSystem.curSpaceIndex = spaceIndex;
 }
 
 s16 GetCurrentSpaceIndex(void) {
-   return D_800ED5E0;
+   return GwSystem.curSpaceIndex;
 }
 
 /* Pick random chance time space. */

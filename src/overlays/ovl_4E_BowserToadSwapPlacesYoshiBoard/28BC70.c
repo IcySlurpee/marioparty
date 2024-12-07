@@ -26,7 +26,7 @@ s32 D_800F78F0_BowserToadSwapPlacesYoshiBoard[] = { 0x00000003, 0x000A0068, 0x00
 s32 D_800F7900_BowserToadSwapPlacesYoshiBoard[] = { 0x00000002, 0x00070006, 0x00070008, 0x00000000 }; //toad
 
 void func_800F65E0_BowserToadSwapPlacesYoshiBoard(void) {
-    D_800F7960_BowserToadSwapPlacesYoshiBoard = D_800ED5DC;
+    D_800F7960_BowserToadSwapPlacesYoshiBoard = GwSystem.curPlayerIndex;
     omInitObjMan(0x32, 0xA);
     func_800F7764_BowserToadSwapPlacesYoshiBoard();
     func_800F73C0_BowserToadSwapPlacesYoshiBoard();
@@ -170,9 +170,9 @@ void func_800F67BC_BowserToadSwapPlacesYoshiBoard(void) {
     D_800F784C_BowserToadSwapPlacesYoshiBoard = NULL;
     HuPrcSleep(5);
     func_8003E5E0(D_800F7858_BowserToadSwapPlacesYoshiBoard);
-    D_800ED100.boardRam[5] = (D_800ED100.boardRam[5] + 1) & 1;
+    GwCommon.boardRam[5] = (GwCommon.boardRam[5] + 1) & 1;
 
-    if (!(D_800ED100.boardRam[5] & 1)) {
+    if (!(GwCommon.boardRam[5] & 1)) {
         LoadBackgroundIndex(0x16);
     } else {
         LoadBackgroundIndex(0x17);
@@ -354,7 +354,7 @@ void func_800F7764_BowserToadSwapPlacesYoshiBoard(void) {
     func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     LoadBackgroundData(FE2310_ROM_START);
-    if (D_800ED100.boardRam[5] == 0) {
+    if (GwCommon.boardRam[5] == 0) {
         LoadBackgroundIndex(0x16);
     } else {
         LoadBackgroundIndex(0x17);

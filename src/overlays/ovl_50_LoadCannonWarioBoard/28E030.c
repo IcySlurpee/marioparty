@@ -19,7 +19,7 @@ s32 D_800F6BB0_LoadCannonWarioBoard[] = {0x00000002, 0x00050000, 0x00050063};
 s32* D_800F6BBC_LoadCannonWarioBoard[] = {D_800F6B74_LoadCannonWarioBoard, D_800F6B80_LoadCannonWarioBoard, D_800F6B8C_LoadCannonWarioBoard, D_800F6B98_LoadCannonWarioBoard, D_800F6BA4_LoadCannonWarioBoard, D_800F6BB0_LoadCannonWarioBoard};
 
 void func_800F65E0_LoadCannonWarioBoard(void) {
-    D_800F6BE0_LoadCannonWarioBoard = D_800ED5DC;
+    D_800F6BE0_LoadCannonWarioBoard = GwSystem.curPlayerIndex;
     omInitObjMan(0x32, 0xA);
     func_800F6A54_LoadCannonWarioBoard();
     func_800F6918_LoadCannonWarioBoard();
@@ -95,7 +95,7 @@ void func_800F6918_LoadCannonWarioBoard(void) {
     s32 sp18[2] = { 0xE, 0xF };
 
     func_8003DAA8();
-    D_800F6BE4_LoadCannonWarioBoard = CreateObject(sp18[D_800ED100.boardRam[0]], NULL);
+    D_800F6BE4_LoadCannonWarioBoard = CreateObject(sp18[GwCommon.boardRam[0]], NULL);
     D_800F6BE4_LoadCannonWarioBoard->coords.x = D_800F6B20_LoadCannonWarioBoard.x;
     D_800F6BE4_LoadCannonWarioBoard->coords.y = D_800F6B20_LoadCannonWarioBoard.y;
     D_800F6BE4_LoadCannonWarioBoard->coords.z = D_800F6B20_LoadCannonWarioBoard.z;

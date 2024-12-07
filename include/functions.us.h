@@ -527,4 +527,9 @@ s32 PlayerHasCoins(s32 index, s32 count);
 s16 RNGPercentChance(s8);
 s32 func_8004FEBC(s16);
 void HuGuLookAtF(f32 mf[4][4], f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp, f32 yUp, f32 zUp);
+void func_80019504(s32 arg0, void* arg1, s16 arg2);
+void func_8001A498(void);
+void func_8005B024(void);
+void func_8005B280(void);
+void func_8005B3B0(void);
 #endif

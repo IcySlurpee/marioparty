@@ -10,8 +10,8 @@ extern s32* D_800F6E64_name_60[];
 void func_8004DBD4(s32, u8);
 
 void func_800F65E0_name_60(void) {
-    D_800F6EC0_name_60 = D_800ED5C2[0];
-    D_800F6EC1_name_60 = D_800ED5DC;
+    D_800F6EC0_name_60 = GwSystem.unk_02;
+    D_800F6EC1_name_60 = GwSystem.curPlayerIndex;
     omInitObjMan(0x32, 0xA);
     func_800F6B8C_name_60();
     func_800F69BC_name_60();

@@ -21,7 +21,7 @@ void* D_800F72E8_ShortcutRouletteMagmaMountain[] = {D_800F7228_ShortcutRouletteM
 unkStruct_ovl5A_0 D_800F7300_ShortcutRouletteMagmaMountain = {{0x01, 0x02, 0x04, 0x08}};
 
 void func_800F65E0_ShortcutRouletteMagmaMountain(void) {
-    D_800F7310_ShortcutRouletteMagmaMountain = D_800ED5DC;
+    D_800F7310_ShortcutRouletteMagmaMountain = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F711C_ShortcutRouletteMagmaMountain();
     func_800F6F5C_ShortcutRouletteMagmaMountain();
@@ -144,9 +144,9 @@ void func_800F6898_ShortcutRouletteMagmaMountain(void) {
         }
 
         HuPrcSleep(0x28);
-        D_800ED100.boardRam[1] = func_80041604(D_800F7310_ShortcutRouletteMagmaMountain);
+        GwCommon.boardRam[1] = func_80041604(D_800F7310_ShortcutRouletteMagmaMountain);
 
-        if (!(D_800ED100.boardRam[1])) {
+        if (!(GwCommon.boardRam[1])) {
             windowID = CreateTextWindow(0x5A, 0x3C, 0xD, 3);
             LoadStringIntoWindow(windowID, (void* )0x1F5, -1, -1);
             func_8006E070(windowID, 0);
@@ -241,7 +241,7 @@ void func_800F711C_ShortcutRouletteMagmaMountain(void) {
     func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     LoadBackgroundData(FE2310_ROM_START);
-    if (D_800ED100.boardRam[0] == 1) {
+    if (GwCommon.boardRam[0] == 1) {
         LoadBackgroundIndex(0x3E);
     } else {
         LoadBackgroundIndex(0x3D);

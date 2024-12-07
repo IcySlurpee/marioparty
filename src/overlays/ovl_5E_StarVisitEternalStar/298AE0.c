@@ -101,7 +101,7 @@ unk_ovl5E_Struct0* D_800F7EB4_StarVisitEternalStar[] = {
 // const u8 D_800F7ED0_StarVisitEternalStar[4] = {1, 2, 4, 8};
 
 void func_800F65E0_StarVisitEternalStar(void) {
-    D_800F7F00_StarVisitEternalStar = D_800ED5DC;
+    D_800F7F00_StarVisitEternalStar = GwSystem.curPlayerIndex;
     omInitObjMan(50, 50);
     func_800F7CF8_StarVisitEternalStar();
     func_800F7A90_StarVisitEternalStar();

@@ -2,7 +2,7 @@
 #include "28ABA0.h"
 
 void func_800F65E0_ThwompTollYoshiBoard(void) {
-    D_800F76B0_ThwompTollYoshiBoard = D_800ED5DC;
+    D_800F76B0_ThwompTollYoshiBoard = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F7550_ThwompTollYoshiBoard();
     func_800F741C_ThwompTollYoshiBoard();
@@ -28,7 +28,7 @@ s32 func_800F68C8_ThwompTollYoshiBoard(void) { //slightly odd match with assignm
     s32 var_v0;
 
     temp_v0 = func_8005021C(100.0f);
-    if ((D_800ED100.boardRam[D_800ED100.boardRam[2]] + 40) < GwPlayer[D_800F76B0_ThwompTollYoshiBoard].coins) {
+    if ((GwCommon.boardRam[GwCommon.boardRam[2]] + 40) < GwPlayer[D_800F76B0_ThwompTollYoshiBoard].coins) {
         if (GwPlayer[D_800F76B0_ThwompTollYoshiBoard].cpu_difficulty_copy == 0) {
             var_v0 = 1;
             if (temp_v0 >= 80) {
@@ -50,7 +50,7 @@ s32 func_800F68C8_ThwompTollYoshiBoard(void) { //slightly odd match with assignm
         }
 
     } else {
-        if ((D_800ED100.boardRam[D_800ED100.boardRam[2]] + 20) < GwPlayer[D_800F76B0_ThwompTollYoshiBoard].coins) {
+        if ((GwCommon.boardRam[GwCommon.boardRam[2]] + 20) < GwPlayer[D_800F76B0_ThwompTollYoshiBoard].coins) {
             if (GwPlayer[D_800F76B0_ThwompTollYoshiBoard].cpu_difficulty_copy != 0) {
                 if (temp_v0 >= 70) {
                     var_v0 = (-(temp_v0 >= 90) & 3) | 2;
@@ -70,7 +70,7 @@ s32 func_800F68C8_ThwompTollYoshiBoard(void) { //slightly odd match with assignm
         }
     }
     
-    var_v0 += D_800ED100.boardRam[D_800ED100.boardRam[2]];
+    var_v0 += GwCommon.boardRam[GwCommon.boardRam[2]];
     
     if (var_v0 >= 51) {
         var_v0 = 50;

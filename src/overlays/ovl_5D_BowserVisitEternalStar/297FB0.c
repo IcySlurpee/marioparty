@@ -33,7 +33,7 @@ extern Object* D_800F7114_BowserVisitEternalStar;
 extern Object* D_800F7118_BowserVisitEternalStar;
 
 void func_800F65E0_BowserVisitEternalStar(void) {
-    D_800F7110_BowserVisitEternalStar = D_800ED5DC;
+    D_800F7110_BowserVisitEternalStar = GwSystem.curPlayerIndex;
     omInitObjMan(0x32, 0x32);
     func_800F6F90_BowserVisitEternalStar();
     func_800F6DD4_BowserVisitEternalStar();

@@ -19,7 +19,7 @@ extern Object* D_800F69B4_HappeningSpaceEternalStar;
 
 
 void func_800F65E0_HappeningSpaceEternalStar(void) {
-    D_800F69B0_HappeningSpaceEternalStar = D_800ED5DC;
+    D_800F69B0_HappeningSpaceEternalStar = GwSystem.curPlayerIndex;
     omInitObjMan(0x32, 0x32);
     func_800F68C0_HappeningSpaceEternalStar();
     func_800F6824_HappeningSpaceEternalStar();

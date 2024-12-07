@@ -83,7 +83,7 @@ void func_800F6A44_TestingRoom(void) {
 
     for (i = 0; i < D_800F2BC0; i++) {
         anotherTemp = &((unkGlobalStruct_00*) D_800F3FB0[i]->unk_50)->unk_60;
-        tempVar = &D_800F33F0;
+        tempVar = &CRot.x;
         *anotherTemp = *tempVar;
     }
 }
@@ -102,7 +102,7 @@ void func_800F6BD8_TestingRoom(omObjData* arg0) {
     D_800F6524.x = 8.0f;
     D_800F6524.y = 110.0f;
     D_800F6524.z = -86.0f;
-    D_800F33EC.y = 312.7f;
+    CRot.y = 312.7f;
     D_800EE98C = 2616.0f;
     func_800090A4(arg0);
     func_80008FB8(arg0, 0.6f);

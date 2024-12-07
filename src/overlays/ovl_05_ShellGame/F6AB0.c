@@ -121,9 +121,9 @@ void func_800F6FFC_ShellGame(omObjData* arg0) {
 }
 
 void func_800F7034_ShellGame(void) {
-    D_800F33EC.y = -34.26f;
-    D_800F33EC.x = 0.0f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = -34.26f;
+    CRot.x = 0.0f;
+    CRot.z = 0.0f;
     D_800F6524.x = -5.5f;
     D_800F6524.y = -81.0f;
     D_800F6524.z = 0.0f;

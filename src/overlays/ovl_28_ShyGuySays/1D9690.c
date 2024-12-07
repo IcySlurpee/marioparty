@@ -137,9 +137,9 @@ void func_800F6F98_ShyGuySays(omObjData* arg0) {
 }
 
 void func_800F6FC0_ShyGuySays(void) {
-    D_800F33EC.y = -14.5f;
-    D_800F33EC.x = 0.0f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = -14.5f;
+    CRot.x = 0.0f;
+    CRot.z = 0.0f;
     D_800F6524.x = 0.0f;
     D_800F6524.y = 191.2f;
     D_800F6524.z = 0.2f;

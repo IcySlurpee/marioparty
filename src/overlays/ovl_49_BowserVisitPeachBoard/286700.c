@@ -15,7 +15,7 @@ s32 D_800F714C_BowserVisitPeachBoard[] = {0x00000002, 0x00050010, 0x00050010};
 s32* D_800F7158_BowserVisitPeachBoard[] = {D_800F7110_BowserVisitPeachBoard, D_800F711C_BowserVisitPeachBoard, D_800F7128_BowserVisitPeachBoard, D_800F7134_BowserVisitPeachBoard, D_800F7140_BowserVisitPeachBoard, D_800F714C_BowserVisitPeachBoard};
 
 void func_800F65E0_BowserVisitPeachBoard(void) {
-    D_800F7180_BowserVisitPeachBoard = D_800ED5DC;
+    D_800F7180_BowserVisitPeachBoard = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F7008_BowserVisitPeachBoard();
     func_800F6E18_BowserVisitPeachBoard();

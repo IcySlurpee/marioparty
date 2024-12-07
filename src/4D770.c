@@ -147,7 +147,7 @@ s16 RNGPercentChance(s8 arg0) {
 }
 
 s16 GetTurnsElapsed(void) {
-    GameStatus* gameStatus = &D_800ED5C0;
+    GameStatus* gameStatus = &GwSystem;
     return gameStatus->maxTurns - gameStatus->currentTurn + 1;
 }
 
@@ -345,13 +345,13 @@ void SetNextChainAndSpace(s16 arg0, s16 arg1, s16 arg2) {
 }
 
 s32 func_8004D8A4(void) {
-    GameStatus* gameStatus = &D_800ED5C0;
+    GameStatus* gameStatus = &GwSystem;
     s32 var_s0 = 0;
     
-    SetBoardFeatureFlag(D_800ED5C0.unk_1A);
+    SetBoardFeatureFlag(GwSystem.unk_1A);
     SetBoardFeatureFlag(0x4E);
     if (IsFlagSet(0x43) != 0) {
-        if ((gameStatus->unk_02 != 7) || D_800ED5C0.chosenStarSpaceIndex == 6) {
+        if ((gameStatus->unk_02 != 7) || GwSystem.chosenStarSpaceIndex == 6) {
             func_80056730(-2, 4, 0x92);
             var_s0 = 1;
         }

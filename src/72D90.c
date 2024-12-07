@@ -127,7 +127,6 @@ extern s16 D_800E4352;
 extern s32 D_800ECB1C;
 extern unk72D90Struct0* D_800ED438;
 extern TextWindow* D_800ED4B0;
-extern s16 D_800ED5DE;
 extern s16 D_800ED720;
 extern unkCommonStruct0 D_800ED740[];
 extern u8 D_800EDEB0;
@@ -2181,7 +2180,7 @@ s32 func_80079B2C(unkCommonStruct0* arg0, Gfx** arg1) {
     }
 
     if (arg0->unk_04 == 50) {
-        PlaySound(D_800C61B8[D_800C61C0[D_800ED5DE]]);
+        PlaySound(D_800C61B8[D_800C61C0[GwSystem.unk_1E]]);
     }
 
     if (arg0->unk_04 >= 31 && arg0->unk_04 <= 40) {
@@ -2455,8 +2454,8 @@ void func_8007B52C(void) {
     HuPrcSleep(2);
 
     D_800ECC22 = 1;
-    temp_fp = D_800ED5DE;
-    temp_s0 = D_800C6268[D_800ED5DE].unk_04 == 0 ? 110 : 70;
+    temp_fp = GwSystem.unk_1E;
+    temp_s0 = D_800C6268[GwSystem.unk_1E].unk_04 == 0 ? 110 : 70;
     temp_v0 = func_8007BCA8(60, temp_s0);
     D_800F2CE0 = func_8006DD8C(temp_v0, D_800ED4B0[temp_v0].unk_274);
 

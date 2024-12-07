@@ -4,9 +4,9 @@ void func_800FB250_WhackAPlant(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4,
     func_800178A0(1);
     func_800178E8();
     D_800EE98C = arg1;
-    D_800F33EC.y = arg2;
-    D_800F33EC.x = arg3;
-    D_800F33EC.z = arg4;
+    CRot.y = arg2;
+    CRot.x = arg3;
+    CRot.z = arg4;
     D_800F6524.x = arg5;
     D_800F6524.y = arg6;
     D_800F6524.z = arg7;

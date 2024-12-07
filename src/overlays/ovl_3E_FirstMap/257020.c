@@ -2,7 +2,7 @@
 #include "FirstMap.h"
 
 void func_800F6610_FirstMap(void) {
-    D_800ED5C2[0] = 8;
+    GwSystem.unk_02 = 8;
     omInitObjMan(0xA, 0);
     omOvlGotoEx(0x35, 0, 0x92);
 }
@@ -128,7 +128,7 @@ void func_800F6A04_FirstMap(void) {
     temp_s2 = func_8003C218(-1, &D_800F8788_FirstMap);
     func_8003C060(temp_s2, -1, 0);
     if (PlayerIsCPU(-1) != 0) {
-        temp_a0 = D_800ED100.boardRam[0]++;
+        temp_a0 = GwCommon.boardRam[0]++;
         temp_s1 = D_800F8790_FirstMap[temp_a0];
         for (i = 0; i < temp_s1; i++) {
             func_8003BE84(temp_s2, -2);
@@ -270,10 +270,11 @@ void func_800F6F80_FirstMap(void) {
 
 void func_800F6FC4_FirstMap(void) {
     GW_PLAYER* temp_s0;
+    GameStatus* gameStatus = &GwSystem;
     s32 i;
 
-    if (++D_800ED5DC >= 4) {
-        D_800ED5DC = 0;
+    if (++gameStatus->curPlayerIndex >= 4) {
+        gameStatus->curPlayerIndex = 0;
     }
 
     for (i = 0; i < 4; i++) {
@@ -295,39 +296,40 @@ void func_800F70AC_FirstMap(void) {
     Process* temp_s0;
 
     temp_s0 = HuPrcCurrentGet();
-    HuPrcChildLink(temp_s0, func_80048000(D_800ED5DC));
+    HuPrcChildLink(temp_s0, func_80048000(GwSystem.curPlayerIndex));
     HuPrcChildWatch();
 }
 
 void func_800F70F0_FirstMap(s16 arg0) {
     Process* temp_s0;
+    GameStatus* gameStatus = &GwSystem;
 
-    func_800415CC(D_800ED5DC, arg0);
+    func_800415CC(gameStatus->curPlayerIndex, arg0);
     temp_s0 = HuPrcCurrentGet();
-    HuPrcChildLink(temp_s0, func_800419D8(D_800ED5DC));
+    HuPrcChildLink(temp_s0, func_800419D8(gameStatus->curPlayerIndex));
     HuPrcChildWatch();
 }
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_3E_FirstMap/257020", func_800F714C_FirstMap); //has rodata jump table
 
 void func_800F73A0_FirstMap(void) {
-    GameStatus* gameStatus = &D_800ED5C0;
+    GameStatus* gameStatus = &GwSystem;
     GW_PLAYER* player = GetPlayerStruct(CURRENT_PLAYER);
     SpaceData* space = GetSpaceData(GetAbsSpaceIndexFromChainSpaceIndex(player->cur_chain, player->cur_space));
 
     SetPlayerLandedSpaceType(-1, space->spaceType);
-    func_800546B4(D_800ED5DC, player->turn_status);
+    func_800546B4(gameStatus->curPlayerIndex, player->turn_status);
 
     switch (space->spaceType) {
     case 1:
-        ShowPlayerCoinChange(gameStatus->unk_1C, 3);
-        func_80055960(gameStatus->unk_1C, 3);
+        ShowPlayerCoinChange(gameStatus->curPlayerIndex, 3);
+        func_80055960(gameStatus->curPlayerIndex, 3);
         PlaySound(0x30);
         HuPrcSleep(30);
         return;
     case 2:
-        ShowPlayerCoinChange(gameStatus->unk_1C, -3);
-        func_80055960(gameStatus->unk_1C, -3);
+        ShowPlayerCoinChange(gameStatus->curPlayerIndex, -3);
+        func_80055960(gameStatus->curPlayerIndex, -3);
         PlaySound(0x31);
         HuPrcSleep(30);
         return;
@@ -336,15 +338,16 @@ void func_800F73A0_FirstMap(void) {
 
 void func_800F7484_FirstMap(s16 arg0) {
     Process* temp_s0;
+    GameStatus* gameStatus = &GwSystem;
 
-    func_800415CC(D_800ED5DC, arg0);
+    func_800415CC(gameStatus->curPlayerIndex, arg0);
     temp_s0 = HuPrcCurrentGet();
-    HuPrcChildLink(temp_s0, func_80041C04(D_800ED5DC));
+    HuPrcChildLink(temp_s0, func_80041C04(gameStatus->curPlayerIndex));
     HuPrcChildWatch();
 }
 
 void func_800F74E0_FirstMap(void) {
-    func_800405DC(D_800ED5DC);
+    func_800405DC(GwSystem.curPlayerIndex);
 }
 
 void func_800F7500_FirstMap(Object* arg0, void* arg1) {

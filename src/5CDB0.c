@@ -3,7 +3,6 @@
 
 extern s16 omovlhisidx;
 extern s16 D_800D89B2[];
-extern s8 D_800F37BC[];
 extern s16 D_800ED56C;
 extern s16 D_800ED550;
 extern omObjData* D_800C5984;
@@ -68,24 +67,8 @@ INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005CE48);
 
 INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005CE8C);
 
-void func_8005CEDC(s32 arg0) {
-    s32 temp_a1;
-    s32 var_v0;
-
-    if (arg0 < 0) {
-        var_v0 = arg0 + 7;
-    } else {
-        var_v0 = arg0;
-    }
-    
-    temp_a1 = var_v0 >> 3;
-    var_v0 = arg0;
-    
-    if (arg0 < 0) {
-        var_v0 = arg0 + 7;
-    }
-    
-    D_800F37BC[temp_a1] = D_800F37BC[temp_a1] & ~(1 << (arg0 - ((var_v0 >> 3) << 3)));
+void func_8005CEDC(s32 flag) {
+    GwQuest.unk_04[flag / 8] &= ~(1 << flag % 8);
 }
 
 INCLUDE_ASM("asm/nonmatchings/5CDB0", omInitObjMan);

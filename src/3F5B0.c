@@ -19,7 +19,7 @@ s16 RunDecisionTree(DecisionTreeNonLeafNode* currentNode) {
     DecisionTreeNonLeafNode* phi_s1 = currentNode;
     s32 bitMask = 1;
     s16* boardFeatureArray = D_800C4C30;
-    s16* playerDataArray = D_800ED100.boardRam;
+    s16* playerDataArray = GwCommon.boardRam;
 
     for (;;phi_s1++) {
         switch ((phi_s1->type >> 24)) {

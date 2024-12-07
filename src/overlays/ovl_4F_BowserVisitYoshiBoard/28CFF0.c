@@ -2,7 +2,7 @@
 #include "28CFF0.h"
 
 void func_800F65E0_BowserVisitYoshiBoard(void) {
-    D_800F7620_BowserVisitYoshiBoard = D_800ED5DC;
+    D_800F7620_BowserVisitYoshiBoard = GwSystem.curPlayerIndex;
     omInitObjMan(0x32, 0xA);
     func_800F744C_BowserVisitYoshiBoard();
     func_800F7264_BowserVisitYoshiBoard();

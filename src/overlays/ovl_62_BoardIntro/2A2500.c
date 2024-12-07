@@ -6,7 +6,7 @@
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_62_BoardIntro/2A2500", func_800F65E0_BoardIntro);
 
 // void func_800F65E0_BoardIntro(void) {
-//     D_801102B0_BoardIntro = D_800ED5C2;
+//     D_801102B0_BoardIntro = GwSystem.unk_02;
 //     omInitObjMan(50, 10);
 //     func_800F9200_BoardIntro();
 //     func_800F906C_BoardIntro();

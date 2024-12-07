@@ -2,7 +2,7 @@
 #include "292020.h"
 
 void func_800F65E0_MoveDoorsLuigiBoard(void) {
-    D_800F7820_MoveDoorsLuigiBoard = D_800ED5DC;
+    D_800F7820_MoveDoorsLuigiBoard = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F765C_MoveDoorsLuigiBoard();
     func_800F7528_MoveDoorsLuigiBoard();
@@ -72,11 +72,11 @@ void func_800F7198_MoveDoorsLuigiBoard(void) {
         ShowTextWindow(temp_v0);
         func_8004DBD4(temp_v0, D_800F7820_MoveDoorsLuigiBoard);
         HideTextWindow(temp_v0);
-        D_800ED100.boardRam[1] = 0;
+        GwCommon.boardRam[1] = 0;
     } else {
         func_80055960(D_800F7820_MoveDoorsLuigiBoard, -0x14);
         HuPrcSleep(30);
-        D_800ED100.boardRam[1] = 1;
+        GwCommon.boardRam[1] = 1;
         temp_v0 = CreateTextWindow(0x50, 0x3C, 0xD, 3);
         LoadStringIntoWindow(temp_v0, (void* )0x1D6, -1, -1);
         func_8006E070(temp_v0, 0);

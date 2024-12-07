@@ -2,7 +2,7 @@
 #include "28ECA0.h"
 
 void func_800F65E0_FlyGuyWarioBoard(void) {
-    D_800F8230_FlyGuyWarioBoard = D_800ED5DC;
+    D_800F8230_FlyGuyWarioBoard = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F7FA4_FlyGuyWarioBoard();
     func_800F7DF0_FlyGuyWarioBoard();

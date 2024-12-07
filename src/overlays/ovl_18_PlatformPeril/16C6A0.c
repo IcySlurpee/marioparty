@@ -14,9 +14,9 @@ void func_800F6F68_PlatformPeril(void) {
     D_800F6524.x = D_800FDD74_PlatformPeril.unk4;
     D_800F6524.y = D_800FDD74_PlatformPeril.unk8;
     D_800F6524.z = D_800FDD74_PlatformPeril.unkC;
-    D_800F33EC.y = D_800FDD74_PlatformPeril.unk10;
-    D_800F33EC.x = D_800FDD74_PlatformPeril.unk14;
-    D_800F33EC.z = D_800FDD74_PlatformPeril.unk18;
+    CRot.y = D_800FDD74_PlatformPeril.unk10;
+    CRot.x = D_800FDD74_PlatformPeril.unk14;
+    CRot.z = D_800FDD74_PlatformPeril.unk18;
     D_800EE98C = D_800FDD74_PlatformPeril.unk_00.float32;
 }
 

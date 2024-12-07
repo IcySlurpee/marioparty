@@ -2,7 +2,7 @@
 #include "2872A0.h"
 
 void func_800F65E0_GoombaCoinStealPeachBoard(void) {
-    D_800F7BE0_GoombaCoinStealPeachBoard = D_800ED5DC;
+    D_800F7BE0_GoombaCoinStealPeachBoard = GwSystem.curPlayerIndex;
     omInitObjMan(0x32, 0xA);
     func_800F7A00_GoombaCoinStealPeachBoard();
     func_800F77D0_GoombaCoinStealPeachBoard();

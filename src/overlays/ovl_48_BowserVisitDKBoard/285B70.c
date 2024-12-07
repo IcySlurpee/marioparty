@@ -27,7 +27,7 @@ extern Object* D_800F717C_ovl48;
 extern omObjData* D_800F7180_ovl48;
 
 void func_800F65E0_BowserVisitDKBoard(void) {
-    D_800F7170_ovl48 = D_800ED5DC;
+    D_800F7170_ovl48 = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F6FF8_BowserVisitDKBoard();
     func_800F6E1C_BowserVisitDKBoard();

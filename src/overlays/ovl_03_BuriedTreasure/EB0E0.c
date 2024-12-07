@@ -3,9 +3,9 @@
 
 void func_800F8760_BuriedTreasure(void) {
     D_800EE98C = 2000.0f;
-    D_800F33EC.y = 0.0f;
-    D_800F33EC.x = 0.0f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = 0.0f;
+    CRot.x = 0.0f;
+    CRot.z = 0.0f;
     D_800F6524.x = 0.0f;
     D_800F6524.y = 0.0f;
     D_800F6524.z = -100.0f;

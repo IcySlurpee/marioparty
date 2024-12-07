@@ -188,9 +188,9 @@ void func_800F9CF0_MushroomMixup(omObjData* arg0) {
             arg0->work[1] = 0;
         }
         D_800EE98C = 2766.0f;
-        D_800F33EC.y = 309.0f;
-        D_800F33EC.x = 0.0f;
-        D_800F33EC.z = 0.0f;
+        CRot.y = 309.0f;
+        CRot.x = 0.0f;
+        CRot.z = 0.0f;
         D_800F6524.x = 4.0f;
         D_800F6524.y = 188.0f;
         D_800F6524.z = -219.0f;
@@ -206,9 +206,9 @@ void func_800F9CF0_MushroomMixup(omObjData* arg0) {
         arg0->work[0] = 2;
     case 2:
         D_800EE98C = 3866.0f;
-        D_800F33EC.y = 309.0f;
-        D_800F33EC.x = 0.0f;
-        D_800F33EC.z = 0.0f;
+        CRot.y = 309.0f;
+        CRot.x = 0.0f;
+        CRot.z = 0.0f;
         D_800F6524.x = 64.0f;
         D_800F6524.y = 188.0f;
         D_800F6524.z = -214.0f;

@@ -79,7 +79,6 @@ extern ChainData *D_800D810C;
 extern ChainData *D_800D8110;
 
 extern u32 D_800D8154; // Optional event completion flags
-extern s16 D_800ED5E0; // currSpaceIndex
 
 extern u16 D_800F3290; // D_800C4FD0 is loaded (boolean)
 

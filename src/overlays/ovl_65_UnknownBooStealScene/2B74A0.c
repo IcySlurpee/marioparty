@@ -2,14 +2,14 @@
 #include "2B74A0.h"
 
 void func_800F65E0_UnknownBooStealScene(void) {
-    D_800F9600_UnknownBooStealScene = D_800ED5C0.unk_02;
-    D_800F9601_UnknownBooStealScene = D_800ED5C0.unk_1C;
+    D_800F9600_UnknownBooStealScene = GwSystem.unk_02;
+    D_800F9601_UnknownBooStealScene = GwSystem.curPlayerIndex;
     
-    if (D_800ED5C0.currentTurn < 10) {
+    if (GwSystem.currentTurn < 10) {
         D_800F9602_UnknownBooStealScene = 0;
-    } else if (D_800ED5C0.currentTurn < 20) {
+    } else if (GwSystem.currentTurn < 20) {
         D_800F9602_UnknownBooStealScene = 1;
-    } else if (D_800ED5C0.currentTurn < 40) {
+    } else if (GwSystem.currentTurn < 40) {
         D_800F9602_UnknownBooStealScene = 2;
     } else {
         D_800F9602_UnknownBooStealScene = 3;

@@ -25,7 +25,7 @@ struct Object *D_800FA304_DKsJungleAdventure;
 // struct mpSource_object *boulder_obj_model;
 
 s16 func_800F6610_DKsJungleAdventure(void) {
-    return D_800F9910_DKsJungleAdventure[D_800ED5C0.starSpaces[D_800ED5C0.chosenStarSpaceIndex]];
+    return D_800F9910_DKsJungleAdventure[GwSystem.starSpaces[GwSystem.chosenStarSpaceIndex]];
 }
 
 void func_800F663C_DKsJungleAdventure(void) { //ov054_func_800F663C
@@ -35,7 +35,7 @@ void func_800F663C_DKsJungleAdventure(void) { //ov054_func_800F663C
     s32 swap1;
     GameStatus* ed5c0;
 
-    ed5c0 = &D_800ED5C0;
+    ed5c0 = &GwSystem;
     for (s1 = 0; s1 < 30; s1++) {
         rand1 = rand8() % 7;
         rand2 = rand8() % 7;
@@ -69,7 +69,7 @@ void func_800F67A4_DKsJungleAdventure(void) {
     s32 starSpaceTemp;
     GameStatus* ed5c0;
 
-    ed5c0 = &D_800ED5C0;
+    ed5c0 = &GwSystem;
 
     if (++ed5c0->chosenStarSpaceIndex < DK_STAR_COUNT) {
         return;
@@ -92,7 +92,7 @@ void func_800F67A4_DKsJungleAdventure(void) {
 
 void func_800F6830_DKsJungleAdventure(void) { //ov054_func_800F6830
     s32 s0, s1;
-    GameStatus* ed5c0 = &D_800ED5C0;
+    GameStatus* ed5c0 = &GwSystem;
 
     for (s1 = 0; s1 < DK_STAR_COUNT; s1++) {
         SetSpaceType(D_800F9900_DKsJungleAdventure[s1], 1);
@@ -118,7 +118,7 @@ s32 func_800F6958_DKsJungleAdventure(s32 current_space_index) {
     s32 i;
     s32 j;
     s16* ov054_star_space_indicesptr;
-    GameStatus* ed5c0 = &D_800ED5C0;
+    GameStatus* ed5c0 = &GwSystem;
 
     i = 0;
 
@@ -238,7 +238,7 @@ void func_800F6CD8_DKsJungleAdventure(void) {
     Process* proc_struct;
     s32 string_id;
 
-    ed5c0 = &D_800ED5C0;
+    ed5c0 = &GwSystem;
 
     func_80060128(43);
     str = func_80048224(D_800F9920_DKsJungleAdventure);
@@ -304,7 +304,7 @@ void func_800F6CD8_DKsJungleAdventure(void) {
 
 void func_800F6F0C_DKsJungleAdventure(void) {  //ov054_Entrypoint0
     GameStatus* ed5c0;
-    ed5c0 = &D_800ED5C0;
+    ed5c0 = &GwSystem;
 
     ed5c0->unk_02 = 0;
     omInitObjMan(10, 0); // InitObjectSystem
@@ -313,7 +313,7 @@ void func_800F6F0C_DKsJungleAdventure(void) {  //ov054_Entrypoint0
 
 void func_800F6F44_DKsJungleAdventure(void) { //ov054_Entrypoint1
     GameStatus* ed5c0;
-    ed5c0 = &D_800ED5C0;
+    ed5c0 = &GwSystem;
 
     omInitObjMan(10, 0); // InitObjectSystem
 
@@ -340,9 +340,9 @@ void func_800F6F44_DKsJungleAdventure(void) { //ov054_Entrypoint1
 
     func_800F663C_DKsJungleAdventure();
 
-    D_800ED100.boardRam[0] = 0;
-    D_800ED100.boardRam[1] = 0;
-    D_800ED100.boardRam[2] = 0;
+    GwCommon.boardRam[0] = 0;
+    GwCommon.boardRam[1] = 0;
+    GwCommon.boardRam[2] = 0;
 
     omOvlReturnEx(1);
 }

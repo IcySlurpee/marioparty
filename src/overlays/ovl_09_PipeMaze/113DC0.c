@@ -41,9 +41,9 @@ void func_800F6A38_PipeMaze(omObjData* arg0) {
     D_800F6524.x = 0.0f;
     D_800F6524.y = 200.0f;
     D_800F6524.z = -200.0f;
-    D_800F33EC.y = 0.0f;
-    D_800F33EC.x = 0.0f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = 0.0f;
+    CRot.x = 0.0f;
+    CRot.z = 0.0f;
     D_800EE98C = 2500.0f;
     func_800F673C_PipeMaze();
 }

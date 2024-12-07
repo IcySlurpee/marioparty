@@ -45,9 +45,9 @@ void func_800F6814_HammerDrop(void) {
 void func_800F6848_HammerDrop(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
     func_800178A0(1);
     D_800EE98C = arg0;
-    D_800F33EC.y = arg1;
-    D_800F33EC.x = arg2;
-    D_800F33EC.z = arg3;
+    CRot.y = arg1;
+    CRot.x = arg2;
+    CRot.z = arg3;
     D_800F6524.x = arg4;
     D_800F6524.y = arg5;
     D_800F6524.z = arg6;

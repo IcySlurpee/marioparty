@@ -7,12 +7,11 @@ extern void *D_800C5490[];
 extern u8 D_800C54A8[]; // { 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C }
 extern u8 D_800C54B0[]; // { 0x5E, 0x5F, 0x60, 0x61, 0x62, 0x63 }
 extern s16 D_800D8380;
-extern s16 D_800ED5DC; // current player index
 
 u8 func_80052F6C(s16 index);
 
 s16 GetCurrentPlayerIndex(void) {
-    return D_800ED5DC;
+    return GwSystem.curPlayerIndex;
 }
 
 GW_PLAYER* GetPlayerStruct(s32 index) {
@@ -24,7 +23,7 @@ GW_PLAYER* GetPlayerStruct(s32 index) {
 
 // Returns true if the given index matches the current player index.
 s16 PlayerIsCurrent(s16 index) {
-    return index == D_800ED5DC;
+    return index == GwSystem.curPlayerIndex;
 }
 
 // Returns true if the given player is the same as the current player.

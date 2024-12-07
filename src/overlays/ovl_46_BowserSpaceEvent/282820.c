@@ -42,8 +42,8 @@ extern Object* D_800F8FF8_BowserSpaceEvent;
 extern u8 D_800F8FFC_BowserSpaceEvent[4];
 
 void func_800F65E0_BowserSpaceEvent(void) {
-    D_800F8FF0_BowserSpaceEvent = D_800ED5C2[0];
-    D_800F8FF1_BowserSpaceEvent = D_800ED5DC;
+    D_800F8FF0_BowserSpaceEvent = GwSystem.unk_02;
+    D_800F8FF1_BowserSpaceEvent = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F8DF4_BowserSpaceEvent();
     func_800F8C6C_BowserSpaceEvent();
@@ -64,7 +64,7 @@ void func_800F65E0_BowserSpaceEvent(void) {
 }
 
 s32 func_800F66FC_BowserSpaceEvent(void) {
-    s32 currentTurn = D_800ED5C0.currentTurn;
+    s32 currentTurn = GwSystem.currentTurn;
 
     if (currentTurn <= 5) {
         return 10;

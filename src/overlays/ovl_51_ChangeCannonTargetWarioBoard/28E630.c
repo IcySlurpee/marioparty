@@ -21,7 +21,7 @@ extern void* D_800F6C54_ChangeCannonTargetWarioBoard;
 extern void* D_800F6C58_ChangeCannonTargetWarioBoard;
 
 void func_800F65E0_ChangeCannonTargetWarioBoard(void) {
-    D_800F6C50_ChangeCannonTargetWarioBoard = D_800ED5DC;
+    D_800F6C50_ChangeCannonTargetWarioBoard = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F6B30_ChangeCannonTargetWarioBoard();
     func_800F69D8_ChangeCannonTargetWarioBoard(1);
@@ -53,7 +53,7 @@ void func_800F66B4_ChangeCannonTargetWarioBoard(void) {
     func_8004DBD4(windowID, D_800F6C50_ChangeCannonTargetWarioBoard);
     HideTextWindow(windowID);
     PlaySound(0xC4);
-    func_8004EE14(0, &D_800F6C24_ChangeCannonTargetWarioBoard[D_800F6C44_ChangeCannonTargetWarioBoard[D_800ED100.boardRam[15]]], 0x1E, D_800F6C58_ChangeCannonTargetWarioBoard);
+    func_8004EE14(0, &D_800F6C24_ChangeCannonTargetWarioBoard[D_800F6C44_ChangeCannonTargetWarioBoard[GwCommon.boardRam[15]]], 0x1E, D_800F6C58_ChangeCannonTargetWarioBoard);
     
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 4; j++) {
@@ -79,7 +79,7 @@ void func_800F66B4_ChangeCannonTargetWarioBoard(void) {
     func_8004DBD4(windowID, D_800F6C50_ChangeCannonTargetWarioBoard);
     HideTextWindow(windowID);
     PlaySound(0xC4);
-    func_8004EE14(0, &D_800F6C24_ChangeCannonTargetWarioBoard[D_800F6C3C_ChangeCannonTargetWarioBoard[D_800ED100.boardRam[15]]], 30, D_800F6C58_ChangeCannonTargetWarioBoard);
+    func_8004EE14(0, &D_800F6C24_ChangeCannonTargetWarioBoard[D_800F6C3C_ChangeCannonTargetWarioBoard[GwCommon.boardRam[15]]], 30, D_800F6C58_ChangeCannonTargetWarioBoard);
     
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 4; j++) {

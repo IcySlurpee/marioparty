@@ -108,9 +108,9 @@ void func_800F7308_MushroomBank(omObjData* arg0) {
 }
 
 void func_800F7528_MushroomBank(void) {
-    D_800F33EC.y = 0.0f;
-    D_800F33EC.x = 180.0f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = 0.0f;
+    CRot.x = 180.0f;
+    CRot.z = 0.0f;
     D_800F6524.x = 0.0f;
     D_800F6524.y = 225.0f;
     D_800F6524.z = 480.0f;
@@ -123,7 +123,7 @@ void func_800F7528_MushroomBank(void) {
 void func_800F75C8_MushroomBank(s32 arg0) {
     if (arg0 < 0) {
         if (arg0 >= -3) {
-            D_800ED100.unk_47 = arg0 + 3;
+            GwCommon.unk_47 = arg0 + 3;
         }
     } else {
         SetBoardFeatureFlag(arg0);

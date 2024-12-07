@@ -85,7 +85,7 @@ void func_800F67DC_name_76(void) {
 }
 
 void func_800F6854_name_76(void) {
-    D_800ED100.boardRam[0] = 7;
+    GwCommon.boardRam[0] = 7;
     func_8005B860(-2);
 }
 

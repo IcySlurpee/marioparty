@@ -356,7 +356,7 @@ void func_80047F04(void) {
         case 0:
             PlaySound(0x5A);
             if (temp_s0->unk4 == 0) {
-                D_800D6658 = D_800ED5C6.x - D_800ED5C6.y;
+                D_800D6658 = GwSystem.maxTurns - GwSystem.currentTurn;
                 switch (D_800D6658) {
                     case 0:
                     case 1:
@@ -400,7 +400,7 @@ void func_80048060(void) {
     unkUserData* temp_s0;
 
     temp_s0 = HuPrcCurrentGet()->user_data;
-    D_800D6658 = D_800ED5C6.x - D_800ED5C6.y;
+    D_800D6658 = GwSystem.maxTurns - GwSystem.currentTurn;
     switch (D_800D6658) {
         case 0:
         case 1:

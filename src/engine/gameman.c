@@ -23,7 +23,6 @@ void func_80010C30(Addr*, s32, s32, s32);
 void func_8001A3DC(void);
 void func_8001A428(void);
 void func_8001A454(void);
-void func_8001A498(void);
 void func_80023B40(void* (*)(s32), void (*)(void*), u16, u16, s32, s32);
 void func_8003B710(void);
 s32 func_8005B0C4(void);
@@ -54,11 +53,11 @@ void func_8001A0F0(void) {
     s32 i;
     
     HuPrcVSleep();
-    D_800F33EC.y = 325.0f;
-    D_800F33EC.x = 0.0f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = 325.0f;
+    CRot.x = 0.0f;
+    CRot.z = 0.0f;
     D_800EE98C = 2250.0f;
-    D_800F6524.x = D_800F6524.y = D_800F6524.z = D_800F33EC.x;
+    D_800F6524.x = D_800F6524.y = D_800F6524.z = CRot.x;
     
     for (i = 0; i < 4; i++) {
         D_800F6550[i].x = 325.0f;

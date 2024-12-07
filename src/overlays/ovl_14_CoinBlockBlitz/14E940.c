@@ -85,9 +85,9 @@ void func_800F6D08_CoinBlockBlitz(void) {
     
     D_800FAA78_CoinBlockBlitz = 0;
     D_800EE98C = 3510.0f;
-    D_800F33EC.y = -40.5f;
-    D_800F33EC.x = 25.25f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = -40.5f;
+    CRot.x = 25.25f;
+    CRot.z = 0.0f;
     D_800F6524.x = -100.0f;
     D_800F6524.y = -100.0f;
     D_800F6524.z = -185.0f;

@@ -25,9 +25,9 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_69_GameModeOverworld/2BB5F0", func_80
 //     D_800F6524.x = 54.9103f;
 //     D_800F6524.y = 59.226612f;
 //     D_800F6524.z = 61.478203f;
-//     D_800F33EC.y = 341.0f;
-//     D_800F33EC.x = 28.0f;
-//     D_800F33EC.z = 0.0f;
+//     CRot.y = 341.0f;
+//     CRot.x = 28.0f;
+//     CRot.z = 0.0f;
 //     func_8001D494(0, 20.0f, 80.0f, 13000.0f);
 //     D_800FA1D0_GameModeOverworld.x = D_800FA1D0_GameModeOverworld.y = D_800FA1D0_GameModeOverworld.z = 0.0f;
 //     D_800FA1DC_ovl_69 = 2000.0f;
@@ -190,8 +190,8 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_69_GameModeOverworld/2BB5F0", func_80
 //     f32 temp_f24_2;
 
 
-//     temp_f22 = D_800F33EC.y;
-//     temp_f24 = D_800F33EC.x;
+//     temp_f22 = CRot.y;
+//     temp_f24 = CRot.x;
 //     temp_f20 = func_800AEAC0(temp_f24);
 //     sp10.x = D_800F6524.x + (temp_f20 * func_800AEFD0(temp_f22) * D_800EE98C);
 //     sp10.y = (-func_800AEAC0(temp_f22) * D_800EE98C) + D_800F6524.y;

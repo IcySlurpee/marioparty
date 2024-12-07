@@ -8,7 +8,7 @@ s32 D_800F6DC8_BowserToadSwapPlacesMarioBoard[] = {0x00000001, 0x000A006A};
 s32 D_800F6DD0_BowserToadSwapPlacesMarioBoard[] = {0x00000001, 0x00070004};
 
 void func_800F65E0_BowserToadSwapPlacesMarioBoard(void) {
-    D_800F6DF0_BowserToadSwapPlacesMarioBoard = D_800ED5DC;
+    D_800F6DF0_BowserToadSwapPlacesMarioBoard = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F6CE8_BowserToadSwapPlacesMarioBoard();
     func_800F6B1C_BowserToadSwapPlacesMarioBoard();
@@ -28,7 +28,7 @@ void func_800F66AC_BowserToadSwapPlacesMarioBoard(f32 arg0) {
     Object* var_s0;
     Vec3f* temp;
 
-    if (D_800ED100.boardRam[0] != 0) {
+    if (GwCommon.boardRam[0] != 0) {
         temp_s0 = D_800F6DF4_BowserToadSwapPlacesMarioBoard;
         temp = &D_800F6DBC_BowserToadSwapPlacesMarioBoard;
         temp_s0->coords.x = temp->x + (sinf(arg0 * (M_PI/180)) * 200.0f);
@@ -82,7 +82,7 @@ void func_800F692C_BowserToadSwapPlacesMarioBoard(void) {
     HuPrcSleep(26);
     PlaySound(226);
 
-    if (D_800ED100.boardRam[0] != 0) {
+    if (GwCommon.boardRam[0] != 0) {
         PlaySound(1131);
     } else {
         PlaySound(1127);
@@ -95,9 +95,9 @@ void func_800F692C_BowserToadSwapPlacesMarioBoard(void) {
 
     PlaySound(228);
     
-    D_800ED100.boardRam[0] = (D_800ED100.boardRam[0] + 1) & 1;
+    GwCommon.boardRam[0] = (GwCommon.boardRam[0] + 1) & 1;
     
-    if (D_800ED100.boardRam[0] == 0) {
+    if (GwCommon.boardRam[0] == 0) {
         PlaySound(1126);
         func_8003E81C(D_800F6DF8_BowserToadSwapPlacesMarioBoard, 0, 2);
         
@@ -131,7 +131,7 @@ void func_800F6A84_BowserToadSwapPlacesMarioBoard(void) {
 
 void func_800F6AC8_BowserToadSwapPlacesMarioBoard(omObjData* arg0) {
     if (D_800F5144 != 0) {
-        if (D_800ED100.boardRam[0] != 0) {
+        if (GwCommon.boardRam[0] != 0) {
             func_800726AC(3, 16);
         } else {
             func_800726AC(2, 16);

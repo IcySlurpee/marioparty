@@ -11,7 +11,7 @@ void func_800F65E0_PedalPower(void) {
     D_800F6524.x = 50.0f;
     D_800F6524.y = 200.0f;
     D_800F6524.z = -100.0f;
-    D_800F33EC.y = D_800F33EC.x = D_800F33EC.z = 0.0f;
+    CRot.y = CRot.x = CRot.z = 0.0f;
     D_800EE98C = 1750.0f;
     func_800F67AC_PedalPower();
     func_800F6870_PedalPower();

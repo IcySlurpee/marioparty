@@ -6,17 +6,17 @@ void func_800F65E0_ResultsScene(void) {
     omInitObjMan(0x64, 0x50);
     D_800FC440_ResultsScene = 0;
     for (i = 0; i < 4; i++) {
-        D_800FC430_ResultsScene[D_800ED100.boardRam[i]] = GwPlayer[D_800ED100.boardRam[i]].coins;
-        if (!(GwPlayer[D_800ED100.boardRam[i]].flags & 1)) {
-            D_800FC440_ResultsScene += D_800FC430_ResultsScene[D_800ED100.boardRam[i]];
+        D_800FC430_ResultsScene[GwCommon.boardRam[i]] = GwPlayer[GwCommon.boardRam[i]].coins;
+        if (!(GwPlayer[GwCommon.boardRam[i]].flags & 1)) {
+            D_800FC440_ResultsScene += D_800FC430_ResultsScene[GwCommon.boardRam[i]];
         }
     }
 
     D_800FC448_ResultsScene = 0;
     
     for (i = 0; i < 4; i++) {
-        if (!(GwPlayer[D_800ED100.boardRam[i]].flags & 1)) {
-            D_800FC448_ResultsScene += GwPlayer[D_800ED100.boardRam[i]].stars + D_800ED100.boardRam[D_800ED100.boardRam[i] + 10];
+        if (!(GwPlayer[GwCommon.boardRam[i]].flags & 1)) {
+            D_800FC448_ResultsScene += GwPlayer[GwCommon.boardRam[i]].stars + GwCommon.boardRam[GwCommon.boardRam[i] + 10];
         }    
     }
 
@@ -104,7 +104,7 @@ void func_800F972C_ResultsScene(void) {
 
     while (1) {
         var_s2 = 0;
-        sprintf((char*)&sp10, D_800FC364_ResultsScene, D_800ED100.unk_44);
+        sprintf((char*)&sp10, D_800FC364_ResultsScene, GwCommon.unk_44);
         for (i = 0; i < 5; i++) {
             func_800672B0(D_800FC45E_ResultsScene, i, 1);
              if (var_s2 == 0 && (sp10[i] == ' ') & (i != 4)) {
@@ -182,7 +182,7 @@ void func_800FBF10_ResultsScene(void) {
     func_80017660(1, 0.0f, 0.0f, 320.0f, 240.0f);
     func_800176C4(1, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     LoadBackgroundData(FE2310_ROM_START);
-    LoadBackgroundIndex(D_800FC09C_ResultsScene[D_800ED5C2[0]]);
+    LoadBackgroundIndex(D_800FC09C_ResultsScene[GwSystem.unk_02]);
     func_8004B7F8(0x80);
 }
 

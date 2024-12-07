@@ -214,9 +214,9 @@ f32 func_800F7B90_MemoryMatch(f32 arg0, f32 arg1) {
 }
 
 void func_800F7C08_MemoryMatch(void) {
-    D_800F33EC.y = -41.39f;
-    D_800F33EC.x = 0;
-    D_800F33EC.z = 0;
+    CRot.y = -41.39f;
+    CRot.x = 0;
+    CRot.z = 0;
     D_800F6524.x = -5.0f;
     D_800F6524.y = -30.0f;
     D_800F6524.z = 0;

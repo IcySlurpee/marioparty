@@ -18,7 +18,7 @@ s32 D_800F7614_BowservisitMagmaMountain[] = {0x00000002, 0x0005000A, 0x0005003E}
 s32* D_800F7620_BowservisitMagmaMountain[] = {D_800F75D8_BowservisitMagmaMountain, D_800F75E4_BowservisitMagmaMountain, D_800F75F0_BowservisitMagmaMountain, D_800F75FC_BowservisitMagmaMountain, D_800F7608_BowservisitMagmaMountain, D_800F7614_BowservisitMagmaMountain};
 
 void func_800F65E0_BowservisitMagmaMountain(void) {
-    D_800F7650_BowservisitMagmaMountain = D_800ED5DC;
+    D_800F7650_BowservisitMagmaMountain = GwSystem.curPlayerIndex;
     omInitObjMan(0x32, 0x32);
     func_800F74C0_BowservisitMagmaMountain();
     func_800F7120_BowservisitMagmaMountain();

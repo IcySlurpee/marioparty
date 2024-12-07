@@ -29,7 +29,6 @@ extern s16 D_800D86E0;
 extern s16 D_800D86E2;
 extern s16 D_800D86FA;
 extern Vec3f D_800D86FC;
-extern u16 D_800ED5C8;
 extern s32 D_800D86F4;
 extern s16 D_800D86F8;
 
@@ -66,7 +65,7 @@ void func_80056730(s32 arg0, s16 arg1, s16 arg2) {
             arg0 = omovlhis[omovlhisidx].overlayID;
         }
     } else {
-        arg0 = D_800C56D0[D_800ED5C2[0]];
+        arg0 = D_800C56D0[GwSystem.unk_02];
     }
     
     history->overlayID = arg0;
@@ -91,7 +90,7 @@ void func_800568A4(void) {
     }
     if (D_800D86B0 != 0) {
         D_800D86E0 = 0;
-        omOvlCallEx(D_800C56D0[D_800ED5C2[0]], 2, 0x92);
+        omOvlCallEx(D_800C56D0[GwSystem.unk_02], 2, 0x92);
         return;
     }
     
@@ -171,7 +170,7 @@ void func_80056AF4(void) {
 
 void func_80056B78(void) {
     GW_PLAYER* temp_v0;
-    GameStatus* gameStatus = &D_800ED5C0;
+    GameStatus* gameStatus = &GwSystem;
     s32 i;
 
     D_800F65B8 = 0;
@@ -192,7 +191,7 @@ void func_80056B78(void) {
     if (IsFlagSet(0x41) == 0) {
         gameStatus->chosenStarSpaceIndex = 0;
         gameStatus->currentTurn = 1;
-        gameStatus->unk_1C = 0;
+        gameStatus->curPlayerIndex = 0;
         gameStatus->unk_1E = 0;
         if (IsFlagSet(0x2C) == 0) {
             switch (gameStatus->unk_04) {
@@ -238,8 +237,8 @@ void func_80056B78(void) {
             temp_v0->bowser_count = 0;
         }
         
-        for (i = 0; i < ARRAY_COUNT(D_800ED100.boardRam); i++) {
-            D_800ED100.boardRam[i] = 0;
+        for (i = 0; i < ARRAY_COUNT(GwCommon.boardRam); i++) {
+            GwCommon.boardRam[i] = 0;
         }
 
         ClearBoardFeatureFlag(0x46);
@@ -291,7 +290,7 @@ void func_80056E6C(void) {
     while (1) {
         switch (D_800D86FA) {
         case 1:
-            func_8004B5DC(&GwPlayer[D_800ED5DC].player_obj->coords);
+            func_8004B5DC(&GwPlayer[GwSystem.curPlayerIndex].player_obj->coords);
             break;
         case 2:
             func_8004B5DC(&D_800D86FC);
@@ -305,17 +304,19 @@ void func_80056E6C(void) {
     }
 }
 
-void func_80056F40(void) {
-    GameStatus* gameStatus = &D_800ED5C0;
+INCLUDE_ASM("asm/nonmatchings/57330", func_80056F40);
+
+// void func_80056F40(void) {
+//     GameStatus* gameStatus = &GwSystem;
     
-    if (++D_800ED5DC >= 4) {
-        gameStatus->unk_1C = 0;
-        gameStatus->currentTurn++;
-        if (gameStatus->currentTurn >= 0x63) {
-            gameStatus->currentTurn = 0x63;
-        }
-    }
-}
+//     if (++GwSystem.curPlayerIndex >= 4) {
+//         gameStatus->curPlayerIndex = 0;
+//         gameStatus->currentTurn++;
+//         if (gameStatus->currentTurn >= 0x63) {
+//             gameStatus->currentTurn = 0x63;
+//         }
+//     }
+// }
 
 INCLUDE_ASM("asm/nonmatchings/57330", func_80056FA8);
 
@@ -352,7 +353,7 @@ void func_800582E4(void) {
     HuPrcVSleep();
     func_8004A520();
     func_8004B5C4(3.0f);
-    func_800591E0(GwPlayer[D_800ED5DC].port); //TODO: what arg type should this take?
+    func_800591E0(GwPlayer[GwSystem.curPlayerIndex].port); //TODO: what arg type should this take?
     func_80056AF4();
     omOvlReturnEx(1);
     omOvlKill();

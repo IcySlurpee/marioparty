@@ -194,9 +194,9 @@ void func_800F667C_EternalStar(void) {
 }
 
 void func_800F66C8_EternalStar(void) {
-    D_800ED5CA++;
-    if (D_800ED5CA >= ARRAY_COUNT(D_800F8BE0_EternalStar)) {
-        D_800ED5CA = 0;
+    GameStatus* gameStatus = &GwSystem;
+    if (++gameStatus->chosenStarSpaceIndex >= ARRAY_COUNT(gameStatus->starSpaces)) {
+        gameStatus->chosenStarSpaceIndex = 0;
         SetBoardFeatureFlag(0x44);
         func_800F667C_EternalStar();
     }
@@ -215,7 +215,7 @@ void func_800F671C_EternalStar(void) {
 }
 
 s16 func_800F67AC_EternalStar(s16 arg0) {
-    GameStatus* gameStatus = &D_800ED5C0;
+    GameStatus* gameStatus = &GwSystem;
     s32 i;
     
     for (i = 0; i < ARRAY_COUNT(D_800F8BD0_EternalStar); i++) {
@@ -362,7 +362,7 @@ void func_800F6BD8_EternalStar(void) {
 }
 
 void func_800F6D30_EternalStar(void) {
-    D_800ED5C2[0] = 7;
+    GwSystem.unk_02 = 7;
     omInitObjMan(0xA, 0);
     omOvlGotoEx(0x35, 0, 0x92);
 }
@@ -375,7 +375,7 @@ void InitBoard(void) {
     SetPlayerOntoChain(3, 0x12, 0);
     SetBoardFeatureFlag(0x43);
     func_800F667C_EternalStar();
-    D_800ED100.boardRam[15] = rand8() % 3;
+    GwCommon.boardRam[15] = rand8() % 3;
     ClearBoardFeatureFlag(0x4F);
     ClearBoardFeatureFlag(0x50);
     func_800F7F4C_EternalStar();
@@ -622,7 +622,7 @@ s16 func_800F7730_EternalStar(void) {
 }
 
 s32 func_800F775C_EternalStar(void) {
-    if (D_800ED100.boardRam[0] != 0) {
+    if (GwCommon.boardRam[0] != 0) {
         if (!(IsFlagSet(0x48))) {
             return 0;
         }
@@ -631,7 +631,7 @@ s32 func_800F775C_EternalStar(void) {
 }
 
 s32 func_800F7794_EternalStar(void) {
-    if (D_800ED100.boardRam[1] != 0) {
+    if (GwCommon.boardRam[1] != 0) {
         if (!(IsFlagSet(0x4C))) {
             return 0;
         }
@@ -640,8 +640,8 @@ s32 func_800F7794_EternalStar(void) {
 }
 
 s32 func_800F77CC_EternalStar(void) {
-    if (D_800ED100.boardRam[2] != 0) {
-        switch (D_800ED100.boardRam[15]) {
+    if (GwCommon.boardRam[2] != 0) {
+        switch (GwCommon.boardRam[15]) {
         case 0:
             if (!(IsFlagSet(0x46)) || !(IsFlagSet(0x47))) {
                 return 0;
@@ -660,8 +660,8 @@ s32 func_800F77CC_EternalStar(void) {
 }
 
 s32 func_800F784C_EternalStar(void) {
-    if (D_800ED100.boardRam[3] != 0) {
-        switch (D_800ED100.boardRam[15]) {
+    if (GwCommon.boardRam[3] != 0) {
+        switch (GwCommon.boardRam[15]) {
         case 0:
             return 2;
         case 1:
@@ -679,8 +679,8 @@ s32 func_800F784C_EternalStar(void) {
 }
 
 s32 func_800F78CC_EternalStar(void) {
-    if (D_800ED100.boardRam[4] != 0) {
-        switch (D_800ED100.boardRam[15]) {
+    if (GwCommon.boardRam[4] != 0) {
+        switch (GwCommon.boardRam[15]) {
         case 0:
             if (IsFlagSet(0x49) == 0 || IsFlagSet(0x4A) == 0) {
                 return 0;
@@ -698,8 +698,8 @@ s32 func_800F78CC_EternalStar(void) {
 
 
 s32 func_800F7934_EternalStar(void) {
-    if (D_800ED100.boardRam[5] != 0) {
-        switch (D_800ED100.boardRam[15]) {
+    if (GwCommon.boardRam[5] != 0) {
+        switch (GwCommon.boardRam[15]) {
         case 0:
             return 3;
         case 1:
@@ -714,8 +714,8 @@ s32 func_800F7934_EternalStar(void) {
 }
 
 s32 func_800F79BC_EternalStar(void) {
-    if (D_800ED100.boardRam[6] != 0) {
-        switch (D_800ED100.boardRam[15]) {
+    if (GwCommon.boardRam[6] != 0) {
+        switch (GwCommon.boardRam[15]) {
         case 0:
             if (IsFlagSet(0x4B) == 0) {
                 return 0;
@@ -734,7 +734,7 @@ s32 func_800F79BC_EternalStar(void) {
 }
 
 s32 func_800F7A2C_EternalStar(void) {
-    if (D_800ED100.boardRam[7] != 0 && D_800ED100.boardRam[15] == 2) {
+    if (GwCommon.boardRam[7] != 0 && GwCommon.boardRam[15] == 2) {
         return 3;
     } else {
         return 1;
@@ -742,8 +742,8 @@ s32 func_800F7A2C_EternalStar(void) {
 }
 
 s32 func_800F7A60_EternalStar(void) {
-    if (D_800ED100.boardRam[8] != 0) {
-        switch (D_800ED100.boardRam[15]) {
+    if (GwCommon.boardRam[8] != 0) {
+        switch (GwCommon.boardRam[15]) {
             case 0:
                 return 2;
             case 1:
@@ -762,8 +762,8 @@ s32 func_800F7A60_EternalStar(void) {
 }
 
 s32 func_800F7AE8_EternalStar(void) {
-    if (D_800ED100.boardRam[9] != 0) {
-        if (D_800ED100.boardRam[15] == 0) {
+    if (GwCommon.boardRam[9] != 0) {
+        if (GwCommon.boardRam[15] == 0) {
             if (IsFlagSet(0x46) == 0) {
                 return 0;
             }
@@ -866,7 +866,7 @@ void func_800F7F4C_EternalStar(void) {
     s32 i;
 
     for (i = 0; i < 12; i++) {
-        D_800ED100.boardRam[i] = 0;
+        GwCommon.boardRam[i] = 0;
     }
 }
 
@@ -918,9 +918,9 @@ void func_800F8130_EternalStar(void) {
                 HuPrcSleep(1);
             }
             
-            D_800ED100.boardRam[i] = 1;
+            GwCommon.boardRam[i] = 1;
 
-            SetNextChainAndSpace(-1, D_800F8ED8_EternalStar[i][D_800ED100.boardRam[15]], 0);
+            SetNextChainAndSpace(-1, D_800F8ED8_EternalStar[i][GwCommon.boardRam[15]], 0);
             func_800405DC(player->player_index);
             func_800F7F7C_EternalStar();
             func_8003FEFC(player->player_index);
@@ -974,11 +974,11 @@ void func_800F8298_EternalStar(void) {
     func_8003D514(&sp10, -80.0f);
     func_8004D1EC(&player->player_obj->unk_18, &sp10, &player->player_obj->unk_18, 4);
     HuPrcSleep(4);
-    tempVar = D_800ED100.boardRam[15];
+    tempVar = GwCommon.boardRam[15];
     
     while (1) {
-        D_800ED100.boardRam[15] =  rand8() % 3;
-        if (tempVar != D_800ED100.boardRam[15]) {
+        GwCommon.boardRam[15] =  rand8() % 3;
+        if (tempVar != GwCommon.boardRam[15]) {
             break;
         }
     }
@@ -986,7 +986,7 @@ void func_800F8298_EternalStar(void) {
     func_800F7F4C_EternalStar();
     textWindowID = CreateTextWindow(0x4C, 0x3C, 0xE, 3);
     
-    switch (D_800ED100.boardRam[15]) {
+    switch (GwCommon.boardRam[15]) {
     case 0:
         LoadStringIntoWindow(textWindowID, (void*)0x1FD, -1, -1);
         break;
@@ -1087,8 +1087,8 @@ void func_800F87E4_EternalStar(EventTableUnkStruct* arg0) {
     SetPlayerAnimation(-1, -1, 2);
     HuPrcVSleep();
     func_800F7C70_EternalStar();
-    temp_s2 = func_8003C218(D_800ED5C0.unk_1C, arg0->spaceIDs);
-    func_8003C060(temp_s2, D_800ED5C0.unk_1C, 0);
+    temp_s2 = func_8003C218(GwSystem.curPlayerIndex, arg0->spaceIDs);
+    func_8003C060(temp_s2, GwSystem.curPlayerIndex, 0);
     
     if (PlayerIsCPU(-1) != 0) {
         tempVar = RunDecisionTree(arg0->decisionTree);

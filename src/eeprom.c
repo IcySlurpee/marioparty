@@ -110,7 +110,7 @@ s32 func_80019438(UnkEep* arg0) {
     return 2;
 }
 
-void func_80019504(s32 arg0, UnkEep* arg1, s16 arg2) {
+void func_80019504(s32 arg0, void* arg1, s16 arg2) {
     unkfunc_8007EE0C sp10;
     UnkEep sp20;
 

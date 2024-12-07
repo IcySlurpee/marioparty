@@ -478,6 +478,9 @@ omSetTra= 0x8005D95C;
 omSetRot = 0x8005D96C;
 omSetSca = 0x8005D97C;
 rnd_seed = 0x800C2FF4;
+GwSystem = 0x800ED5C0; //size:0x26
+GwQuest = 0x800F37B8; //size:0xF
+CRot = 0x800F33EC; //size:0xC
 
 D_80103C18 = 0x80103C18; //rom:0x10CBA8 type:f64 force_migration:True
 D_800FB920 = 0x800FB920; //rom:0x11C550 type:f64 force_migration:True
@@ -494,7 +497,7 @@ D_800CB3D0 = 0x800CB3D0; //rom:0xCBFD0 type:char* force_migration:True
 
 D_800F370C = 0x800F370C; //type:u16
 D_800F370E = 0x800F370E; //type:s16
-D_800ED100 = 0x800ED100; //size:0x94
+GwCommon = 0x800ED100; //size:0x94
 D_800ECDE8 = 0x800ECDE8;
 
 D_800FC500_FaceLift = 0x800FC500; //rom:0x131B40 segment:FaceLift

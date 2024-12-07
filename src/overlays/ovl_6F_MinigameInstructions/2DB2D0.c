@@ -9,8 +9,6 @@ void func_800F92D4_MinigameInstructions(omObjData*);
 void func_800F9E64_MinigameInstructions(s16);
 void func_800FA470_MinigameInstructions(void);
 void func_8010E090_MinigameInstructions(s16);
-extern s16 D_800ED5DE;
-extern s8 D_800ED5E3;
 extern s8 D_800F64F2;
 extern u8 D_8010F050_MinigameInstructions;
 extern s16 D_8010F400_MinigameInstructions;
@@ -45,8 +43,8 @@ void func_800F6610_MinigameInstructions(void) {
     func_80060088();
     func_8006CEA0();
     D_800F64F2 = 1;
-    D_8010F766_MinigameInstructions = D_800ED5DE;
-    D_8010F760_MinigameInstructions = D_8010E4F4_MinigameInstructions[D_800ED5DE].unk_00;
+    D_8010F766_MinigameInstructions = GwSystem.unk_1E;
+    D_8010F760_MinigameInstructions = D_8010E4F4_MinigameInstructions[GwSystem.unk_1E].unk_00;
     if (IsFlagSet(0x2B) != 0) {
         func_8010E090_MinigameInstructions((s16) D_8010F766_MinigameInstructions);
     } else {
@@ -54,16 +52,16 @@ void func_800F6610_MinigameInstructions(void) {
     }
     func_800593AC(-1);
     D_8010F4E0_MinigameInstructions = IsFlagSet(0x45);
-    if (D_800ED5E3 == 1) {
+    if (GwSystem.unk_23 == 1) {
         func_800F6990_MinigameInstructions();
         return;
     }
     obj = omAddObj(0x7FDA, 0U, 0U, -1, func_800F92D4_MinigameInstructions);
     omSetStatBit(obj, 0xA0);
     omAddObj(0x2710, 0U, 0U, -1, &func_800F9440_MinigameInstructions);
-    D_800F33EC.y = 0.0f;
-    D_800F33EC.x = 0.0f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = 0.0f;
+    CRot.x = 0.0f;
+    CRot.z = 0.0f;
     D_800EE98C = 2000.0f;
     D_800F6524.x = D_800F6524.y = D_800F6524.z = 0.0f;
     func_8001D494(0, 10.0f, 80.0f, 8000.0f);

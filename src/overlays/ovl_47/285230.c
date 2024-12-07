@@ -5,7 +5,7 @@ extern u8 D_800F6F20_name_47;
 extern s16 D_800F6EE2_name_47;
 
 void func_800F65E0_name_47(void) {
-    D_800F6F20_name_47 = D_800ED5DC;
+    D_800F6F20_name_47 = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F6E14_name_47();
     func_800F6D1C_name_47();

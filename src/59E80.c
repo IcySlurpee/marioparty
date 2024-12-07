@@ -14,18 +14,16 @@ void func_8000B364(s32);
 #define MIN_ALLOC_SIZE 16
 #define MIN_HEAP_NODE_SIZE sizeof(struct HeapNode) + MIN_ALLOC_SIZE
 
-typedef struct testing {
+typedef struct StrData {
 /* 0x00 */ s32 string;
 /* 0x04 */ u16 size;
-} testing;
+} StrData;
 
-extern u8 D_800ED148[];
 extern u32 D_800ED120[];
 extern s16 D_800ED102[];
 extern u8 D_800ED119[];
-extern s16 D_800ED5DE;
 
-void func_8005B75C(s32, testing*);
+void func_8005B75C(s32, StrData*);
 u32* func_80059520(s16);
 void func_80059354(s16 param_1, s16 *param_2, s16 *param_3);
 void func_80059768(s16 index, s16 param_2);
@@ -39,7 +37,7 @@ void func_80059280(void) {
     s32 i;
     BoardData* boardData;
 
-    boardData = &D_800ED100;
+    boardData = &GwCommon;
     bzero(boardData, sizeof(BoardData));
     boardData->unk0 = 0x12;
     boardData->unk_40 = 0;
@@ -54,23 +52,30 @@ void func_80059280(void) {
         }        
     }
 
-    D_800ED5C2[0] = 0;
-    D_800ED5C2[14] = 0; //?
-    bzero(D_800F37B8, sizeof(D_800F37B8));
+    GwSystem.unk_02 = 0;
+    GwSystem.unk_1E = 0; //?
+    bzero(&GwQuest, sizeof(GwQuest));
 }
 
 void func_80059348(s16 arg0) {
-    D_800ED5DE = arg0;
+    GwSystem.unk_1E = arg0;
 }
 
-INCLUDE_ASM("asm/nonmatchings/59E80", func_80059354);
+void func_80059354(s16 flag, s16* byteIndex, s16* bitIndex) {
+    if (flag < 0) {
+        flag = GwSystem.unk_1E;
+    }
+
+    *byteIndex = flag / 8;
+    *bitIndex = flag % 8;
+}
 
 void func_800593AC(s16 arg0) {
     s16 sp10;
     s16 sp12;
 
     func_80059354(arg0, &sp10, &sp12);
-    D_800ED100.unk_12[sp10] = D_800ED100.unk_12[sp10] | (1 << sp12);
+    GwCommon.unk_12[sp10] = GwCommon.unk_12[sp10] | (1 << sp12);
 }
 
 s32 func_80059400(s16 arg0) {
@@ -78,7 +83,7 @@ s32 func_80059400(s16 arg0) {
     s16 var1;
 
     func_80059354(arg0, &var0, &var1);
-    return (D_800ED100.unk_12[var0] & (1 << var1));
+    return (GwCommon.unk_12[var0] & (1 << var1));
 }
 
 void func_80059448(s16 arg0) {
@@ -86,7 +91,7 @@ void func_80059448(s16 arg0) {
     s16 var1;
 
     func_80059354(arg0, &var0, &var1);
-    D_800ED100.unk_19[var0] = (D_800ED100.unk_19[var0] | (1 << var1));
+    GwCommon.unk_19[var0] = (GwCommon.unk_19[var0] | (1 << var1));
 }
 
 s16 func_8005949C(s16 arg0) {
@@ -94,26 +99,26 @@ s16 func_8005949C(s16 arg0) {
     s16 var1;
 
     func_80059354(arg0, &var0, &var1);
-    return D_800ED100.unk_19[var0] & (1 << var1);
+    return GwCommon.unk_19[var0] & (1 << var1);
 }
 
 void func_800594E4(s16 index, u16 value) {
-    D_800ED100.unk_02[index] = value;
+    GwCommon.unk_02[index] = value;
 }
 
 u16 func_800594FC(s16 index) {
-    return D_800ED100.unk_02[index];
+    return GwCommon.unk_02[index];
 }
 
 void func_80059514(u16 value) {
-    D_800ED5C2[0] = value;
+    GwSystem.unk_02 = value;
 }
 
 u32* func_80059520(s16 index) {
     if (index < 0) {
-        index = D_800ED5C2[0];
+        index = GwSystem.unk_02;
     }
-    return &D_800ED100.unk_20[index];
+    return &GwCommon.unk_20[index];
 }
 
 u16 func_80059550(s16 index) {
@@ -128,7 +133,7 @@ void func_80059578(s16 index) {
 
     ptr = (u16 *)func_80059520(index);
     if (index < 0) {
-        index = D_800ED5C2[0];
+        index = GwSystem.unk_02;
     }
     if (index < 8) {
         {
@@ -182,7 +187,7 @@ void func_800596DC(s16 index, s16 param_2) {
 
     ptr = (u16 *)func_80059520(index);
     if (index < 0) {
-        index = D_800ED5C2[0];
+        index = GwSystem.unk_02;
     }
     if (index < 8) {
         ptr[1] = param_2 + ptr[1];
@@ -199,70 +204,16 @@ void func_80059768(s16 index, s16 param_2) {
     ptr[1] = param_2;
 }
 
-s32 IsFlagSet(s32 feature) {
-    s32 a, b;
-    s32 ret;
-
-    a = feature;
-
-    if (feature < 0) {
-        a += 7;
-    }
-
-    a >>= 3;
-
-    ret = D_800ED100.unk_48[a];
-
-    if (feature >= 0) {
-        b = feature;
-    } else {
-        b = feature + 7;
-    }
-
-    b >>= 3;
-    b <<= 3;
-    b = feature - b;
-
-    return ret & (1 << b);
+s32 IsFlagSet(s32 flag) {
+    return GwCommon.unk_48[flag / 8] & (1 << flag % 8);
 }
 
-void SetBoardFeatureFlag(s32 feature) {
-    s32 temp;
-    s32 a;
-    s32 b;
-
-    a = feature;
-    if (feature < 0) {
-        a = feature + 7;
-    }
-    
-    temp = a >> 3;
-    b = feature;
-    
-    if (feature < 0) {
-        b = feature + 7;
-    }
-    
-    D_800ED100.unk_48[temp] = D_800ED100.unk_48[temp] | (1 << (feature - ((b >> 3) * 8)));
+void SetBoardFeatureFlag(s32 flag) {
+    GwCommon.unk_48[flag / 8] |= (1 << flag % 8);
 }
 
 void ClearBoardFeatureFlag(s32 flag) {
-    s32 a, b, temp_a1;
-
-    a = flag;
-    
-    if (flag < 0) {
-        a = flag + 7;
-    }
-    
-    temp_a1 = a >> 3;
-    b = flag;
-    
-    if (flag < 0) {
-        b = flag + 7;
-    }
-    
-    D_800ED100.unk_48[temp_a1] = D_800ED100.unk_48[temp_a1] & ~(1 << (flag - ((b >> 3) * 8)));
+    GwCommon.unk_48[flag / 8] &= ~(1 << flag % 8);
 }
 
 void* HuMemHeapInit(void* ptr, u32 size) {
@@ -425,7 +376,7 @@ s32 HuMemMemoryAllocSizeGet(s32 arg0) {
 
 s32 func_80059B10(s32 arg0) {
     if (arg0 < 0) {
-        if (arg0 + 3 == (s8)D_800ED100.unk_20[9]) { //?
+        if (arg0 + 3 == (s8)GwCommon.unk_20[9]) { //?
             return 1;
         } else {
             return 0;
@@ -487,9 +438,26 @@ u16 func_8005AFC8(void) {
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005AFEC);
 
-INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B024);
+void func_8005B024(void) {
+    u16 sp10;
 
-INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B060);
+    sp10 = func_8005AFC8();
+    if (D_800D8720 != 0) {
+        func_80019504(0x1F0, &sp10, 2);
+    }
+}
+
+void func_8005B060(void) {
+    func_80059280();
+    func_8001A498();
+    GwCommon.unk_40 = 0x12C;
+    func_8005B280();
+    func_8005B3B0();
+    if (D_800D8720 != 0) {
+        func_80019504(0x17A, &GwQuest, sizeof(GwQuest));
+    }
+    func_8005B024();
+}
 
 s32 func_8005B0C4(void) {
     char sp10[4]; //unk type and size
@@ -514,13 +482,13 @@ s32 func_8005B0C4(void) {
         D_800D8720 = 1;
     }
     if (D_800D8720 != 0) {
-        var_s1 = func_800195A4(0, (u8*)&D_800ED100.unk0, 0x94);
+        var_s1 = func_800195A4(0, (u8*)&GwCommon.unk0, 0x94);
         var_s1 = var_s1 | func_800195A4(0x94, (u8*)GwPlayer, sizeof(GwPlayer));
-        var_s1 = var_s1 | func_800195A4(0x154, (u8*)&D_800ED5C0, sizeof(GameStatus));
-        var_s1 = var_s1 | func_800195A4(0x17A, D_800F37B8, sizeof(D_800F37B8));
+        var_s1 = var_s1 | func_800195A4(0x154, (u8*)&GwSystem, sizeof(GameStatus));
+        var_s1 = var_s1 | func_800195A4(0x17A, &GwQuest, sizeof(GwQuest));
     }
     
-    D_800ED5DE = 0;
+    GwSystem.unk_1E = 0;
     
     if (var_s1 == 0) {
         temp_s1 = func_8005AFEC();
@@ -528,7 +496,7 @@ s32 func_8005B0C4(void) {
             var_s1 = 1;
         }
     }
-    if (((D_800ED100.unk0 != 0x12) | (var_s1 != 0)) != 0) {
+    if (((GwCommon.unk0 != 0x12) | (var_s1 != 0)) != 0) {
         func_8005B060();
     }
     
@@ -537,7 +505,7 @@ s32 func_8005B0C4(void) {
     } else {
         func_8000B364(1);
     }
-    return (D_800ED100.unk0 == 0x12) & (var_s1 != 0);
+    return (GwCommon.unk0 == 0x12) & (var_s1 != 0);
 }
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B244);
@@ -567,7 +535,7 @@ INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B6D0);
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B75C);
 
 void* func_8005B7E8(s32 stringIndex) {
-    testing sp10;
+    StrData sp10;
     void* temp_v0;
 
     func_8005B75C(stringIndex, &sp10); //string index to pointer

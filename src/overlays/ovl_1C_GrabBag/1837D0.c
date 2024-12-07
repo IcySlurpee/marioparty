@@ -11,9 +11,9 @@ void func_800F65E0_GrabBag(void) {
     D_800F6524.x = -10.0f;
     D_800F6524.y = 0.0f;
     D_800F6524.z = -105.0f;
-    D_800F33EC.y = -36.0f;
-    D_800F33EC.x = 0.0f;
-    D_800F33EC.z = 0.0f;
+    CRot.y = -36.0f;
+    CRot.x = 0.0f;
+    CRot.z = 0.0f;
     D_800EE98C = 1880.0f;
     func_800F66F8_GrabBag();
     func_800F7260_GrabBag();

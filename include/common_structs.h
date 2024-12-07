@@ -356,7 +356,7 @@ typedef struct viewAngle {
 /* 0x00 */ f32 y;
 /* 0x04 */ f32 x;
 /* 0x08 */ f32 z;
-} viewAngle;
+} viewAngle; //sizeof 0xC
 
 typedef struct cameraPosition {
 /* 0x00 */ f32 x;
@@ -386,13 +386,22 @@ typedef struct GameStatus {
 /* 0x0A */ s16 chosenStarSpaceIndex;
 /* 0x0C */ s16 starSpaces[7];
 /* 0x1A */ s16 unk_1A;
-/* 0x1C */ s16 unk_1C;
+/* 0x1C */ s16 curPlayerIndex;
 /* 0x1E */ s16 unk_1E;
-/* 0x20 */ char unk_20[2];
+/* 0x20 */ s16 curSpaceIndex;
 /* 0x22 */ u8 unk_22;
-/* 0x22 */ u8 unk_23;
+/* 0x23 */ s8 unk_23;
 /* 0x24 */ u8 unk_24;
-} GameStatus;
+} GameStatus; //sizeof 0x26
+
+typedef struct GwQuest_s {
+    /* 0x00 */ s8 unk_00;
+    /* 0x01 */ char unk_01[2];
+    /* 0x03 */ s8 lives; //D_800F37BB
+    /* 0x04 */ s8 unk_04[8]; //D_800F37BC
+    /* 0x0C */ s8 coins; //D_800F37C4
+    /* 0x0D */ char unk_0D[2];
+} GWQUEST; //sizeof 0xF
 
 typedef struct mpSource_object_indirect2 {
     s16 unk0;

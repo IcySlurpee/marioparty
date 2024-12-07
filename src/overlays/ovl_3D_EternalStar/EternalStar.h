@@ -73,7 +73,6 @@ extern s16 D_800ED172;
 // extern s16 D_800F8BC0_EternalStar[]; //more spaceIDs
 // extern s16 D_800F8BD0_EternalStar[]; //spaceIDs
 // extern s16 D_800F8BE0_EternalStar[];
-extern s16 D_800ED5CA;
 extern Vec3f D_800F9180_EternalStar;
 extern Vec3f D_800F918C_EternalStar;
 extern Vec3f D_800F9198_EternalStar;
@@ -99,7 +98,6 @@ extern s16 D_800EE320;
 // extern s32 D_800F91EC_EternalStar;
 // extern s32 D_800F91F0_EternalStar;
 // extern s32 D_800F91F4_EternalStar;
-// extern s16 D_800ED5DC;
 // extern ProcessHeader D_800F8F68_EternalStar;
 // extern ProcessHeader D_800F8F8C_EternalStar;
 // extern ProcessHeader D_800F8FB0_EternalStar;
