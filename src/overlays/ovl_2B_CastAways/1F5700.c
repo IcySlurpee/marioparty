@@ -2,13 +2,13 @@
 
 void func_800FAF40_CastAways(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     func_800178A0(1);
-    D_800EE98C = arg1;
-    CRot.y = arg2;
-    CRot.x = arg3;
+    CZoom = arg1;
+    CRot.x = arg2;
+    CRot.y = arg3;
     CRot.z = arg4;
-    D_800F6524.x = arg5;
-    D_800F6524.y = arg6;
-    D_800F6524.z = arg7;
+    Center.x = arg5;
+    Center.y = arg6;
+    Center.z = arg7;
     D_800C3110->unk_40 = arg0;
 }
 

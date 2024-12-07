@@ -108,12 +108,12 @@ void func_800F7308_MushroomBank(omObjData* arg0) {
 }
 
 void func_800F7528_MushroomBank(void) {
-    CRot.y = 0.0f;
-    CRot.x = 180.0f;
+    CRot.x = 0.0f;
+    CRot.y = 180.0f;
     CRot.z = 0.0f;
-    D_800F6524.x = 0.0f;
-    D_800F6524.y = 225.0f;
-    D_800F6524.z = 480.0f;
+    Center.x = 0.0f;
+    Center.y = 225.0f;
+    Center.z = 480.0f;
     func_800F66DC_MushroomBank(0);
     func_8002890C(255, 255, 255);
     D_800F8B9C_MushroomBank = omAddObj(1, 7, 0, -1, &func_800F7308_MushroomBank);
@@ -123,7 +123,7 @@ void func_800F7528_MushroomBank(void) {
 void func_800F75C8_MushroomBank(s32 arg0) {
     if (arg0 < 0) {
         if (arg0 >= -3) {
-            GwCommon.unk_47 = arg0 + 3;
+            GwCommon.boardItem = arg0 + 3;
         }
     } else {
         SetBoardFeatureFlag(arg0);

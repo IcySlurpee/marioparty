@@ -128,7 +128,7 @@ void func_800F6A04_FirstMap(void) {
     temp_s2 = func_8003C218(-1, &D_800F8788_FirstMap);
     func_8003C060(temp_s2, -1, 0);
     if (PlayerIsCPU(-1) != 0) {
-        temp_a0 = GwCommon.boardRam[0]++;
+        temp_a0 = GwCommon.boardWork[0]++;
         temp_s1 = D_800F8790_FirstMap[temp_a0];
         for (i = 0; i < temp_s1; i++) {
             func_8003BE84(temp_s2, -2);

@@ -320,7 +320,7 @@ void func_80055D28(void) {
     s32 lives;
 
     while (1) {
-        lives = GwQuest.lives;
+        lives = GwQuest.lifeNum;
         if (lives < 0) {
             lives = 0;
         }
@@ -341,7 +341,7 @@ void func_80055E08(void) {
     s32 coins;
 
     while (1) {
-        coins = GwQuest.coins;
+        coins = GwQuest.coinNum;
         if (coins < 0) {
             coins = 0;
         }
@@ -394,7 +394,7 @@ void func_8005608C(void) {
 
     D_800D84E0 = func_80064EF4(1, 5);
     func_80066DC4(D_800D84E0, 0, 0x2A, 0x22);
-    file = ReadMainFS(D_800C56B0[GwQuest.unk_00]);
+    file = ReadMainFS(D_800C56B0[GwQuest.charNo]);
     D_800D84E2 = func_800678A4(file);
     FreeMainFS(file);
     func_80067208(D_800D84E0, 0, D_800D84E2, 0);

@@ -237,8 +237,8 @@ void func_80056B78(void) {
             temp_v0->bowser_count = 0;
         }
         
-        for (i = 0; i < ARRAY_COUNT(GwCommon.boardRam); i++) {
-            GwCommon.boardRam[i] = 0;
+        for (i = 0; i < ARRAY_COUNT(GwCommon.boardWork); i++) {
+            GwCommon.boardWork[i] = 0;
         }
 
         ClearBoardFeatureFlag(0x46);

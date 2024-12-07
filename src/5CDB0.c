@@ -68,7 +68,7 @@ INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005CE48);
 INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005CE8C);
 
 void func_8005CEDC(s32 flag) {
-    GwQuest.unk_04[flag / 8] &= ~(1 << flag % 8);
+    GwQuest.mgFlag[flag / 8] &= ~(1 << flag % 8);
 }
 
 INCLUDE_ASM("asm/nonmatchings/5CDB0", omInitObjMan);

@@ -11,13 +11,13 @@ void func_800F6F68_PlatformPeril(void) {
     func_80017660(temp_s0, 0.0f, 0.0f, 320.0f, 240.0f);
     func_800176C4(temp_s0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     func_8001D494(0, 30.0f, 80.0f, 8000.0f);
-    D_800F6524.x = D_800FDD74_PlatformPeril.unk4;
-    D_800F6524.y = D_800FDD74_PlatformPeril.unk8;
-    D_800F6524.z = D_800FDD74_PlatformPeril.unkC;
-    CRot.y = D_800FDD74_PlatformPeril.unk10;
-    CRot.x = D_800FDD74_PlatformPeril.unk14;
+    Center.x = D_800FDD74_PlatformPeril.unk4;
+    Center.y = D_800FDD74_PlatformPeril.unk8;
+    Center.z = D_800FDD74_PlatformPeril.unkC;
+    CRot.x = D_800FDD74_PlatformPeril.unk10;
+    CRot.y = D_800FDD74_PlatformPeril.unk14;
     CRot.z = D_800FDD74_PlatformPeril.unk18;
-    D_800EE98C = D_800FDD74_PlatformPeril.unk_00.float32;
+    CZoom = D_800FDD74_PlatformPeril.unk_00.float32;
 }
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_18_PlatformPeril/16C6A0", func_800F7070_PlatformPeril);

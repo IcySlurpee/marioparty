@@ -59,11 +59,11 @@ void func_800F6610_MinigameInstructions(void) {
     obj = omAddObj(0x7FDA, 0U, 0U, -1, func_800F92D4_MinigameInstructions);
     omSetStatBit(obj, 0xA0);
     omAddObj(0x2710, 0U, 0U, -1, &func_800F9440_MinigameInstructions);
-    CRot.y = 0.0f;
     CRot.x = 0.0f;
+    CRot.y = 0.0f;
     CRot.z = 0.0f;
-    D_800EE98C = 2000.0f;
-    D_800F6524.x = D_800F6524.y = D_800F6524.z = 0.0f;
+    CZoom = 2000.0f;
+    Center.x = Center.y = Center.z = 0.0f;
     func_8001D494(0, 10.0f, 80.0f, 8000.0f);
     func_800F92D4_MinigameInstructions(obj);
     func_80023448(3);

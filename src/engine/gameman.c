@@ -36,15 +36,15 @@ extern Addr D_1CECC60;
 extern Addr D_1CED490;
 extern s16 D_800C599E;
 extern s16 D_800C59A0;
-extern f32 D_800ED6C0[];
+extern f32 CZoomM[4];
 extern u16 D_800ED726;
 extern Process* D_800F2BD0;
 extern Process* D_800F3700;
 extern u8 D_800F3705;
 extern u16 D_800F3F30;
-extern Vec3f D_800F52F8[];
+extern Vec3f CenterM[4];
 extern u16 D_800F64EC;
-extern Vec3f D_800F6550[];
+extern Vec3f CRotM[6];
 extern Addr D_FCB860;
 
 void func_8001A0F0(void) {
@@ -53,17 +53,17 @@ void func_8001A0F0(void) {
     s32 i;
     
     HuPrcVSleep();
-    CRot.y = 325.0f;
-    CRot.x = 0.0f;
+    CRot.x = 325.0f;
+    CRot.y = 0.0f;
     CRot.z = 0.0f;
-    D_800EE98C = 2250.0f;
-    D_800F6524.x = D_800F6524.y = D_800F6524.z = CRot.x;
+    CZoom = 2250.0f;
+    Center.x = Center.y = Center.z = 0.0f;
     
     for (i = 0; i < 4; i++) {
-        D_800F6550[i].x = 325.0f;
-        D_800F6550[i].y = D_800F6550[i].z = 0.0f;
-        D_800ED6C0[i] = 2250.0f;
-        D_800F52F8[i].x = D_800F52F8[i].y = D_800F52F8[i].z = 0.0f;
+        CRotM[i].x = 325.0f;
+        CRotM[i].y = CRotM[i].z = 0.0f;
+        CZoomM[i] = 2250.0f;
+        CenterM[i].x = CenterM[i].y = CenterM[i].z = 0.0f;
     }
     
     D_800F3705 = 3;

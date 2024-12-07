@@ -481,6 +481,11 @@ rnd_seed = 0x800C2FF4;
 GwSystem = 0x800ED5C0; //size:0x26
 GwQuest = 0x800F37B8; //size:0xF
 CRot = 0x800F33EC; //size:0xC
+CZoom = 0x800EE98C; //size:0x4
+Center = 0x800F6524; //size:0xC
+CRotM = 0x800F6550; //size:0x48
+CZoomM = 0x800ED6C0; //size:0x18
+CenterM = 0x800F52F8; //size:0x48
 
 D_80103C18 = 0x80103C18; //rom:0x10CBA8 type:f64 force_migration:True
 D_800FB920 = 0x800FB920; //rom:0x11C550 type:f64 force_migration:True

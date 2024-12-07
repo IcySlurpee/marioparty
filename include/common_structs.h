@@ -352,17 +352,17 @@ typedef struct unk_800ECDE0 {
 /* 0x22 */ s16 pad;
 } unk_800ECDE0;
 
-typedef struct viewAngle {
-/* 0x00 */ f32 y;
-/* 0x04 */ f32 x;
-/* 0x08 */ f32 z;
-} viewAngle; //sizeof 0xC
+// typedef struct viewAngle {
+// /* 0x00 */ f32 y;
+// /* 0x04 */ f32 x;
+// /* 0x08 */ f32 z;
+// } viewAngle; //sizeof 0xC
 
-typedef struct cameraPosition {
-/* 0x00 */ f32 x;
-/* 0x04 */ f32 y;
-/* 0x08 */ f32 z;
-} cameraPosition;
+// typedef struct cameraPosition {
+// /* 0x00 */ f32 x;
+// /* 0x04 */ f32 y;
+// /* 0x08 */ f32 z;
+// } cameraPosition;
 
 typedef struct HeapNode {
     s32 size;
@@ -395,13 +395,15 @@ typedef struct GameStatus {
 } GameStatus; //sizeof 0x26
 
 typedef struct GwQuest_s {
-    /* 0x00 */ s8 unk_00;
-    /* 0x01 */ char unk_01[2];
-    /* 0x03 */ s8 lives; //D_800F37BB
-    /* 0x04 */ s8 unk_04[8]; //D_800F37BC
-    /* 0x0C */ s8 coins; //D_800F37C4
-    /* 0x0D */ char unk_0D[2];
-} GWQUEST; //sizeof 0xF
+/* 0x00 */ s8 charNo;
+/* 0x01 */ s8 charNoTeam;
+/* 0x02 */ s8 mapNo;
+/* 0x03 */ s8 lifeNum;
+/* 0x04 */ u8 mgFlag[8];
+/* 0x0C */ s8 coinNum;
+/* 0x0D */ u8 masuPathNo;
+/* 0x0E */ u8 masuNo;
+} GWQUEST;
 
 typedef struct mpSource_object_indirect2 {
     s16 unk0;
@@ -895,20 +897,20 @@ typedef struct omOvlHisData { //Object Manager History Data
 /* 0x06 */ u16 stat;
 } omOvlHisData; //sizeof 0x08
 
-typedef struct BoardData {
+typedef struct GwCommon_s {
 /* 0x00 */ u8 unk0;
 /* 0x01 */ char unk_01[1];
-/* 0x02 */ s16 unk_02[8];
-/* 0x12 */ u8 unk_12[7];
-/* 0x19 */ u8 unk_19[7];
-/* 0x20 */ u32 unk_20[8];
-/* 0x40 */ u32 unk_40;
-/* 0x44 */ s16 unk_44;
+/* 0x02 */ s16 mgRecord[8];
+/* 0x12 */ u8 mgUnlock[7];
+/* 0x19 */ u8 mgBuy[7];
+/* 0x20 */ u16 boardRecord[8][2];
+/* 0x40 */ u32 coinNum;
+/* 0x44 */ s16 starNum;
 /* 0x46 */ s8 unk_46;
-/* 0x47 */ s8 unk_47;
-/* 0x48 */ u8 unk_48[12];
-/* 0x54 */ s16 boardRam[32];
-} BoardData; //sizeof 0x94
+/* 0x47 */ s8 boardItem;
+/* 0x48 */ u8 flag[12];
+/* 0x54 */ s16 boardWork[32];
+} GWCOMMON; //sizeof 0x94
 
 typedef struct unk2C0C0Struct10 {
     /* 0x00 */ Hilite unk_00;

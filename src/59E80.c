@@ -24,7 +24,7 @@ extern s16 D_800ED102[];
 extern u8 D_800ED119[];
 
 void func_8005B75C(s32, StrData*);
-u32* func_80059520(s16);
+u16* func_80059520(s16);
 void func_80059354(s16 param_1, s16 *param_2, s16 *param_3);
 void func_80059768(s16 index, s16 param_2);
 void func_8005963C(s16 index, u16 param_2);
@@ -35,15 +35,15 @@ void func_80059280(void) {
     s32 var_s0;
     s32 var_v0;
     s32 i;
-    BoardData* boardData;
+    GWCOMMON* common;
 
-    boardData = &GwCommon;
-    bzero(boardData, sizeof(BoardData));
-    boardData->unk0 = 0x12;
-    boardData->unk_40 = 0;
-    boardData->unk_44 = 0;
-    boardData->unk_46 = -1;
-    boardData->unk_47 = 0;
+    common = &GwCommon;
+    bzero(common, sizeof(GWCOMMON));
+    common->unk0 = 0x12;
+    common->coinNum = 0;
+    common->starNum = 0;
+    common->unk_46 = -1;
+    common->boardItem = 0;
     SetBoardFeatureFlag(0x10);
     for (i = 0; i < 8; i++) {
         func_80059768(i, 0);
@@ -75,7 +75,7 @@ void func_800593AC(s16 arg0) {
     s16 sp12;
 
     func_80059354(arg0, &sp10, &sp12);
-    GwCommon.unk_12[sp10] = GwCommon.unk_12[sp10] | (1 << sp12);
+    GwCommon.mgUnlock[sp10] = GwCommon.mgUnlock[sp10] | (1 << sp12);
 }
 
 s32 func_80059400(s16 arg0) {
@@ -83,7 +83,7 @@ s32 func_80059400(s16 arg0) {
     s16 var1;
 
     func_80059354(arg0, &var0, &var1);
-    return (GwCommon.unk_12[var0] & (1 << var1));
+    return (GwCommon.mgUnlock[var0] & (1 << var1));
 }
 
 void func_80059448(s16 arg0) {
@@ -91,7 +91,7 @@ void func_80059448(s16 arg0) {
     s16 var1;
 
     func_80059354(arg0, &var0, &var1);
-    GwCommon.unk_19[var0] = (GwCommon.unk_19[var0] | (1 << var1));
+    GwCommon.mgBuy[var0] = (GwCommon.mgBuy[var0] | (1 << var1));
 }
 
 s16 func_8005949C(s16 arg0) {
@@ -99,26 +99,26 @@ s16 func_8005949C(s16 arg0) {
     s16 var1;
 
     func_80059354(arg0, &var0, &var1);
-    return GwCommon.unk_19[var0] & (1 << var1);
+    return GwCommon.mgBuy[var0] & (1 << var1);
 }
 
 void func_800594E4(s16 index, u16 value) {
-    GwCommon.unk_02[index] = value;
+    GwCommon.mgRecord[index] = value;
 }
 
 u16 func_800594FC(s16 index) {
-    return GwCommon.unk_02[index];
+    return GwCommon.mgRecord[index];
 }
 
 void func_80059514(u16 value) {
     GwSystem.unk_02 = value;
 }
 
-u32* func_80059520(s16 index) {
+u16* func_80059520(s16 index) {
     if (index < 0) {
         index = GwSystem.unk_02;
     }
-    return &GwCommon.unk_20[index];
+    return &GwCommon.boardRecord[index][0];
 }
 
 u16 func_80059550(s16 index) {
@@ -205,15 +205,15 @@ void func_80059768(s16 index, s16 param_2) {
 }
 
 s32 IsFlagSet(s32 flag) {
-    return GwCommon.unk_48[flag / 8] & (1 << flag % 8);
+    return GwCommon.flag[flag / 8] & (1 << flag % 8);
 }
 
 void SetBoardFeatureFlag(s32 flag) {
-    GwCommon.unk_48[flag / 8] |= (1 << flag % 8);
+    GwCommon.flag[flag / 8] |= (1 << flag % 8);
 }
 
 void ClearBoardFeatureFlag(s32 flag) {
-    GwCommon.unk_48[flag / 8] &= ~(1 << flag % 8);
+    GwCommon.flag[flag / 8] &= ~(1 << flag % 8);
 }
 
 void* HuMemHeapInit(void* ptr, u32 size) {
@@ -376,7 +376,7 @@ s32 HuMemMemoryAllocSizeGet(s32 arg0) {
 
 s32 func_80059B10(s32 arg0) {
     if (arg0 < 0) {
-        if (arg0 + 3 == (s8)GwCommon.unk_20[9]) { //?
+        if (arg0 + 3 == GwCommon.boardItem) {
             return 1;
         } else {
             return 0;
@@ -450,7 +450,7 @@ void func_8005B024(void) {
 void func_8005B060(void) {
     func_80059280();
     func_8001A498();
-    GwCommon.unk_40 = 0x12C;
+    GwCommon.coinNum = 0x12C;
     func_8005B280();
     func_8005B3B0();
     if (D_800D8720 != 0) {

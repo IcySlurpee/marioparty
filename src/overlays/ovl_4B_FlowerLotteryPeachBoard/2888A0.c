@@ -1,13 +1,13 @@
 #include "common.h"
 #include "2888A0.h"
 
-//is GwCommon.boardRam[18] the start of a u16 array for the data?
+//is GwCommon.boardWork[18] the start of a u16 array for the data?
 void func_800F65E0_FlowerLotteryPeachBoard(void) {
     D_800F78E0_FlowerLotteryPeachBoard = GwSystem.curPlayerIndex;
-    if ((u32) ((u16)GwCommon.boardRam[18] - 1) >= 3U) {
-        GwCommon.boardRam[18] = 4U;
-        GwCommon.boardRam[19] = rand8() & 3 & 0xFF;
-        GwCommon.boardRam[20] = GwCommon.boardRam[21] = GwCommon.boardRam[22] = GwCommon.boardRam[23] = -1;
+    if ((u32) ((u16)GwCommon.boardWork[18] - 1) >= 3U) {
+        GwCommon.boardWork[18] = 4U;
+        GwCommon.boardWork[19] = rand8() & 3 & 0xFF;
+        GwCommon.boardWork[20] = GwCommon.boardWork[21] = GwCommon.boardWork[22] = GwCommon.boardWork[23] = -1;
     }
     omInitObjMan(50, 10);
     func_800F76EC_FlowerLotteryPeachBoard();

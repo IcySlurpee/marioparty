@@ -161,7 +161,7 @@ void func_800F6A38_name_75(void) {
 }
 
 void func_800F6AB0_name_75(void) {
-    GwCommon.boardRam[0] = 6;
+    GwCommon.boardWork[0] = 6;
     func_8005B860(-2);
 }
 

@@ -145,10 +145,10 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_1A_MushroomMixup/1784E0", func_800F8A
 
 void func_800F9364_MushroomMixup(omObjData* arg0) {
     if (D_800FC994_MushroomMixup != 0) {
-        D_800F6524.x += D_800FC89C_MushroomMixup;
-        D_800F6524.y += D_800FC99C_MushroomMixup;
-        D_800F6524.z += D_800FC998_MushroomMixup;
-        D_800EE98C += D_800FC988_MushroomMixup;
+        Center.x += D_800FC89C_MushroomMixup;
+        Center.y += D_800FC99C_MushroomMixup;
+        Center.z += D_800FC998_MushroomMixup;
+        CZoom += D_800FC988_MushroomMixup;
         D_800FC994_MushroomMixup -= 1;
     }
     else {
@@ -187,31 +187,31 @@ void func_800F9CF0_MushroomMixup(omObjData* arg0) {
             arg0->work[0] = 1;
             arg0->work[1] = 0;
         }
-        D_800EE98C = 2766.0f;
-        CRot.y = 309.0f;
-        CRot.x = 0.0f;
+        CZoom = 2766.0f;
+        CRot.x = 309.0f;
+        CRot.y = 0.0f;
         CRot.z = 0.0f;
-        D_800F6524.x = 4.0f;
-        D_800F6524.y = 188.0f;
-        D_800F6524.z = -219.0f;
+        Center.x = 4.0f;
+        Center.y = 188.0f;
+        Center.z = -219.0f;
         return;
     case 1:
         temp_v0_2 = arg0->work[1];
         arg0->work[1] = temp_v0_2 + 1;
         if (temp_v0_2 < 0x1E) {
-            D_800EE98C += 36.666668f;
-            D_800F6524.x += 2.0f;
+            CZoom += 36.666668f;
+            Center.x += 2.0f;
             return;
         }
         arg0->work[0] = 2;
     case 2:
-        D_800EE98C = 3866.0f;
-        CRot.y = 309.0f;
-        CRot.x = 0.0f;
+        CZoom = 3866.0f;
+        CRot.x = 309.0f;
+        CRot.y = 0.0f;
         CRot.z = 0.0f;
-        D_800F6524.x = 64.0f;
-        D_800F6524.y = 188.0f;
-        D_800F6524.z = -214.0f;
+        Center.x = 64.0f;
+        Center.y = 188.0f;
+        Center.z = -214.0f;
         arg0->func_ptr = NULL;
         return;
     }

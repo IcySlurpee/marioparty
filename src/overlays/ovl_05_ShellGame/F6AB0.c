@@ -121,13 +121,13 @@ void func_800F6FFC_ShellGame(omObjData* arg0) {
 }
 
 void func_800F7034_ShellGame(void) {
-    CRot.y = -34.26f;
-    CRot.x = 0.0f;
+    CRot.x = -34.26f;
+    CRot.y = 0.0f;
     CRot.z = 0.0f;
-    D_800F6524.x = -5.5f;
-    D_800F6524.y = -81.0f;
-    D_800F6524.z = 0.0f;
-    D_800EE98C = 1328.0f;
+    Center.x = -5.5f;
+    Center.y = -81.0f;
+    Center.z = 0.0f;
+    CZoom = 1328.0f;
 }
 
 void func_800F7098_ShellGame(f32 arg0) {
@@ -135,18 +135,18 @@ void func_800F7098_ShellGame(f32 arg0) {
     
     if (arg0 == 0.0) {
         temp_a0 = D_800F3FB0[0];
-        D_800FF0A0_ShellGame.x = D_800F6524.x;
-        D_800FF0A0_ShellGame.y = D_800F6524.y;
-        D_800FF0A0_ShellGame.z = D_800F6524.z;
+        D_800FF0A0_ShellGame.x = Center.x;
+        D_800FF0A0_ShellGame.y = Center.y;
+        D_800FF0A0_ShellGame.z = Center.z;
         D_800FF0AC_ovl05.x = temp_a0->trans.x;
         D_800FF0AC_ovl05.y = temp_a0->trans.y;
         D_800FF0AC_ovl05.z = temp_a0->trans.z;
         return;
     }
-    D_800F6524.x = D_800FF0A0_ShellGame.x + (arg0 * (D_800FF0AC_ovl05.x - D_800FF0A0_ShellGame.x));
-    D_800F6524.y = D_800FF0A0_ShellGame.y + (arg0 * (D_800FF0AC_ovl05.y - D_800FF0A0_ShellGame.y));
-    D_800F6524.z = D_800FF0A0_ShellGame.z + (arg0 * (D_800FF0AC_ovl05.z - D_800FF0A0_ShellGame.z));
-    D_800EE98C = 1328.0 - (arg0 * 664.0);
+    Center.x = D_800FF0A0_ShellGame.x + (arg0 * (D_800FF0AC_ovl05.x - D_800FF0A0_ShellGame.x));
+    Center.y = D_800FF0A0_ShellGame.y + (arg0 * (D_800FF0AC_ovl05.y - D_800FF0A0_ShellGame.y));
+    Center.z = D_800FF0A0_ShellGame.z + (arg0 * (D_800FF0AC_ovl05.z - D_800FF0A0_ShellGame.z));
+    CZoom = 1328.0 - (arg0 * 664.0);
 }
 
 u16 func_800F719C_ShellGame(u16 arg0) { //shared overlay function

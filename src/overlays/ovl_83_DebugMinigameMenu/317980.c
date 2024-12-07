@@ -5,13 +5,13 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_83_DebugMinigameMenu/317980", func_80
 
 void func_800F6B14_DebugMinigameMenu(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
     func_800178A0(1);
-    D_800EE98C = arg0;
-    CRot.y = arg1;
-    CRot.x = arg2;
+    CZoom = arg0;
+    CRot.x = arg1;
+    CRot.y = arg2;
     CRot.z = arg3;
-    D_800F6524.x = arg4;
-    D_800F6524.y = arg5;
-    D_800F6524.z = arg6;
+    Center.x = arg4;
+    Center.y = arg5;
+    Center.z = arg6;
 }
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_83_DebugMinigameMenu/317980", func_800F6BAC_DebugMinigameMenu);

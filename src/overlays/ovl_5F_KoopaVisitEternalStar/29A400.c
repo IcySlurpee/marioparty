@@ -47,8 +47,8 @@ void func_8004DBD4(s32, u8);
 void func_800F65E0_KoopaVisitEternalStar(void) {
     D_800F6D10_KoopaVisitEternalStar = GwSystem.unk_02;
     D_800F6D11_KoopaVisitEternalStar = GwSystem.curPlayerIndex;
-    if (GwCommon.boardRam[31] % 10 == 0) { //GwCommon.boardRam[31] is amountOfTimesStartPassed
-        D_800F6D12_KoopaVisitEternalStar = GwCommon.boardRam[31] / 10;
+    if (GwCommon.boardWork[31] % 10 == 0) { //GwCommon.boardWork[31] is amountOfTimesStartPassed
+        D_800F6D12_KoopaVisitEternalStar = GwCommon.boardWork[31] / 10;
         if (D_800F6D12_KoopaVisitEternalStar >= 5) {
             D_800F6D12_KoopaVisitEternalStar = 4;
         }
@@ -76,9 +76,9 @@ void func_800F673C_KoopaVisitEternalStar(void) {
     
     func_800421E0();
     HuPrcSleep(0x1A);
-    if (GwCommon.boardRam[31] % 10 == 0) { //GwCommon.boardRam[31] is amountOfTimesStartPassed
+    if (GwCommon.boardWork[31] % 10 == 0) { //GwCommon.boardWork[31] is amountOfTimesStartPassed
         temp_s0 = CreateTextWindow(0x32, 0x32, 0xF, 4);
-        sprintf(buffer1, "%d", GwCommon.boardRam[31]);
+        sprintf(buffer1, "%d", GwCommon.boardWork[31]);
         sprintf(buffer2, "%d", D_800F6C60_KoopaVisitEternalStar[D_800F6D12_KoopaVisitEternalStar]);
         func_8006DA5C(temp_s0, buffer1, 0);
         func_8006DA5C(temp_s0, buffer2, 1);

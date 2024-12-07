@@ -32,7 +32,7 @@ void func_800F95D4_TugOWar(omObjData* arg0) {
         break;
     }
     if (D_800ED430 == 1) {
-        D_800F6524.x = arg0->trans.x;
+        Center.x = arg0->trans.x;
     }
 }
 

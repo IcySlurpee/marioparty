@@ -8,11 +8,11 @@ void func_800F65E0_PedalPower(void) {
     func_80060088();
     omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 160);
     func_8000942C();
-    D_800F6524.x = 50.0f;
-    D_800F6524.y = 200.0f;
-    D_800F6524.z = -100.0f;
-    CRot.y = CRot.x = CRot.z = 0.0f;
-    D_800EE98C = 1750.0f;
+    Center.x = 50.0f;
+    Center.y = 200.0f;
+    Center.z = -100.0f;
+    CRot.x = CRot.y = CRot.z = 0.0f;
+    CZoom = 1750.0f;
     func_800F67AC_PedalPower();
     func_800F6870_PedalPower();
     D_800FA72D_PedalPower = 0;

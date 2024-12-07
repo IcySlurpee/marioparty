@@ -340,9 +340,9 @@ void func_800F6F44_DKsJungleAdventure(void) { //ov054_Entrypoint1
 
     func_800F663C_DKsJungleAdventure();
 
-    GwCommon.boardRam[0] = 0;
-    GwCommon.boardRam[1] = 0;
-    GwCommon.boardRam[2] = 0;
+    GwCommon.boardWork[0] = 0;
+    GwCommon.boardWork[1] = 0;
+    GwCommon.boardWork[2] = 0;
 
     omOvlReturnEx(1);
 }

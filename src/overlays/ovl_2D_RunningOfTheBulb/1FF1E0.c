@@ -126,9 +126,9 @@ void func_800F6DF4_RunningOfTheBulb(omObjData* arg0) {
     f32 temp_f2;
 
     if ((D_800FE464_RunningOfTheBulb != 0) && (arg0->work[0] == 1)) {
-        temp_f2 = D_800F652C.x;
+        temp_f2 = Center.z;
         if ((temp_f2 > -2150.0f)) {
-            D_800F652C.x = temp_f2 + -2.186f;
+            Center.z = temp_f2 + -2.186f;
         } else {
             arg0->work[0] = 0;
             func_8005DC18(D_800FE478_RunningOfTheBulb, 1);
@@ -139,13 +139,13 @@ void func_800F6DF4_RunningOfTheBulb(omObjData* arg0) {
 void func_800F6E80_RunningOfTheBulb(omObjData* arg0) {
     f32 temp_f2;
 
-    temp_f2 = D_800F652C.x;
+    temp_f2 = Center.z;
     if ((temp_f2 > -2150.0f)) {
-        D_800F652C.x = temp_f2 + -13.116001f;
+        Center.z = temp_f2 + -13.116001f;
     } else {
         arg0->work[0] = 0;
         func_8005DC18(D_800FE478_RunningOfTheBulb, 1);
-        D_800F652C.x = -2150.0f;
+        Center.z = -2150.0f;
     }
 }
 
@@ -159,14 +159,14 @@ void func_800F6F04_RunningOfTheBulb(omObjData* arg0) {
     temp_s0->unk_04 = 1;
     temp_s0->unk_05 = 2;
     D_800F2AF8[D_800ED440++] = arg0;
-    omSetTra(arg0, 0.0f, 0.0f, D_800F652C.x + -935.0f);
+    omSetTra(arg0, 0.0f, 0.0f, Center.z + -935.0f);
     func_800258EC(arg0->model[0], 4, 4);
     func_80009090(arg0);
     arg0->func_ptr = &func_800F6FF4_RunningOfTheBulb;
 }
 
 void func_800F6FF4_RunningOfTheBulb(omObjData* arg0) {
-    omSetTra(arg0, 0.0f, 0.0f, D_800F652C.x + -935.0f);
+    omSetTra(arg0, 0.0f, 0.0f, Center.z + -935.0f);
 }
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_2D_RunningOfTheBulb/1FF1E0", func_800F7034_RunningOfTheBulb);

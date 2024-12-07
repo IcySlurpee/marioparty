@@ -95,7 +95,7 @@ void func_800F6918_LoadCannonWarioBoard(void) {
     s32 sp18[2] = { 0xE, 0xF };
 
     func_8003DAA8();
-    D_800F6BE4_LoadCannonWarioBoard = CreateObject(sp18[GwCommon.boardRam[0]], NULL);
+    D_800F6BE4_LoadCannonWarioBoard = CreateObject(sp18[GwCommon.boardWork[0]], NULL);
     D_800F6BE4_LoadCannonWarioBoard->coords.x = D_800F6B20_LoadCannonWarioBoard.x;
     D_800F6BE4_LoadCannonWarioBoard->coords.y = D_800F6B20_LoadCannonWarioBoard.y;
     D_800F6BE4_LoadCannonWarioBoard->coords.z = D_800F6B20_LoadCannonWarioBoard.z;

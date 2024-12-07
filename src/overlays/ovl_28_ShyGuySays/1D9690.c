@@ -137,13 +137,13 @@ void func_800F6F98_ShyGuySays(omObjData* arg0) {
 }
 
 void func_800F6FC0_ShyGuySays(void) {
-    CRot.y = -14.5f;
-    CRot.x = 0.0f;
+    CRot.x = -14.5f;
+    CRot.y = 0.0f;
     CRot.z = 0.0f;
-    D_800F6524.x = 0.0f;
-    D_800F6524.y = 191.2f;
-    D_800F6524.z = 0.2f;
-    D_800EE98C = 1069.0f;
+    Center.x = 0.0f;
+    Center.y = 191.2f;
+    Center.z = 0.2f;
+    CZoom = 1069.0f;
 }
 
 void func_800F702C_ShyGuySays(omObjData* arg0, f32 arg1) {
@@ -153,16 +153,16 @@ void func_800F702C_ShyGuySays(omObjData* arg0, f32 arg1) {
         D_800FD980_ShyGuySays.x = arg0->trans.x;
         D_800FD980_ShyGuySays.y = 100.0f;
         D_800FD980_ShyGuySays.z = arg0->trans.z;
-        D_800FD98C_ShyGuySays.x = D_800F6524.x;
-        D_800FD98C_ShyGuySays.y = D_800F6524.y;
-        D_800FD98C_ShyGuySays.z = D_800F6524.z;
+        D_800FD98C_ShyGuySays.x = Center.x;
+        D_800FD98C_ShyGuySays.y = Center.y;
+        D_800FD98C_ShyGuySays.z = Center.z;
         return;
     }
 
-    D_800F6524.x = D_800FD98C_ShyGuySays.x + (arg1 * (D_800FD980_ShyGuySays.x - D_800FD98C_ShyGuySays.x));
-    D_800F6524.y = D_800FD98C_ShyGuySays.y + (arg1 * (D_800FD980_ShyGuySays.y - D_800FD98C_ShyGuySays.y));
-    D_800F6524.z = D_800FD98C_ShyGuySays.z + (arg1 * (D_800FD980_ShyGuySays.z - D_800FD98C_ShyGuySays.z));
-    D_800EE98C = (1069.0 - (arg1 * 400.0));
+    Center.x = D_800FD98C_ShyGuySays.x + (arg1 * (D_800FD980_ShyGuySays.x - D_800FD98C_ShyGuySays.x));
+    Center.y = D_800FD98C_ShyGuySays.y + (arg1 * (D_800FD980_ShyGuySays.y - D_800FD98C_ShyGuySays.y));
+    Center.z = D_800FD98C_ShyGuySays.z + (arg1 * (D_800FD980_ShyGuySays.z - D_800FD98C_ShyGuySays.z));
+    CZoom = (1069.0 - (arg1 * 400.0));
     func_80066DC4(temp_s0, 0, (D_800FDC64_ShyGuySays->unk_00[2] * 320.0f), (60.0 - (arg1 * 4.0) + 2.0 * func_800AEAC0(arg1 * 180.0)));
 }
 

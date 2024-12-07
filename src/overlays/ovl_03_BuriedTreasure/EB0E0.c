@@ -2,13 +2,13 @@
 #include "BuriedTreasure.h"
 
 void func_800F8760_BuriedTreasure(void) {
-    D_800EE98C = 2000.0f;
-    CRot.y = 0.0f;
+    CZoom = 2000.0f;
     CRot.x = 0.0f;
+    CRot.y = 0.0f;
     CRot.z = 0.0f;
-    D_800F6524.x = 0.0f;
-    D_800F6524.y = 0.0f;
-    D_800F6524.z = -100.0f;
+    Center.x = 0.0f;
+    Center.y = 0.0f;
+    Center.z = -100.0f;
 }
 
 unkStructSize0x5C* func_800F87A8_BuriedTreasure(omObjData* arg0) {

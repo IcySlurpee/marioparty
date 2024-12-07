@@ -84,13 +84,13 @@ void func_800F6D08_CoinBlockBlitz(void) {
     }
     
     D_800FAA78_CoinBlockBlitz = 0;
-    D_800EE98C = 3510.0f;
-    CRot.y = -40.5f;
-    CRot.x = 25.25f;
+    CZoom = 3510.0f;
+    CRot.x = -40.5f;
+    CRot.y = 25.25f;
     CRot.z = 0.0f;
-    D_800F6524.x = -100.0f;
-    D_800F6524.y = -100.0f;
-    D_800F6524.z = -185.0f;
+    Center.x = -100.0f;
+    Center.y = -100.0f;
+    Center.z = -185.0f;
 }
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_14_CoinBlockBlitz/14E940", func_800F6E1C_CoinBlockBlitz);

@@ -11,7 +11,6 @@ void func_800F7194_PipeMaze(void);
 void func_800F7E78_PipeMaze(void);
 
 extern s8 D_800F64F2;
-extern f32 D_800F6528[2]; //camera
 extern s32 D_800F990C_PipeMaze;
 extern s32 D_800F9908_PipeMaze;
 extern s32 D_800F9910_PipeMaze;

@@ -35,7 +35,7 @@ void func_800F67B0_MushroomShop(void) {
     s32 var_s1;
 
     var_s1 = 0x2710;
-    var_s0 = GwCommon.unk_40;
+    var_s0 = GwCommon.coinNum;
     
     for (i = 1; i < 6; i++) {
         func_80067208(D_800F8D8C_MushroomShop[D_800F8DE0_MushroomShop], i, D_800F3B74, var_s0 / var_s1);
@@ -70,12 +70,12 @@ void func_800F6C00_MushroomShop(omObjData* arg0) {
 }
 
 void func_800F6C58_MushroomShop(void) {
-    CRot.y = 0.0f;
-    CRot.x = 180.0f;
+    CRot.x = 0.0f;
+    CRot.y = 180.0f;
     CRot.z = 0.0f;
-    D_800F6524.x = 0.0f;
-    D_800F6524.y = 130.0f;
-    D_800F6524.z = 800.0f;
+    Center.x = 0.0f;
+    Center.y = 130.0f;
+    Center.z = 800.0f;
     func_800F6778_MushroomShop(0);
     func_8002890C(0xFF, 0xFF, 0xFF);
     D_800F8DE8_MushroomShop = omAddObj(1, 1, 0, -1, &func_800F6C00_MushroomShop);

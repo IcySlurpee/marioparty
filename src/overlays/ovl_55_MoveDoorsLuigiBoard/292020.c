@@ -72,11 +72,11 @@ void func_800F7198_MoveDoorsLuigiBoard(void) {
         ShowTextWindow(temp_v0);
         func_8004DBD4(temp_v0, D_800F7820_MoveDoorsLuigiBoard);
         HideTextWindow(temp_v0);
-        GwCommon.boardRam[1] = 0;
+        GwCommon.boardWork[1] = 0;
     } else {
         func_80055960(D_800F7820_MoveDoorsLuigiBoard, -0x14);
         HuPrcSleep(30);
-        GwCommon.boardRam[1] = 1;
+        GwCommon.boardWork[1] = 1;
         temp_v0 = CreateTextWindow(0x50, 0x3C, 0xD, 3);
         LoadStringIntoWindow(temp_v0, (void* )0x1D6, -1, -1);
         func_8006E070(temp_v0, 0);

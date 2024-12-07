@@ -38,13 +38,13 @@ void func_800F6A38_PipeMaze(omObjData* arg0) {
     arg0->trans.x = arg0->trans.y = arg0->trans.z = 0;
     arg0->model[0] = func_800174C0(0x1B0000, 0x299);
     func_80025798(arg0->model[0], arg0->trans.x, arg0->trans.y, arg0->trans.z);
-    D_800F6524.x = 0.0f;
-    D_800F6524.y = 200.0f;
-    D_800F6524.z = -200.0f;
-    CRot.y = 0.0f;
+    Center.x = 0.0f;
+    Center.y = 200.0f;
+    Center.z = -200.0f;
     CRot.x = 0.0f;
+    CRot.y = 0.0f;
     CRot.z = 0.0f;
-    D_800EE98C = 2500.0f;
+    CZoom = 2500.0f;
     func_800F673C_PipeMaze();
 }
 
@@ -136,10 +136,10 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_09_PipeMaze/113DC0", func_800F8414_Pi
 
 void func_800F8F24_PipeMaze(void) {
     if (D_800F9A34_PipeMaze == 1) {
-        if ((D_800F6524.y < 6800.0f) && (D_800F990C_PipeMaze == 0)) {
-            D_800F6524.y += 150.0f;
+        if ((Center.y < 6800.0f) && (D_800F990C_PipeMaze == 0)) {
+            Center.y += 150.0f;
             D_800F64F2 = 1;
-        } else if ((D_800F6524.y >= 6800.0f) && (D_800F990C_PipeMaze == 0)) {
+        } else if ((Center.y >= 6800.0f) && (D_800F990C_PipeMaze == 0)) {
             D_800F990C_PipeMaze = 1;
             D_800F64F2 = 0;
         }

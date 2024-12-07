@@ -214,13 +214,13 @@ f32 func_800F7B90_MemoryMatch(f32 arg0, f32 arg1) {
 }
 
 void func_800F7C08_MemoryMatch(void) {
-    CRot.y = -41.39f;
-    CRot.x = 0;
+    CRot.x = -41.39f;
+    CRot.y = 0.0f;
     CRot.z = 0;
-    D_800F6524.x = -5.0f;
-    D_800F6524.y = -30.0f;
-    D_800F6524.z = 0;
-    D_800EE98C = 1556.0f;
+    Center.x = -5.0f;
+    Center.y = -30.0f;
+    Center.z = 0;
+    CZoom = 1556.0f;
 }
 
 void func_800F7C70_MemoryMatch(f32 arg0) {
@@ -228,19 +228,19 @@ void func_800F7C70_MemoryMatch(f32 arg0) {
 
     if (arg0 == 0.0) {
         temp_a0 = D_800F3FB0[0];
-        D_800FDDC0_MemoryMatch.x = D_800F6524.x;
-        D_800FDDC0_MemoryMatch.y = D_800F6524.y;
-        D_800FDDC0_MemoryMatch.z = D_800F6524.z;
+        D_800FDDC0_MemoryMatch.x = Center.x;
+        D_800FDDC0_MemoryMatch.y = Center.y;
+        D_800FDDC0_MemoryMatch.z = Center.z;
         D_800FDDCC_MemoryMatch.x = temp_a0->trans.x;
         D_800FDDCC_MemoryMatch.y = temp_a0->trans.y;
         D_800FDDCC_MemoryMatch.z = temp_a0->trans.z;
         return;
     }
     
-    D_800F6524.x = D_800FDDC0_MemoryMatch.x + (arg0 * (D_800FDDCC_MemoryMatch.x - D_800FDDC0_MemoryMatch.x));
-    D_800F6524.y = D_800FDDC0_MemoryMatch.y + (arg0 * (D_800FDDCC_MemoryMatch.y - D_800FDDC0_MemoryMatch.y));
-    D_800F6524.z = D_800FDDC0_MemoryMatch.z + (arg0 * (D_800FDDCC_MemoryMatch.z - D_800FDDC0_MemoryMatch.z));
-    D_800EE98C = (1416.3999999999999 - (arg0 * 840.0));
+    Center.x = D_800FDDC0_MemoryMatch.x + (arg0 * (D_800FDDCC_MemoryMatch.x - D_800FDDC0_MemoryMatch.x));
+    Center.y = D_800FDDC0_MemoryMatch.y + (arg0 * (D_800FDDCC_MemoryMatch.y - D_800FDDC0_MemoryMatch.y));
+    Center.z = D_800FDDC0_MemoryMatch.z + (arg0 * (D_800FDDCC_MemoryMatch.z - D_800FDDC0_MemoryMatch.z));
+    CZoom = (1416.3999999999999 - (arg0 * 840.0));
 }
 
 void func_800F7D74_MemoryMatch(void) {
