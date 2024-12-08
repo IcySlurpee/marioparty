@@ -57,7 +57,7 @@ void func_800F65E0_TreasureDivers(void) {
     omInitObjMan(50, 0);
     func_80060088();
 
-    temp_v0 = omAddObj(32730, 0, 0, -1, func_8005EB1C);
+    temp_v0 = omAddObj(32730, 0, 0, -1, omOutView);
     omSetStatBit(temp_v0, 160);
 
     func_800178A0(1);
@@ -74,7 +74,7 @@ void func_800F65E0_TreasureDivers(void) {
     D_800FE6F8_TreasureDivers = 0;
     D_800FE6F6_TreasureDivers = 1;
     D_800FE6FA_TreasureDivers = 2700;
-    D_800FE6FC_TreasureDivers = IsFlagSet(0x2B);
+    D_800FE6FC_TreasureDivers = _CheckFlag(0x2B);
 
     for (i = 0; i < ARRAY_COUNT(D_800FED40_TreasureDivers); i++) {
         D_800FED40_TreasureDivers[i] = 0;
@@ -92,7 +92,7 @@ void func_800F65E0_TreasureDivers(void) {
     func_800FAA34_TreasureDivers(temp_v0_3);
     FreeMainFS(temp_v0_3);
     func_800FA440_TreasureDivers();
-    func_8005EB1C(temp_v0);
+    omOutView(temp_v0);
 
     temp_s0_2 = D_800C3110;
     D_800FF258_TreasureDivers = func_800AEAC0(temp_s0_2->unk_40 / 2.0) / func_800AEFD0(temp_s0_2->unk_40 / 2.0);

@@ -2,7 +2,7 @@
 #include "2B74A0.h"
 
 void func_800F65E0_UnknownBooStealScene(void) {
-    D_800F9600_UnknownBooStealScene = GwSystem.unk_02;
+    D_800F9600_UnknownBooStealScene = GwSystem.curBoardIndex;
     D_800F9601_UnknownBooStealScene = GwSystem.curPlayerIndex;
     
     if (GwSystem.currentTurn < 10) {

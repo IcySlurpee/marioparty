@@ -6,7 +6,7 @@ void func_800F65E0_PedalPower(void) {
     func_8001DE70(32);
     omInitObjMan(32, 0);
     func_80060088();
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 160);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 160);
     func_8000942C();
     Center.x = 50.0f;
     Center.y = 200.0f;

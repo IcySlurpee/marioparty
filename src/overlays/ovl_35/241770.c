@@ -3,7 +3,7 @@
 void func_800F66AC_name_35(void);
 
 void func_800F6610_name_35(void) {
-    if (IsFlagSet(0) != 0) {
+    if (_CheckFlag(0) != 0) {
         SetBoardFeatureFlag(0x41);
     } else {
         ClearBoardFeatureFlag(0x41);

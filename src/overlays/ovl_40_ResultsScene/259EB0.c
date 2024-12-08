@@ -182,7 +182,7 @@ void func_800FBF10_ResultsScene(void) {
     func_80017660(1, 0.0f, 0.0f, 320.0f, 240.0f);
     func_800176C4(1, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     LoadBackgroundData(FE2310_ROM_START);
-    LoadBackgroundIndex(D_800FC09C_ResultsScene[GwSystem.unk_02]);
+    LoadBackgroundIndex(D_800FC09C_ResultsScene[GwSystem.curBoardIndex]);
     func_8004B7F8(0x80);
 }
 

@@ -82,7 +82,7 @@ void func_80052C44(s32 index, s16 a, s16 b, s16 c, u16 d) {
 void func_80052CCC(s32 index, u8 b) {
     GW_PLAYER* player = GetPlayerStruct(index);
     player->cpu_difficulty_copy = b;
-    if (!IsFlagSet(44)) {
+    if (!_CheckFlag(44)) {
         player->cpu_difficulty = D_800C53E0[b];
     }
     else {

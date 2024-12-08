@@ -11,7 +11,7 @@ void func_800F65E0_MushroomBank(void) {
     func_8004F8DC();
     D_800F8B90_MushroomBank = func_8004F954(0x26, 0x20);
     
-    if (IsFlagSet(4) != 0) {
+    if (_CheckFlag(4) != 0) {
         D_800F89B8_MushroomBank = 1;
     }
     

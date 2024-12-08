@@ -30,11 +30,11 @@ s32 func_80013770(u16* arg0) {
 }
 
 s16 func_800138DC(s16 arg0, s32 arg1) {
-    Vec3s sp10;
+    unkMesg sp10;
     s16 sp20;
 
     sp20 = arg0;
-    func_800642FC(&sp10, (void*)func_80013770, (void*)&sp20, 1);
+    RequestSIFunction(&sp10, (void*)func_80013770, (void*)&sp20, 1);
     D_800D12CC = 0;
     if (arg1 & 1) {
         func_80014174();
@@ -71,7 +71,7 @@ s32 func_80013974(s32 arg0) {
 void func_80013A74(void) {
     osRecvMesg(&D_800D12D0, NULL, 1);
     if (D_800D12B0 < 8) {
-        func_800642FC((Vec3s*) &D_800D1230[D_800D12B4], func_80013974, 0, 0);
+        RequestSIFunction(&D_800D1230[D_800D12B4], (void*)&func_80013974, 0, 0);
     }
     osSendMesg(&D_800D12D0, NULL, 1);
 }

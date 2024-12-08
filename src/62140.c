@@ -41,7 +41,7 @@ typedef struct unkStruct_zz {
 
 extern unkStruct_zz D_800D9378[];
 
-s32 func_800642FC(unkMesg * siMessg, HuSiFunc func, void * arg, s32 type);
+s32 RequestSIFunction(unkMesg * siMessg, HuSiFunc func, void * arg, s32 type);
 void func_800618A4(OSPfs* arg0);
 s32 func_80061714(void);
 s32 func_80061784(s16* arg0);
@@ -68,9 +68,9 @@ s32 func_80061714(void) {
 }
 
 void func_80061758() {
-    Vec3s sp10;
+    unkMesg sp10;
 
-    func_800642FC(&sp10, &func_80061714, 0, 1);
+    RequestSIFunction(&sp10, (void*)&func_80061714, 0, 1);
 }
 
 s32 func_80061784(s16* arg0) {
@@ -93,8 +93,9 @@ s32 func_80061784(s16* arg0) {
 }
 
 void func_80061808(s16 arg0) {
-    Vec3s sp10;
-    func_800642FC(&sp10, &func_80061784, &arg0, 2);
+    unkMesg sp10;
+
+    RequestSIFunction(&sp10, (void*)&func_80061784, &arg0, 2);
 }
 
 void func_80061838(s16* arg0) {
@@ -103,8 +104,9 @@ void func_80061838(s16* arg0) {
 
 
 void func_80061874(s16 arg0) {
-    Vec3s sp10;
-    func_800642FC(&sp10, func_80061838, &arg0, 2);
+    unkMesg sp10;
+
+    RequestSIFunction(&sp10, (void*)func_80061838, &arg0, 2);
 }
 
 void func_800618A4(OSPfs* arg0) { // TODO: fix argument
@@ -116,15 +118,15 @@ void func_800618A4(OSPfs* arg0) { // TODO: fix argument
 }
 
 s32 func_80061930(s16 arg0, s32* arg1, s32* arg2, s32* arg3) {
-    Vec3s sp10;
+    unkMesg sp10;
     unk62140_2 sp20;
     sp20.unk_00 = arg0;
 
-    func_800642FC(&sp10, &func_800618A4, &sp20, 2);
+    RequestSIFunction(&sp10, (void*)&func_800618A4, &sp20, 2);
     *arg1 = sp20.unk_04;
     *arg2 = sp20.unk_08;
     *arg3 = sp20.unk_0C;
-    return sp10.z;
+    return sp10.ret;
 }
 
 void func_800619A0(OSPfs* arg0) { // TODO: fix argument

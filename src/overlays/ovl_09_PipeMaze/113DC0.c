@@ -6,7 +6,7 @@ void func_800F65E0_PipeMaze(void) {
     func_8001DE70(32);
     omInitObjMan(50, 0);
     func_80060088();
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 160);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 160);
     D_800F9A34_PipeMaze = 0;
     func_800F6678_PipeMaze();
     D_800F9902_PipeMaze = 0;

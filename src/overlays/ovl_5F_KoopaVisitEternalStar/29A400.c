@@ -45,7 +45,7 @@ s32* D_800F6CDC_KoopaVisitEternalStar[] = {
 void func_8004DBD4(s32, u8);
 
 void func_800F65E0_KoopaVisitEternalStar(void) {
-    D_800F6D10_KoopaVisitEternalStar = GwSystem.unk_02;
+    D_800F6D10_KoopaVisitEternalStar = GwSystem.curBoardIndex;
     D_800F6D11_KoopaVisitEternalStar = GwSystem.curPlayerIndex;
     if (GwCommon.boardWork[31] % 10 == 0) { //GwCommon.boardWork[31] is amountOfTimesStartPassed
         D_800F6D12_KoopaVisitEternalStar = GwCommon.boardWork[31] / 10;
@@ -129,7 +129,7 @@ void func_800F6988_KoopaVisitEternalStar(omObjData* arg0) {
 
 void func_800F69CC_KoopaVisitEternalStar(void) {
     func_8003DAA8();
-    if (IsFlagSet(0x2C) == 0) {
+    if (_CheckFlag(0x2C) == 0) {
         D_800F6D14_KoopaVisitEternalStar = CreateObject(8, NULL);
         func_8004F140(*D_800F6D14_KoopaVisitEternalStar->unk_3C->unk_40);
     } else {
@@ -151,7 +151,7 @@ void func_800F69CC_KoopaVisitEternalStar(void) {
 void func_800F6B3C_KoopaVisitEternalStar(void) {
     DestroyObject(D_800F6D14_KoopaVisitEternalStar);
     DestroyObject(D_800F6D18_KoopaVisitEternalStar);
-    if (IsFlagSet(0x2C) == 0) {
+    if (_CheckFlag(0x2C) == 0) {
         func_8004F1D0();
     }
 }

@@ -15,7 +15,7 @@ void func_800F65E0_RunningOfTheBulb(void) {
     func_800FE090_RunningOfTheBulb(20.0f, 3100.0f, 324.0f, 45.0f, 0, -280.0f, 0, 1675.0f);
     func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 0xA0);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 0xA0);
     func_80023448(3);
     func_800234B8(0, 0, 0, 0);
     func_800234B8(1, 0, 0, 0);
@@ -51,7 +51,7 @@ void func_800F65E0_RunningOfTheBulb(void) {
     temp_s0 = ReadMainFS(38);
     D_800FE45A_RunningOfTheBulb = func_80039084(temp_s0);
     HuMemDirectFree(temp_s0);
-    D_800FE458_RunningOfTheBulb = IsFlagSet(43);
+    D_800FE458_RunningOfTheBulb = _CheckFlag(43);
     SetFadeInTypeAndTime(0, 16);
 }
 

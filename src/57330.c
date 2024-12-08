@@ -65,7 +65,7 @@ void func_80056730(s32 arg0, s16 arg1, s16 arg2) {
             arg0 = omovlhis[omovlhisidx].overlayID;
         }
     } else {
-        arg0 = D_800C56D0[GwSystem.unk_02];
+        arg0 = D_800C56D0[GwSystem.curBoardIndex];
     }
     
     history->overlayID = arg0;
@@ -90,7 +90,7 @@ void func_800568A4(void) {
     }
     if (D_800D86B0 != 0) {
         D_800D86E0 = 0;
-        omOvlCallEx(D_800C56D0[GwSystem.unk_02], 2, 0x92);
+        omOvlCallEx(D_800C56D0[GwSystem.curBoardIndex], 2, 0x92);
         return;
     }
     
@@ -188,13 +188,13 @@ void func_80056B78(void) {
     D_800F2CDC = -1;
     func_80043460();
     func_80045EE0();
-    if (IsFlagSet(0x41) == 0) {
+    if (_CheckFlag(0x41) == 0) {
         gameStatus->chosenStarSpaceIndex = 0;
         gameStatus->currentTurn = 1;
         gameStatus->curPlayerIndex = 0;
         gameStatus->unk_1E = 0;
-        if (IsFlagSet(0x2C) == 0) {
-            switch (gameStatus->unk_04) {
+        if (_CheckFlag(0x2C) == 0) {
+            switch (gameStatus->playType) {
                 case 0:
                     gameStatus->maxTurns = 20;
                     break;
@@ -206,7 +206,7 @@ void func_80056B78(void) {
                     break;
             }
         } else {
-            switch (gameStatus->unk_04) {
+            switch (gameStatus->playType) {
                 case 0:
                     gameStatus->maxTurns = 10;
                     break;
@@ -218,9 +218,9 @@ void func_80056B78(void) {
                     break;
             }            
         }
-        gameStatus->unk_22 = 0;
-        gameStatus->unk_23 = 0;
-        gameStatus->unk_24 = 1;
+        gameStatus->saveSetting = 0;
+        gameStatus->minigameExplanation = 0;
+        gameStatus->messageSpeed = 1;
         
         for (i = 0; i < MAX_PLAYERS; i++) {
             temp_v0 = GetPlayerStruct(i);

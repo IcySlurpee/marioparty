@@ -300,9 +300,9 @@ INCLUDE_RODATA("asm/nonmatchings/5CDB0", D_800CB530);
 
 INCLUDE_ASM("asm/nonmatchings/5CDB0", omMain);
 
-INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005EB1C);
+INCLUDE_ASM("asm/nonmatchings/5CDB0", omOutView);
 
-INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005ECC0);
+INCLUDE_ASM("asm/nonmatchings/5CDB0", omOutViewMulti);
 
 INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005EF48);
 

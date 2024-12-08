@@ -1295,7 +1295,7 @@ s32 func_80076174(void) {
         temp_v0 = func_80075FE0();
 
         if (temp_v0 == 0 || temp_v0 & 2) {
-            if (IsFlagSet(0x2B)) {
+            if (_CheckFlag(0x2B)) {
                 return 0;
             }
 

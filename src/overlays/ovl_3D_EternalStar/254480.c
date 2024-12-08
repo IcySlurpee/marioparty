@@ -206,7 +206,7 @@ void func_800F671C_EternalStar(void) {
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(D_800F8BD0_EternalStar); i++) {
-        if (IsFlagSet(D_800F8BC0_EternalStar[i])) {
+        if (_CheckFlag(D_800F8BC0_EternalStar[i])) {
             SetSpaceType(D_800F8BD0_EternalStar[i], 6);
         } else {
             SetSpaceType(D_800F8BD0_EternalStar[i], 5);
@@ -222,7 +222,7 @@ s16 func_800F67AC_EternalStar(s16 arg0) {
         if (arg0 != D_800F8BD0_EternalStar[i]) {
             continue;
         } else {
-            if (IsFlagSet(D_800F8BC0_EternalStar[i]) != 0) {
+            if (_CheckFlag(D_800F8BC0_EternalStar[i]) != 0) {
                 return 2;
             } else {
                 gameStatus->unk_1A = D_800F8BC0_EternalStar[i];
@@ -327,7 +327,7 @@ void func_800F6BD8_EternalStar(void) {
     
     func_800F6B58_EternalStar(temp_s0);
     
-    if (IsFlagSet(0x44) == 0) {
+    if (_CheckFlag(0x44) == 0) {
         var_a1 = 0x4EE;
     } else {
         var_a1 = 0x4F0;
@@ -340,7 +340,7 @@ void func_800F6BD8_EternalStar(void) {
     func_80071E80(temp_s0->unk_08, 1);
     func_8006EB40(temp_s0->unk_08);
     
-    if (IsFlagSet(0x44) == 0) {
+    if (_CheckFlag(0x44) == 0) {
         var_a1_2 = 0x4EF;
     } else {
         var_a1_2 = 0x4F1;
@@ -362,7 +362,7 @@ void func_800F6BD8_EternalStar(void) {
 }
 
 void func_800F6D30_EternalStar(void) {
-    GwSystem.unk_02 = 7;
+    GwSystem.curBoardIndex = 7;
     omInitObjMan(0xA, 0);
     omOvlGotoEx(0x35, 0, 0x92);
 }
@@ -404,7 +404,7 @@ void func_800F6E34_EternalStar(void) {
         temp_s0->player_obj->unk_0A |= 2;
     }
 
-    if (IsFlagSet(0x4E) != 0) {
+    if (_CheckFlag(0x4E) != 0) {
         ClearBoardFeatureFlag(0x4E);
         func_800F66C8_EternalStar();
     }
@@ -413,7 +413,7 @@ void func_800F6E34_EternalStar(void) {
     func_800F74D4_EternalStar();
     func_800F719C_EternalStar();
 
-    if (IsFlagSet(0xF) == 0) {
+    if (_CheckFlag(0xF) == 0) {
         func_800F732C_EternalStar();
     }
 }
@@ -428,20 +428,20 @@ void func_800F6F68_EternalStar(void) {
     func_800F6E34_EternalStar();
     EventTableHydrate(D_800F905C_EternalStar);
     
-    if (IsFlagSet(0xF) == 0) {
+    if (_CheckFlag(0xF) == 0) {
         EventTableHydrate(D_800F9164_EternalStar);
     }
     
     func_800584F0(0);
     
-    if (IsFlagSet(0x4F) != 0) {
+    if (_CheckFlag(0x4F) != 0) {
         playerNoFeatureFlag = GetPlayerStruct(-1);
         ClearBoardFeatureFlag(0x4F);
         func_800A0D50(&playerNoFeatureFlag->player_obj->coords, &GetSpaceData(0x4E)->coords);
         func_800A0E80(&playerNoFeatureFlag->player_obj->unk_18, &GetSpaceData(2)->coords, &playerNoFeatureFlag->player_obj->coords);
     }
     
-    if (IsFlagSet(0x50) != 0) {
+    if (_CheckFlag(0x50) != 0) {
         ClearBoardFeatureFlag(0x50);
         for (i = 0; i < 4; i++) {
             playerFeatureFlag = GetPlayerStruct(i);
@@ -486,7 +486,7 @@ void func_800F719C_EternalStar(void) {
 
     for (i = 0; i < ARRAY_COUNT(D_800F8C08_EternalStar); i++) {
         D_800F91C0_EternalStar[i] = NULL;
-        if (IsFlagSet(D_800F8C08_EternalStar[i]) == 0) {
+        if (_CheckFlag(D_800F8C08_EternalStar[i]) == 0) {
             func_800F709C_EternalStar(i);
         }
     }
@@ -563,7 +563,7 @@ void func_800F74D4_EternalStar(void) {
     D_800F91E4_EternalStar = 0;
     func_800F736C_EternalStar();
     
-    if (IsFlagSet(0x4F)) {
+    if (_CheckFlag(0x4F)) {
         func_800A0E80(&D_800F91E4_EternalStar->unk_18, &(GetSpaceData(0x4E)->coords), &D_800F91E4_EternalStar->coords);
         omAddPrcObj(func_800F73F0_EternalStar, 0x1005, 0, 0);
     }
@@ -623,7 +623,7 @@ s16 func_800F7730_EternalStar(void) {
 
 s32 func_800F775C_EternalStar(void) {
     if (GwCommon.boardWork[0] != 0) {
-        if (!(IsFlagSet(0x48))) {
+        if (!(_CheckFlag(0x48))) {
             return 0;
         }
     }
@@ -632,7 +632,7 @@ s32 func_800F775C_EternalStar(void) {
 
 s32 func_800F7794_EternalStar(void) {
     if (GwCommon.boardWork[1] != 0) {
-        if (!(IsFlagSet(0x4C))) {
+        if (!(_CheckFlag(0x4C))) {
             return 0;
         }
     }
@@ -643,12 +643,12 @@ s32 func_800F77CC_EternalStar(void) {
     if (GwCommon.boardWork[2] != 0) {
         switch (GwCommon.boardWork[15]) {
         case 0:
-            if (!(IsFlagSet(0x46)) || !(IsFlagSet(0x47))) {
+            if (!(_CheckFlag(0x46)) || !(_CheckFlag(0x47))) {
                 return 0;
             }
             break;
         case 1:
-            if (!(IsFlagSet(0x49)) || !(IsFlagSet(0x4A))) {
+            if (!(_CheckFlag(0x49)) || !(_CheckFlag(0x4A))) {
                 return 0;
             }
             break;
@@ -665,12 +665,12 @@ s32 func_800F784C_EternalStar(void) {
         case 0:
             return 2;
         case 1:
-            if (IsFlagSet(0x46) == 0 || IsFlagSet(0x47) == 0) {
+            if (_CheckFlag(0x46) == 0 || _CheckFlag(0x47) == 0) {
                 return 0;
             }
             break;
         case 2:
-            if (IsFlagSet(0x46) == 0) {
+            if (_CheckFlag(0x46) == 0) {
                 return 0;
             }
         }
@@ -682,12 +682,12 @@ s32 func_800F78CC_EternalStar(void) {
     if (GwCommon.boardWork[4] != 0) {
         switch (GwCommon.boardWork[15]) {
         case 0:
-            if (IsFlagSet(0x49) == 0 || IsFlagSet(0x4A) == 0) {
+            if (_CheckFlag(0x49) == 0 || _CheckFlag(0x4A) == 0) {
                 return 0;
             }
             break;
         case 1:
-            if (IsFlagSet(0x4B) == 0) {
+            if (_CheckFlag(0x4B) == 0) {
                 return 0;
             }
             break;
@@ -705,7 +705,7 @@ s32 func_800F7934_EternalStar(void) {
         case 1:
             return 2;
         case 2:
-            if ( IsFlagSet(0x49) == 0 || IsFlagSet(0x4A) == 0) {
+            if ( _CheckFlag(0x49) == 0 || _CheckFlag(0x4A) == 0) {
                 return 0;
             }
         }
@@ -717,12 +717,12 @@ s32 func_800F79BC_EternalStar(void) {
     if (GwCommon.boardWork[6] != 0) {
         switch (GwCommon.boardWork[15]) {
         case 0:
-            if (IsFlagSet(0x4B) == 0) {
+            if (_CheckFlag(0x4B) == 0) {
                 return 0;
             }
             break;
         case 2:
-            if (IsFlagSet(0x4B) == 0) {
+            if (_CheckFlag(0x4B) == 0) {
                 return 0;
             }
             break;
@@ -747,12 +747,12 @@ s32 func_800F7A60_EternalStar(void) {
             case 0:
                 return 2;
             case 1:
-                if (IsFlagSet(0x46) == 0) {
+                if (_CheckFlag(0x46) == 0) {
                     return 0;
                 }
                 break;
             case 2:
-                if (IsFlagSet(0x46) == 0 || IsFlagSet(0x47) == 0) {
+                if (_CheckFlag(0x46) == 0 || _CheckFlag(0x47) == 0) {
                     return 0;
                 }
             break;
@@ -764,7 +764,7 @@ s32 func_800F7A60_EternalStar(void) {
 s32 func_800F7AE8_EternalStar(void) {
     if (GwCommon.boardWork[9] != 0) {
         if (GwCommon.boardWork[15] == 0) {
-            if (IsFlagSet(0x46) == 0) {
+            if (_CheckFlag(0x46) == 0) {
                 return 0;
             }
         } else {

@@ -379,8 +379,8 @@ typedef struct board_overlay_entrypoint {
 
 typedef struct GameStatus {
 /* 0x00 */ s16 unk_00;
-/* 0x02 */ s16 unk_02;
-/* 0x04 */ s16 unk_04;
+/* 0x02 */ s16 curBoardIndex;
+/* 0x04 */ s16 playType; //lite play, standard play, full play (20, 35, 50 turns)
 /* 0x06 */ s16 maxTurns;
 /* 0x08 */ s16 currentTurn;
 /* 0x0A */ s16 chosenStarSpaceIndex;
@@ -389,9 +389,10 @@ typedef struct GameStatus {
 /* 0x1C */ s16 curPlayerIndex;
 /* 0x1E */ s16 unk_1E;
 /* 0x20 */ s16 curSpaceIndex;
-/* 0x22 */ u8 unk_22;
-/* 0x23 */ s8 unk_23;
-/* 0x24 */ u8 unk_24;
+/* 0x22 */ u8 saveSetting;
+/* 0x23 */ s8 minigameExplanation;
+/* 0x24 */ u8 messageSpeed;
+/* 0x25 */ char unk_25;
 } GameStatus; //sizeof 0x26
 
 typedef struct GwQuest_s {

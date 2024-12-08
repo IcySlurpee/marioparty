@@ -14,7 +14,7 @@ void func_800594E4(s32, s32);
 extern s8 D_800ED558[];
 extern s16 D_800F3778;
 extern s32 D_800ED538;
-s32 IsFlagSet(s32);
+s32 _CheckFlag(s32);
 void func_8000B00C(s32, s32, void*, s32);
 void* func_8000B2BC(void);
 void func_8000B364(s32);
@@ -98,7 +98,7 @@ void func_8001A0F0(void) {
     temp_s1->unk_40 = 0x14;
     func_8000B00C(0x6E, 0, (void*)0x802E0000, 0x80000);
     
-    if (IsFlagSet(0x10) != 0) {
+    if (_CheckFlag(0x10) != 0) {
         func_8000B364(0);
     } else {
         func_8000B364(1);

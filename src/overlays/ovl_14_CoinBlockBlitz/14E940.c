@@ -10,7 +10,7 @@ void func_800F65E0_CoinBlockBlitz(void) {
     omInitObjMan(0x32, 0);
     func_80060088();
     func_8000942C();
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 0xA0);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 0xA0);
     func_800178A0(1);
     temp_s0 = func_800178E8();
     func_80017660(temp_s0, 0.0f, 0.0f, 320.0f, 240.0f);

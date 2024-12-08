@@ -42,7 +42,7 @@ extern Object* D_800F8FF8_BowserSpaceEvent;
 extern u8 D_800F8FFC_BowserSpaceEvent[4];
 
 void func_800F65E0_BowserSpaceEvent(void) {
-    D_800F8FF0_BowserSpaceEvent = GwSystem.unk_02;
+    D_800F8FF0_BowserSpaceEvent = GwSystem.curBoardIndex;
     D_800F8FF1_BowserSpaceEvent = GwSystem.curPlayerIndex;
     omInitObjMan(50, 10);
     func_800F8DF4_BowserSpaceEvent();

@@ -154,7 +154,7 @@ void func_80064234(void* arg0) {
     }
 }
 
-s32 func_800642FC(unkMesg * siMessg, HuSiFunc func, void * arg, s32 type) 
+s32 RequestSIFunction(unkMesg * siMessg, HuSiFunc func, void * arg, s32 type) 
 {
     OSMesgQueue msgQueue;
     OSMesg tmpMsg;

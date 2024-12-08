@@ -99,7 +99,7 @@ void func_800F6830_DKsJungleAdventure(void) { //ov054_func_800F6830
         SetBoardFeatureFlag(D_800F98F0_DKsJungleAdventure[s1]);
     }
 
-    if (IsFlagSet(0x44)) {
+    if (_CheckFlag(0x44)) {
         s0 = DK_STAR_COUNT;
     } else {
         s0 = ed5c0->chosenStarSpaceIndex;
@@ -134,7 +134,7 @@ s32 func_800F6958_DKsJungleAdventure(s32 current_space_index) {
                 return 1;
             }
 
-            if (IsFlagSet(68)) {
+            if (_CheckFlag(68)) {
                 current_space_index = DK_STAR_COUNT;
             }
             else {
@@ -252,7 +252,7 @@ void func_800F6CD8_DKsJungleAdventure(void) {
     func_8004B5C4(3.0f);
     func_800F6C48_DKsJungleAdventure(str);
 
-    if (ed5c0->chosenStarSpaceIndex == 0 && !IsFlagSet(68)) {
+    if (ed5c0->chosenStarSpaceIndex == 0 && !_CheckFlag(68)) {
         string_id = 1256;
     } else {
         string_id = 1258;
@@ -281,7 +281,7 @@ void func_800F6CD8_DKsJungleAdventure(void) {
 
     HuPrcSleep(30);
 
-    if (ed5c0->chosenStarSpaceIndex == 0 && !IsFlagSet(68)) {
+    if (ed5c0->chosenStarSpaceIndex == 0 && !_CheckFlag(68)) {
         string_id = 1257;
     } else {
         string_id = 1259;
@@ -303,10 +303,9 @@ void func_800F6CD8_DKsJungleAdventure(void) {
 }
 
 void func_800F6F0C_DKsJungleAdventure(void) {  //ov054_Entrypoint0
-    GameStatus* ed5c0;
-    ed5c0 = &GwSystem;
+    GameStatus* gameStatus = &GwSystem;
 
-    ed5c0->unk_02 = 0;
+    gameStatus->curBoardIndex = 0;
     omInitObjMan(10, 0); // InitObjectSystem
     omOvlGotoEx(53, 0, 146);
 }
@@ -374,7 +373,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_36_DKsJungleAdventure/2418D0", func_8
 //         player->player_obj->unk_0A |= 2;
 //     }
 
-//     if (IsFlagSet(0x4e)) {
+//     if (_CheckFlag(0x4e)) {
 //         ClearBoardFeatureFlag(0x4e);
 //         ov054_func_800F67A4();
 //     }
@@ -384,15 +383,15 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_36_DKsJungleAdventure/2418D0", func_8
 //     ov054_DrawThwompsOuter();
 //     ov054_Draw20CoinGateOuter();
 
-//     if (!IsFlagSet(0xe)) {
+//     if (!_CheckFlag(0xe)) {
 //         ov054_DrawKoopaOuter();
 //     }
 
-//     if (!IsFlagSet(0xf)) {
+//     if (!_CheckFlag(0xf)) {
 //         ov054_DrawBooOuter();
 //     }
 
-//     if (!IsFlagSet(0xd)) {
+//     if (!_CheckFlag(0xd)) {
 //         ov054_DrawBowserOuter();
 //     }
 // }
@@ -407,15 +406,15 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_36_DKsJungleAdventure/2418D0", func_8
 
 //     EventTableHydrate(main_event_table);
 
-//     if (!IsFlagSet(0xe)) {
+//     if (!_CheckFlag(0xe)) {
 //         EventTableHydrate(koopa_event_table);
 //     }
 
-//     if (!IsFlagSet(0xf)) {
+//     if (!_CheckFlag(0xf)) {
 //         EventTableHydrate(boo_event_table);
 //     }
 
-//     if (!IsFlagSet(0xd)) {
+//     if (!_CheckFlag(0xd)) {
 //         EventTableHydrate(bowser_event_table);
 //     }
 

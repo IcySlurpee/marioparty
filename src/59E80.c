@@ -4,9 +4,9 @@
 extern u8 D_800D8720;
 extern s8 D_800C572F;
 s32 func_800141FC(s16 arg0);
-s32 func_80019408(char*);
+s32 InitEeprom(char*);
 s32 func_8005AFEC(void);
-s32 func_800195A4(s32, u8*, s32);
+s32 ReadEeprom(s32, u8*, s32);
 void func_8005B060(void);
 void func_8000B364(s32);
 
@@ -28,7 +28,7 @@ u16* func_80059520(s16);
 void func_80059354(s16 param_1, s16 *param_2, s16 *param_3);
 void func_80059768(s16 index, s16 param_2);
 void func_8005963C(s16 index, u16 param_2);
-s32 GetSaveFileChecksum(u16 checksumAddrOffset, u16 size);
+s32 CalcChecksumEeprom(u16 checksumAddrOffset, u16 size);
 
 void func_80059280(void) {
     s32 temp_s1;
@@ -52,7 +52,7 @@ void func_80059280(void) {
         }        
     }
 
-    GwSystem.unk_02 = 0;
+    GwSystem.curBoardIndex = 0;
     GwSystem.unk_1E = 0; //?
     bzero(&GwQuest, sizeof(GwQuest));
 }
@@ -111,12 +111,12 @@ u16 func_800594FC(s16 index) {
 }
 
 void func_80059514(u16 value) {
-    GwSystem.unk_02 = value;
+    GwSystem.curBoardIndex = value;
 }
 
 u16* func_80059520(s16 index) {
     if (index < 0) {
-        index = GwSystem.unk_02;
+        index = GwSystem.curBoardIndex;
     }
     return &GwCommon.boardRecord[index][0];
 }
@@ -133,7 +133,7 @@ void func_80059578(s16 index) {
 
     ptr = (u16 *)func_80059520(index);
     if (index < 0) {
-        index = GwSystem.unk_02;
+        index = GwSystem.curBoardIndex;
     }
     if (index < 8) {
         {
@@ -187,7 +187,7 @@ void func_800596DC(s16 index, s16 param_2) {
 
     ptr = (u16 *)func_80059520(index);
     if (index < 0) {
-        index = GwSystem.unk_02;
+        index = GwSystem.curBoardIndex;
     }
     if (index < 8) {
         ptr[1] = param_2 + ptr[1];
@@ -204,7 +204,7 @@ void func_80059768(s16 index, s16 param_2) {
     ptr[1] = param_2;
 }
 
-s32 IsFlagSet(s32 flag) {
+s32 _CheckFlag(s32 flag) {
     return GwCommon.flag[flag / 8] & (1 << flag % 8);
 }
 
@@ -382,7 +382,7 @@ s32 func_80059B10(s32 arg0) {
             return 0;
         }
     } else {
-        return IsFlagSet(arg0);
+        return _CheckFlag(arg0);
     }
 }
 
@@ -390,7 +390,7 @@ s32 func_80059B48(s32 arg0) {
     if (arg0 < 0) {
         return 1;
     } else {
-        return IsFlagSet(arg0);
+        return _CheckFlag(arg0);
     }
 }
 
@@ -433,7 +433,7 @@ INCLUDE_ASM("asm/nonmatchings/59E80", func_8005AE88);
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005AF60);
 
 u16 func_8005AFC8(void) {
-    return GetSaveFileChecksum(0, (EEPROM_MAXBLOCKS * EEPROM_BLOCK_SIZE) - 0x10);
+    return CalcChecksumEeprom(0, (EEPROM_MAXBLOCKS * EEPROM_BLOCK_SIZE) - 0x10);
 }
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005AFEC);
@@ -443,7 +443,7 @@ void func_8005B024(void) {
 
     sp10 = func_8005AFC8();
     if (D_800D8720 != 0) {
-        func_80019504(0x1F0, &sp10, 2);
+        WriteEeprom(0x1F0, &sp10, 2);
     }
 }
 
@@ -454,7 +454,7 @@ void func_8005B060(void) {
     func_8005B280();
     func_8005B3B0();
     if (D_800D8720 != 0) {
-        func_80019504(0x17A, &GwQuest, sizeof(GwQuest));
+        WriteEeprom(0x17A, &GwQuest, sizeof(GwQuest));
     }
     func_8005B024();
 }
@@ -474,7 +474,7 @@ s32 func_8005B0C4(void) {
         D_800C572F = 1;
     }
     
-    var_s1 = func_80019408(sp10);
+    var_s1 = InitEeprom(sp10);
     
     if (var_s1 != 0) {
         D_800D8720 = 0;
@@ -482,10 +482,10 @@ s32 func_8005B0C4(void) {
         D_800D8720 = 1;
     }
     if (D_800D8720 != 0) {
-        var_s1 = func_800195A4(0, (u8*)&GwCommon.unk0, 0x94);
-        var_s1 = var_s1 | func_800195A4(0x94, (u8*)GwPlayer, sizeof(GwPlayer));
-        var_s1 = var_s1 | func_800195A4(0x154, (u8*)&GwSystem, sizeof(GameStatus));
-        var_s1 = var_s1 | func_800195A4(0x17A, &GwQuest, sizeof(GwQuest));
+        var_s1 = ReadEeprom(0, (void*)&GwCommon.unk0, sizeof(GwCommon));
+        var_s1 = var_s1 | ReadEeprom(0x94, (void*)GwPlayer, sizeof(GwPlayer));
+        var_s1 = var_s1 | ReadEeprom(0x154, (void*)&GwSystem, sizeof(GwSystem));
+        var_s1 = var_s1 | ReadEeprom(0x17A, (void*)&GwQuest, sizeof(GwQuest));
     }
     
     GwSystem.unk_1E = 0;
@@ -500,7 +500,7 @@ s32 func_8005B0C4(void) {
         func_8005B060();
     }
     
-    if (IsFlagSet(16) != 0) {
+    if (_CheckFlag(16) != 0) {
         func_8000B364(0);
     } else {
         func_8000B364(1);
@@ -508,8 +508,12 @@ s32 func_8005B0C4(void) {
     return (GwCommon.unk0 == 0x12) & (var_s1 != 0);
 }
 
-INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B244);
-
+void func_8005B244(void) {
+    if (D_800D8720 != 0) {
+        WriteEeprom(0, &GwCommon, 0x50); //TODO: only 0x50?
+    }
+    func_8005B024();
+}
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B280);
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B300);
@@ -518,7 +522,14 @@ INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B358);
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B388);
 
-INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B3B0);
+void func_8005B3B0(void) {
+    if (D_800D8720 != 0) {
+        WriteEeprom(0, &GwCommon, sizeof(GwCommon));
+        WriteEeprom(0x94, &GwPlayer, sizeof(GwPlayer));
+        WriteEeprom(0x154, &GwSystem, sizeof(GwSystem));
+    }
+    func_8005B024();
+}
 
 INCLUDE_ASM("asm/nonmatchings/59E80", func_8005B414);
 

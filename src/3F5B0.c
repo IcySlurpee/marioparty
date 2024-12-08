@@ -31,7 +31,7 @@ s16 RunDecisionTree(DecisionTreeNonLeafNode* currentNode) {
         case 2:
             for (loopIndex = 0; loopIndex < 7; loopIndex++) {
                 if ((bitMask << loopIndex) & phi_s1->node_data1.data) {
-                    if (!IsFlagSet(boardFeatureArray[loopIndex])) {
+                    if (!_CheckFlag(boardFeatureArray[loopIndex])) {
                         break;
                     }
                 }

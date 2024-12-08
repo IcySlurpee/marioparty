@@ -14,7 +14,7 @@ void func_800F65E0_BuriedTreasure(void) {
     omInitObjMan(0x32, 0);
     func_80060088();
 
-    temp_s1 = omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C);
+    temp_s1 = omAddObj(0x7FDA, 0, 0, -1, omOutView);
     omSetStatBit(temp_s1, 0xA0);
     func_800178A0(1);
 
@@ -29,7 +29,7 @@ void func_800F65E0_BuriedTreasure(void) {
     D_800FC026_BuriedTreasure = 0;
     D_800FC024_BuriedTreasure = 1;
     D_800FC028_BuriedTreasure = 0x708;
-    D_800FC02A_BuriedTreasure = IsFlagSet(0x2B);
+    D_800FC02A_BuriedTreasure = _CheckFlag(0x2B);
 
     for (i = 0; i < ARRAY_COUNT(D_800FC188_BuriedTreasure); i++) {
         D_800FC188_BuriedTreasure[i] = NULL;
@@ -44,7 +44,7 @@ void func_800F65E0_BuriedTreasure(void) {
     }
 
     func_800F8760_BuriedTreasure();
-    func_8005EB1C(temp_s1);
+    omOutView(temp_s1);
 
     temp_s0_2 = D_800C3110;
     D_800FC5F0_BuriedTreasure = func_800AEAC0(temp_s0_2->unk_40 / 2.0) / func_800AEFD0(temp_s0_2->unk_40 / 2.0);

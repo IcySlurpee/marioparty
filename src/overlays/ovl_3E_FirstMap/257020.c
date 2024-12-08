@@ -2,7 +2,7 @@
 #include "FirstMap.h"
 
 void func_800F6610_FirstMap(void) {
-    GwSystem.unk_02 = 8;
+    GwSystem.curBoardIndex = 8;
     omInitObjMan(0xA, 0);
     omOvlGotoEx(0x35, 0, 0x92);
 }

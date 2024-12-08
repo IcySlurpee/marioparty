@@ -45,14 +45,14 @@ void func_800F6610_MinigameInstructions(void) {
     D_800F64F2 = 1;
     D_8010F766_MinigameInstructions = GwSystem.unk_1E;
     D_8010F760_MinigameInstructions = D_8010E4F4_MinigameInstructions[GwSystem.unk_1E].unk_00;
-    if (IsFlagSet(0x2B) != 0) {
+    if (_CheckFlag(0x2B) != 0) {
         func_8010E090_MinigameInstructions((s16) D_8010F766_MinigameInstructions);
     } else {
         func_800F9E64_MinigameInstructions((s16) D_8010F766_MinigameInstructions);
     }
     func_800593AC(-1);
-    D_8010F4E0_MinigameInstructions = IsFlagSet(0x45);
-    if (GwSystem.unk_23 == 1) {
+    D_8010F4E0_MinigameInstructions = _CheckFlag(0x45);
+    if (GwSystem.minigameExplanation == 1) {
         func_800F6990_MinigameInstructions();
         return;
     }

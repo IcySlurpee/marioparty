@@ -8,7 +8,7 @@ void func_800F65E0_HammerDrop(void) {
     func_8001DE70(0x42);
     omInitObjMan(0x28, 0);
     func_80060088();
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 0xA0);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 0xA0);
     func_800F6848_HammerDrop(2370.0f, 324.0f, 0.0f, 0.0f, 0.0f, 205.0f, 0.0f);
     func_8005D98C(4, 4);
     omAddObj(0xA, 0, 0, -1, &func_800F6814_HammerDrop);
@@ -32,7 +32,7 @@ void func_800F67BC_HammerDrop(void) {
     D_800FB6C4_HammerDrop = 4;
     D_800FB98C_HammerDrop = 0;
     D_800FB988_HammerDrop = 0;
-    D_800FB6C8_HammerDrop = IsFlagSet(MINIGAME_ISLAND_ENDING);
+    D_800FB6C8_HammerDrop = _CheckFlag(MINIGAME_ISLAND_ENDING);
 }
 
 void func_800F6814_HammerDrop(void) {

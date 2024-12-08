@@ -10,7 +10,7 @@ void func_800F65E0_ShellGame(void) {
     omInitObjMan(50, 0);
     func_80060088();
     func_8001DE70(64);
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 0xA0);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 0xA0);
     func_800234B8(0, 0xA0, 0x78, 0x78);
     func_800234B8(1, 0xFF, 0xA8, 0xA8);
     func_80023504(1, -96.0f, 100.0f, 26.0f);
@@ -55,7 +55,7 @@ void func_800F689C_ShellGame(omObjData* arg0) {
     func_800F9618_ShellGame();
     func_800F9738_ShellGame();
     func_800F915C_ShellGame();
-    if (IsFlagSet(0x2B) != 0) {
+    if (_CheckFlag(0x2B) != 0) {
         D_800FF784_ShellGame = 1;
     }
 }

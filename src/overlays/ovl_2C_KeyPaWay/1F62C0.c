@@ -73,7 +73,7 @@ void func_800F65E0_KeyPaWay(void) {
     temp_s0 = ReadMainFS(38);
     D_800FF536_KeyPaWay = func_80039084(temp_s0);
     HuMemDirectFree(temp_s0);
-    D_800FF526_KeyPaWay = IsFlagSet(43);
+    D_800FF526_KeyPaWay = _CheckFlag(43);
     D_800FF5A4_KeyPaWay = 0;
     SetFadeInTypeAndTime(0, 16);
 }

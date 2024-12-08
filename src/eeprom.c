@@ -8,12 +8,12 @@ typedef struct unkfunc_8001AFD8 {
     s16 unk8;
 } unkfunc_8001AFD8;
 
-typedef struct unkfunc_8007EE0C {
-    void* GetEepTypeFunc; //func pointer
-    unkfunc_8001AFD8* unk4; //is this correct?
-    s32 unk8;
-    OSMesgQueue* mesgQueue;
-} unkfunc_8007EE0C;
+// typedef struct unkfunc_8007EE0C {
+//     void* GetEepTypeFunc; //func pointer
+//     unkfunc_8001AFD8* unk4; //is this correct?
+//     s32 unk8;
+//     OSMesgQueue* mesgQueue;
+// } unkfunc_8007EE0C;
 
 typedef struct UnkEep {
 /* 0x00 */ u16 dest;
@@ -21,17 +21,15 @@ typedef struct UnkEep {
 /* 0x08 */ u16 size;
 } UnkEep;
 
-s32 func_800195E0(void);
-s32 func_80019540(UnkEep* arg0);
-s32 func_80019438(UnkEep* arg0);
-s32 GetEepType(s8** arg0);
+s32 _DestroyEeprom(void);
+s32 _WriteEeprom(UnkEep* arg0);
+s32 _InitEeprom(s8** arg0);
 
 extern u8 D_800D1B20[];
-// extern u8 D_800D1B28[];
 extern OSMesgQueue D_800EE960;
 extern u8 D_800C30B0[];
 
-s32 GetEepType(s8** arg0) {
+s32 _InitEeprom(s8** arg0) {
     s32 eepromProbeResult;
     s32 var_s1;
     s16 i;
@@ -82,14 +80,14 @@ s32 GetEepType(s8** arg0) {
     return 0;
 }
 
-s32 func_80019408(unkfunc_8001AFD8* arg0) {
-    unkfunc_8007EE0C sp10;
+s32 InitEeprom(unkfunc_8001AFD8* arg0) {
+    unkMesg sp10;
     unkfunc_8001AFD8* sp20 = arg0; //?
 
-    return func_800642FC(&sp10, &GetEepType, &sp20, 1);
+    return RequestSIFunction(&sp10, (void*)_InitEeprom, &sp20, 1);
 }
 
-s32 func_80019438(UnkEep* arg0) {
+s32 _WriteEeprom(UnkEep* arg0) {
     u8 eepromBlockCount;
     s16 i;
     s32 alignmentOffset;
@@ -110,18 +108,18 @@ s32 func_80019438(UnkEep* arg0) {
     return 2;
 }
 
-void func_80019504(s32 arg0, void* arg1, s16 arg2) {
-    unkfunc_8007EE0C sp10;
+void WriteEeprom(s32 arg0, void* arg1, s16 arg2) {
+    unkMesg sp10;
     UnkEep sp20;
 
     sp20.dest = arg0 + 8;
     sp20.src = arg1;
     sp20.size = arg2;
 
-    func_800642FC(&sp10, func_80019438, &sp20, 1);
+    RequestSIFunction(&sp10, (void*)_WriteEeprom, &sp20, 1);
 }
 
-s32 func_80019540(UnkEep* arg0) {
+s32 _ReadEeprom(UnkEep* arg0) {
     if (osEepromLongRead(&D_800EE960, 0, D_800D1B20, (EEPROM_MAXBLOCKS * EEPROM_BLOCK_SIZE)) != 0) {
         return 2;
     }
@@ -129,28 +127,30 @@ s32 func_80019540(UnkEep* arg0) {
     return 0;
 }
 
-void func_800195A4(s32 eepromAbsAddr, u16* src, s16 size) {
-    unkfunc_8007EE0C sp10;
+void ReadEeprom(s32 eepromAbsAddr, u8* src, s16 size) {
+    #define HUDSON_HEADER_SIZE 8
+    unkMesg sp10;
     UnkEep sp20;
 
-    sp20.dest = eepromAbsAddr + EEPROM_BLOCK_SIZE; //?
+    sp20.dest = eepromAbsAddr + HUDSON_HEADER_SIZE; //skips over HUDSON header
     sp20.src = src;
     sp20.size = size;
 
-    func_800642FC(&sp10, (HuSiFunc)func_80019540, &sp20, 1);
+    RequestSIFunction(&sp10, (void*)_ReadEeprom, (void*)&sp20, 1);
+    #undef HUDSON_HEADER_SIZE
 }
 
-s32 func_800195E0(void) {
+s32 _DestroyEeprom(void) {
     return (osEepromWrite(&D_800EE960, 0, &D_800C30B0[1]) != 0) * 2;
 }
 
-s32 func_80019614(UnkEep* arg0) {
-    unkfunc_8007EE0C sp10;
+s32 DestroyEeprom(UnkEep* arg0) {
+    unkMesg sp10;
 
-    return func_800642FC(&sp10, (HuSiFunc)func_800195E0, 0, 1);
+    return RequestSIFunction(&sp10, (void*)_DestroyEeprom, 0, 1);
 }
 
-s32 GetSaveFileChecksum(u16 checksumAddrOffset, u16 size) {
+s32 CalcChecksumEeprom(u16 checksumAddrOffset, u16 size) {
     u16 offset;
     u16 checksumTotal;
 

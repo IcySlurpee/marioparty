@@ -23,7 +23,7 @@ void func_800F65E0_MemoryMatch(void) {
     omInitObjMan(50, 0);
     func_80060088();
     func_8001DE70(64);
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, &func_8005EB1C), 0xA0);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, &omOutView), 0xA0);
     func_80023448(2);
     func_800234B8(0, 0xA0, 0xA0, 0xA0);
     func_800234B8(1, 0xFF, 0xFF, 0xFF);
@@ -67,7 +67,7 @@ void func_800F6858_MemoryMatch(omObjData* arg0) {
     func_800F8E38_MemoryMatch();
     func_800F90CC_MemoryMatch();
     func_800FB360_MemoryMatch();
-    if (IsFlagSet(MINIGAME_ISLAND_ENDING) != 0) {
+    if (_CheckFlag(MINIGAME_ISLAND_ENDING) != 0) {
         D_800FE180_MemoryMatch = 1;
     }
 }

@@ -4,7 +4,7 @@ void func_8005C208(void);
 void func_8005C2B0(void);
 
 void func_800F6610_MinigameIslandOverworld(void) {
-    GwSystem.unk_02 = 0xA;
+    GwSystem.curBoardIndex = 0xA;
     omInitObjMan(0xA, 0);
     func_8005C208();
     omOvlGotoEx(0x71, 1, 0x92);

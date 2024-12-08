@@ -350,8 +350,8 @@ s32 func_8004D8A4(void) {
     
     SetBoardFeatureFlag(GwSystem.unk_1A);
     SetBoardFeatureFlag(0x4E);
-    if (IsFlagSet(0x43) != 0) {
-        if ((gameStatus->unk_02 != 7) || GwSystem.chosenStarSpaceIndex == 6) {
+    if (_CheckFlag(0x43) != 0) {
+        if ((gameStatus->curBoardIndex != 7) || GwSystem.chosenStarSpaceIndex == 6) {
             func_80056730(-2, 4, 0x92);
             var_s0 = 1;
         }

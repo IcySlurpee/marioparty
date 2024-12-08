@@ -23,7 +23,7 @@ void func_800F65E0_BumperBalls(void) {
     func_800FB1E0_BumperBalls(20.0f, 3000.0f, 328.0f, 0, 0, 0, 0, -140.0f);
     func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, &func_8005EB1C), 160);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, &omOutView), 160);
     func_80023448(3);
     func_800234B8(0, 44, 44, 64);
     func_800234B8(1, 96, 96, 16);
@@ -56,7 +56,7 @@ void func_800F65E0_BumperBalls(void) {
     D_800FCD1C_BumperBalls = func_80039084(temp_s0_2);
     HuMemDirectFree(temp_s0_2);
     func_8007B168(D_800FCC28_BumperBalls, 1);
-    D_800FCD12_BumperBalls = IsFlagSet(MINIGAME_ISLAND_ENDING);
+    D_800FCD12_BumperBalls = _CheckFlag(MINIGAME_ISLAND_ENDING);
     D_800FCFF0_BumperBalls = 0;
     SetFadeInTypeAndTime(0, 16);
 }

@@ -89,7 +89,7 @@ s32 func_800F6F48_MushroomShop(void) {
     s32 i;
     
     for (i = 0; i < 8; i++) {
-        if (IsFlagSet(D_800F8A30_MushroomShop[i]) == 0) {
+        if (_CheckFlag(D_800F8A30_MushroomShop[i]) == 0) {
             return 1;
         }  
     }
@@ -101,7 +101,7 @@ s32 func_800F6FA8_MushroomShop(void) {
     s32 i;
     
     for (i = 0; i < 6; i++) {
-        if (IsFlagSet(D_800F8A30_MushroomShop[i]) == 0) {
+        if (_CheckFlag(D_800F8A30_MushroomShop[i]) == 0) {
             return 1;
         }  
     }
@@ -112,7 +112,7 @@ s32 func_800F7008_MushroomShop(s32 arg0) {
     if (D_800F8A50_MushroomShop[arg0].unk_28 != NULL && D_800F8A50_MushroomShop[arg0].unk_28() ) {
         return 0;
     }
-    return IsFlagSet(D_800F8A50_MushroomShop[arg0].unk_00) == 0;
+    return _CheckFlag(D_800F8A50_MushroomShop[arg0].unk_00) == 0;
 }
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_6C_MushroomShop/2D4830", func_800F7088_MushroomShop);

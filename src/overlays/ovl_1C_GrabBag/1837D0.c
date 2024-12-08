@@ -6,7 +6,7 @@ void func_800F65E0_GrabBag(void) {
     func_8001DE70(0x10);
     omInitObjMan(0x14, 0);
     func_80060088();
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 0xA0);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 0xA0);
     func_8000942C();
     Center.x = -10.0f;
     Center.y = 0.0f;

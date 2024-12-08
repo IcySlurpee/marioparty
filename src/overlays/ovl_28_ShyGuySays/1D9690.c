@@ -8,7 +8,7 @@ void func_800F65E0_ShyGuySays(void) {
     omInitObjMan(50, 0);
     func_80060088();
     func_8001DE70(64);
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, &func_8005EB1C), 0xA0);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, &omOutView), 0xA0);
     func_800234B8(0U, 0xFF, 0xFF, 0xFF);
     func_800234B8(1U, 0xFF, 0xFF, 0xFF);
     func_80023504(1, -96.0f, 100.0f, 26.0f);
@@ -52,7 +52,7 @@ void func_800F67F8_ShyGuySays(omObjData* arg0) {
     func_800F71F4_ShyGuySays();
     D_800FD9A0_ShyGuySays = 1;
     func_80060128(0x19);
-    if (IsFlagSet(MINIGAME_ISLAND_ENDING) != 0) {
+    if (_CheckFlag(MINIGAME_ISLAND_ENDING) != 0) {
         D_800FDC1C_ShyGuySays = 1;
     }
 }

@@ -9,7 +9,7 @@ void func_800F65E0_PlatformPeril(void) {
     func_8007B168(&D_800FDF60_PlatformPeril, 1);
     func_8007B168(&D_800FDF6C_PlatformPeril, 1);
     func_8007B168(&D_800FDF78_PlatformPeril, 1);
-    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, func_8005EB1C), 0xA0);
+    omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 0xA0);
     D_800EE984 = 0;
     D_800F2BC0 = 0;
     D_800ED440 = 0;

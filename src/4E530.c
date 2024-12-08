@@ -274,7 +274,7 @@ void func_8004F044(Object* arg0) {
 void func_8004F084(omObjData* arg0) {
     f32 temp_f0;
 
-    func_800264F8(arg0->mdlcnt, arg0->mtncnt, (fsin((f32) (arg0->trans.x * (M_PI/180))) / 2.0f) + 0.5f, "030-hata1", "hata2", 0);
+    func_800264F8(arg0->mdlcnt, arg0->mtncnt, (fsin((f32) (arg0->trans.x * (M_PI/180))) / 2.0f) + 0.5f, (u8*)"030-hata1", (u8*)"hata2", 0);
     arg0->trans.x += 20.0f;
     if (arg0->trans.x >= 360.0f) {
         arg0->trans.x -= 360.0f;

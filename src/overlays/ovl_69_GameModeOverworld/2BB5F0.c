@@ -50,13 +50,13 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_69_GameModeOverworld/2BB5F0", func_80
 //     D_800FA1FC_GameModeOverworld = -1;
 //     D_800FA202_GameModeOverworld = 0;
 //     D_800FA200_GameModeOverworld = 0;
-//     if ((D_800ED144 >= 0x64) && (IsFlagSet(3) == 0) && (IsFlagSet(0x17) != 0)) {
+//     if ((D_800ED144 >= 0x64) && (_CheckFlag(3) == 0) && (_CheckFlag(0x17) != 0)) {
 //         SetBoardFeatureFlag(3);
 //         SetBoardFeatureFlag(4);
 //     }
-//     D_800FA203_GameModeOverworld = IsFlagSet(3);
-//     D_800FA204_GameModeOverworld = IsFlagSet(4);
-//     D_800FA205_GameModeOverworld = IsFlagSet(0x18);
+//     D_800FA203_GameModeOverworld = _CheckFlag(3);
+//     D_800FA204_GameModeOverworld = _CheckFlag(4);
+//     D_800FA205_GameModeOverworld = _CheckFlag(0x18);
 //     if (D_800FA204_GameModeOverworld != 0) {
 //         D_800FA1E2_GameModeOverworld = 1;
 //     }
@@ -64,7 +64,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_69_GameModeOverworld/2BB5F0", func_80
 //     ClearBoardFeatureFlag(0x29);
 //     ClearBoardFeatureFlag(0x2B);
 //     ClearBoardFeatureFlag(0x2C);
-//     if (IsFlagSet(0x36) != 0) {
+//     if (_CheckFlag(0x36) != 0) {
 //         ClearBoardFeatureFlag(0x36);
 //         func_80070ED4();
 //         omOvlReturnEx(1);

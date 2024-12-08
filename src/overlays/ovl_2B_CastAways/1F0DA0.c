@@ -60,7 +60,7 @@ void func_800F65E0_CastAways(void) {
     filePtr = ReadMainFS(0x24);
     D_800FBB44_ovl2B = func_80039084(filePtr);
     HuMemDirectFree(filePtr);
-    D_800FBB50_ovl2B[3] = IsFlagSet(0x2B);
+    D_800FBB50_ovl2B[3] = _CheckFlag(0x2B);
     SetFadeInTypeAndTime(0, 0x10);
     D_800FBB98_ovl2B = 0;
 }
