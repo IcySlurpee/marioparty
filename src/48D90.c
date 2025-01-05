@@ -86,7 +86,7 @@ void func_8004A7A4(void);
 void func_8004AFFC(void);
 void func_8004B7F8(s32);
 void func_8004ACEC(void);
-void func_8004A19C(s16, s16); 
+void func_8004A19C(s16, s16);
 extern void func_8007F54C(void*, void*, s32, Unk800D673C*);
 extern void func_8007FAC0(void);
 
@@ -146,7 +146,7 @@ INCLUDE_ASM("asm/nonmatchings/48D90", func_80049F0C);
 void LoadBackgroundIndex(s32 arg0) {
     unkStruct17* temp_v0;
     s32 temp_s0;
-    
+
     D_800F6598 = arg0;
     D_800D6728 = (u8*)((u8*)D_800D6720 + D_800C4F70[arg0]);
     temp_v0 = MallocTemp(sizeof(unkStruct17));
@@ -313,7 +313,7 @@ void func_8004A684(void) {
         var_s0->unk2 = -1;
         var_s0->data = func_80023668(0x1800);
         var_s0->archive = NULL;
-        var_s0++;       
+        var_s0++;
     }
     bzero(&D_800D6A60, sizeof(Object));
 }
@@ -324,7 +324,7 @@ void func_8004A6F8(void) {
 
     var_v1 = D_800D6740;
     for(i = 0; i < 40; i++) {
-        if ((var_v1->archive == NULL) && 
+        if ((var_v1->archive == NULL) &&
              ((u16) var_v1->unk0 == 0)) {
             var_v1->unk2 = -1;
         }
@@ -384,7 +384,7 @@ unk20* func_8004A890(u16 arg0) {
     unk20* var_s1;
     unk20* var_v1;
     s32 i;
-    
+
     var_s1 = NULL;
     for (var_v1 = D_800D6740, i = 0; i < 40; var_v1++, i++) {
         if (var_v1->unk2 == -1) {
@@ -394,13 +394,13 @@ unk20* func_8004A890(u16 arg0) {
             return var_v1;
         }
     }
-    
+
     if (var_s1) {
         u32 tblSize;
         var_s1->unk0 = 1;
         var_s1->unk2 = arg0;
         var_s1->bytes = func_8004A868(arg0);
-    
+
         tblSize = func_8004A844(arg0);
         var_s1->dirTblSize = tblSize;
         var_s1->archive = MallocTemp(tblSize);
@@ -427,9 +427,9 @@ void func_8004A950(void) {
                 ((s32) var_s2 >= D_800C4F78->unkC)) {
                 D_800D6A60[j][i] = NULL;
             } else {
-                D_800D6A60[j][i] = func_8004A890(func_8004A814(var_s1, var_s2));      
+                D_800D6A60[j][i] = func_8004A890(func_8004A814(var_s1, var_s2));
             }
-        } 
+        }
     }
 }
 
@@ -437,7 +437,7 @@ INCLUDE_ASM("asm/nonmatchings/48D90", func_8004AAA8);
 
 INCLUDE_ASM("asm/nonmatchings/48D90", func_8004ACEC);
 
-void func_8001D57C(s32);
+void func_8001D57C(s16);
 void omPrcSetStatBit(Process*, s32);
 void func_8004B208(void);
 
