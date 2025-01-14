@@ -698,7 +698,7 @@ typedef struct unk2C0C0StructC0 {
     /* 0x6C */ s16 unk_6C;
     /* 0x6E */ s16 unk_6E;
     /* 0x70 */ s16 unk_70;
-    /* 0x72 */ u16 unk_72;
+    /* 0x72 */ s16 unk_72;
     /* 0x74 */ s16 unk_74;
     /* 0x76 */ s16 unk_76;
     /* 0x78 */ unk2C0C0StructA0* unk_78;

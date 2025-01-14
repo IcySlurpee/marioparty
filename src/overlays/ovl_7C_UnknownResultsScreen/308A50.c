@@ -1,5 +1,9 @@
 #include "common.h"
 
+extern s16 D_800FA0D0_UnknownResultsScreen[];
+extern s16 D_800FA0D8_UnknownResultsScreen[];
+extern s16 D_800FA0F0_UnknownResultsScreen[];
+
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_7C_UnknownResultsScreen/308A50", func_800F65E0_UnknownResultsScreen);
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_7C_UnknownResultsScreen/308A50", func_800F6688_UnknownResultsScreen);
@@ -38,7 +42,23 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_7C_UnknownResultsScreen/308A50", func
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_7C_UnknownResultsScreen/308A50", func_800F7F38_UnknownResultsScreen);
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_7C_UnknownResultsScreen/308A50", func_800F8194_UnknownResultsScreen);
+void func_800F8194_UnknownResultsScreen(void) {
+    s32 i;
+
+    for (i = 0; i < MAX_PLAYERS; i++) {
+        D_800FA0F0_UnknownResultsScreen[i] = GwPlayer[i].coins;
+        D_800FA0D0_UnknownResultsScreen[i] = GwPlayer[i].coins_mg;
+        if ((GwPlayer[i].coins + D_800FA0D0_UnknownResultsScreen[i]) > 999) {
+            D_800FA0D0_UnknownResultsScreen[i] = 999 - GwPlayer[i].coins;
+        }
+        if ((GwPlayer[i].coins + D_800FA0D0_UnknownResultsScreen[i] < 0)) {
+            D_800FA0D0_UnknownResultsScreen[i] = -GwPlayer[i].coins;
+        }
+        GwPlayer[i].coins_total = GwPlayer[i].coins_total + GwPlayer[i].coins_mg;
+        D_800FA0D8_UnknownResultsScreen[i] = GwPlayer[i].coins_mg;
+        GwPlayer[i].coins_mg = 0;
+    }
+}
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_7C_UnknownResultsScreen/308A50", func_800F82C4_UnknownResultsScreen);
 

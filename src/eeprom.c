@@ -109,6 +109,7 @@ s32 _WriteEeprom(UnkEep* arg0) {
 }
 
 void WriteEeprom(s32 arg0, void* arg1, s16 arg2) {
+    #define HUDSON_HEADER_SIZE 8
     unkMesg sp10;
     UnkEep sp20;
 
@@ -117,6 +118,7 @@ void WriteEeprom(s32 arg0, void* arg1, s16 arg2) {
     sp20.size = arg2;
 
     RequestSIFunction(&sp10, (void*)_WriteEeprom, &sp20, 1);
+    #undef HUDSON_HEADER_SIZE
 }
 
 s32 _ReadEeprom(UnkEep* arg0) {

@@ -84,7 +84,8 @@ ENDLINE := \n'
 ### Compiler Options ###
 
 ASFLAGS        := -G 0 -I include -mips3 -mabi=32
-CFLAGS         := -G0 -mips3 -mgp32 -mfp32 -Wa,--vr4300mul-off -D_LANGUAGE_C
+VR4300MULFlag := -Wa,--vr4300mul-off
+CFLAGS         := -G0 -mips3 -mgp32 -mfp32 $(VR4300MULFlag) -D_LANGUAGE_C
 CPPFLAGS     := -I include -I $(BUILD_DIR)/include -I src -DF3DEX_GBI_2 -D_LANGUAGE_C
 LDFLAGS        := -T undefined_syms.txt -T undefined_funcs_auto.txt -T undefined_syms_auto.txt -T $(LD_SCRIPT) -Map $(LD_MAP) --no-check-sections
 CHECK_WARNINGS := -Wall -Wextra -Wunused-but-set-variable -Wno-format-security -Wno-unused-parameter -Wno-sign-compare -Wno-unused-variable -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -m32
@@ -103,6 +104,9 @@ OBJECTS := $(shell grep -E 'build.+\.o' marioparty.ld -o)
 DEPENDS := $(OBJECTS:=.d) 
 
 ### Targets ###
+
+#leave the mul fix on
+build/src/overlays/ovl_23_CraneGame/%.o: CFLAGS = -G0 -mips3 -mgp32 -mfp32 -D_LANGUAGE_C
 
 #build/src/libultra/os/%.o: CFLAGS := -O2 $(CFLAGSCOMMON)
 #build/src/libultra/libc/%.o: CFLAGS := -O2 $(CFLAGSCOMMON)

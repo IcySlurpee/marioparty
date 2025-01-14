@@ -530,6 +530,9 @@ tmp_task = 0x800EA180;
 //ovl_1F
 func_800FE040 = 0x800FE040; //rom:0x19F880
 
+//ovl_23_CraneGame
+D_800FF550_CraneGame = 0x800FF550; //segment:CraneGame type:s32 size:0x10
+
 CalcChecksumEeprom = 0x80019640;
 _InitEeprom = 0x80019270;
 InitEeprom = 0x80019408;
