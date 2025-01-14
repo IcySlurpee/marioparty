@@ -1,7 +1,10 @@
 #include "common.h"
 
 typedef struct Temp {
-    /* 0x00 */ char pad0[0x34];
+    /* 0x00 */ char pad0[4];
+    /* 0x04 */ u8 unk4;
+    /* 0x05 */ u8 unk5;
+    /* 0x05 */ char pad6[0x2E];
     /* 0x34 */ f32 unk34;                           /* inferred */
     /* 0x38 */ f32 unk38;                           /* inferred */
     /* 0x3C */ char pad3C[4];
@@ -91,7 +94,22 @@ extern omObjData* D_800FFE20_CraneGame;
 extern s16 D_800FFE24_CraneGame;
 extern s16 D_800FFE2E_CraneGame;
 extern s16 D_800FFE30_CraneGame;
+extern u16 D_800FFE90_CraneGame[][3];
+extern u16 D_800FFEA8_CraneGame[];
+extern u16 D_800FFEB0_CraneGame[];
+extern omObjData* D_800FFEB8_CraneGame;
+extern s16 D_800FFE40_CraneGame[][2];
+extern f32 D_800FFE50_CraneGame[];
+extern f32 D_800FFE60_CraneGame[];
+extern s16 D_800FFE40_CraneGame[][2];
+extern f32 D_800FFE50_CraneGame[];
+extern f32 D_800FFE60_CraneGame[];
 
+void func_80027E48(s16 arg0, f32 arg1, f32 arg2, u16 arg3, u16 arg4, char* arg5, u8 arg6);
+f64 func_8009B618(f64, f64);
+void func_800FB9C4_CraneGame(s16);
+void func_800F7964_CraneGame(omObjData*);
+void func_800F77A8_CraneGame(omObjData* arg0);
 void func_800F6FCC_CraneGame(omObjData* arg0);
 void func_800F7138_CraneGame(void);
 void func_800FB8E8_CraneGame(void);
@@ -439,13 +457,72 @@ s16 func_800F7290_CraneGame(f32 arg0) {
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800F746C_CraneGame);
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800F77A8_CraneGame);
+void func_800F77A8_CraneGame(omObjData* arg0) {
+    Temp* temp_v0;
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800F7964_CraneGame);
+    arg0->func_ptr = func_800F7964_CraneGame;
+    arg0->trans.x = arg0->trans.y = arg0->trans.z = 0.0f;
+    arg0->scale.z = 1.0f;
+    arg0->scale.y = 1.0f;
+    arg0->scale.x = 1.0f;
+    arg0->model[0] = func_800174C0(0x360000, 0xDB);
+    func_80025798(arg0->model[0], arg0->trans.x, arg0->trans.y, arg0->trans.z);
+    func_80025830(arg0->model[0], arg0->scale.x, arg0->scale.y, arg0->scale.z);
+    temp_v0 = func_80023684(0x2C, 0x7918);
+    arg0->unk_50 = temp_v0;
+    func_8009B770(temp_v0, 0U, 0x2CU);
+    temp_v0->unk4 = 1;
+    temp_v0->unk5 = 0;
+    func_80026040(arg0->model[0]);
+    func_80039C48("crgbg03_DEF", D_800FFE40_CraneGame[temp_v0->unk5]);
+    D_800FFE50_CraneGame[temp_v0->unk5] = D_800FFE60_CraneGame[temp_v0->unk5] = 0;
+    arg0->model[1] = D_800FFE70_CraneGame = func_800174C0(0x36000B, 0xA9);
+    func_80025798(arg0->model[1], 0.0f, 0.0f, 0.0f);
+    func_800257E4(arg0->model[1], 0.0f, 0.0f, 0.0f);
+    func_80025830(arg0->model[1], 1.0f, 1.0f, 1.0f);
+    func_80026040(arg0->model[1]);
+    func_800FB9C4_CraneGame(arg0->model[1]);
+}
+
+void func_800F7964_CraneGame(omObjData* arg0) {
+    Temp* temp_s1;
+
+    temp_s1 = arg0->unk_50;
+    func_80027E48(arg0->model[0], D_800FFE50_CraneGame[temp_s1->unk5], D_800FFE60_CraneGame[temp_s1->unk5], D_800FFE40_CraneGame[temp_s1->unk5][0], D_800FFE40_CraneGame[temp_s1->unk5][1], "doom", 1);
+    if ((func_8005FD5C() + D_800F64F8) == 0) {
+        D_800FFE50_CraneGame[temp_s1->unk5] = func_8009B618(D_800FFE50_CraneGame[temp_s1->unk5] + 0.4, D_800FFE40_CraneGame[temp_s1->unk5][0]);
+        D_800FFE50_CraneGame[temp_s1->unk5] += 0.1;
+    }
+}
+
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800F7A88_CraneGame);
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800F7CC8_CraneGame);
+s16 func_800F7CC8_CraneGame(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
+    f32 distanceSquared;
+    f32 clampedDistance;
+    s16 ret;
+    omObjData* temp_v0;
+
+    temp_v0 = D_800EDE70[arg3];
+    distanceSquared = ((temp_v0->trans.x - arg0) * (temp_v0->trans.x - arg0)) + ((temp_v0->trans.z - arg1) * (temp_v0->trans.z - arg1));
+    clampedDistance = sqrtf(distanceSquared);
+
+    clampedDistance -= arg2;
+    if (clampedDistance < 0.0) {
+        clampedDistance = 0.0f;
+    }
+    if (clampedDistance < 40.0) {
+        ret = 0;
+    } else if (clampedDistance < 80.0) {
+        ret = 1;
+    } else if (clampedDistance < 120.0) {
+        ret = 2;
+    } else {
+        ret = -1;
+    }
+    return ret;
+}
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800F7DD0_CraneGame);
 
@@ -648,11 +725,41 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800FB08C_C
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800FB3A8_CraneGame);
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800FB674_CraneGame);
+void func_800FB674_CraneGame(void) {
+    s32 i;
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800FB73C_CraneGame);
+    D_800FFEB8_CraneGame->work[1] = 1;
+    for (i = 0; i < MAX_PLAYERS; i++) {
+        ShowBasicSprite(D_800FFE90_CraneGame[i][0]);
+        ShowBasicSprite(D_800FFE90_CraneGame[i][1]);
+        ShowBasicSprite(D_800FFE90_CraneGame[i][2]);
+        ShowBasicSprite(D_800FFEA8_CraneGame[i]);
+        ShowBasicSprite(D_800FFEB0_CraneGame[i]);        
+    }
+}
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", func_800FB800_CraneGame);
+void func_800FB73C_CraneGame(void) {
+    s32 i;
+
+    D_800FFEB8_CraneGame->work[1] = 0;
+    for (i = 0; i < MAX_PLAYERS; i++) {
+        func_80018C90(D_800FFE90_CraneGame[i][0]);
+        func_80018C90(D_800FFE90_CraneGame[i][1]);
+        func_80018C90(D_800FFE90_CraneGame[i][2]);
+        func_80018C90(D_800FFEA8_CraneGame[i]);
+        func_80018C90(D_800FFEB0_CraneGame[i]);        
+    }
+}
+
+void func_800FB800_CraneGame(s32 arg0, s32 arg1) {
+    s32 var_a1;
+
+    var_a1 = (arg1 >= 0) ? arg1 : 0;
+    if (var_a1 > 999) {
+        var_a1 = 999;
+    }
+    D_800FF510_CraneGame[arg0] = var_a1;
+}
 
 INCLUDE_RODATA("asm/nonmatchings/overlays/ovl_23_CraneGame/1B3E00", D_800FFCB8_CraneGame);
 

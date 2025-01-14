@@ -325,7 +325,58 @@ INCLUDE_ASM("asm/nonmatchings/24740", func_80027AC8);
 
 INCLUDE_ASM("asm/nonmatchings/24740", func_80027C1C);
 
-INCLUDE_ASM("asm/nonmatchings/24740", func_80027E48);
+void func_80027E48(s16 arg0, f32 arg1, f32 arg2, u16 arg3, u16 arg4, char* arg5, u8 arg6) {
+    s16 i;
+    u16 var_a0;
+    u16 var_a0_2;
+    s16 temp_t2;
+    unk2C0C0StructC0* temp_s0;
+    unk2C0C0StructE0* var_t0;
+    unk2C0C0StructE0* var_t1;
+    s32 temp2;
+
+    temp_s0 = D_800F2B7C[arg0].unk_6C;
+    if (temp_s0 != NULL) {
+        if (arg6 != 0) {
+            var_t0 = temp_s0->unk_04;
+            var_t1 = temp_s0->unk_08[D_800F37F0];
+            temp_t2 = temp_s0->unk_72;
+            for (i = 0; i < temp_t2; i++) {
+                *var_t1++ = *var_t0++;
+            }
+        }
+        temp2 = func_80033718(temp_s0, arg5);
+        temp_t2 = temp_s0->unk_80[temp2].unk_0C;
+        var_t0 = &temp_s0->unk_04[temp_s0->unk_80[temp2].unk_0A];
+        var_t1 = &temp_s0->unk_08[D_800F37F0][temp_s0->unk_80[temp2].unk_0A];
+        arg3 = (arg3 << 5);
+        arg4 = (arg4 << 5);
+        var_a0 = arg1 * 32.0f;
+        var_a0_2 = arg2 * 32.0f;
+        
+        if (arg1 < 0.0f) {
+            arg1 = -arg1;
+        }
+        if (arg2 < 0.0f) {
+            arg2 = -arg2;
+        }
+
+        if ((arg1 * 32.0f) > arg3) {
+            var_a0 = var_a0 % arg3;
+        }
+
+        if ((arg2 * 32.0f) > arg4) {
+            var_a0_2 = var_a0_2 % arg4;
+        }
+
+        for (i = 0; i < temp_t2; i++) {
+            var_t1->unk_08 = var_a0 + var_t0->unk_08;
+            var_t1->unk_0A = var_a0_2 + var_t0->unk_0A;
+            var_t0++;
+            var_t1++;
+        }
+    }
+}
 
 INCLUDE_ASM("asm/nonmatchings/24740", func_80028180);
 
