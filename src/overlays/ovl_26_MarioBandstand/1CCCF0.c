@@ -11,7 +11,7 @@ void func_800F65E0_MarioBandstand(void) {
     D_800C597C &= ~0x10;
     func_80060088();
     func_800FC930_MarioBandstand(1150.0f, -10.0f, 0, 0, 0, 50.0f, 445.0f);
-    func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     func_8001D494(0, 25.0f, 80.0f, 8000.0f);
     func_8002890C(0, 0, 0);

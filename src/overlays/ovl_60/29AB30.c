@@ -116,7 +116,7 @@ void func_800F6B8C_name_60(void) {
     s32 var_a0;
 
     func_800178A0(1);
-    func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     LoadBackgroundData(FE2310_ROM_START);
     switch (D_800F6EC0_name_60) {

@@ -58,7 +58,7 @@ void func_800F6848_HammerDrop(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 void func_800F690C_HammerDrop(omObjData* arg0) {
     unkGlobalStruct_02* temp_s1;
 
-    func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     temp_s1 = func_80023684(sizeof(unkGlobalStruct_02), 0x7918);
     arg0->unk_50 = temp_s1;

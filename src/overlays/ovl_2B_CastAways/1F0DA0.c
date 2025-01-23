@@ -117,7 +117,7 @@ void func_800F71AC_CastAways(omObjData* arg0) {
     SetBasicSpritePos(D_800FBB5E_ovl2B, 0xA0, 0x82);
     ShowBasicSprite(D_800FBB5E_ovl2B);
     SetBasicSpriteSize(D_800FBB5E_ovl2B, 2.0f, 2.0f);
-    func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     arg0->model[0] = LoadFormFile(0x3F0000, 0x499);
     arg0->model[3] = func_800174C0(0x3F0001, 0x1499);

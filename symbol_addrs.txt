@@ -490,6 +490,8 @@ omOutView = 0x8005EB1C;
 omOutViewMulti = 0x8005ECC0;
 ReadEeprom = 0x800195A4;
 _ReadEeprom = 0x80019540;
+D_800C3370 = 0x800C3370; //rom:0xC3F70
+D_800C32B8 = 0x800C32B8; //rom:0xC3EB8
 
 D_80103C18 = 0x80103C18; //rom:0x10CBA8 type:f64 force_migration:True
 D_800FB920 = 0x800FB920; //rom:0x11C550 type:f64 force_migration:True

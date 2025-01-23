@@ -13,7 +13,7 @@ void func_800F65E0_RunningOfTheBulb(void) {
     func_8002ADF0(&D_800EDEC0, 64);
     func_80009500();
     func_800FE090_RunningOfTheBulb(20.0f, 3100.0f, 324.0f, 45.0f, 0, -280.0f, 0, 1675.0f);
-    func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, omOutView), 0xA0);
     func_80023448(3);

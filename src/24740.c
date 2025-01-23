@@ -1,6 +1,61 @@
 #include "common.h"
 #include "engine/mallocblock.h"
 
+extern Gfx D_800C3370[];
+extern Gfx D_800C32B8[];
+
+#define qu016(x) ((int)((x) * 65536.0f))
+
+Gfx D_800C33B0[] = {
+    gsSPDisplayList(D_800C3370),
+    gsSPDisplayList(D_800C32B8),
+    gsSPEndDisplayList()
+};
+
+Gfx D_800C33C8[] = {
+    gsDPPipeSync(),
+    gsSPDisplayList(D_800C33B0),
+    gsDPSetCycleType(G_CYC_1CYCLE),
+    gsSPSetGeometryMode(G_ZBUFFER | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+    gsDPSetBlendColor(0x00, 0x00, 0x00, 0x00),
+    gsDPSetPrimColor(0, 0, 0x00, 0x00, 0x00, 0xFF),
+    gsSPTexture(qu016(0.999985), qu016(0.999985), 0, G_TX_RENDERTILE, G_ON),
+    gsSPEndDisplayList()
+};
+
+Gfx D_800C3408[] = {
+    gsDPPipeSync(),
+    gsSPDisplayList(D_800C3370),
+    gsSPDisplayList(D_800C32B8),
+    gsDPFullSync(),
+    gsSPEndDisplayList()
+};
+
+Gfx D_800C3430[] = {
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_FILL),
+    gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),
+    gsDPSetFillColor(0xFFFCFFFC),
+    gsDPFillRectangle(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1),
+    gsSPEndDisplayList()
+};
+
+Gfx D_800C3460[] = {
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_FILL),
+    gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),
+    gsDPFillRectangle(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1),
+    gsDPNoOp(),
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_1CYCLE),
+    gsSPEndDisplayList(),
+};
+
+s16 D_800C34A0 = 1;
+f32 D_800C34A4 = 0.0f;
+//padding?
+f32 D_800C34A8[] = {0.0f, 0.0f};
+
 extern const char D_800CA8C4[];
 extern s32 D_800ECB14;
 

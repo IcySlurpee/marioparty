@@ -30,7 +30,7 @@ void func_800F65E0_KeyPaWay(void) {
     D_800FF598_KeyPaWay.x = 0;
     D_800FF598_KeyPaWay.y = 1.0f;
     D_800FF598_KeyPaWay.z = 0;
-    func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, &func_800FE33C_KeyPaWay), 0xA0);
     func_80023448(3);

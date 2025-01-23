@@ -8,7 +8,7 @@ void func_800F6F68_PlatformPeril(void) {
 
     func_800178A0(1);
     temp_s0 = func_800178E8();
-    func_80017660(temp_s0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(temp_s0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(temp_s0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     func_8001D494(0, 30.0f, 80.0f, 8000.0f);
     Center.x = D_800FDD74_PlatformPeril.unk4;

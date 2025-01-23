@@ -90,7 +90,7 @@ void func_800F6898_HappeningSpaceEternalStar(void) {
 
 void func_800F68C0_HappeningSpaceEternalStar(void) {
     func_800178A0(1);
-    func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     LoadBackgroundData(FE2310_ROM_START);
     LoadBackgroundIndex(0x46);

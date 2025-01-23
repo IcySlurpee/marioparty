@@ -16,6 +16,9 @@
 #define M_DTOR		(3.14159265358979323846/180.0)
 #endif
 
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 240
+
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 
 #ifndef MIN

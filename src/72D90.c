@@ -355,7 +355,7 @@ void func_800728F4(Gfx** arg0, u8 arg1, s32* arg2) {
     gDPSetRenderMode((*arg0)++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPSetCombineMode((*arg0)++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetPrimColor((*arg0)++, 0, 0, D_800EDEB0, D_800F2CF8, D_800F396A, arg1);
-    gDPFillRectangle((*arg0)++, 0, 0, 320, 240);
+    gDPFillRectangle((*arg0)++, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 #if NON_MATCHING
@@ -415,14 +415,14 @@ void func_80072C34(Gfx** arg0, s32 arg1) {
 
     gDPSetColorImage((*arg0)++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, arg1);
 
-    for (i = 0; i < 240; i += 16) {
-        for (j = 0; j < 320; j += 64) {
-            func_8003A060(arg0, ((j + (i * 320)) * 2) + 0x02000000, 0, 2, 320, 240, 0, 0, 64, 16, 0, 2, 2, 0, 0, 0, 0);
+    for (i = 0; i < SCREEN_HEIGHT; i += 16) {
+        for (j = 0; j < SCREEN_WIDTH; j += 64) {
+            func_8003A060(arg0, ((j + (i * SCREEN_WIDTH)) * 2) + 0x02000000, 0, 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 64, 16, 0, 2, 2, 0, 0, 0, 0);
             gSPTextureRectangle((*arg0)++, j * 4, i * 4, (j + 64) * 4, (i + 16) * 4, G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
         }
     }
 
-    gDPSetColorImage((*arg0)++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, 0x02000000);
+    gDPSetColorImage((*arg0)++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, 0x02000000);
 }
 
 void func_80072E1C(Gfx** arg0) {
@@ -434,9 +434,9 @@ void func_80072E5C(Gfx** arg0, s32 arg1) {
     s16 i;
     s16 j;
 
-    for (i = 0; i < 240; i += 16) {
-        for (j = 0; j < 320; j += 64) {
-            func_8003A060(arg0, arg1 + (j + i * 320) * 2, 0, 2, 320, 240, 0, 0, 64, 16, 0, 2, 2, 0, 0, 0, 0);
+    for (i = 0; i < SCREEN_HEIGHT; i += 16) {
+        for (j = 0; j < SCREEN_WIDTH; j += 64) {
+            func_8003A060(arg0, arg1 + (j + i * SCREEN_WIDTH) * 2, 0, 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 64, 16, 0, 2, 2, 0, 0, 0, 0);
             gSPTextureRectangle((*arg0)++, j * 4, i * 4, (j + 64) * 4, (i + 16) * 4, G_TX_RENDERTILE, 0, 0, 0x0400, 0x0400);
         }
     }
@@ -487,13 +487,13 @@ Gfx* func_80073100(Gfx* arg0, Vtx* arg1) {
     gSPViewport(sp4C++, &D_800C6168);
     gSPMatrix(sp4C++, osVirtualToPhysical(&D_800F3860[D_800F3FA8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(sp4C++, VIRTUAL_TO_PHYSICAL(&D_800F5340[D_800F3FA8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gDPSetScissor(sp4C++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
+    gDPSetScissor(sp4C++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     for (i = 96; i >= -120; i -= 24) {
         for (j = -160; j < 160; j += 32) {
-            s32 sp54 = (96 - i) * 320 + 160;
+            s32 sp54 = (96 - i) * SCREEN_WIDTH + 160;
 
-            func_8003A060(&sp4C, D_800F545C + (j + sp54) * 2, 0, 2, 320, 240, 0, 0, 32, 24, 0, 2, 2, 5, 5, 0, 0);
+            func_8003A060(&sp4C, D_800F545C + (j + sp54) * 2, 0, 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 32, 24, 0, 2, 2, 5, 5, 0, 0);
 
             gSPVertex(sp4C++, osVirtualToPhysical(var_s2), 4, 0);
             gSP1Quadrangle(sp4C++, 0, 1, 2, 3, 0);
@@ -508,7 +508,7 @@ Gfx* func_80073100(Gfx* arg0, Vtx* arg1) {
             var_s2++;
 
             var_s2->n.ob[0] = j * 10;
-            var_s2->n.ob[1] = i * 10 + 240;
+            var_s2->n.ob[1] = i * 10 + SCREEN_HEIGHT;
             var_s2->n.ob[2] = 0;
             var_s2->n.n[0] = var_s2->n.n[1] = var_s2->n.n[2] = -1;
             var_s2->n.tc[0] = 0;
@@ -516,8 +516,8 @@ Gfx* func_80073100(Gfx* arg0, Vtx* arg1) {
             var_s2->n.a = 255;
             var_s2++;
 
-            var_s2->n.ob[0] = j * 10 + 320;
-            var_s2->n.ob[1] = i * 10 + 240;
+            var_s2->n.ob[0] = j * 10 + SCREEN_WIDTH;
+            var_s2->n.ob[1] = i * 10 + SCREEN_HEIGHT;
             var_s2->n.ob[2] = 0;
             var_s2->n.n[0] = var_s2->n.n[1] = var_s2->n.n[2] = -1;
             var_s2->n.tc[0] = 1024;
@@ -525,7 +525,7 @@ Gfx* func_80073100(Gfx* arg0, Vtx* arg1) {
             var_s2->n.a = 255;
             var_s2++;
 
-            var_s2->n.ob[0] = j * 10 + 320;
+            var_s2->n.ob[0] = j * 10 + SCREEN_WIDTH;
             var_s2->n.ob[1] = i * 10;
             var_s2->n.ob[2] = 0;
             var_s2->n.n[0] = var_s2->n.n[1] = var_s2->n.n[2] = -1;
@@ -561,30 +561,30 @@ s32 func_80073560(Gfx** arg0) {
     gDPSetAlphaCompare((*arg0)++, G_AC_THRESHOLD);
     gDPSetBlendColor((*arg0)++, 0, 0, 0, 0);
     gDPSetTextureFilter((*arg0)++, G_TF_BILERP);
-    gDPSetScissor((*arg0)++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
+    gDPSetScissor((*arg0)++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     var_s8 = D_800ECB1C;
 
-    gDPSetColorImage((*arg0)++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, 0x003D0800);
+    gDPSetColorImage((*arg0)++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, 0x003D0800);
     gSPDisplayList((*arg0)++, &D_800C6178);
     gDPSetCombineMode((*arg0)++, G_CC_DECALRGB, G_CC_DECALRGB);
     gDPSetRenderMode((*arg0)++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
 
-    for (i = 0; i < 240; i += 16) {
-        for (j = 0; j < 320; j += 64) {
-            func_8003A060(arg0, var_s8 + (j + i * 320) * 2, 0, 2, 320, 240, 0, 0, 64, 16, 0, 2, 2, 0, 0, 0, 0);
+    for (i = 0; i < SCREEN_HEIGHT; i += 16) {
+        for (j = 0; j < SCREEN_WIDTH; j += 64) {
+            func_8003A060(arg0, var_s8 + (j + i * SCREEN_WIDTH) * 2, 0, 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 64, 16, 0, 2, 2, 0, 0, 0, 0);
             gSPTextureRectangle((*arg0)++, j * temp_f22 * 4.0f, i * temp_f22 * 4.0f,
                 (j * temp_f22 + temp_f22 * 64.0f) * 4.0f, (i * temp_f22 + temp_f22 * 16.0f) * 4.0f,
                 G_TX_RENDERTILE, 0, 0, temp_f24 * 1024.0f, temp_f24 * 1024.0f);
         }
     }
 
-    gDPSetColorImage((*arg0)++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, 0x02000000);
+    gDPSetColorImage((*arg0)++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, 0x02000000);
 
     var_s8 = 0x803D0800;
-    for (i = 0; i < temp_f22 * 240.0f + 15.0f; i += 16) {
-        for (j = 0; j < temp_f22 * 320.0f + 31.0f; j += 32) {
-            func_8003A060(arg0, var_s8 + (j + i * 320) * 2, 0, 2, 320, 240, 0, 0, 32, 16, 0, 2, 2, 0, 0, 0, 0);
+    for (i = 0; i < temp_f22 * (f32)SCREEN_HEIGHT + 15.0f; i += 16) {
+        for (j = 0; j < temp_f22 * (f32)SCREEN_WIDTH + 31.0f; j += 32) {
+            func_8003A060(arg0, var_s8 + (j + i * SCREEN_WIDTH) * 2, 0, 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 32, 16, 0, 2, 2, 0, 0, 0, 0);
             gSPTextureRectangle((*arg0)++, j * temp_f24 * 4.0f, i * temp_f24 * 4.0f,
                 (j + 32) * temp_f24 * 4.0f, (i + 16) * temp_f24 * 4.0f,
                 G_TX_RENDERTILE, 0, 0, temp_f22 * 1024.0f, temp_f22 * 1024.0f);
@@ -595,7 +595,7 @@ s32 func_80073560(Gfx** arg0) {
     gDPSetCombineMode((*arg0)++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode((*arg0)++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor((*arg0)++, 0, 0, 0, 0, 0, 8);
-    gDPFillRectangle((*arg0)++, 0, 0, 320, 240);
+    gDPFillRectangle((*arg0)++, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     return 1;
 }
@@ -659,7 +659,7 @@ void func_8007420C(Gfx** arg0, f32 arg1, f32 arg2) {
     gSPDisplayList((*arg0)++, D_800C6108);
     gDPSetAlphaCompare((*arg0)++, G_AC_THRESHOLD);
     gDPSetBlendColor((*arg0)++, 0, 0, 0, 1);
-    gDPSetScissor((*arg0)++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
+    gDPSetScissor((*arg0)++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     gDPSetTextureFilter((*arg0)++, G_TF_BILERP);
     gDPSetRenderMode((*arg0)++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetCombineLERP((*arg0)++, 0, 0, 0, PRIMITIVE, PRIMITIVE, 0, TEXEL0, 0, 0, 0, 0, PRIMITIVE, PRIMITIVE, 0, TEXEL0, 0);
@@ -680,23 +680,23 @@ void func_8007420C(Gfx** arg0, f32 arg1, f32 arg2) {
     gDPSetPrimColor((*arg0)++, 0, 0, D_800EDEB0, D_800F2CF8, D_800F396A, arg2 * 255.0f);
 
     if (var_t1 > 0) {
-        gDPScisFillRectangle((*arg0)++, 0, 0, 320, var_t1);
+        gDPScisFillRectangle((*arg0)++, 0, 0, SCREEN_WIDTH, var_t1);
     } else {
         var_t1 = 0;
     }
 
-    if (var_t2 < 240) {
-        gDPScisFillRectangle((*arg0)++, 0, var_t2, 320, 240);
+    if (var_t2 < SCREEN_HEIGHT) {
+        gDPScisFillRectangle((*arg0)++, 0, var_t2, SCREEN_WIDTH, SCREEN_HEIGHT);
     } else {
-        var_t2 = 240;
+        var_t2 = SCREEN_HEIGHT;
     }
 
     if (var_t3 > 0) {
         gDPScisFillRectangle((*arg0)++, 0, var_t1, var_t3, var_t2);
     }
 
-    if (var_t4 < 320) {
-        gDPScisFillRectangle((*arg0)++, var_t4, var_t1, 320, var_t2);
+    if (var_t4 < SCREEN_WIDTH) {
+        gDPScisFillRectangle((*arg0)++, var_t4, var_t1, SCREEN_WIDTH, var_t2);
     }
 }
 

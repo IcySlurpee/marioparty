@@ -21,7 +21,7 @@ void func_800F65E0_BumperBalls(void) {
     func_8002890C(0, 32, 128);
     func_8002578C(1);
     func_800FB1E0_BumperBalls(20.0f, 3000.0f, 328.0f, 0, 0, 0, 0, -140.0f);
-    func_80017660(0, 0.0f, 0.0f, 320.0f, 240.0f);
+    func_80017660(0, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800176C4(0, 640.0f, 480.0f, 511.0f, 640.0f, 480.0f, 511.0f);
     omSetStatBit(omAddObj(0x7FDA, 0, 0, -1, &omOutView), 160);
     func_80023448(3);

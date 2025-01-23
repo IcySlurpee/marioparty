@@ -1,7 +1,7 @@
 #include "EternalStar.h"
 
 
-Vec4f D_800F8BB0_EternalStar = {0.0f, 0.0f, 320.0f, 240.0f};
+Vec4f D_800F8BB0_EternalStar = {0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT};
 s16 D_800F8BC0_EternalStar[] = {0x0046, 0x0047, 0x0048, 0x0049, 0x004A, 0x004B, 0x004C};
 s16 D_800F8BD0_EternalStar[] = {0x0055, 0x0054, 0x0053, 0x0052, 0x0051, 0x0050, 0x004F};
 s16 D_800F8BE0_EternalStar[] = {0x0001, 0x0009, 0x0008, 0x0007, 0x0006, 0x0005, 0x0004};
