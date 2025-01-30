@@ -23,7 +23,15 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_0B_MusicalMushroom/11C810", func_800F
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_0B_MusicalMushroom/11C810", func_800F7484_MusicalMushroom);
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_0B_MusicalMushroom/11C810", func_800F7508_MusicalMushroom);
+void func_800F7508_MusicalMushroom(omObjData* arg0, f32* arg1) {
+    arg0->trans.x = func_800AEAC0(*arg1) * 600.0f;
+    arg0->trans.z = func_800AEFD0(*arg1) * 600.0f;
+    arg0->trans.x += 0.0f;
+    arg0->trans.z += 475.0f;
+    arg0->rot.y = *arg1 + 90.0f;
+    func_800184BC(arg0, 2);
+    *arg1 += 0.975f; //increment timer
+}
 
 INCLUDE_RODATA("asm/nonmatchings/overlays/ovl_0B_MusicalMushroom/11C810", D_800FB520_MusicalMushroom);
 extern u32 D_800FB4D0_MusicalMushroom;
