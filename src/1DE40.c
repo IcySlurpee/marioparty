@@ -1,6 +1,33 @@
 #include "common.h"
 
-INCLUDE_ASM("asm/nonmatchings/1DE40", InitCameras);
+void InitCameras(s16 count) {
+    s16 j;
+    s16 i;
+
+    D_800ECB00 = count;
+    D_800F3FA8 = 0;
+    if (D_800C3110 != NULL) {
+        func_80023728(D_800C3110);
+    }
+    D_800C3110 = func_80023668(0x1DD0);
+    for (i = 0; i < 6; i++) {
+        D_800C3110[i].unk_40 = 45.0f;
+        D_800C3110[i].unk_44 = 80.0f;
+        D_800C3110[i].unk_48 = 8000.0f;
+        D_800C3110[i].unk4E = 0;
+        func_8001D520(i, &D_800C3114, &D_800C3150);
+        func_8001D4D4(i, &D_800C318C);
+        D_800C3110[i].unkE8 = 0;
+        D_800C3110[i].unkF0 = 0;
+        D_800C3110[i].unkF4 = 0;
+        for (j = 0; j < D_800F37DA; j++) {
+            func_800A2B40(&D_800C3110[i].unkF8 + j * 2);
+            func_800A2B40(&D_800C3110[i].unkF8 + j * 2 + 1);
+        }
+    }
+    D_800F32A0 = (camera *) D_800C3110;
+    D_800F2BCC = &D_800C3110->unkF8;
+}
 
 void func_8001D40C() {
     D_800F3FA8 = D_800F37F0;

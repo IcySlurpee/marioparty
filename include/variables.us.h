@@ -155,3 +155,8 @@ extern u32 D_800C4240[];
 extern s32 D_800ECB24;
 extern s32 D_800F3FF0;
 extern s16 D_800C4C30[7];
+extern s16 D_800ECB00;
+extern Vec3f D_800C3114;
+extern Vec3f D_800C3150;
+extern Vec4f D_800C318C;
+extern Mtx* D_800F2BCC;

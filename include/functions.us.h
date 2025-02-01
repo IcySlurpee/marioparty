@@ -221,7 +221,6 @@ void func_80055A34(s32);
 void func_8003C314(s8 a, void* ptr, s32 c, s32 d);
 void func_8003E174(Object* ptr);
 void func_800584F0(s32 unk);
-void InitCameras(s32 count);
 void SetPlayerOntoChain(s16 player, s16 chain_index, s16 space_index);
 void func_80056AF4(void);
 s32 func_8004B850(void);
@@ -277,7 +276,7 @@ omObjData* func_8004E3E0(s32, Vec3f*, s32, void*); //arg2 should be Vec3f*
 void func_80055960(s32, s32);
 void omSetRot(omObjData*, f32, f32, f32);
 void omSetSca(omObjData*, f32, f32, f32);
-void InitCameras(s32);
+void InitCameras(s16 count);
 void func_8005AD18(void);
 void func_80062450(void);
 s32 func_8005CE48(s32);
