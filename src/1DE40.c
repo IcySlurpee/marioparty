@@ -83,14 +83,10 @@ void func_8001D57C(s16 index) {
 INCLUDE_ASM("asm/nonmatchings/1DE40", func_8001D658);
 
 void func_8001D7DC(s16 index, Gfx **arg1) {
-    Gfx *temp_a3;
     unk_Struct00 *temp_a2;
 
     temp_a2 = &D_800C3110[index];
-    temp_a3 = *arg1;
-    *arg1 = &temp_a3[0x1];
-    temp_a3->words.w0 = (((s32) (temp_a2->unkD8.x * 4.0f) & 0xFFF) << 0xC) | (((s32) (temp_a2->unkD8.y * 4.0f) & 0xFFF) | (s64) 0xED000000);
-    temp_a3->words.w1 = (((s32) (temp_a2->unkD8.z * 4.0f) & 0xFFF) << 0xC) | ((s32) (temp_a2->unkD8.w * 4.0f) & 0xFFF);
+    gDPSetScissor((*arg1)++, G_SC_NON_INTERLACE, temp_a2->unkD8.x, temp_a2->unkD8.y, temp_a2->unkD8.z, temp_a2->unkD8.w)
 }
 
 void func_8001D8A0(s16 index, s32 arg1, s32 arg2) {
