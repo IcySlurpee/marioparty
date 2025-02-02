@@ -17,9 +17,6 @@ s16 RunDecisionTree(DecisionTreeNonLeafNode* currentNode) {
     s32 phi_a1;
 
     DecisionTreeNonLeafNode* phi_s1 = currentNode;
-    s32 bitMask = 1;
-    s16* boardFeatureArray = D_800C4C30;
-    s16* playerDataArray = GwCommon.boardWork;
 
     for (;;phi_s1++) {
         switch ((phi_s1->type >> 24)) {
@@ -30,8 +27,8 @@ s16 RunDecisionTree(DecisionTreeNonLeafNode* currentNode) {
             continue;
         case 2:
             for (loopIndex = 0; loopIndex < 7; loopIndex++) {
-                if ((bitMask << loopIndex) & phi_s1->node_data1.data) {
-                    if (!_CheckFlag(boardFeatureArray[loopIndex])) {
+                if ((1 << loopIndex) & phi_s1->node_data1.data) {
+                    if (!_CheckFlag(D_800C4C30[loopIndex])) {
                         break;
                     }
                 }
@@ -42,7 +39,7 @@ s16 RunDecisionTree(DecisionTreeNonLeafNode* currentNode) {
             break;
 
         case 3:
-            if (((bitMask << (D_800F3FF0 - 1)) & phi_s1->node_data1.data)) {
+            if (((1 << (D_800F3FF0 - 1)) & phi_s1->node_data1.data)) {
                 break;
             }
             continue;
@@ -55,39 +52,39 @@ s16 RunDecisionTree(DecisionTreeNonLeafNode* currentNode) {
 
             switch (tempVal3) {
             case 0:
-                if (playerDataArray[tempVal1] == tempVal2) {
+                if (GwCommon.boardWork[tempVal1] == tempVal2) {
                     break;
                 }
                 continue;
             case 1:
-                if (playerDataArray[tempVal1] != tempVal2) {
+                if (GwCommon.boardWork[tempVal1] != tempVal2) {
                     break;
                 }
                 continue;
             case 2:
-                if ((playerDataArray[tempVal1] < tempVal2)) {
+                if ((GwCommon.boardWork[tempVal1] < tempVal2)) {
                     break;
                 }
                 continue;
             case 3:
-                if ((playerDataArray[tempVal1] <= tempVal2)) {
+                if ((GwCommon.boardWork[tempVal1] <= tempVal2)) {
                     break;
                 }
                 continue;
             case 4:
-                if ((playerDataArray[tempVal1] > tempVal2)) {
+                if ((GwCommon.boardWork[tempVal1] > tempVal2)) {
                     break;
                 }
                 continue;
             case 5:
-                if ((playerDataArray[tempVal1] < tempVal2)) {
+                if ((GwCommon.boardWork[tempVal1] < tempVal2)) {
                     continue;
                 }
                 break;
             }
             break;
         case 5:
-            if (((bitMask << func_8004FEBC(GetCurrentPlayerIndex())) & phi_s1->node_data1.data)) {
+            if (((1 << func_8004FEBC(GetCurrentPlayerIndex())) & phi_s1->node_data1.data)) {
                 break;
             }
             continue;
