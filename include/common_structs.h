@@ -249,19 +249,23 @@ typedef struct unkProcessStruct {
 
 typedef struct unk_Struct00 {
     /* 0x000 */ Vec3f pos;
-    /* 0x00C */ f32 unkC;
-    /* 0x010 */ f32 unk10;
-    /* 0x014 */ f32 unk14;
-    /* 0x018 */ f32 unk18;
-    /* 0x01C */ f32 unk1C;
-    /* 0x020 */ f32 unk20;
-    /* 0x024 */ char pad24[0x1C];
+    /* 0x00C */ Vec3f unkC;
+    /* 0x018 */ Vec3f unk18;
+    /* 0x024 */ Vec3f unk24;
+    /* 0x030 */ Vec3f unk30;
+    /* 0x03C */ char pad3C[4];
     /* 0x040 */ f32 unk_40;
     /* 0x044 */ f32 unk_44;
     /* 0x048 */ f32 unk_48;
-    /* 0x04C */ char pad4C[0xA8];
+    /* 0x04C */ u16 unk4C;
+    /* 0x04E */ s16 unk4E;
+    /* 0x050 */ char pad50[0x88];
+    /* 0x0D8 */ Vec4f unkD8;
+    /* 0x0E8 */ s32 unkE8;
+    /* 0x0EC */ s32 unkEC;
+    /* 0x0F0 */ s32 unkF0;
     /* 0x0F4 */ s32 unkF4;
-    /* 0x0F8 */ char padF8[0x40];
+    /* 0x0F8 */ Mtx unkF8;
     /* 0x138 */ Mtx unk_138;
     /* 0x178 */ char unk_178[0x380];
 } unk_Struct00;
@@ -296,7 +300,7 @@ typedef struct Object {
 /* 0x4C */ s32 unk_4C;
 /* 0x50 */ char unk_50[3];
 /* 0x53 */ s8 unk_53;
-/* 0x50 */ char unk_54[0x38];
+/* 0x54 */ char unk_54[0x38];
 /* 0x8C */ struct Object* unk_8C;
 } Object; // //sizeof 0xAC? (this and mpSource_object are the same struct)
 
@@ -477,11 +481,11 @@ typedef struct mpSource_f2b7cstruct {
 } mpSource_f2b7cstruct;
 
 typedef struct camera {
-    /* 0x00 */ Vec3f coords;
-    /* 0x0C */ f32 unk_0C;
+    /* 0x00 */ Vec3f coords; // eye?
+    /* 0x0C */ f32 unk_0C;   // at?
     /* 0x10 */ f32 unk_10;
     /* 0x14 */ f32 unk_14;
-    /* 0x18 */ f32 unk_18;
+    /* 0x18 */ f32 unk_18;   // up?
     /* 0x1C */ f32 unk_1C;
     /* 0x20 */ f32 unk_20;
 } camera; //sizeof unknown
