@@ -436,6 +436,7 @@ void func_80009000(omObjData*, s32, f32);
 void func_80072724(u8, u8, u8);
 void HuMemDirectFree(void*);
 void* func_80023668(s32);
+void func_80023728(void*);
 void func_800237BC(s16);
 void FreeTemp(void*);
 s32 InitSprite(s32);
