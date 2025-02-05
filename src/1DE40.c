@@ -80,7 +80,27 @@ void func_8001D57C(s16 index) {
     guLookAt(temp_s1 + 0x1, temp_s0->pos.x, temp_s0->pos.y, temp_s0->pos.z, temp_s0->unkC.x, temp_s0->unkC.y, temp_s0->unkC.z, temp_s0->unk18.x, temp_s0->unk18.y, temp_s0->unk18.z);
 }
 
-INCLUDE_ASM("asm/nonmatchings/1DE40", func_8001D658);
+void func_8001D658(s16 index, Gfx** arg1) {
+    unk_Struct00* temp_v1;
+    unk_Struct00* temp_a0;
+    Mtx* temp_s1;
+
+    temp_v1 = &D_800C3110[index];
+    temp_s1 = &temp_v1->unkF8 + (D_800F3FA8 * 2);
+    temp_a0 = (void*) temp_v1 + (D_800F3FA8 * 16);
+    temp_a0->unk58 = temp_v1->unk24.x;
+    temp_a0->unk5A = temp_v1->unk24.y;
+    temp_a0->unk5C = temp_v1->unk24.z;
+    temp_a0->unk60 = temp_v1->unk30.x;
+    temp_a0->unk62 = temp_v1->unk30.y;
+    temp_a0->unk64 = temp_v1->unk30.z;
+
+    gSPViewport((*arg1)++, &temp_v1->unk58 + (D_800F3FA8 * 8));
+    gSPPerspNormalize((*arg1)++, temp_v1->unk4C);
+    gSPMatrix((*arg1)++, osVirtualToPhysical(temp_s1), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix((*arg1)++, (void*) temp_s1 + 0x80000040, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+}
+
 
 void func_8001D7DC(s16 index, Gfx **arg1) {
     unk_Struct00 *temp_a2;
