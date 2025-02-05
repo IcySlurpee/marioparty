@@ -259,7 +259,15 @@ typedef struct unk_Struct00 {
     /* 0x048 */ f32 unk_48;
     /* 0x04C */ u16 unk4C;
     /* 0x04E */ s16 unk4E;
-    /* 0x050 */ char pad50[0x88];
+    /* 0x050 */ char pad50[8];
+    /* 0x058 */ s16 unk58;
+    /* 0x05A */ s16 unk5A;
+    /* 0x05C */ s16 unk5C;
+    /* 0x05E */ char unk5E[2];
+    /* 0x060 */ s16 unk60;
+    /* 0x062 */ s16 unk62;
+    /* 0x064 */ s16 unk64;
+    /* 0x066 */ char pad66[0x72];
     /* 0x0D8 */ Vec4f unkD8;
     /* 0x0E8 */ s32 unkE8;
     /* 0x0EC */ s32 unkEC;
@@ -267,7 +275,7 @@ typedef struct unk_Struct00 {
     /* 0x0F4 */ s32 unkF4;
     /* 0x0F8 */ Mtx unkF8;
     /* 0x138 */ Mtx unk_138;
-    /* 0x178 */ char unk_178[0x380];
+    /* 0x178 */ char unk_178[0x380]; // more matrices?
 } unk_Struct00;
 
 typedef struct unk_Struct04 {
