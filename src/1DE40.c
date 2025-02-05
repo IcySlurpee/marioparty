@@ -86,7 +86,7 @@ void func_8001D7DC(s16 index, Gfx **arg1) {
     unk_Struct00 *temp_a2;
 
     temp_a2 = &D_800C3110[index];
-    gDPSetScissor((*arg1)++, G_SC_NON_INTERLACE, temp_a2->unkD8.x, temp_a2->unkD8.y, temp_a2->unkD8.z, temp_a2->unkD8.w)
+    gDPSetScissor((*arg1)++, G_SC_NON_INTERLACE, temp_a2->unkD8.x, temp_a2->unkD8.y, temp_a2->unkD8.z, temp_a2->unkD8.w);
 }
 
 void func_8001D8A0(s16 index, s32 arg1, s32 arg2) {
