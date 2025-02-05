@@ -33,8 +33,8 @@ void func_8001D40C() {
     D_800F3FA8 = D_800F37F0;
 }
 
-void func_8001D420(s16 index, Vec3f *arg1, Vec3f *arg2, Vec3f *arg3) {
-    unk_Struct00 *temp_v0;
+void func_8001D420(s16 index, Vec3f* arg1, Vec3f* arg2, Vec3f* arg3) {
+    unk_Struct00* temp_v0;
 
     temp_v0 = &D_800C3110[index];
     temp_v0->pos = *arg1;
@@ -43,7 +43,7 @@ void func_8001D420(s16 index, Vec3f *arg1, Vec3f *arg2, Vec3f *arg3) {
 }
 
 void func_8001D494(s16 index, f32 arg1, f32 arg2, f32 arg3) {
-    unk_Struct00 *temp_v0;
+    unk_Struct00* temp_v0;
 
     temp_v0 = &D_800C3110[index];
     temp_v0->unk_40 = arg1;
@@ -52,8 +52,8 @@ void func_8001D494(s16 index, f32 arg1, f32 arg2, f32 arg3) {
     temp_v0->unk4C = 1;
 }
 
-void func_8001D4D4(s16 index, Vec4f *arg1) {
-    unk_Struct00 *temp_v0;
+void func_8001D4D4(s16 index, Vec4f* arg1) {
+    unk_Struct00* temp_v0;
 
     temp_v0 = &D_800C3110[index];
     temp_v0->unkD8.x = arg1->x;
@@ -62,8 +62,8 @@ void func_8001D4D4(s16 index, Vec4f *arg1) {
     temp_v0->unkD8.w = arg1->w;
 }
 
-void func_8001D520(s16 index, Vec3f *arg1, Vec3f *arg2) {
-    unk_Struct00 *temp_v0;
+void func_8001D520(s16 index, Vec3f* arg1, Vec3f* arg2) {
+    unk_Struct00* temp_v0;
 
     temp_v0 = &D_800C3110[index];
     temp_v0->unk24 = *arg1;
@@ -71,8 +71,8 @@ void func_8001D520(s16 index, Vec3f *arg1, Vec3f *arg2) {
 }
 
 void func_8001D57C(s16 index) {
-    unk_Struct00 *temp_s0;
-    Mtx *temp_s1;
+    unk_Struct00* temp_s0;
+    Mtx* temp_s1;
 
     temp_s0 = &D_800C3110[index];
     temp_s1 = &temp_s0->unkF8 + (D_800F3FA8 << 1);
@@ -82,15 +82,15 @@ void func_8001D57C(s16 index) {
 
 INCLUDE_ASM("asm/nonmatchings/1DE40", func_8001D658);
 
-void func_8001D7DC(s16 index, Gfx **arg1) {
-    unk_Struct00 *temp_a2;
+void func_8001D7DC(s16 index, Gfx** arg1) {
+    unk_Struct00* temp_a2;
 
     temp_a2 = &D_800C3110[index];
-    gDPSetScissor((*arg1)++, G_SC_NON_INTERLACE, temp_a2->unkD8.x, temp_a2->unkD8.y, temp_a2->unkD8.z, temp_a2->unkD8.w)
+    gDPSetScissor((*arg1)++, G_SC_NON_INTERLACE, temp_a2->unkD8.x, temp_a2->unkD8.y, temp_a2->unkD8.z, temp_a2->unkD8.w);
 }
 
 void func_8001D8A0(s16 index, s32 arg1, s32 arg2) {
-    unk_Struct00 *temp_v0;
+    unk_Struct00* temp_v0;
 
     temp_v0 = &D_800C3110[index];
     temp_v0->unkE8 = arg1;
@@ -113,7 +113,7 @@ void Convert3DTo2D(s16 index, Vec3f* arg1, Vec2f* arg2) {
     f32 temp_f28;
     f32 temp_f2;
     f32 temp_f30;
-    unk_Struct00 *temp_s0;
+    unk_Struct00* temp_s0;
 
     temp_s0 = &D_800C3110[index];
     HuGuLookAtF(sp28, temp_s0->pos.x, temp_s0->pos.y, temp_s0->pos.z, temp_s0->unkC.x, temp_s0->unkC.y, temp_s0->unkC.z, temp_s0->unk18.x, temp_s0->unk18.y, temp_s0->unk18.z);
@@ -132,7 +132,7 @@ void Convert3DTo2D(s16 index, Vec3f* arg1, Vec2f* arg2) {
     arg2->y = ((temp_f22 * (120.0f / temp_f28)) + 120.0f);
 }
 
-void func_8001DB2C(s16 index, Vec3f *arg1, Vec2f *arg2) {
+void func_8001DB2C(s16 index, Vec3f* arg1, Vec2f* arg2) {
     Matrix4f sp28;
     f32 temp_f0;
     f32 temp_f20;
@@ -142,7 +142,7 @@ void func_8001DB2C(s16 index, Vec3f *arg1, Vec2f *arg2) {
     f32 temp_f30;
     f32 temp_f2;
     f32 temp_f2_2;
-    unk_Struct00 *temp_s0;
+    unk_Struct00* temp_s0;
 
     temp_s0 = &D_800C3110[index];
     HuGuLookAtF(sp28, temp_s0->pos.x, temp_s0->pos.y, temp_s0->pos.z, temp_s0->unkC.x, temp_s0->unkC.y, temp_s0->unkC.z, temp_s0->unk18.x, temp_s0->unk18.y, temp_s0->unk18.z);
@@ -163,13 +163,13 @@ void func_8001DB2C(s16 index, Vec3f *arg1, Vec2f *arg2) {
     arg2->y = temp_f22 * (temp_f0 / temp_f28) + temp_f0;
 }
 
-void func_8001DD24(s16 index, f32 arg1, Vec3f *arg2, Vec2f *arg3) {
+void func_8001DD24(s16 index, f32 arg1, Vec3f* arg2, Vec3f* arg3) {
     Matrix4f sp28;
     f32 temp_f20;
     f32 temp_f4;
     f32 unk_var1;
     f32 unk_var2;
-    unk_Struct00 *temp_s0;
+    unk_Struct00* temp_s0;
 
     temp_s0 = &D_800C3110[index];
     HuGuLookAtF(sp28, temp_s0->pos.x, temp_s0->pos.y, temp_s0->pos.z, temp_s0->unkC.x, temp_s0->unkC.y, temp_s0->unkC.z, temp_s0->unk18.x, temp_s0->unk18.y, temp_s0->unk18.z);
