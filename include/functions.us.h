@@ -296,6 +296,7 @@ void func_800264F8(s16 arg0, s16 arg1, f32 arg2, char* arg3, char* arg4, s32 arg
 f32 sinf(f32);
 void func_8001D420(s16, Vec3f*, Vec3f*, Vec3f*);
 void func_8001D57C(s16);
+void func_8001DFC0();
 f32 func_800B1750(f32);
 void SetBasicSpriteSize(u16, f32, f32);
 void func_80018E50(s32, u16, s32);
@@ -351,7 +352,7 @@ void func_800176C4(u8, f32, f32, f32, f32, f32, f32);
 void func_800178A0(s32);
 s16 func_800178E8(void);
 void func_8001D494(s16, f32, f32, f32);
-void func_8001DE70(s32);
+void func_8001DE70(s16);
 void func_80023448(s32);
 void func_800234B8(u8, u8, u8, u8);
 void func_80023504(s32, f32, f32, f32);
@@ -534,4 +535,5 @@ void func_8001A498(void);
 void func_8005B024(void);
 void func_8005B280(void);
 void func_8005B3B0(void);
+void func_80039A4C(s16);
 #endif

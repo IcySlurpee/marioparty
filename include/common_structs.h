@@ -350,18 +350,27 @@ typedef struct GW_PLAYER {
 typedef struct unk_800ECDE0 {
 /* 0x00 */ s16 unk_00;
 /* 0x02 */ s16 unk_02;
-/* 0x04 */ s16 unk_04;
+/* 0x04 */ u16 unk_04;
 /* 0x06 */ s16 unk_06;
-/* 0x08 */ s32 unk_08;
+/* 0x08 */ s16 unk_08;
+/* 0x0A */ s16 unk_0A;
 /* 0x0C */ s16 unk_0C;
 /* 0x0E */ s16 unk_0E;
-/* 0x10 */ f32 unk_10;
-/* 0x14 */ f32 unk_14;
-/* 0x18 */ s32 unk_18;
-/* 0x1C */ s16 unk_1C;
+/* 0x10 */ s16 unk_10;
+/* 0x12 */ u8 unk_12;
+/* 0x13 */ u8 unk_13;
+/* 0x14 */ u8 unk_14;
+/* 0x15 */ u8 unk_15;
+/* 0x16 */ s8 unk_16;
+/* 0x17 */ s8 unk_17;
+/* 0x18 */ s8 unk_18;
+/* 0x19 */ u8 unk_19;
+/* 0x1A */ u8 unk_1A;
+/* 0x1B */ u8 unk_1B;
+/* 0x1C */ u8 unk_1C;
+/* 0x1D */ u8 unk_1D;
 /* 0x1E */ s16 unk_1E;
-/* 0x20 */ s16 unk_20;
-/* 0x22 */ s16 pad;
+/* 0x20 */ s32 unk_20;
 } unk_800ECDE0;
 
 // typedef struct viewAngle {
