@@ -999,4 +999,21 @@ typedef struct unk3AC60Struct2 {
     /* 0x3A */ s16 unk_3A;
 } unk3AC60Struct2; //sizeof unknown
 
+typedef struct unk_ProcessUserData08 {
+    /* 0x00 */ s16 unk00;
+    /* 0x02 */ char unk02[2];
+    /* 0x04 */ Object* unk04;
+} unk_ProcessUserData08;
+
+typedef struct unk_8003B8D4Struct {
+    /* 0x00 */ s16 unk00;
+    /* 0x02 */ s16 unk02;
+    /* 0x04 */ struct unk_ProcessUserData08* unk04;
+    /* 0x08 */ Process* unk08;
+    /* 0x0C */ s16 unk0C;
+    /* 0x0E */ s16 unk0E;
+    /* 0x10 */ char unk_10[0x58];
+    /* 0x68 */ s32 unk68;
+} unk_8003B8D4Struct;
+
 #endif
