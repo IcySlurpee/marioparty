@@ -207,9 +207,9 @@ void func_800F671C_EternalStar(void) {
 
     for (i = 0; i < ARRAY_COUNT(D_800F8BD0_EternalStar); i++) {
         if (_CheckFlag(D_800F8BC0_EternalStar[i])) {
-            SetSpaceType(D_800F8BD0_EternalStar[i], 6);
+            BoardSpaceTypeSet(D_800F8BD0_EternalStar[i], 6);
         } else {
-            SetSpaceType(D_800F8BD0_EternalStar[i], 5);
+            BoardSpaceTypeSet(D_800F8BD0_EternalStar[i], 5);
         }
     }
 }
@@ -437,8 +437,8 @@ void func_800F6F68_EternalStar(void) {
     if (_CheckFlag(0x4F) != 0) {
         playerNoFeatureFlag = GetPlayerStruct(-1);
         ClearBoardFeatureFlag(0x4F);
-        func_800A0D50(&playerNoFeatureFlag->player_obj->coords, &GetSpaceData(0x4E)->coords);
-        func_800A0E80(&playerNoFeatureFlag->player_obj->unk_18, &GetSpaceData(2)->coords, &playerNoFeatureFlag->player_obj->coords);
+        func_800A0D50(&playerNoFeatureFlag->player_obj->coords, &BoardSpaceGet(0x4E)->coords);
+        func_800A0E80(&playerNoFeatureFlag->player_obj->unk_18, &BoardSpaceGet(2)->coords, &playerNoFeatureFlag->player_obj->coords);
     }
     
     if (_CheckFlag(0x50) != 0) {
@@ -459,7 +459,7 @@ void func_800F7070_EternalStar(void) {
 
 void func_800F709C_EternalStar(s16 arg0) {
     Object* var_s2;
-    SpaceData* space;
+    BoardSpace* space;
 
     if (D_800F91C0_EternalStar[arg0] == 0) {
         if (D_800F91BC_EternalStar == NULL) {
@@ -474,7 +474,7 @@ void func_800F709C_EternalStar(s16 arg0) {
 
         D_800F91C0_EternalStar[arg0] = var_s2;
         func_8004CDCC(var_s2);
-        space = GetSpaceData(D_800F8BF8_EternalStar[arg0]);
+        space = BoardSpaceGet(D_800F8BF8_EternalStar[arg0]);
         func_800A0D50(&var_s2->coords, &space->coords);
         func_8003C314(0xA, var_s2, D_800F8C18_EternalStar[arg0].unk0, D_800F8C18_EternalStar[arg0].unk2);
     }
@@ -507,7 +507,7 @@ void func_800F7224_EternalStar(s16 arg0) {
         var_s1->unk_0A |= 2;
         func_800A0D00(&var_s1->xScale, 0.6f, 0.6f, 0.6f);
         var_s1->unk_30 = 100.0f;
-        func_800A0D50(&var_s1->coords, &(GetSpaceData(D_800F8C34_EternalStar[arg0])->coords) );
+        func_800A0D50(&var_s1->coords, &(BoardSpaceGet(D_800F8C34_EternalStar[arg0])->coords) );
         func_8003C314(8, var_s1, 0, 0);
     }
 }
@@ -529,7 +529,7 @@ void func_800F736C_EternalStar(void) {
         func_8003E174(temp_s0);
         D_800F91E4_EternalStar = temp_s0;
         temp_s0->unk_0A |= 2;
-        func_800A0D50(&temp_s0->coords, &GetSpaceData(2)->coords);
+        func_800A0D50(&temp_s0->coords, &BoardSpaceGet(2)->coords);
         func_8003C314(7, temp_s0, 0, 0);
     }
 }
@@ -564,7 +564,7 @@ void func_800F74D4_EternalStar(void) {
     func_800F736C_EternalStar();
     
     if (_CheckFlag(0x4F)) {
-        func_800A0E80(&D_800F91E4_EternalStar->unk_18, &(GetSpaceData(0x4E)->coords), &D_800F91E4_EternalStar->coords);
+        func_800A0E80(&D_800F91E4_EternalStar->unk_18, &(BoardSpaceGet(0x4E)->coords), &D_800F91E4_EternalStar->coords);
         omAddPrcObj(func_800F73F0_EternalStar, 0x1005, 0, 0);
     }
 }
@@ -874,7 +874,7 @@ void func_800F7F7C_EternalStar(void) {
     Object* temp_s1;
     Object* temp_s3;
     Process* process;
-    SpaceData* space;
+    BoardSpace* space;
     GW_PLAYER* player = GetPlayerStruct(-1);
 
     player->player_obj->unk_0A &= ~2;
@@ -887,7 +887,7 @@ void func_800F7F7C_EternalStar(void) {
     PlaySound(0x47);
     func_800F7EE0_EternalStar(temp_s3);
     DestroyObject(temp_s1);
-    space = GetSpaceData(GetAbsSpaceIndexFromChainSpaceIndex(player->next_chain, player->next_space));
+    space = BoardSpaceGet(GetAbsSpaceIndexFromChainSpaceIndex(player->next_chain, player->next_space));
     process = HuPrcCurrentGet();
     HuPrcChildLink(process, func_8004D648(&player->player_obj->coords, &space->coords, &player->player_obj->coords, 25.0f));
     HuPrcChildWatch();
@@ -944,7 +944,7 @@ void func_800F8298_EternalStar(void) {
     Vec3f sp10;
     GW_PLAYER* player;
     s16 textWindowID;
-    SpaceData* temp_s0;
+    BoardSpace* temp_s0;
     s32 tempVar;
 
     player = GetPlayerStruct(-1);
@@ -957,7 +957,7 @@ void func_800F8298_EternalStar(void) {
     SetNextChainAndSpace(-1, 0x13, 0);
     func_800F7F7C_EternalStar();
     SetPlayerAnimation(-1, 0, 2);
-    temp_s0 = GetSpaceData(GetAbsSpaceIndexFromChainSpaceIndex(0x12, 1));
+    temp_s0 = BoardSpaceGet(GetAbsSpaceIndexFromChainSpaceIndex(0x12, 1));
     func_800A0E80(&player->player_obj->unk_18, &temp_s0->coords, &player->player_obj->coords);
     func_8004D3F4(&player->player_obj->coords, &temp_s0->coords, &player->player_obj->coords, 0xF);
     HuPrcSleep(0xF);

@@ -37,7 +37,7 @@ u8 rand8(void) {
 }
 
 // copies in an overlay and clears bss region.
-void LoadOverlay(s32 overlayIndex) {
+void OvlLoad(s32 overlayIndex) {
     u8 *rom_start;
     u8 *rom_end;
     u8 *bss_start;

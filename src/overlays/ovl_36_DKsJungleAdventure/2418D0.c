@@ -95,7 +95,7 @@ void func_800F6830_DKsJungleAdventure(void) { //ov054_func_800F6830
     GameStatus* ed5c0 = &GwSystem;
 
     for (s1 = 0; s1 < DK_STAR_COUNT; s1++) {
-        SetSpaceType(D_800F9900_DKsJungleAdventure[s1], 1);
+        BoardSpaceTypeSet(D_800F9900_DKsJungleAdventure[s1], 1);
         SetBoardFeatureFlag(D_800F98F0_DKsJungleAdventure[s1]);
     }
 
@@ -106,10 +106,10 @@ void func_800F6830_DKsJungleAdventure(void) { //ov054_func_800F6830
     }
 
     for (s1 = 0; s1 < s0; s1++) {
-        SetSpaceType(D_800F9900_DKsJungleAdventure[ed5c0->starSpaces[s1]], 6);
+        BoardSpaceTypeSet(D_800F9900_DKsJungleAdventure[ed5c0->starSpaces[s1]], 6);
     }
 
-    SetSpaceType(D_800F9900_DKsJungleAdventure[ed5c0->starSpaces[ed5c0->chosenStarSpaceIndex]], 5);
+    BoardSpaceTypeSet(D_800F9900_DKsJungleAdventure[ed5c0->starSpaces[ed5c0->chosenStarSpaceIndex]], 5);
 
     ClearBoardFeatureFlag(D_800F98F0_DKsJungleAdventure[ed5c0->starSpaces[ed5c0->chosenStarSpaceIndex]]);
 }
@@ -154,7 +154,7 @@ s32 func_800F6958_DKsJungleAdventure(s32 current_space_index) {
 }
 
 void func_800F6A38_DKsJungleAdventure(void) {
-    SpaceData* space_data;
+    BoardSpace* space_data;
     Object* ptr;
     mpSource_f2b7cstruct *f2bstr;
     void *ret;
@@ -234,7 +234,7 @@ void func_800F6C48_DKsJungleAdventure(mystery_struct_ret_func_80048224* a0) { //
 void func_800F6CD8_DKsJungleAdventure(void) {
     GameStatus* ed5c0;
     mystery_struct_ret_func_80048224 *str;
-    SpaceData* spacedata;
+    BoardSpace* spacedata;
     Process* proc_struct;
     s32 string_id;
 
@@ -265,7 +265,7 @@ void func_800F6CD8_DKsJungleAdventure(void) {
     func_80071E80(str->unk8, 1);
     func_8006EB40(str->unk8);
 
-    spacedata = GetSpaceData(D_800F9910_DKsJungleAdventure[ed5c0->starSpaces[ed5c0->chosenStarSpaceIndex]]);
+    spacedata = BoardSpaceGet(D_800F9910_DKsJungleAdventure[ed5c0->starSpaces[ed5c0->chosenStarSpaceIndex]]);
     func_8004B5DC(&spacedata->coords);
     func_8004B838(5.0f);
     HuPrcSleep(5);
@@ -440,7 +440,7 @@ void func_800F7250_DKsJungleAdventure(void) { //ov054_DrawBowserInner
 
     ptr->unk_0A |= 0x2;
 
-    func_800A0D50(&ptr->coords, &GetSpaceData(0x70)->coords);
+    func_800A0D50(&ptr->coords, &BoardSpaceGet(0x70)->coords);
     func_8003C314(7, ptr, -2, 0);
 }
 
@@ -462,7 +462,7 @@ void func_800F72EC_DKsJungleAdventure(void) { //ov054_DrawKoopaInner
 
     ptr->unk_0A |= 0x2;
 
-    func_800A0D50(&ptr->coords, &GetSpaceData(0x5D)->coords);
+    func_800A0D50(&ptr->coords, &BoardSpaceGet(0x5D)->coords);
     func_8003C314(9, ptr, -1, -3);
 }
 

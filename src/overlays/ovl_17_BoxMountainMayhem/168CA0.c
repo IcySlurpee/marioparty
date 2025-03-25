@@ -1,5 +1,7 @@
 #include "common.h"
 
+extern s32 D_800FC088_BoxMountainMayhem;
+
 void func_800F9060_BoxMountainMayhem(void) {
 }
 
@@ -51,9 +53,26 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_17_BoxMountainMayhem/168CA0", func_80
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_17_BoxMountainMayhem/168CA0", func_800FB9B4_BoxMountainMayhem);
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_17_BoxMountainMayhem/168CA0", func_800FBC58_BoxMountainMayhem);
+//direct copy of frandom from mario party 4
+u32 func_800FBC58_BoxMountainMayhem(u32 param) {
+    s32 rand2, rand3;
 
-INCLUDE_ASM("asm/nonmatchings/overlays/ovl_17_BoxMountainMayhem/168CA0", func_800FBD2C_BoxMountainMayhem);
+    if (param == 0) {
+        param = rand8();
+        param = param ^ osGetCount();
+        param ^= 0xD826BC89;
+    }
+
+    rand2 = param / 0x1F31D;
+    rand3 = param - (rand2 * 0x1F31D);
+    param = rand2 * 0xB14;
+    param =  param - rand3 * 0x41A7;
+    return param;
+}
+
+void func_800FBD2C_BoxMountainMayhem(void) {
+    D_800FC088_BoxMountainMayhem = func_800FBC58_BoxMountainMayhem(D_800FC088_BoxMountainMayhem);
+}
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_17_BoxMountainMayhem/168CA0", func_800FBD54_BoxMountainMayhem);
 

@@ -72,7 +72,7 @@ void func_80028E8C(s16, void*); // Unk
 s32 LoadBoardSpaces(s16 dir, s16 file) {
    //struct board_def *boarddef;
    u16* pDataStream;
-   SpaceData *pSpaceData;
+   BoardSpace *pSpaceData;
    ChainData *pChainData;
    u8* chainOffsets;
    s16* chainValues;
@@ -86,14 +86,14 @@ s32 LoadBoardSpaces(s16 dir, s16 file) {
       D_800D814C = NULL;
       D_800D8150 = NULL;
       pDataStream = (u16*) D_800C4FD0;
-      D_800D8100 = *pDataStream++;
+      spaceCnt = *pDataStream++;
       D_800D8102 = *pDataStream++;
       D_800D8104 = *pDataStream++;
 
       /* Load space data */
-      D_800D8108 = (SpaceData*) MallocTemp(D_800D8100 * sizeof(SpaceData));
+      D_800D8108 = (BoardSpace*) MallocTemp(spaceCnt * sizeof(BoardSpace));
       pDataStream = (u16*) GetSpaceDataStream(D_800C4FD0, 6);
-      for (i = 0, pSpaceData = D_800D8108; i < D_800D8100; i++, pSpaceData++) {
+      for (i = 0, pSpaceData = D_800D8108; i < spaceCnt; i++, pSpaceData++) {
          Vec3f *pos;
          pSpaceData->unk0 = 1;
          pSpaceData->unk2 = *pDataStream++;
@@ -173,7 +173,7 @@ void FreeBoardSpaces(void) {
    }
 }
 
-SpaceData *GetSpaceData(s16 index) {
+BoardSpace* BoardSpaceGet(s16 index) {
    return &D_800D8108[index];
 }
 
@@ -181,13 +181,13 @@ s16 GetAbsSpaceIndexFromChainSpaceIndex(u16 chainIndex, u16 spaceIndex) {
    return D_800D8110[chainIndex].spaceIndices[spaceIndex];
 }
 
-s16 GetChainLength(u16 chainIndex) {
+s16 BoardGetChainLength(u16 chainIndex) {
    return D_800D8110[chainIndex].len;
 }
 
 s16 GetChainSpaceIndexFromAbsSpaceIndex(s16 absIndex, s32 chainIndex) {
    s32 i;
-   for (i = 0; i < GetChainLength(chainIndex); i++) {
+   for (i = 0; i < BoardGetChainLength(chainIndex); i++) {
       if (GetAbsSpaceIndexFromChainSpaceIndex(chainIndex, i) == absIndex) {
          return i;
       }
@@ -195,19 +195,19 @@ s16 GetChainSpaceIndexFromAbsSpaceIndex(s16 absIndex, s32 chainIndex) {
    return SPACE_INDEX_INVALID;
 }
 
-s16 GetRandomSpaceOfTypeInChain(u16 type, u16 chainIndex) {
+s16 BoardGetRandomSpaceTypeInChain(u16 type, u16 chainIndex) {
    u8 randByte;
    s32 i;
-   SpaceData *space;
+   BoardSpace *space;
    s32 chainLen;
 
-   chainLen = GetChainLength(chainIndex);
+   chainLen = BoardGetChainLength(chainIndex);
    randByte = (rand8() % 30) + 1;
 
    i = 0;
    while (TRUE) {
       s16 absIndex = GetAbsSpaceIndexFromChainSpaceIndex(chainIndex, i);
-      space = GetSpaceData(absIndex);
+      space = BoardSpaceGet(absIndex);
 
       // Get Nth space in chain of type
       if ((D_800C51B0[space->spaceType & 0xf] & type) != 0)
@@ -223,23 +223,23 @@ s16 GetRandomSpaceOfTypeInChain(u16 type, u16 chainIndex) {
    return i;
 }
 
-s16 GetRandomSpaceOfType(u16 type) {
+s16 BoardGetRandomSpaceOfType(u16 type) {
    u8 randByte;
    s32 i;
-   SpaceData *space;
+   BoardSpace *space;
 
-   randByte = rand8() % D_800D8100;
+   randByte = rand8() % spaceCnt;
 
    i = 0;
    while (TRUE) {
-      space = GetSpaceData(i);
+      space = BoardSpaceGet(i);
       // Get Nth space that matches type
       if ((D_800C51B0[space->spaceType & 0xf] & type) != 0)
          if (--randByte == 0) {
             break;
       }
       // Wrap around
-      if (++i >= D_800D8100) {
+      if (++i >= spaceCnt) {
          i = 0;
       }
    }
@@ -248,24 +248,24 @@ s16 GetRandomSpaceOfType(u16 type) {
 }
 
 
-void SetSpaceType(s16 spaceIndex, u8 spaceType) {
-   SpaceData *space;
+void BoardSpaceTypeSet(s16 spaceIndex, u8 spaceType) {
+   BoardSpace *space;
 
-   space = GetSpaceData(spaceIndex);
+   space = BoardSpaceGet(spaceIndex);
    space->spaceType = spaceType;
 }
 
 /* Change spaces of old type to new type on a given chain */
-void SetSpaceTypeInChain(u16 chainIndex, u16 oldType, u8 newType) {
+void BoardSetSpaceTypeInChain(u16 chainIndex, u16 oldType, u8 newType) {
    s32 chainLen;
    s16 absIndex;
-   SpaceData *space;
+   BoardSpace *space;
    s32 i;
 
-   chainLen = GetChainLength(chainIndex);
+   chainLen = BoardGetChainLength(chainIndex);
    for (i = 0; i < chainLen; i++) {
       absIndex = GetAbsSpaceIndexFromChainSpaceIndex(chainIndex, i);
-      space = GetSpaceData(absIndex);
+      space = BoardSpaceGet(absIndex);
       if (space->spaceType == oldType) {
          space->spaceType = newType;
       }
@@ -273,13 +273,13 @@ void SetSpaceTypeInChain(u16 chainIndex, u16 oldType, u8 newType) {
 }
 
 /* Space process */
-void SpaceStepAnim(void) {
+void BoardSpaceStepAnim(void) {
    Process *process;
-   SpaceData *space;
+   BoardSpace *space;
    f32 fval;
 
    process = HuPrcCurrentGet();
-   space = GetSpaceData((s16)(s32)process->user_data);
+   space = BoardSpaceGet((s32)process->user_data);
 
    fval = 1.4f;
    if (D_800C4FD0 != NULL) {
@@ -302,18 +302,18 @@ void SpaceStepAnim(void) {
 /* Init Space Process. */
 void SetSpaceStepAnim(s16 spaceIndex) {
    Process *process;
-   process = omAddPrcObj(SpaceStepAnim, 0xEF00, 0, 0);
+   process = omAddPrcObj(BoardSpaceStepAnim, 0xEF00, 0, 0);
    process->user_data = (void *)(s32)spaceIndex;
 }
 
 /* Space process */
 void SpaceDisappearAnim(void) {
    Process *process;
-   SpaceData *space;
+   BoardSpace *space;
    f32 fval;
 
    process = HuPrcCurrentGet();
-   space = GetSpaceData((s16)(s32)process->user_data);
+   space = BoardSpaceGet((s32)process->user_data);
 
    fval = 1.0f;
    if (D_800C4FD0 != NULL) {
@@ -343,11 +343,11 @@ void SetSpaceDisappearAnim(s16 spaceIndex) {
 /* Space process */
 void SpaceSpawnAnim(void) {
    Process *process;
-   SpaceData *space;
+   BoardSpace *space;
    f32 fval;
 
    process = HuPrcCurrentGet();
-   space = GetSpaceData((s16)(s32)process->user_data);
+   space = BoardSpaceGet((s32)process->user_data);
 
    fval = 0.0f;
    if (D_800C4FD0 != NULL) {
@@ -375,7 +375,7 @@ void SetSpaceSpawnAnim(s16 spaceIndex) {
 }
 
 void SetSpaceEventList(s16 index, EventListEntry *eventList) {
-   SpaceData *space;
+   BoardSpace *space;
 
    /* Event index. */
    switch (index) {
@@ -394,7 +394,7 @@ void SetSpaceEventList(s16 index, EventListEntry *eventList) {
    }
 
    /* Default is event from space index. */
-   space = GetSpaceData(index);
+   space = BoardSpaceGet(index);
    space->eventList = eventList;
 }
 
@@ -426,7 +426,7 @@ s32 ExecuteEventForSpace(s16 index, s16 activationType) {
          break;
       default:
          /* Default is event from space index. */
-         eventList = GetSpaceData(index)->eventList;
+         eventList = BoardSpaceGet(index)->eventList;
          break;
    }
 
@@ -477,5 +477,5 @@ s16 GetCurrentSpaceIndex(void) {
 
 /* Pick random chance time space. */
 s16 GetRandomChanceSpace(void) {
-   return GetRandomSpaceOfType(SPACE_TYPE_CHANCE);
+   return BoardGetRandomSpaceOfType(SPACE_TYPE_CHANCE);
 }

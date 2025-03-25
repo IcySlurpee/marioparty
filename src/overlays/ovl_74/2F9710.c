@@ -33,7 +33,7 @@ void func_800F6610_name_74(void) {
     testStruct2* temp = D_800F6F00_name_74;
     for (; temp->unk_00 >= 0; temp++) {
         if (func_8005CE48(temp->unk_02) != 0) {
-            SetSpaceType(temp->unk_00, 1);
+            BoardSpaceTypeSet(temp->unk_00, 1);
         }
     }
 }
@@ -99,7 +99,7 @@ void func_800F683C_name_74(void) {
         obj->unk_0A |= 2;
         func_800A0D00(&obj->xScale, 0.6f, 0.6f, 0.6f);
         obj->unk_30 = 100.0f;
-        func_800A0D50(&obj->coords, &GetSpaceData(0)->coords);
+        func_800A0D50(&obj->coords, &BoardSpaceGet(0)->coords);
         omAddPrcObj(func_800F67CC_name_74, 0x4800, 0, 0)->user_data = obj;
     }
 }
@@ -118,7 +118,7 @@ void func_800F6908_name_74(void) {
         D_800F7024_name_74 = temp_v0;
         temp_v0->unk_0A |= 2;
         func_800A0D00(&temp_v0->xScale, 1.4f, 1.4f, 1.4f);
-        func_800A0D50(&temp_v0->coords, &GetSpaceData(1)->coords);
+        func_800A0D50(&temp_v0->coords, &BoardSpaceGet(1)->coords);
     }
 }
 

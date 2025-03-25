@@ -15,9 +15,9 @@ typedef struct unkProcessUserDataStruct {
 extern s8 D_800F3843[];
 
 void func_8004CB70(s16 arg0, s16 arg1, Vec3f* arg2) {
-    SpaceData* temp_v0;
+    BoardSpace* temp_v0;
 
-    temp_v0 = GetSpaceData(arg1);
+    temp_v0 = BoardSpaceGet(arg1);
     arg2->x = temp_v0->coords.x;
     arg2->y = temp_v0->coords.y;
     arg2->z = temp_v0->coords.z;
@@ -30,9 +30,9 @@ void func_8004CB70(s16 arg0, s16 arg1, Vec3f* arg2) {
 }
 
 void func_8004CC14(s16 arg0, s16 arg1, Vec3f* arg2) {
-    SpaceData* space;
+    BoardSpace* space;
 
-    space = GetSpaceData(arg1);
+    space = BoardSpaceGet(arg1);
     arg2->x = (space->coords.x + D_800C51E0[arg0].x);
     arg2->y = space->coords.y;
     arg2->z = (space->coords.z + D_800C51E0[arg0].y);
@@ -55,7 +55,7 @@ void func_8004CD08(s16 arg0, Vec3f* arg1) {
 }
 
 void func_8004CD48(Object* arg0, s16 arg1) {
-    func_8004CCD0(&arg0->coords, &GetSpaceData(arg1)->coords, &arg0->unk_18);
+    func_8004CCD0(&arg0->coords, &BoardSpaceGet(arg1)->coords, &arg0->unk_18);
 }
 
 void func_8004CD84(Vec3f* arg0) {
@@ -221,7 +221,7 @@ void func_8004D2A4(s16 arg0, s32 arg1, s16 arg2) {
     GW_PLAYER* temp_s1;
 
     temp_s1 = GetPlayerStruct(arg0);
-    func_800A0E80(&sp10, &GetSpaceData(arg2)->coords, &temp_s1->player_obj->coords);
+    func_800A0E80(&sp10, &BoardSpaceGet(arg2)->coords, &temp_s1->player_obj->coords);
     func_8003D408(&sp10);
     temp_a2 = &temp_s1->player_obj->unk_18;
     func_8004D1EC(temp_a2, &sp10, temp_a2, arg1);

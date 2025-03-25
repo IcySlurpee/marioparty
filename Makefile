@@ -189,6 +189,8 @@ build/src/A3370.c.o: OPTFLAGS = -O0
 build/src/A27D0.c.o: OPTFLAGS = -O0
 build/src/AD5D0.c.o: OPTFLAGS = -O0
 build/src/AD940.c.o: OPTFLAGS = -O0
+build/src/A1D90.c.o: OPTFLAGS = -O0
+build/src/A1E00.c.o: OPTFLAGS = -O0
 build/src/95F40.c.o: OPTFLAGS = -O2
 
 # Compile .c files with kmc gcc (use strip to fix objects so that they can be linked with modern gnu ld) 

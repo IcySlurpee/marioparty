@@ -178,7 +178,7 @@ void HuPrcChildKill(Process* process) {
     process->oldest_child = NULL;
 }
 
-void TerminateProcess(Process* process) {
+void HuPrcTerminate(Process* process) {
     if (process->destructor) {
         process->destructor();
     }
@@ -192,7 +192,7 @@ void HuPrcEnd(void) {
     Process* process = HuPrcCurrentGet();
     HuPrcChildKill(process);
     HuPrcChildUnlink(process);
-    TerminateProcess(process);
+    HuPrcTerminate(process);
 }
 
 void HuPrcSleep(s32 time) {

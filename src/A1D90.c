@@ -1,3 +1,5 @@
 #include "common.h"
 
-INCLUDE_ASM("asm/nonmatchings/A1D90", func_800A1190);
+f32 Vec3SqDistance(Vec* arg0) {
+    return (arg0->x * arg0->x) + (arg0->y * arg0->y) + (arg0->z * arg0->z);
+}

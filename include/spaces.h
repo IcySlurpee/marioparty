@@ -32,14 +32,14 @@ typedef struct EventTableEntry {
     EventListEntry* eventList;
 } EventTableEntry;
 
-typedef struct {
-    s8 unk0;
-    u8 spaceType;
-    s16 unk2;
-    Vec3f coords;
-    f32 sx, sy, sz;
-    EventListEntry *eventList;
-} SpaceData;
+typedef struct BoardSpace {
+/* 0x00 */ s8 unk0;
+/* 0x01 */ u8 spaceType;
+/* 0x02 */ s16 unk2;
+/* 0x04 */ Vec3f coords;
+/* 0x10 */ f32 sx, sy, sz;
+/* 0x1C */ EventListEntry *eventList;
+} BoardSpace;
 
 typedef struct ChainData {
     u16 len;
@@ -50,9 +50,9 @@ void LoadInitialSpaceTextures();
 void ChangeSpaceTextures(s16 type);
 s32 LoadBoardSpaces(s16 dir, s16 file);
 void FreeBoardSpaces();
-void SetSpaceType(s16, u8);
+void BoardSpaceTypeSet(s16, u8);
 void EventTableHydrate(EventTableEntry *table);
-SpaceData* GetSpaceData(s16 spaceID);
+BoardSpace* BoardSpaceGet(s16 spaceID);
 void SetCurrentSpaceIndex(s16 spaceIndex);
 s16 GetCurrentSpaceIndex();
 void SetEventReturnFlag(s32 flags);
@@ -65,18 +65,18 @@ extern u8 *D_800C4FD0; // Space data bytestream
 
 extern u8 D_800C51B0[SPACE_TYPE_TOTAL]; // Space type mapping?
 
-extern EventListEntry *D_800D8144; // EVENT_INDEX_NEWTURN
-extern EventListEntry *D_800D8148; // EVENT_INDEX_UNUSED
-extern EventListEntry *D_800D814C; // EVENT_INDEX_PLAYERTURN
-extern EventListEntry *D_800D8150; // EVENT_INDEX_PLAYERDICE
+extern EventListEntry* D_800D8144; // EVENT_INDEX_NEWTURN
+extern EventListEntry* D_800D8148; // EVENT_INDEX_UNUSED
+extern EventListEntry* D_800D814C; // EVENT_INDEX_PLAYERTURN
+extern EventListEntry* D_800D8150; // EVENT_INDEX_PLAYERDICE
 
-extern u16 D_800D8100; // Size of D_800D8108 (Total spaces in board)
+extern u16 spaceCnt; // Size of D_800D8108 (Total spaces in board)
 extern u16 D_800D8102; // Size of D_800D810C
 extern u16 D_800D8104; // Size of D_800D8110
 
-extern SpaceData *D_800D8108;
-extern ChainData *D_800D810C;
-extern ChainData *D_800D8110;
+extern BoardSpace* D_800D8108;
+extern ChainData* D_800D810C;
+extern ChainData* D_800D8110;
 
 extern u32 D_800D8154; // Optional event completion flags
 
@@ -86,6 +86,6 @@ extern s16 D_800D8140; // Space texture set type
 extern u32 D_800C4FD4[SPACE_TYPE_TOTAL]; // Space Texture Files Set 0
 extern u32 D_800C4FFC[SPACE_TYPE_TOTAL]; // Space Texture Files Set 1
 extern u32 D_800C5024[SPACE_TYPE_TOTAL]; // Space Texture Files Set Default
-extern void *D_800D8118[SPACE_TYPE_TOTAL]; // Loaded Space Texture bytestreams
+extern void* D_800D8118[SPACE_TYPE_TOTAL]; // Loaded Space Texture bytestreams
 
 #endif

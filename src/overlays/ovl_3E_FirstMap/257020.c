@@ -33,7 +33,7 @@ void func_800F66FC_FirstMap(void) {
         D_800F8890_FirstMap = temp_s0;
         temp_s0->unk_0A |= 2;
         func_8004CDCC(temp_s0);
-        func_800A0D50(&temp_s0->coords, &GetSpaceData(0x1C)->coords);
+        func_800A0D50(&temp_s0->coords, &BoardSpaceGet(0x1C)->coords);
     }
 }
 
@@ -50,7 +50,7 @@ void func_800F678C_FirstMap(void) {
         func_8003E174(temp_s0);
         D_800F8894_FirstMap = temp_s0;
         temp_s0->unk_0A |= 2;
-        func_800A0D50(&temp_s0->coords, &GetSpaceData(0x19)->coords);
+        func_800A0D50(&temp_s0->coords, &BoardSpaceGet(0x19)->coords);
     }
 }
 
@@ -69,7 +69,7 @@ void func_800F6814_FirstMap(void) {
         temp_s0->unk_0A |= 2;
         func_800A0D00(&temp_s0->xScale, 0.6f, 0.6f, 0.6f);
         temp_s0->unk_30 = 100.0f;
-        func_800A0D50(&temp_s0->coords, &GetSpaceData(0x1B)->coords);
+        func_800A0D50(&temp_s0->coords, &BoardSpaceGet(0x1B)->coords);
     }
 }
 
@@ -86,7 +86,7 @@ void func_800F68C4_FirstMap(void) {
         func_8003E174(temp_s0);
         D_800F889C_FirstMap = temp_s0;
         temp_s0->unk_0A |= 2;
-        func_800A0D50(&temp_s0->coords, &GetSpaceData(0x1A)->coords);
+        func_800A0D50(&temp_s0->coords, &BoardSpaceGet(0x1A)->coords);
     }
 }
 
@@ -231,7 +231,7 @@ void func_800F6E20_FirstMap(void) {
         if (D_800F88A0_FirstMap < 0) {
             func_8004B5DC(&GetPlayerStruct(CURRENT_PLAYER)->player_obj->coords);
         } else {
-            func_8004B5DC(&GetSpaceData(D_800F88A0_FirstMap)->coords);
+            func_8004B5DC(&BoardSpaceGet(D_800F88A0_FirstMap)->coords);
         }
         HuPrcVSleep();        
     }
@@ -315,7 +315,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_3E_FirstMap/257020", func_800F714C_Fi
 void func_800F73A0_FirstMap(void) {
     GameStatus* gameStatus = &GwSystem;
     GW_PLAYER* player = GetPlayerStruct(CURRENT_PLAYER);
-    SpaceData* space = GetSpaceData(GetAbsSpaceIndexFromChainSpaceIndex(player->cur_chain, player->cur_space));
+    BoardSpace* space = BoardSpaceGet(GetAbsSpaceIndexFromChainSpaceIndex(player->cur_chain, player->cur_space));
 
     SetPlayerLandedSpaceType(-1, space->spaceType);
     func_800546B4(gameStatus->curPlayerIndex, player->turn_status);

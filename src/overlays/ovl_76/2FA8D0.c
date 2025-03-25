@@ -27,7 +27,7 @@ void func_800F6610_name_76(void) {
 
     for (; temp->unk_00 >= 0; temp++) {
         if (func_8005CE48(temp->unk_02) != 0) {
-            SetSpaceType(temp->unk_00, 1);
+            BoardSpaceTypeSet(temp->unk_00, 1);
         }
     }
 }
