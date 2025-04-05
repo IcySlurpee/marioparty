@@ -1412,7 +1412,7 @@ s32 func_80076B2C(u8* arg0, s32 arg1) {
                 var_a2 = D_800F3B70[2];
             }
         }
-        var_v0 = temp_s0 - '0';
+        var_v0 = ASCII_DIGIT_TO_INT(temp_s0);
     } else if (temp_s0 >= 134 && temp_s0 <= 189) {
         if (var_v1 & 1) {
             return 0;

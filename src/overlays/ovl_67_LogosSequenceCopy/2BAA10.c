@@ -14,7 +14,7 @@ void func_800F6610_LogosSequenceCopy(unkLogoStruct* arg0, s16 arg1, s16 arg2, s1
     for (i = 0; i < 2; i++) {
         character = pfStrBuf[i];
         arg0->unkC[arg1] = func_800678A4(temp_s6);
-        func_80067208(arg0->unkA, arg1, arg0->unkC[arg1], character - '0');
+        func_80067208(arg0->unkA, arg1, arg0->unkC[arg1], ASCII_DIGIT_TO_INT(character));
         func_80067384(arg0->unkA, arg1, 0xA);
         func_800674BC(arg0->unkA, arg1, 0x1000);
         func_80066DC4(arg0->unkA, arg1, arg3, arg4);

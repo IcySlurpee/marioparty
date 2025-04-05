@@ -32,6 +32,9 @@ obj->coords.y = vec3f.y; \
 obj->coords.z = vec3f.z;
 #endif
 
+//converts an ascii digit 0-9 to the actual value 0-9
+#define ASCII_DIGIT_TO_INT(x) (x - '0')
+
 #define ARRLEN(x) ((s32)(sizeof(x) / sizeof(x[0])))
 
 #define ALIGNED(x) __attribute__((aligned(x)))

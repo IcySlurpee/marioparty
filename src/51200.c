@@ -21,9 +21,6 @@ extern s32 D_800C5314[];
 extern s16 D_800C5320[];
 extern s16 D_800C5324[];
 
-//converts an ascii digit 0-9 to the actual value 0-9
-#define ASCII_DIGIT_TO_INT(x) (x - '0')
-
 void func_80050600(unk_Struct02* arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
     u8 asciiChar;
     void* temp_s6;
