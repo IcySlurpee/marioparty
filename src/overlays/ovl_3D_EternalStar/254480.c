@@ -254,7 +254,7 @@ ProcessHeader* func_800F68E4_EternalStar(s32* arg0) {
 
     temp_s0 = (ProcessHeader*)MallocTemp(sizeof(ProcessHeader));
     if (temp_s0 != NULL) {
-        temp_v0 = CreateObject(0x7B, arg0);
+        temp_v0 = MBModelCreate(0x7B, arg0);
         temp_s0->prev = temp_v0;
         func_800A0D00(&temp_v0->xScale, 0.5f, 0.5f, 0.5f);
         func_80025F10(*temp_s0->prev->unk_3C->unk_40, 2);
@@ -286,7 +286,7 @@ ProcessHeader* func_800F68E4_EternalStar(s32* arg0) {
 
 void func_800F6AA0_EternalStar(ProcessHeader* arg0) {
     if (arg0 != NULL) {
-        DestroyObject(arg0->prev);
+        MBModelKill(arg0->prev);
         EndProcess(arg0->process);
         func_80072080(arg0->unk_08);
         FreeTemp(arg0);
@@ -300,16 +300,16 @@ void func_800F6AE8_EternalStar(ProcessHeader* arg0, s16 arg1) {
 }
 
 void func_800F6B58_EternalStar(ProcessHeader* arg0) {
-    func_8003E8B8(arg0->prev, 0, 0, 6, 0);
+    MBMotionShiftSet(arg0->prev, 0, 0, 6, 0);
     HuPrcSleep(3);
     while (1) {
-        if (!(func_8003E940(arg0->prev))) {
+        if (!(MBMotionCheck(arg0->prev))) {
             HuPrcVSleep();
         } else {
             break;
         }
     }
-    func_8003E8B8(arg0->prev, -1, 0, 6, 2);
+    MBMotionShiftSet(arg0->prev, -1, 0, 6, 2);
 }
 
 void func_800F6BD8_EternalStar(void) {
@@ -446,7 +446,7 @@ void func_800F6F68_EternalStar(void) {
         for (i = 0; i < 4; i++) {
             playerFeatureFlag = GetPlayerStruct(i);
             playerFeatureFlag->player_obj->unk_0A &= ~2;
-            func_8003E664(playerFeatureFlag->player_obj);
+            MBModelDispOff(playerFeatureFlag->player_obj);
         }
     }
 }
@@ -463,11 +463,11 @@ void func_800F709C_EternalStar(s16 arg0) {
 
     if (D_800F91C0_EternalStar[arg0] == 0) {
         if (D_800F91BC_EternalStar == NULL) {
-            var_s2 = CreateObject(0x79, NULL);
+            var_s2 = MBModelCreate(0x79, NULL);
             func_8003E174(var_s2);
             D_800F91BC_EternalStar = var_s2;
         } else {
-            var_s2 = func_8003E320(D_800F91BC_EternalStar);
+            var_s2 = MBModelParamCreate(D_800F91BC_EternalStar);
         }
         
         var_s2->unk_0A |= 2;
@@ -497,11 +497,11 @@ void func_800F7224_EternalStar(s16 arg0) {
 
     if (D_800F91E0_EternalStar[arg0] == 0) {
         if (D_800F91DC_EternalStar == NULL) {
-            var_s1 = CreateObject(0x6A, NULL);
+            var_s1 = MBModelCreate(0x6A, NULL);
             func_8003E174(var_s1);
             D_800F91DC_EternalStar = var_s1;
         } else {
-            var_s1 = func_8003E320(D_800F91DC_EternalStar);
+            var_s1 = MBModelParamCreate(D_800F91DC_EternalStar);
         }
         D_800F91E0_EternalStar[arg0] = var_s1;
         var_s1->unk_0A |= 2;
@@ -525,7 +525,7 @@ void func_800F736C_EternalStar(void) {
     Object* temp_s0;
 
     if (D_800F91E4_EternalStar == NULL) {
-        temp_s0 = CreateObject(0x3B, &D_800F8C38_EternalStar);
+        temp_s0 = MBModelCreate(0x3B, &D_800F8C38_EternalStar);
         func_8003E174(temp_s0);
         D_800F91E4_EternalStar = temp_s0;
         temp_s0->unk_0A |= 2;
@@ -544,14 +544,14 @@ void func_800F73F0_EternalStar(void) {
     }
     
     HuPrcSleep(0x1E);
-    func_8003E81C(D_800F91E4_EternalStar, 0, 0);
+    MBMotionSet(D_800F91E4_EternalStar, 0, 0);
     PlaySound(0x4D);
 
-    while ((func_8003E940(D_800F91E4_EternalStar) & 1) == 0) {
+    while ((MBMotionCheck(D_800F91E4_EternalStar) & 1) == 0) {
         HuPrcVSleep();
     }
 
-    func_8003E81C(D_800F91E4_EternalStar, -1, 2);
+    MBMotionSet(D_800F91E4_EternalStar, -1, 2);
     func_8004CD84(&sp10);
     process = HuPrcCurrentGet();
     HuPrcChildLink(process, func_8004D1EC(&D_800F91E4_EternalStar->unk_18, &sp10, &D_800F91E4_EternalStar->unk_18, 0x14));
@@ -825,9 +825,9 @@ Object* func_800F7D6C_EternalStar(s16 arg0) {
     GW_PLAYER* temp_s1 = GetPlayerStruct(arg0);
 
     if (temp_s1->player_index == GetCurrentPlayerIndex()) {
-        temp_s0 = CreateObject(temp_s1->character, NULL);
+        temp_s0 = MBModelCreate(temp_s1->character, NULL);
     } else {
-        temp_s0 = CreateObject(func_80052F6C(arg0), NULL);
+        temp_s0 = MBModelCreate(func_80052F6C(arg0), NULL);
     }
     func_800A0D50(&temp_s0->coords, &temp_s1->player_obj->coords);
     func_800A0D50(&temp_s0->unk_18, &temp_s1->player_obj->unk_18);
@@ -839,7 +839,7 @@ Object* func_800F7D6C_EternalStar(s16 arg0) {
 }
 
 void func_800F7E5C_EternalStar(Object* arg0) {
-    DestroyObject(arg0);
+    MBModelKill(arg0);
 }
 
 void func_800F7E78_EternalStar(Object* arg0) {
@@ -878,30 +878,30 @@ void func_800F7F7C_EternalStar(void) {
     GW_PLAYER* player = GetPlayerStruct(-1);
 
     player->player_obj->unk_0A &= ~2;
-    func_8003E664(player->player_obj);
+    MBModelDispOff(player->player_obj);
     temp_s3 = func_800F7D6C_EternalStar(-1);
-    temp_s1 = CreateObject(0x4C, NULL);
+    temp_s1 = MBModelCreate(0x4C, NULL);
     func_80025EB4(*temp_s1->unk_3C->unk_40, 2, 0);
     func_800A0D50(&temp_s1->coords, &player->player_obj->coords);
     func_80058910(-1, 3);
     PlaySound(0x47);
     func_800F7EE0_EternalStar(temp_s3);
-    DestroyObject(temp_s1);
+    MBModelKill(temp_s1);
     space = BoardSpaceGet(GetAbsSpaceIndexFromChainSpaceIndex(player->next_chain, player->next_space));
     process = HuPrcCurrentGet();
     HuPrcChildLink(process, func_8004D648(&player->player_obj->coords, &space->coords, &player->player_obj->coords, 25.0f));
     HuPrcChildWatch();
     SetPlayerOntoChain(-1, player->next_chain, player->next_space);
-    temp_s1 = CreateObject(0x4C, NULL);
+    temp_s1 = MBModelCreate(0x4C, NULL);
     func_80025EB4(*temp_s1->unk_3C->unk_40, 2, 0);
     func_800A0D50(&temp_s1->coords, &player->player_obj->coords);
     PlaySound(0x47);
     func_800A0D50(&temp_s3->coords, &player->player_obj->coords);
     func_800A0D50(&temp_s3->unk_18, &player->player_obj->unk_18);
     func_800F7E78_EternalStar(temp_s3);
-    DestroyObject(temp_s1);
+    MBModelKill(temp_s1);
     func_800F7E5C_EternalStar(temp_s3);
-    func_8003E5E0(player->player_obj);
+    MBModelDispOn(player->player_obj);
     player->player_obj->unk_0A |= 2;
 }
 
@@ -1042,7 +1042,7 @@ void func_800F8588_EternalStar(void) {
 
     func_800F7E5C_EternalStar(objectStructs[playerIndex]);
     curPlayer->player_obj->unk_0A |= 2;
-    func_8003E5E0(curPlayer->player_obj);
+    MBModelDispOn(curPlayer->player_obj);
     HuPrcSleep(0xA);
 
     for (j = 0; j < 4; j++) {
@@ -1071,7 +1071,7 @@ void func_800F8588_EternalStar(void) {
         if (temp_s0_3 != curPlayer) {
             func_800F7E5C_EternalStar(objectStructs[j]);
             temp_s0_3->player_obj->unk_0A |= 2;
-            func_8003E5E0(temp_s0_3->player_obj);            
+            MBModelDispOn(temp_s0_3->player_obj);            
         }
     }
         

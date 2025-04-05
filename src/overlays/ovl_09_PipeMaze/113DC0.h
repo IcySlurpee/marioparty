@@ -10,7 +10,7 @@ void func_800F7E2C_PipeMaze(void);
 void func_800F7194_PipeMaze(void);
 void func_800F7E78_PipeMaze(void);
 
-extern s8 D_800F64F2;
+extern s8 omSysPauseEnableFlag;
 extern s32 D_800F990C_PipeMaze;
 extern s32 D_800F9908_PipeMaze;
 extern s32 D_800F9910_PipeMaze;

@@ -304,7 +304,7 @@ INCLUDE_ASM("asm/nonmatchings/5CDB0", omOutView);
 
 INCLUDE_ASM("asm/nonmatchings/5CDB0", omOutViewMulti);
 
-INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005EF48);
+INCLUDE_ASM("asm/nonmatchings/5CDB0", omSystemKeyCheckSetup);
 
 INCLUDE_RODATA("asm/nonmatchings/5CDB0", D_800CB574);
 
@@ -318,9 +318,9 @@ INCLUDE_RODATA("asm/nonmatchings/5CDB0", D_800CB594);
 
 INCLUDE_RODATA("asm/nonmatchings/5CDB0", D_800CB59C);
 
-INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005EFA8);
+INCLUDE_ASM("asm/nonmatchings/5CDB0", omDBGSystemKeyCheck);
 
-INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005F9C0);
+INCLUDE_ASM("asm/nonmatchings/5CDB0", omSystemKeyCheck);
 
 INCLUDE_ASM("asm/nonmatchings/5CDB0", func_8005FD5C);
 

@@ -119,10 +119,10 @@ s16 RunDecisionTree(DecisionTreeNonLeafNode* currentNode) {
 }
 
 void func_8003ECB0(u16 arg0, u16 arg1, s32 arg2, u8 arg3, u8 arg4) {
-    D_800ECB24 = arg4;
-    func_800622BC((arg0 + 1), (arg1 + 1), (arg2));
-    D_800ECB24 = arg3;
-    func_800622BC(arg0, arg1, arg2);
+    fontcolor = arg4;
+    print8((arg0 + 1), (arg1 + 1), (arg2));
+    fontcolor = arg3;
+    print8(arg0, arg1, arg2);
 }
 
 

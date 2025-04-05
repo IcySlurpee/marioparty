@@ -9,7 +9,7 @@ void func_800F92D4_MinigameInstructions(omObjData*);
 void func_800F9E64_MinigameInstructions(s16);
 void func_800FA470_MinigameInstructions(void);
 void func_8010E090_MinigameInstructions(s16);
-extern s8 D_800F64F2;
+extern s8 omSysPauseEnableFlag;
 extern u8 D_8010F050_MinigameInstructions;
 extern s16 D_8010F400_MinigameInstructions;
 extern s16 D_8010F402_MinigameInstructions;
@@ -42,7 +42,7 @@ void func_800F6610_MinigameInstructions(void) {
     omInitObjMan(0x32, 0x14);
     func_80060088();
     func_8006CEA0();
-    D_800F64F2 = 1;
+    omSysPauseEnableFlag = 1;
     D_8010F766_MinigameInstructions = GwSystem.unk_1E;
     D_8010F760_MinigameInstructions = D_8010E4F4_MinigameInstructions[GwSystem.unk_1E].unk_00;
     if (_CheckFlag(0x2B) != 0) {

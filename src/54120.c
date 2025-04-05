@@ -362,9 +362,9 @@ void func_80055EE8(void) {
     void* file;
     s32 i;
 
-    func_80076740(D_800D85D8, "WORLD", 0, -1, -1);
+    GMesFontMesCreate(D_800D85D8, "WORLD", 0, -1, -1);
     func_80066DC4(D_800D85EC.unk_00, 0, 0xA0, 0x18);
-    func_80076740(&D_800D85EC.unk_54, "=", 0, -1, -1);
+    GMesFontMesCreate(&D_800D85EC.unk_54, "=", 0, -1, -1);
     func_80066DC4(D_800D85EC.unk_54.unk_14[0], 0, 0xA0, 0x28);
     file = ReadMainFS(0x7C);
     D_800D85D6 = func_800678A4(file);
@@ -411,7 +411,7 @@ void func_8005608C(void) {
     func_800674BC(D_800D84E8, 0, 0x1000);
     func_80067354(D_800D84E8, 0, 0.5f, 0.5f);
     func_80066DC4(D_800D84E8, 0, 0x2A, 0x22);
-    func_80076740(D_800D84F0, "X", 0, -1, -1);
+    GMesFontMesCreate(D_800D84F0, "X", 0, -1, -1);
     func_80066DC4(D_800D8504, 0, 0x44, 0x22);
     file = ReadMainFS(0x7C);
     D_800D84E6 = func_800678A4(file);
@@ -449,7 +449,7 @@ void func_80056380(void) {
     func_800674BC(D_800D8560, 0, 0x1000);
     func_80066DC4(D_800D8560, 0, 0xE2, 0x22);
     func_80067284(D_800D8560, 0, 0.0f);
-    func_80076740(D_800D8568, "X", 0, -1, -1);
+    GMesFontMesCreate(D_800D8568, "X", 0, -1, -1);
     func_80066DC4(D_800D857C, 0, 0xFC, 0x22);
     file = ReadMainFS(0x7C);
     D_800D855E = func_800678A4(file);

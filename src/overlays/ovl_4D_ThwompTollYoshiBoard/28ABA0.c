@@ -114,13 +114,13 @@ void func_800F73BC_ThwompTollYoshiBoard(omObjData* arg0) {
 }
 
 void func_800F741C_ThwompTollYoshiBoard(void) {
-    func_8003DAA8();
-    D_800F76B4_ThwompTollYoshiBoard = CreateObject(13, NULL);
+    MBModelInit();
+    D_800F76B4_ThwompTollYoshiBoard = MBModelCreate(13, NULL);
     D_800F76B4_ThwompTollYoshiBoard->coords.x = D_800F7624_ThwompTollYoshiBoard.x;
     D_800F76B4_ThwompTollYoshiBoard->coords.y = D_800F7624_ThwompTollYoshiBoard.y;
     D_800F76B4_ThwompTollYoshiBoard->coords.z = D_800F7624_ThwompTollYoshiBoard.z;
     func_800A0D00(&D_800F76B4_ThwompTollYoshiBoard->xScale, 2.0f, 2.0f, 2.0f);
-    D_800F76B8_ThwompTollYoshiBoard = CreateObject(func_80052F04(D_800F76B0_ThwompTollYoshiBoard), D_800F7678_ThwompTollYoshiBoard[GwPlayer[D_800F76B0_ThwompTollYoshiBoard].character]);
+    D_800F76B8_ThwompTollYoshiBoard = MBModelCreate(func_80052F04(D_800F76B0_ThwompTollYoshiBoard), D_800F7678_ThwompTollYoshiBoard[GwPlayer[D_800F76B0_ThwompTollYoshiBoard].character]);
     D_800F76B8_ThwompTollYoshiBoard->coords.x = D_800F7630_ThwompTollYoshiBoard.x;
     D_800F76B8_ThwompTollYoshiBoard->coords.y = D_800F7630_ThwompTollYoshiBoard.y;
     D_800F76B8_ThwompTollYoshiBoard->coords.z = D_800F7630_ThwompTollYoshiBoard.z;
@@ -129,8 +129,8 @@ void func_800F741C_ThwompTollYoshiBoard(void) {
 }
 
 void func_800F7524_ThwompTollYoshiBoard(void) {
-    DestroyObject(D_800F76B8_ThwompTollYoshiBoard);
-    DestroyObject(D_800F76B4_ThwompTollYoshiBoard);
+    MBModelKill(D_800F76B8_ThwompTollYoshiBoard);
+    MBModelKill(D_800F76B4_ThwompTollYoshiBoard);
 }
 
 void func_800F7550_ThwompTollYoshiBoard(void) {

@@ -138,10 +138,10 @@ void func_800F8F24_PipeMaze(void) {
     if (D_800F9A34_PipeMaze == 1) {
         if ((Center.y < 6800.0f) && (D_800F990C_PipeMaze == 0)) {
             Center.y += 150.0f;
-            D_800F64F2 = 1;
+            omSysPauseEnableFlag = 1;
         } else if ((Center.y >= 6800.0f) && (D_800F990C_PipeMaze == 0)) {
             D_800F990C_PipeMaze = 1;
-            D_800F64F2 = 0;
+            omSysPauseEnableFlag = 0;
         }
         if (D_800F990C_PipeMaze == 3) {
             D_800F9A34_PipeMaze = 2;

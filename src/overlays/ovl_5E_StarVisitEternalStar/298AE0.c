@@ -185,7 +185,7 @@ void func_800F6898_StarVisitEternalStar(void) {
         case 0:
             if (((GwPlayer[D_800F7F00_StarVisitEternalStar].flags & 1) && (var_s2 >= 0xF)) || (!(GwPlayer[D_800F7F00_StarVisitEternalStar].flags & 1) && (D_800F5460[GwPlayer[D_800F7F00_StarVisitEternalStar].port] & 0x8000))) {
                 var_s0 = 1;
-                func_8003E81C(D_800F7F08_StarVisitEternalStar, 2, 0);
+                MBMotionSet(D_800F7F08_StarVisitEternalStar, 2, 0);
                 func_8004F40C(D_800F7F08_StarVisitEternalStar, 1, 2);
             }
             break;
@@ -244,7 +244,7 @@ void func_800F6898_StarVisitEternalStar(void) {
         case 0:
             if ((var_s2 >= 0xF)) {
                 var_s0 = 1;
-                func_8003E81C(D_800F7F04_StarVisitEternalStar, 0, 0);
+                MBMotionSet(D_800F7F04_StarVisitEternalStar, 0, 0);
                 func_8004F40C(D_800F7F04_StarVisitEternalStar, -1, 2);
             }
             break;
@@ -283,7 +283,7 @@ void func_800F6898_StarVisitEternalStar(void) {
         func_800500A4();
         PlaySound(0x44);
         PlaySound(0x6D);
-        D_800F7DC0_StarVisitEternalStar = CreateObject(0x40U, NULL);
+        D_800F7DC0_StarVisitEternalStar = MBModelCreate(0x40U, NULL);
         func_800A0D00(&D_800F7DC0_StarVisitEternalStar->coords, D_800F7DD4_StarVisitEternalStar.x, D_800F7DD4_StarVisitEternalStar.y + 200.0f, D_800F7DD4_StarVisitEternalStar.z);
         func_800A0D00(&D_800F7DC0_StarVisitEternalStar->xScale, 0.5f, 0.5f, 0.5f);
         D_800F7DC4_StarVisitEternalStar = func_80042728(D_800F7DC0_StarVisitEternalStar, 0);
@@ -300,13 +300,13 @@ void func_800F6898_StarVisitEternalStar(void) {
         PlaySound(0x474);
         func_80055994(D_800F7F00_StarVisitEternalStar, 1);
         func_800503B0(D_800F7F00_StarVisitEternalStar, 4);
-        DestroyObject(D_800F7DC0_StarVisitEternalStar);
+        MBModelKill(D_800F7DC0_StarVisitEternalStar);
         D_800F7DC0_StarVisitEternalStar = NULL;
         func_800427D4(D_800F7DC4_StarVisitEternalStar);
         D_800F7DC4_StarVisitEternalStar = NULL;
         func_80021CDC(*D_800F7F08_StarVisitEternalStar->unk_3C->unk_40, GwPlayer[D_800F7F00_StarVisitEternalStar].character, 0x81);
         func_8004CCD0(&D_800F7F08_StarVisitEternalStar->coords, &D_800F32A0->coords, &D_800F7F08_StarVisitEternalStar->unk_18);
-        func_8003E81C(D_800F7F08_StarVisitEternalStar, 4, 0U);
+        MBMotionSet(D_800F7F08_StarVisitEternalStar, 4, 0U);
         GwPlayer[D_800F7F00_StarVisitEternalStar].stars++;
         D_800F7DD0_StarVisitEternalStar = func_8004D8A4();
         HuPrcSleep(0x24);
@@ -343,7 +343,7 @@ void func_800F6898_StarVisitEternalStar(void) {
         PlaySound(0x6D);
         GwPlayer[D_800F7F00_StarVisitEternalStar].stars--;
         func_800503B0((s32) D_800F7F00_StarVisitEternalStar, 6);
-        D_800F7DC0_StarVisitEternalStar = CreateObject(0x40U, NULL);
+        D_800F7DC0_StarVisitEternalStar = MBModelCreate(0x40U, NULL);
         func_800A0D00(&D_800F7DC0_StarVisitEternalStar->coords, D_800F7DE0_StarVisitEternalStar.x, D_800F7DE0_StarVisitEternalStar.y + 200.0f, D_800F7DE0_StarVisitEternalStar.z);
         func_800A0D00(&D_800F7DC0_StarVisitEternalStar->xScale, 0.5f, 0.5f, 0.5f);
         D_800F7DC4_StarVisitEternalStar = func_80042728(D_800F7DC0_StarVisitEternalStar, 0);
@@ -359,7 +359,7 @@ void func_800F6898_StarVisitEternalStar(void) {
         
         PlaySound(0x474);
         func_80055994(D_800F7F00_StarVisitEternalStar, 2);
-        DestroyObject(D_800F7DC0_StarVisitEternalStar);
+        MBModelKill(D_800F7DC0_StarVisitEternalStar);
         D_800F7DC0_StarVisitEternalStar = NULL;
         func_800427D4(D_800F7DC4_StarVisitEternalStar);
         D_800F7DC4_StarVisitEternalStar = NULL;
@@ -476,16 +476,16 @@ void func_800F7A08_StarVisitEternalStar(omObjData* arg0) {
 }
 
 void func_800F7A90_StarVisitEternalStar(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
     func_8004F8DC();
     D_800F7F0C_StarVisitEternalStar = func_8004F954(0x26, 0x20);
-    D_800F7F04_StarVisitEternalStar = CreateObject(0x78, &D_800F7DF8_StarVisitEternalStar);
+    D_800F7F04_StarVisitEternalStar = MBModelCreate(0x78, &D_800F7DF8_StarVisitEternalStar);
     D_800F7F04_StarVisitEternalStar->coords.x = D_800F7DD4_StarVisitEternalStar.x;
     D_800F7F04_StarVisitEternalStar->coords.y = D_800F7DD4_StarVisitEternalStar.y;
     D_800F7F04_StarVisitEternalStar->coords.z = D_800F7DD4_StarVisitEternalStar.z;
     D_800F7F04_StarVisitEternalStar->xScale = D_800F7F04_StarVisitEternalStar->yScale = D_800F7F04_StarVisitEternalStar->zScale = 1.5f;
-    D_800F7F08_StarVisitEternalStar = CreateObject(func_80052F04(D_800F7F00_StarVisitEternalStar), D_800F7EB4_StarVisitEternalStar[GwPlayer[D_800F7F00_StarVisitEternalStar].character]);
+    D_800F7F08_StarVisitEternalStar = MBModelCreate(func_80052F04(D_800F7F00_StarVisitEternalStar), D_800F7EB4_StarVisitEternalStar[GwPlayer[D_800F7F00_StarVisitEternalStar].character]);
     D_800F7F08_StarVisitEternalStar->coords.x = D_800F7DE0_StarVisitEternalStar.x;
     D_800F7F08_StarVisitEternalStar->coords.y = D_800F7DE0_StarVisitEternalStar.y;
     D_800F7F08_StarVisitEternalStar->coords.z = D_800F7DE0_StarVisitEternalStar.z;
@@ -493,18 +493,18 @@ void func_800F7A90_StarVisitEternalStar(void) {
     func_8004CCD0(&D_800F7F08_StarVisitEternalStar->coords, &D_800F7F04_StarVisitEternalStar->coords, &D_800F7F08_StarVisitEternalStar->unk_18);
     func_8004CCD0(&D_800F7F04_StarVisitEternalStar->coords, &D_800F7F08_StarVisitEternalStar->coords, &D_800F7F04_StarVisitEternalStar->unk_18);
     func_80052E84(D_800F7F00_StarVisitEternalStar);
-    func_8003E664(GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj);
+    MBModelDispOff(GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj);
     (GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj)->coords.x = D_800F7DEC_StarVisitEternalStar.x;
     (GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj)->coords.y = D_800F7DEC_StarVisitEternalStar.y;
     (GwPlayer[D_800F7F00_StarVisitEternalStar].player_obj)->coords.z = D_800F7DEC_StarVisitEternalStar.z;
 }
 
 void func_800F7C88_StarVisitEternalStar(void) {
-    DestroyObject(D_800F7F08_StarVisitEternalStar);
-    DestroyObject(D_800F7F04_StarVisitEternalStar);
+    MBModelKill(D_800F7F08_StarVisitEternalStar);
+    MBModelKill(D_800F7F04_StarVisitEternalStar);
     
     if (D_800F7DC0_StarVisitEternalStar != NULL) {
-        DestroyObject(D_800F7DC0_StarVisitEternalStar);
+        MBModelKill(D_800F7DC0_StarVisitEternalStar);
     }
     if (D_800F7DC4_StarVisitEternalStar != NULL) {
         func_800427D4(D_800F7DC4_StarVisitEternalStar);

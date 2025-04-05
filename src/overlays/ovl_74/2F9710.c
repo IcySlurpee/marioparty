@@ -93,7 +93,7 @@ void func_800F683C_name_74(void) {
     Object* obj;
 
     if (D_800F7020_name_74 == NULL) {
-        obj = CreateObject(0x6AU, NULL);
+        obj = MBModelCreate(0x6AU, NULL);
         func_8003E174(obj);
         D_800F7020_name_74 = obj;
         obj->unk_0A |= 2;
@@ -113,7 +113,7 @@ void func_800F6908_name_74(void) {
     Object* temp_v0;
 
     if (D_800F7024_name_74 == NULL) {
-        temp_v0 = CreateObject(0xEU, NULL);
+        temp_v0 = MBModelCreate(0xEU, NULL);
         func_8003E174(temp_v0);
         D_800F7024_name_74 = temp_v0;
         temp_v0->unk_0A |= 2;

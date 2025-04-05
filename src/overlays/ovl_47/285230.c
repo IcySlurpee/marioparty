@@ -55,12 +55,12 @@ void func_800F6CBC_name_47(omObjData* obj) {
 }
 
 void func_800F6D1C_name_47(void) {
-    func_8003DAA8();
-    D_800F6F24_name_47 = CreateObject(10, &D_800F6F08_name_47);
+    MBModelInit();
+    D_800F6F24_name_47 = MBModelCreate(10, &D_800F6F08_name_47);
     D_800F6F24_name_47->coords.x = D_800F6EE4_name_47.x;
     D_800F6F24_name_47->coords.y = D_800F6EE4_name_47.y;
     D_800F6F24_name_47->coords.z = D_800F6EE4_name_47.z;
-    D_800F6F28_name_47 = CreateObject(func_80052F04(D_800F6F20_name_47), NULL);
+    D_800F6F28_name_47 = MBModelCreate(func_80052F04(D_800F6F20_name_47), NULL);
     D_800F6F28_name_47->coords.x = D_800F6EFC_name_47.x;
     D_800F6F28_name_47->coords.y = D_800F6EFC_name_47.y;
     D_800F6F28_name_47->coords.z = D_800F6EFC_name_47.z;
@@ -69,8 +69,8 @@ void func_800F6D1C_name_47(void) {
 }
 
 void func_800F6DE8_name_47(void) {
-    DestroyObject(D_800F6F28_name_47);
-    DestroyObject(D_800F6F24_name_47);
+    MBModelKill(D_800F6F28_name_47);
+    MBModelKill(D_800F6F24_name_47);
 }
 
 void func_800F6E14_name_47(void) {

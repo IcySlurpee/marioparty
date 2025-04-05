@@ -15,7 +15,7 @@ void func_800F65E0_MushroomShop(void) {
     D_800F8DE4_MushroomShop = func_80019060(D_800F8DE2_MushroomShop, 0, 1);
     SetBasicSpriteSize(D_800F8DE4_MushroomShop, 0.5f, 0.5f);
     SetBasicSpritePos(D_800F8DE4_MushroomShop, 0x20, 0x18);
-    D_800F8DE0_MushroomShop = func_800767B4(D_800F8D78_MushroomShop, "00000", 0, -1, -1);
+    D_800F8DE0_MushroomShop = GMesFontCreate(D_800F8D78_MushroomShop, "00000", 0, -1, -1);
     omAddObj(1, 0, 0, -1, &func_800F67B0_MushroomShop);
     func_80066DC4(D_800F8D8C_MushroomShop[D_800F8DE0_MushroomShop], 0, 0x4C, 0x18);
     SetFadeInTypeAndTime(0xFF, 8);

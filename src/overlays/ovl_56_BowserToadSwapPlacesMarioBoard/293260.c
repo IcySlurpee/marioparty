@@ -99,7 +99,7 @@ void func_800F692C_BowserToadSwapPlacesMarioBoard(void) {
     
     if (GwCommon.boardWork[0] == 0) {
         PlaySound(1126);
-        func_8003E81C(D_800F6DF8_BowserToadSwapPlacesMarioBoard, 0, 2);
+        MBMotionSet(D_800F6DF8_BowserToadSwapPlacesMarioBoard, 0, 2);
         
         for (i = 0; i < 2; i++) {
             func_8004F00C(D_800F6DF8_BowserToadSwapPlacesMarioBoard, 40.0f, -5.0f);
@@ -108,7 +108,7 @@ void func_800F692C_BowserToadSwapPlacesMarioBoard(void) {
 
     } else {
         PlaySound(1130);
-        func_8003E81C(D_800F6DF4_BowserToadSwapPlacesMarioBoard, 0, 2);
+        MBMotionSet(D_800F6DF4_BowserToadSwapPlacesMarioBoard, 0, 2);
         HuPrcSleep(40);
     }
     
@@ -141,17 +141,17 @@ void func_800F6AC8_BowserToadSwapPlacesMarioBoard(omObjData* arg0) {
 }
 
 void func_800F6B1C_BowserToadSwapPlacesMarioBoard(void) {
-    func_8003DAA8();
-    D_800F6DFC_BowserToadSwapPlacesMarioBoard = CreateObject(20, NULL);
+    MBModelInit();
+    D_800F6DFC_BowserToadSwapPlacesMarioBoard = MBModelCreate(20, NULL);
     VEC3F_COPY_TO_OBJ(D_800F6DFC_BowserToadSwapPlacesMarioBoard, D_800F6DB0_BowserToadSwapPlacesMarioBoard);
     D_800F6DFC_BowserToadSwapPlacesMarioBoard->xScale = D_800F6DFC_BowserToadSwapPlacesMarioBoard->yScale = D_800F6DFC_BowserToadSwapPlacesMarioBoard->zScale = 1.5f;
     func_80025F60(*D_800F6DFC_BowserToadSwapPlacesMarioBoard->unk_3C->unk_40, 0);
-    D_800F6DF4_BowserToadSwapPlacesMarioBoard = CreateObject(108, D_800F6DC8_BowserToadSwapPlacesMarioBoard);
+    D_800F6DF4_BowserToadSwapPlacesMarioBoard = MBModelCreate(108, D_800F6DC8_BowserToadSwapPlacesMarioBoard);
     D_800F6DF4_BowserToadSwapPlacesMarioBoard->coords.x = D_800F6DBC_BowserToadSwapPlacesMarioBoard.x;
     D_800F6DF4_BowserToadSwapPlacesMarioBoard->coords.y = D_800F6DBC_BowserToadSwapPlacesMarioBoard.y;
     D_800F6DF4_BowserToadSwapPlacesMarioBoard->coords.z = D_800F6DBC_BowserToadSwapPlacesMarioBoard.z + 200.0f;
     D_800F6DF4_BowserToadSwapPlacesMarioBoard->xScale = D_800F6DF4_BowserToadSwapPlacesMarioBoard->yScale = D_800F6DF4_BowserToadSwapPlacesMarioBoard->zScale = 1.5f;
-    D_800F6DF8_BowserToadSwapPlacesMarioBoard = CreateObject(7, D_800F6DD0_BowserToadSwapPlacesMarioBoard);
+    D_800F6DF8_BowserToadSwapPlacesMarioBoard = MBModelCreate(7, D_800F6DD0_BowserToadSwapPlacesMarioBoard);
     D_800F6DF8_BowserToadSwapPlacesMarioBoard->coords.x = D_800F6DBC_BowserToadSwapPlacesMarioBoard.x;
     D_800F6DF8_BowserToadSwapPlacesMarioBoard->coords.y = D_800F6DBC_BowserToadSwapPlacesMarioBoard.y;
     D_800F6DF8_BowserToadSwapPlacesMarioBoard->coords.z = D_800F6DBC_BowserToadSwapPlacesMarioBoard.z + 200.0f;
@@ -163,9 +163,9 @@ void func_800F6B1C_BowserToadSwapPlacesMarioBoard(void) {
 }
 
 void func_800F6CB0_BowserToadSwapPlacesMarioBoard(void) {
-    DestroyObject(D_800F6DF4_BowserToadSwapPlacesMarioBoard);
-    DestroyObject(D_800F6DF8_BowserToadSwapPlacesMarioBoard);
-    DestroyObject(D_800F6DFC_BowserToadSwapPlacesMarioBoard);
+    MBModelKill(D_800F6DF4_BowserToadSwapPlacesMarioBoard);
+    MBModelKill(D_800F6DF8_BowserToadSwapPlacesMarioBoard);
+    MBModelKill(D_800F6DFC_BowserToadSwapPlacesMarioBoard);
 }
 
 

@@ -79,10 +79,10 @@ void func_800F77A4_GoombaCoinStealPeachBoard(void) {
 }
 
 void func_800F77D0_GoombaCoinStealPeachBoard(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
     func_8004F548();
-    D_800F7BE4_GoombaCoinStealPeachBoard = CreateObject(0xB, NULL);
+    D_800F7BE4_GoombaCoinStealPeachBoard = MBModelCreate(0xB, NULL);
 
     if (D_800C597A == 0) {
         D_800F7BE4_GoombaCoinStealPeachBoard->coords.x = D_800F7B04_GoombaCoinStealPeachBoard.x;
@@ -94,7 +94,7 @@ void func_800F77D0_GoombaCoinStealPeachBoard(void) {
         D_800F7BE4_GoombaCoinStealPeachBoard->coords.z = D_800F7B04_GoombaCoinStealPeachBoard.z;
     }
 
-    D_800F7BE8_GoombaCoinStealPeachBoard = CreateObject(func_80052F04(D_800F7BE0_GoombaCoinStealPeachBoard), D_800F7B88_GoombaCoinStealPeachBoard[GwPlayer[D_800F7BE0_GoombaCoinStealPeachBoard].character]);
+    D_800F7BE8_GoombaCoinStealPeachBoard = MBModelCreate(func_80052F04(D_800F7BE0_GoombaCoinStealPeachBoard), D_800F7B88_GoombaCoinStealPeachBoard[GwPlayer[D_800F7BE0_GoombaCoinStealPeachBoard].character]);
     D_800F7BE8_GoombaCoinStealPeachBoard->coords.x = D_800F7B1C_GoombaCoinStealPeachBoard.x;
     D_800F7BE8_GoombaCoinStealPeachBoard->coords.y = D_800F7B1C_GoombaCoinStealPeachBoard.y;
     D_800F7BE8_GoombaCoinStealPeachBoard->coords.z = D_800F7B1C_GoombaCoinStealPeachBoard.z;
@@ -108,19 +108,19 @@ void func_800F77D0_GoombaCoinStealPeachBoard(void) {
 void func_800F7928_GoombaCoinStealPeachBoard(void) {
     s32 i;
     
-    DestroyObject(D_800F7BE4_GoombaCoinStealPeachBoard);
+    MBModelKill(D_800F7BE4_GoombaCoinStealPeachBoard);
     
     if (D_800F7AE0_GoombaCoinStealPeachBoard != NULL) {
-        DestroyObject(D_800F7AE0_GoombaCoinStealPeachBoard);
+        MBModelKill(D_800F7AE0_GoombaCoinStealPeachBoard);
     }
     
     if (D_800F7AE4_GoombaCoinStealPeachBoard != NULL) {
-        DestroyObject(D_800F7AE4_GoombaCoinStealPeachBoard);
+        MBModelKill(D_800F7AE4_GoombaCoinStealPeachBoard);
     }
     
     for (i = 0; i < 3; i++) {
         if (D_800F7AE8_GoombaCoinStealPeachBoard[i] != NULL) {
-            DestroyObject(D_800F7AE8_GoombaCoinStealPeachBoard[i]);
+            MBModelKill(D_800F7AE8_GoombaCoinStealPeachBoard[i]);
         }
         
         if (D_800F7AF4_GoombaCoinStealPeachBoard[i] != 0) {
@@ -128,7 +128,7 @@ void func_800F7928_GoombaCoinStealPeachBoard(void) {
         }
     }
 
-    DestroyObject(D_800F7BE8_GoombaCoinStealPeachBoard);
+    MBModelKill(D_800F7BE8_GoombaCoinStealPeachBoard);
     func_8004F2EC();
     func_8004F5F0();
 }

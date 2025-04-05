@@ -244,7 +244,7 @@ void func_800F6B3C_CraneGame(void) {
         if (--D_800FFE30_CraneGame == 0) {
             D_800FFE24_CraneGame++;
             D_800FFE30_CraneGame = 0x3C;
-            func_80075CCC(0);
+            GMesCreate(0);
         }
         if (D_800FFE30_CraneGame == 0x1E) {
             D_800FFE20_CraneGame = omAddObj(7, 0U, 0U, -1, &func_800F6F54_CraneGame);
@@ -269,14 +269,14 @@ void func_800F6B3C_CraneGame(void) {
             if (D_800FFE34_CraneGame == 0) {
                 D_800FFE24_CraneGame = (u16) D_800FFE24_CraneGame + 1;
                 if (D_800FFE2A_CraneGame == 0) {
-                    func_80075CCC(0xE);
+                    GMesCreate(0xE);
                 } else {
-                    func_80075CCC(2);
+                    GMesCreate(2);
                     func_800FE7AC_CraneGame(0);
                 }
             } else {
                 D_800FFE24_CraneGame = 5;
-                func_80075CCC(2);
+                GMesCreate(2);
                 if (D_800FFE2A_CraneGame != 0) {
                     func_800FE7AC_CraneGame(0);
                 }
@@ -286,7 +286,7 @@ void func_800F6B3C_CraneGame(void) {
         }
         break;
     case 3:
-        if (func_80075FE0() == 2) {
+        if (GMesStatAllGet() == 2) {
             D_800FFE24_CraneGame++;
             if (D_800FFE2A_CraneGame == 0) {
                 func_80060128(0x34);
@@ -304,7 +304,7 @@ void func_800F6B3C_CraneGame(void) {
         if (D_800FF522_CraneGame != 0) {
             D_800FF522_CraneGame -= 1;
         }
-        if (func_80076174() == 0) {
+        if (GMesWait() == 0) {
             D_800FF520_CraneGame = 1;
         }
         if ((D_800FFE30_CraneGame == 0) || ((D_800FF520_CraneGame != 0) && (D_800FF522_CraneGame == 0))) {
@@ -318,7 +318,7 @@ void func_800F6B3C_CraneGame(void) {
         }
         break;
     case 5:
-        if (func_80075FE0() == 2) {
+        if (GMesStatAllGet() == 2) {
             D_800FFE24_CraneGame = 4;
             D_800FFE30_CraneGame = 0x3C;
             D_800FF522_CraneGame = 0;
@@ -353,7 +353,7 @@ void func_800F6EF0_CraneGame(void) {
 }
 
 void func_800F6F54_CraneGame(omObjData* arg0) {
-    arg0->work[0] = func_80075CCC(8, (D_800FFE2E_CraneGame / 30), 0xA0, 0x18);
+    arg0->work[0] = GMesCreate(8, (D_800FFE2E_CraneGame / 30), 0xA0, 0x18);
     arg0->func_ptr = &func_800F6FCC_CraneGame;
 }
 

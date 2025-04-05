@@ -77,9 +77,9 @@ void func_800F66BC_BowserVisitDKBoard(void) {
         ShowTextWindow( temp_s1);
         func_8004DBD4(temp_s1, D_800F7170_ovl48);
         HideTextWindow(temp_s1);
-        func_8003E81C(D_800F7174_ovl48, 1, 0);
+        MBMotionSet(D_800F7174_ovl48, 1, 0);
         func_8004F40C(D_800F7174_ovl48, 0, 2);
-        func_8003E81C(D_800F717C_ovl48, 1, 0);
+        MBMotionSet(D_800F717C_ovl48, 1, 0);
         func_80055960(D_800F7170_ovl48, -GwPlayer[D_800F7170_ovl48].coins);
         func_800503B0(D_800F7170_ovl48, 5);
         func_80060618(0x44A, D_800F7170_ovl48);
@@ -112,7 +112,7 @@ void func_800F66BC_BowserVisitDKBoard(void) {
         D_800F7178_ovl48->unk_30 = D_800F70CC_BowserVisitDKBoard[1].y;
         D_800F7180_ovl48->work[0] = 1;
         HuPrcVSleep();
-        func_8003E81C(D_800F7174_ovl48, 1, 0);
+        MBMotionSet(D_800F7174_ovl48, 1, 0);
         func_8004F40C(D_800F7174_ovl48, 0, 2);
         HuPrcSleep(0x28);
         temp_s1 = CreateTextWindow(0x28, 0x28, 0x12, 3);
@@ -121,9 +121,9 @@ void func_800F66BC_BowserVisitDKBoard(void) {
         ShowTextWindow(temp_s1);
         func_8004DBD4(temp_s1, D_800F7170_ovl48);
         HideTextWindow(temp_s1);
-        func_8003E81C(D_800F7174_ovl48, 1, 0);
+        MBMotionSet(D_800F7174_ovl48, 1, 0);
         func_8004F40C(D_800F7174_ovl48, 0, 2);
-        func_8003E81C(D_800F717C_ovl48, 0, 0);
+        MBMotionSet(D_800F717C_ovl48, 0, 0);
         func_80055960(D_800F7170_ovl48, -0xA);
         func_800503B0(D_800F7170_ovl48, 5);
         func_80060618(0x44A, D_800F7170_ovl48);
@@ -186,16 +186,16 @@ void func_800F6DD0_BowserVisitDKBoard(omObjData* arg0) {
 }
 
 void func_800F6E1C_BowserVisitDKBoard(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
-    D_800F7174_ovl48 = CreateObject(6, D_800F70F0_BowserVisitDKBoard);
+    D_800F7174_ovl48 = MBModelCreate(6, D_800F70F0_BowserVisitDKBoard);
     D_800F7174_ovl48->coords.x = D_800F70C0_BowserVisitDKBoard.x;
     D_800F7174_ovl48->coords.y = D_800F70C0_BowserVisitDKBoard.y;
     D_800F7174_ovl48->coords.z = D_800F70C0_BowserVisitDKBoard.z;
     D_800F7174_ovl48->zScale = 1.5f;
     D_800F7174_ovl48->yScale = 1.5f;
     D_800F7174_ovl48->xScale = 1.5f;
-    D_800F7178_ovl48 = CreateObject(0x28, NULL);
+    D_800F7178_ovl48 = MBModelCreate(0x28, NULL);
     D_800F7178_ovl48->coords.x = D_800F70CC_BowserVisitDKBoard[0].x;
     D_800F7178_ovl48->coords.y = 0.0f;
     D_800F7178_ovl48->unk_30 = D_800F70CC_BowserVisitDKBoard[0].y;
@@ -204,7 +204,7 @@ void func_800F6E1C_BowserVisitDKBoard(void) {
     D_800F7180_ovl48->rot.x = -12.0f;
     D_800F7180_ovl48->rot.y = 0.0f;
     D_800F7180_ovl48->work[0] = 0;
-    D_800F717C_ovl48 = CreateObject(func_80052F04(D_800F7170_ovl48), D_800F7148_BowserVisitDKBoard[GwPlayer[D_800F7170_ovl48].character]);
+    D_800F717C_ovl48 = MBModelCreate(func_80052F04(D_800F7170_ovl48), D_800F7148_BowserVisitDKBoard[GwPlayer[D_800F7170_ovl48].character]);
     D_800F717C_ovl48->coords.x = D_800F70E4_BowserVisitDKBoard.x;
     D_800F717C_ovl48->coords.y = D_800F70E4_BowserVisitDKBoard.y;
     D_800F717C_ovl48->coords.z = D_800F70E4_BowserVisitDKBoard.z;
@@ -214,9 +214,9 @@ void func_800F6E1C_BowserVisitDKBoard(void) {
 
 void func_800F6FAC_BowserVisitDKBoard(void) {
     omDelObj(D_800F7180_ovl48);
-    DestroyObject(D_800F717C_ovl48);
-    DestroyObject(D_800F7174_ovl48);
-    DestroyObject(D_800F7178_ovl48);
+    MBModelKill(D_800F717C_ovl48);
+    MBModelKill(D_800F7174_ovl48);
+    MBModelKill(D_800F7178_ovl48);
     func_8004F2EC();
 }
 

@@ -64,13 +64,13 @@ void func_800F6930_ShyGuySays(omObjData* arg0) {
     case 0:
         if (func_80072718() == 0) {
             D_800FDD10_ShyGuySays = func_80060288();
-            func_80075CCC(0);
+            GMesCreate(0);
             D_800FD5C4_ShyGuySays = 1;
             return;
         }
         return;
     case 1:
-        if (func_80075FE0() == 0) {
+        if (GMesStatAllGet() == 0) {
             D_800FD9A0_ShyGuySays = 2;
             D_800FD5C4_ShyGuySays = 2;
             return;
@@ -101,7 +101,7 @@ void func_800F6E50_ShyGuySays(omObjData* arg0) {
     func_800F72A4_ShyGuySays();
     switch (D_800FD5CE_ShyGuySays) {
     case 0:
-        func_80075CCC(2);
+        GMesCreate(2);
         temp_v1_2 = &D_800FD9C0_ShyGuySays[D_800FDC1E_ShyGuySays];
         if ((temp_v1_2->unk_00 != 0) && (temp_v1_2->unk_04 != 0x200)) {
             GwPlayer[D_800FDC1E_ShyGuySays].coins_mg += 10;
@@ -109,13 +109,13 @@ void func_800F6E50_ShyGuySays(omObjData* arg0) {
         D_800FD5CE_ShyGuySays++;
         return;
     case 1:
-        if (func_80075FE0() != 2) {
+        if (GMesStatAllGet() != 2) {
             return;
         }
         D_800FD5CE_ShyGuySays++;
         return;
     case 2:
-        if (func_80076174() == 0) {
+        if (GMesWait() == 0) {
             func_800726AC(0, 20);
             func_80060398(40);
             D_800FD5CE_ShyGuySays++;

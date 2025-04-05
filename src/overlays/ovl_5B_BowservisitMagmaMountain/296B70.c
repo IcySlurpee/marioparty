@@ -66,7 +66,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
         HuPrcSleep(15);
         PlaySound(0x6C);
         HuPrcSleep(5);
-        func_8003E81C(D_800F765C_BowservisitMagmaMountain, 0, 0);
+        MBMotionSet(D_800F765C_BowservisitMagmaMountain, 0, 0);
         D_800F7598_BowservisitMagmaMountain = LoadFormFile(0x1E, 0x6B9);
         var_s1_3 = 0;
         func_80025798(D_800F7598_BowservisitMagmaMountain, D_800F765C_BowservisitMagmaMountain->coords.x, D_800F765C_BowservisitMagmaMountain->coords.y, D_800F765C_BowservisitMagmaMountain->coords.z);
@@ -76,7 +76,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
         func_800503B0(D_800F7650_BowservisitMagmaMountain, 6);
         func_80060618(0x44A, D_800F7650_BowservisitMagmaMountain);
         PlaySound(0x79);
-        D_800F7590_BowservisitMagmaMountain = CreateObject(0x25, 0);
+        D_800F7590_BowservisitMagmaMountain = MBModelCreate(0x25, 0);
         D_800F7590_BowservisitMagmaMountain->coords.x = D_800F75B8_BowservisitMagmaMountain.x;
         D_800F7590_BowservisitMagmaMountain->coords.y = D_800F75B8_BowservisitMagmaMountain.y + 200.0f;
         D_800F7590_BowservisitMagmaMountain->coords.z = D_800F75B8_BowservisitMagmaMountain.z;
@@ -100,7 +100,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
                 temp_s0_4->unk_18.z = cosf(temp_f20_2);
                 HuPrcVSleep();
                 if (var_s1_3 == 0x4B) {
-                    func_8003E81C(D_800F7658_BowservisitMagmaMountain, 0, 0);
+                    MBMotionSet(D_800F7658_BowservisitMagmaMountain, 0, 0);
                     func_8004F40C(D_800F7658_BowservisitMagmaMountain, 3, 2);
                     PlaySound(0x9E);
                     D_800F7594_BowservisitMagmaMountain = LoadFormFile(0x1D, 0x6B9);
@@ -110,7 +110,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
                 var_f24 += 10.0f;
                 var_f22 += 0.0f;
             } while (var_s1_3 < 0x15F);
-            DestroyObject(D_800F7590_BowservisitMagmaMountain);
+            MBModelKill(D_800F7590_BowservisitMagmaMountain);
             D_800F7590_BowservisitMagmaMountain = NULL;
             func_800427D4(D_800F759C_BowservisitMagmaMountain);
             D_800F759C_BowservisitMagmaMountain = NULL;
@@ -131,7 +131,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
         func_8004DBD4(windowID, D_800F7650_BowservisitMagmaMountain);
         HideTextWindow(windowID);
         labelTemp2:
-        func_8003E81C(D_800F7658_BowservisitMagmaMountain, 0, 0);
+        MBMotionSet(D_800F7658_BowservisitMagmaMountain, 0, 0);
         func_8004F40C(D_800F7658_BowservisitMagmaMountain, 3, 2);
         func_8004F4D4(D_800F765C_BowservisitMagmaMountain, 1, 0);
         func_80055960(D_800F7650_BowservisitMagmaMountain, -var_s2);
@@ -244,9 +244,9 @@ void func_800F7120_BowservisitMagmaMountain(void) {
     Object* temp_s0;
     Object* temp_s0_2;
 
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
-    D_800F7654_BowservisitMagmaMountain = CreateObject(0x76U, NULL);
+    D_800F7654_BowservisitMagmaMountain = MBModelCreate(0x76U, NULL);
     func_80025B34(*D_800F7654_BowservisitMagmaMountain->unk_3C->unk_40);
     VEC3F_COPY_TO_OBJ(D_800F7654_BowservisitMagmaMountain, D_800F75A0_BowservisitMagmaMountain);
     D_800F7654_BowservisitMagmaMountain->xScale = D_800F7654_BowservisitMagmaMountain->yScale = D_800F7654_BowservisitMagmaMountain->zScale = 1.5f;
@@ -255,7 +255,7 @@ void func_800F7120_BowservisitMagmaMountain(void) {
     temp_s0->unk_18.x = sinf(0.10471976f);
     temp_s0_2 = D_800F7654_BowservisitMagmaMountain;
     temp_s0_2->unk_18.z = cosf(0.10471976f);
-    D_800F7658_BowservisitMagmaMountain = CreateObject(6U, &D_800F75C4_BowservisitMagmaMountain);
+    D_800F7658_BowservisitMagmaMountain = MBModelCreate(6U, &D_800F75C4_BowservisitMagmaMountain);
     func_80025B34(*D_800F7658_BowservisitMagmaMountain->unk_3C->unk_40);
     D_800F7658_BowservisitMagmaMountain->coords.x = D_800F75A0_BowservisitMagmaMountain.x;
     D_800F7658_BowservisitMagmaMountain->coords.y = D_800F75A0_BowservisitMagmaMountain.y;
@@ -264,25 +264,25 @@ void func_800F7120_BowservisitMagmaMountain(void) {
     func_80025F60(*D_800F7658_BowservisitMagmaMountain->unk_3C->unk_40, 0);
     func_800258EC(*D_800F7658_BowservisitMagmaMountain->unk_40->unk_40, 0x180, 0x80);
     func_80025AD4(*D_800F7658_BowservisitMagmaMountain->unk_40->unk_40);
-    D_800F765C_BowservisitMagmaMountain = CreateObject(func_80052F04(D_800F7650_BowservisitMagmaMountain), D_800F7620_BowservisitMagmaMountain[GwPlayer[D_800F7650_BowservisitMagmaMountain].character]);
+    D_800F765C_BowservisitMagmaMountain = MBModelCreate(func_80052F04(D_800F7650_BowservisitMagmaMountain), D_800F7620_BowservisitMagmaMountain[GwPlayer[D_800F7650_BowservisitMagmaMountain].character]);
     func_80025B34(*D_800F765C_BowservisitMagmaMountain->unk_3C->unk_40);
     VEC3F_COPY_TO_OBJ(D_800F765C_BowservisitMagmaMountain, D_800F75B8_BowservisitMagmaMountain);
     func_8004CCD0(&D_800F765C_BowservisitMagmaMountain->coords, &D_800F7658_BowservisitMagmaMountain->coords, &D_800F765C_BowservisitMagmaMountain->unk_18);
     func_8004CCD0(&D_800F7658_BowservisitMagmaMountain->coords, &D_800F765C_BowservisitMagmaMountain->coords, &D_800F7658_BowservisitMagmaMountain->unk_18);
     func_80052E84(D_800F7650_BowservisitMagmaMountain);
-    func_8003E664(GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj);
+    MBModelDispOff(GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj);
     (GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj)->coords.x = D_800F75AC_BowservisitMagmaMountain.x;
     (GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj)->coords.y = D_800F75AC_BowservisitMagmaMountain.y;
     (GwPlayer[D_800F7650_BowservisitMagmaMountain].player_obj)->coords.z = D_800F75AC_BowservisitMagmaMountain.z;
 }
 
 void func_800F7404_BowservisitMagmaMountain(void) {
-    DestroyObject(D_800F7654_BowservisitMagmaMountain);
-    DestroyObject(D_800F7658_BowservisitMagmaMountain);
-    DestroyObject(D_800F765C_BowservisitMagmaMountain);
+    MBModelKill(D_800F7654_BowservisitMagmaMountain);
+    MBModelKill(D_800F7658_BowservisitMagmaMountain);
+    MBModelKill(D_800F765C_BowservisitMagmaMountain);
     
     if (D_800F7590_BowservisitMagmaMountain != NULL) {
-        DestroyObject(D_800F7590_BowservisitMagmaMountain);
+        MBModelKill(D_800F7590_BowservisitMagmaMountain);
     }
 
     if (D_800F759C_BowservisitMagmaMountain != NULL) {

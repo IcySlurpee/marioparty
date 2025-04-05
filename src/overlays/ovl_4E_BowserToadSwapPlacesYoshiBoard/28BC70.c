@@ -157,19 +157,19 @@ void func_800F67BC_BowserToadSwapPlacesYoshiBoard(void) {
         HuPrcVSleep();        
     }
 
-    func_8003E664(D_800F784C_BowserToadSwapPlacesYoshiBoard);
+    MBModelDispOff(D_800F784C_BowserToadSwapPlacesYoshiBoard);
     HuPrcSleep(0xD);
     PlaySound(0xB7);
     HuPrcSleep(0xA);
     func_800726AC(0, 4);
     HuPrcSleep(6);
     func_8004A140();
-    DestroyObject(D_800F7844_BowserToadSwapPlacesYoshiBoard);
-    DestroyObject(D_800F784C_BowserToadSwapPlacesYoshiBoard);
+    MBModelKill(D_800F7844_BowserToadSwapPlacesYoshiBoard);
+    MBModelKill(D_800F784C_BowserToadSwapPlacesYoshiBoard);
     D_800F7844_BowserToadSwapPlacesYoshiBoard = NULL;
     D_800F784C_BowserToadSwapPlacesYoshiBoard = NULL;
     HuPrcSleep(5);
-    func_8003E5E0(D_800F7858_BowserToadSwapPlacesYoshiBoard);
+    MBModelDispOn(D_800F7858_BowserToadSwapPlacesYoshiBoard);
     GwCommon.boardWork[5] = (GwCommon.boardWork[5] + 1) & 1;
 
     if (!(GwCommon.boardWork[5] & 1)) {
@@ -182,7 +182,7 @@ void func_800F67BC_BowserToadSwapPlacesYoshiBoard(void) {
     HuPrcSleep(4);
     func_800A0D00(&D_800F7840_BowserToadSwapPlacesYoshiBoard->xScale, 0.5f, 0.5f, 0.5f);
     D_800F7840_BowserToadSwapPlacesYoshiBoard->unk_30 = 80.0f;
-    func_8003E5E0(D_800F7840_BowserToadSwapPlacesYoshiBoard);
+    MBModelDispOn(D_800F7840_BowserToadSwapPlacesYoshiBoard);
     D_800F7848_BowserToadSwapPlacesYoshiBoard->unk_0A |= 1;
     D_800F7848_BowserToadSwapPlacesYoshiBoard->unk_3C->unk_24 = 0.0f;
     D_800F7840_BowserToadSwapPlacesYoshiBoard->unk_3C->unk_24 = 0.0f;
@@ -281,19 +281,19 @@ void func_800F737C_BowserToadSwapPlacesYoshiBoard(omObjData* arg0) {
 }
 
 void func_800F73C0_BowserToadSwapPlacesYoshiBoard(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
-    D_800F7844_BowserToadSwapPlacesYoshiBoard = CreateObject(6, &D_800F78F0_BowserToadSwapPlacesYoshiBoard);
+    D_800F7844_BowserToadSwapPlacesYoshiBoard = MBModelCreate(6, &D_800F78F0_BowserToadSwapPlacesYoshiBoard);
     func_800A0D00(&D_800F7844_BowserToadSwapPlacesYoshiBoard->xScale, 1.5f, 1.5f, 1.5f);
     func_800A0D00(&D_800F7844_BowserToadSwapPlacesYoshiBoard->coords, D_800F78C0_BowserToadSwapPlacesYoshiBoard.x, D_800F78C0_BowserToadSwapPlacesYoshiBoard.y, D_800F78C0_BowserToadSwapPlacesYoshiBoard.z);
     D_800F7844_BowserToadSwapPlacesYoshiBoard->unk_30 = 130.0f;
     D_800F7844_BowserToadSwapPlacesYoshiBoard->unk_0A |= 1;
-    D_800F784C_BowserToadSwapPlacesYoshiBoard = CreateObject(0x70, NULL);
+    D_800F784C_BowserToadSwapPlacesYoshiBoard = MBModelCreate(0x70, NULL);
     func_800A0D00(&D_800F784C_BowserToadSwapPlacesYoshiBoard->coords, D_800F78C0_BowserToadSwapPlacesYoshiBoard.x, D_800F78C0_BowserToadSwapPlacesYoshiBoard.y, D_800F78C0_BowserToadSwapPlacesYoshiBoard.z);
     D_800F784C_BowserToadSwapPlacesYoshiBoard->unk_30 = 130.0f;
-    D_800F7840_BowserToadSwapPlacesYoshiBoard = CreateObject(7, &D_800F7900_BowserToadSwapPlacesYoshiBoard);
+    D_800F7840_BowserToadSwapPlacesYoshiBoard = MBModelCreate(7, &D_800F7900_BowserToadSwapPlacesYoshiBoard);
     func_800A0D00(&D_800F7840_BowserToadSwapPlacesYoshiBoard->coords, D_800F7860_BowserToadSwapPlacesYoshiBoard.x, D_800F7860_BowserToadSwapPlacesYoshiBoard.y, D_800F7860_BowserToadSwapPlacesYoshiBoard.z);
-    D_800F7848_BowserToadSwapPlacesYoshiBoard = CreateObject(0x5C, NULL);
+    D_800F7848_BowserToadSwapPlacesYoshiBoard = MBModelCreate(0x5C, NULL);
     func_800A0D00(&D_800F7848_BowserToadSwapPlacesYoshiBoard->coords, D_800F7878_BowserToadSwapPlacesYoshiBoard.x, D_800F7878_BowserToadSwapPlacesYoshiBoard.y, D_800F7878_BowserToadSwapPlacesYoshiBoard.z);
     func_80025930(*D_800F7848_BowserToadSwapPlacesYoshiBoard->unk_3C->unk_40, 0x20000, 0x20000);
     func_80025AD4(*D_800F7848_BowserToadSwapPlacesYoshiBoard->unk_3C->unk_40);
@@ -303,35 +303,35 @@ void func_800F73C0_BowserToadSwapPlacesYoshiBoard(void) {
     func_80026040(*D_800F7848_BowserToadSwapPlacesYoshiBoard->unk_3C->unk_40);
     D_800F7854_BowserToadSwapPlacesYoshiBoard = omAddObj(0x1000, 0, 0, -1, &func_800F66B4_BowserToadSwapPlacesYoshiBoard);
     D_800F7854_BowserToadSwapPlacesYoshiBoard->trans.x = 1.0f;
-    D_800F7858_BowserToadSwapPlacesYoshiBoard = CreateObject(0x71, NULL);
+    D_800F7858_BowserToadSwapPlacesYoshiBoard = MBModelCreate(0x71, NULL);
     func_800A0D00(&D_800F7858_BowserToadSwapPlacesYoshiBoard->coords, -1500.0f, 0.0f, -1500.0f);
     func_800A0D00(&D_800F7858_BowserToadSwapPlacesYoshiBoard->xScale, 5.0f, 1.0f, 5.0f);
     func_800258EC(*D_800F7858_BowserToadSwapPlacesYoshiBoard->unk_3C->unk_40, 0x80000, 0x80000);
     func_80025AD4(*D_800F7858_BowserToadSwapPlacesYoshiBoard->unk_3C->unk_40);
-    func_8003E664(D_800F7858_BowserToadSwapPlacesYoshiBoard);
+    MBModelDispOff(D_800F7858_BowserToadSwapPlacesYoshiBoard);
     D_800F785C_BowserToadSwapPlacesYoshiBoard = omAddObj(0x1000, 0, 0, -1, &func_800F6708_BowserToadSwapPlacesYoshiBoard);
     D_800F785C_BowserToadSwapPlacesYoshiBoard->trans.x = 0.0f;
 }
 
 void func_800F7680_BowserToadSwapPlacesYoshiBoard(void) {
     if (D_800F7844_BowserToadSwapPlacesYoshiBoard != NULL) {
-        DestroyObject(D_800F7844_BowserToadSwapPlacesYoshiBoard);
+        MBModelKill(D_800F7844_BowserToadSwapPlacesYoshiBoard);
     }
     
     if (D_800F7848_BowserToadSwapPlacesYoshiBoard != NULL) {
-        DestroyObject(D_800F7848_BowserToadSwapPlacesYoshiBoard);
+        MBModelKill(D_800F7848_BowserToadSwapPlacesYoshiBoard);
     }
     
     if (D_800F7840_BowserToadSwapPlacesYoshiBoard != NULL) {
-        DestroyObject(D_800F7840_BowserToadSwapPlacesYoshiBoard);
+        MBModelKill(D_800F7840_BowserToadSwapPlacesYoshiBoard);
     }
     
     if (D_800F784C_BowserToadSwapPlacesYoshiBoard != NULL) {
-        DestroyObject(D_800F784C_BowserToadSwapPlacesYoshiBoard);
+        MBModelKill(D_800F784C_BowserToadSwapPlacesYoshiBoard);
     }
 
     if (D_800F7858_BowserToadSwapPlacesYoshiBoard != NULL) {
-        DestroyObject(D_800F7858_BowserToadSwapPlacesYoshiBoard);
+        MBModelKill(D_800F7858_BowserToadSwapPlacesYoshiBoard);
     }
     
     if (D_800F7850_BowserToadSwapPlacesYoshiBoard != -1) {

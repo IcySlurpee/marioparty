@@ -7,10 +7,10 @@ void func_800F65E0_OpeningScene(void) {
     Vec3s sp28;
     omObjData* temp_s0;
 
-    func_80062450();
+    pfWinClose();
     D_800C5972 = 0;
     D_800C59A6 = -1;
-    D_800F64F2 = 1;
+    omSysPauseEnableFlag = 1;
     InitCameras(1);
     func_80029090(1);
     func_8001DE70(25);
@@ -198,7 +198,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_61_OpeningScene/29B410", func_800FBC9
 Object* func_800FBCC0_OpeningScene(s32 arg0, void* arg1) {
     Object* temp_v0;
 
-    temp_v0 = CreateObject(arg0, arg1);
+    temp_v0 = MBModelCreate(arg0, arg1);
     func_80025F60(*temp_v0->unk_3C->unk_40, 0x800);
     func_80025F60(*temp_v0->unk_40->unk_40, 0x400);
     return temp_v0;

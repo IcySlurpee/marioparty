@@ -78,7 +78,7 @@ void func_800F6958_BuriedTreasure(void) {
             if (D_800FC022_BuriedTreasure == 0) {
                 D_800FC020_BuriedTreasure++;
                 D_800FC022_BuriedTreasure = 60;
-                func_80075CCC(0);
+                GMesCreate(0);
             }
             if (D_800FC022_BuriedTreasure == 24) {
                 func_80060128(0x1D);
@@ -106,19 +106,19 @@ void func_800F6958_BuriedTreasure(void) {
                 if (D_800FC02A_BuriedTreasure == 0) {
                     D_800FC020_BuriedTreasure++;
                     if (D_800FC034_BuriedTreasure < 0) {
-                        func_80075CCC(0x10);
+                        GMesCreate(0x10);
                     } else {
-                        func_80075CCC(2);
+                        GMesCreate(2);
                     }
                 } else {
                     D_800FC020_BuriedTreasure = 6;
-                    func_80075CCC(2);
+                    GMesCreate(2);
                 }
                 func_800601D4(0x28);
             }
             break;
         case 3:
-            if (func_80075FE0() == 2) {
+            if (GMesStatAllGet() == 2) {
                 D_800FC020_BuriedTreasure++;
                 if (D_800FC034_BuriedTreasure >= 0) {
                     func_80060128(0x32);
@@ -134,10 +134,10 @@ void func_800F6958_BuriedTreasure(void) {
             if (D_800FC022_BuriedTreasure == 0) {
                 D_800FC020_BuriedTreasure++;
                 if (D_800FC034_BuriedTreasure >= 0) {
-                    func_80075CCC(4, GwPlayer[D_800FC034_BuriedTreasure].character);
+                    GMesCreate(4, GwPlayer[D_800FC034_BuriedTreasure].character);
                     D_800FC022_BuriedTreasure = 84;
                 } else {
-                    func_80075CCC(0x11);
+                    GMesCreate(0x11);
                     D_800FC022_BuriedTreasure = 77;
                 }
             }
@@ -149,7 +149,7 @@ void func_800F6958_BuriedTreasure(void) {
             if (D_800FBA72_BuriedTreasure != 0) {
                 D_800FBA72_BuriedTreasure--;
             }
-            if (func_80076174() == 0) {
+            if (GMesWait() == 0) {
                 D_800FBA70_BuriedTreasure = 1;
             }
             if (D_800FC022_BuriedTreasure == 0 || (D_800FBA70_BuriedTreasure != 0 && D_800FBA72_BuriedTreasure == 0)) {
@@ -162,7 +162,7 @@ void func_800F6958_BuriedTreasure(void) {
             }
             break;
         case 6:
-            if (func_80075FE0() == 2) {
+            if (GMesStatAllGet() == 2) {
                 D_800FC020_BuriedTreasure = 5;
                 D_800FC022_BuriedTreasure = 60;
                 D_800FBA72_BuriedTreasure = 0;
@@ -193,7 +193,7 @@ void func_800F6D6C_BuriedTreasure(void) {
 }
 
 void func_800F6DCC_BuriedTreasure(omObjData* arg0) {
-    arg0->work[0] = func_80075CCC(8, D_800FC028_BuriedTreasure / 30, 160, 24);
+    arg0->work[0] = GMesCreate(8, D_800FC028_BuriedTreasure / 30, 160, 24);
     arg0->func_ptr = &func_800F6E44_BuriedTreasure;
 }
 

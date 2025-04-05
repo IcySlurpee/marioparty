@@ -102,7 +102,7 @@ void func_800F682C_name_75(void) {
             continue;
         }
         
-        func_8003E8B8(temp_s0, 0, 0, 6, 0);
+        MBMotionShiftSet(temp_s0, 0, 0, 6, 0);
         HuPrcSleep(0xC);
         PlaySound(0x9D);
         HuPrcSleep(0xC);
@@ -110,11 +110,11 @@ void func_800F682C_name_75(void) {
         HuPrcSleep(0x12);
         PlaySound(0x9D);
         
-        while (!(func_8003E940(temp_s0) & 1)) {
+        while (!(MBMotionCheck(temp_s0) & 1)) {
             HuPrcVSleep();
         }
         
-        func_8003E8B8(temp_s0, -1, 0, 6, 2);
+        MBMotionShiftSet(temp_s0, -1, 0, 6, 2);
         HuPrcSleep(0xA);
         continue;    
     }
@@ -124,7 +124,7 @@ void func_800F6934_name_75(void) {
     Object* temp_v0;
 
     if (D_800F6D60_name_75 == NULL) {
-        temp_v0 = CreateObject(0xC, &D_800F6C5C_name_75);
+        temp_v0 = MBModelCreate(0xC, &D_800F6C5C_name_75);
         func_8003E174(temp_v0);
         D_800F6D60_name_75 = temp_v0;
         temp_v0->unk_0A |= 2;

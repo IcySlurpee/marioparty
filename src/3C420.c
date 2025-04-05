@@ -6,7 +6,7 @@ void* func_8003B820() {
 
     temp_v0 = MallocTemp(0x8);
     temp_v0->unk00 = 0;
-    temp_v0_2 = CreateObject(0x24, NULL);
+    temp_v0_2 = MBModelCreate(0x24, NULL);
     temp_v0->unk04 = temp_v0_2;
     func_800258EC(*temp_v0_2->unk_3C->unk_40, 0x180, 0);
     func_80025AD4(*temp_v0->unk04->unk_3C->unk_40);
@@ -15,7 +15,7 @@ void* func_8003B820() {
 }
 
 void func_8003B8A4(unk_ProcessUserData08* arg0) {
-    DestroyObject(arg0->unk04);
+    MBModelKill(arg0->unk04);
     FreeTemp(arg0);
 }
 

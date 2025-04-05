@@ -77,7 +77,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
         HuPrcSleep(15);
         PlaySound(0x6C);
         HuPrcSleep(5);
-        func_8003E81C(D_800F7118_BowserVisitEternalStar, 0, 0);
+        MBMotionSet(D_800F7118_BowserVisitEternalStar, 0, 0);
         D_800F7068_BowserVisitEternalStar = LoadFormFile(0x1E, 0x6B9);
         var_s1_3 = 0;
         func_80025798(D_800F7068_BowserVisitEternalStar, D_800F7118_BowserVisitEternalStar->coords.x, D_800F7118_BowserVisitEternalStar->coords.y, D_800F7118_BowserVisitEternalStar->coords.z);
@@ -87,7 +87,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
         func_800503B0(D_800F7110_BowserVisitEternalStar, 6);
         func_80060618(0x44A, D_800F7110_BowserVisitEternalStar);
         PlaySound(0x79);
-        D_800F7060_BowserVisitEternalStar = CreateObject(0x25, 0);
+        D_800F7060_BowserVisitEternalStar = MBModelCreate(0x25, 0);
         D_800F7060_BowserVisitEternalStar->coords.x = D_800F707C_BowserVisitEternalStar.x;
         D_800F7060_BowserVisitEternalStar->coords.y = D_800F707C_BowserVisitEternalStar.y + 200.0f;
         D_800F7060_BowserVisitEternalStar->coords.z = D_800F707C_BowserVisitEternalStar.z;
@@ -111,7 +111,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
             temp_s0_4->unk_18.z = cosf(temp_f20_2);
             HuPrcVSleep();
             if (var_s1_3 == 0x4B) {
-                func_8003E81C(D_800F7114_BowserVisitEternalStar, 1, 0);
+                MBMotionSet(D_800F7114_BowserVisitEternalStar, 1, 0);
                 func_8004F40C(D_800F7114_BowserVisitEternalStar, 0, 2);
                 PlaySound(0x9E);
                 D_800F7064_BowserVisitEternalStar = LoadFormFile(0x1D, 0x6B9);
@@ -121,7 +121,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
             var_f24 += 10.0f;
             var_f22 += 0.0f;
         } while (var_s1_3 < 0x15F);
-        DestroyObject(D_800F7060_BowserVisitEternalStar);
+        MBModelKill(D_800F7060_BowserVisitEternalStar);
         D_800F7060_BowserVisitEternalStar = NULL;
         func_800427D4(D_800F706C_BowserVisitEternalStar);
         D_800F706C_BowserVisitEternalStar = NULL;
@@ -173,7 +173,7 @@ void func_800F66BC_BowserVisitEternalStar(void) {
     
         func_80060618(0x44A, D_800F7110_BowserVisitEternalStar);
         HuPrcSleep(30);
-        func_8003E81C(D_800F7114_BowserVisitEternalStar, 1, 0);
+        MBMotionSet(D_800F7114_BowserVisitEternalStar, 1, 0);
         func_8004F40C(D_800F7114_BowserVisitEternalStar, 0, 2);
         HuPrcSleep(30);
         windowID = CreateTextWindow(0x3C, 0x28, 0x0F, 2);
@@ -212,16 +212,16 @@ void func_800F6D88_BowserVisitEternalStar(omObjData* arg0) {
 }
 
 void func_800F6DD4_BowserVisitEternalStar(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
-    D_800F7114_BowserVisitEternalStar = CreateObject(6, &D_800F7088_BowserVisitEternalStar);
+    D_800F7114_BowserVisitEternalStar = MBModelCreate(6, &D_800F7088_BowserVisitEternalStar);
     D_800F7114_BowserVisitEternalStar->coords.x = D_800F7070_BowserVisitEternalStar.x;
     D_800F7114_BowserVisitEternalStar->coords.y = D_800F7070_BowserVisitEternalStar.y;
     D_800F7114_BowserVisitEternalStar->coords.z = D_800F7070_BowserVisitEternalStar.z;
     D_800F7114_BowserVisitEternalStar->zScale = 1.5f;
     D_800F7114_BowserVisitEternalStar->yScale = 1.5f;
     D_800F7114_BowserVisitEternalStar->xScale = 1.5f;
-    D_800F7118_BowserVisitEternalStar = CreateObject(func_80052F04(D_800F7110_BowserVisitEternalStar), D_800F70E4_BowserVisitEternalStar[GwPlayer[D_800F7110_BowserVisitEternalStar].character]);
+    D_800F7118_BowserVisitEternalStar = MBModelCreate(func_80052F04(D_800F7110_BowserVisitEternalStar), D_800F70E4_BowserVisitEternalStar[GwPlayer[D_800F7110_BowserVisitEternalStar].character]);
     D_800F7118_BowserVisitEternalStar->coords.x = D_800F707C_BowserVisitEternalStar.x;
     D_800F7118_BowserVisitEternalStar->coords.y = D_800F707C_BowserVisitEternalStar.y;
     D_800F7118_BowserVisitEternalStar->coords.z = D_800F707C_BowserVisitEternalStar.z;
@@ -230,11 +230,11 @@ void func_800F6DD4_BowserVisitEternalStar(void) {
 }
 
 void func_800F6EEC_BowserVisitEternalStar(void) {
-    DestroyObject(D_800F7118_BowserVisitEternalStar);
-    DestroyObject(D_800F7114_BowserVisitEternalStar);
+    MBModelKill(D_800F7118_BowserVisitEternalStar);
+    MBModelKill(D_800F7114_BowserVisitEternalStar);
 
     if (D_800F7060_BowserVisitEternalStar != NULL) {
-        DestroyObject(D_800F7060_BowserVisitEternalStar);
+        MBModelKill(D_800F7060_BowserVisitEternalStar);
     }
 
     if (D_800F706C_BowserVisitEternalStar != NULL) {

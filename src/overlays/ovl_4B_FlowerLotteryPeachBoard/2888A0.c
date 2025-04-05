@@ -73,16 +73,16 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_4B_FlowerLotteryPeachBoard/2888A0", f
 void func_800F7658_FlowerLotteryPeachBoard(void) {
     s32 i;
 
-    DestroyObject(D_800F78E8_FlowerLotteryPeachBoard);
-    DestroyObject(D_800F78E4_FlowerLotteryPeachBoard);
+    MBModelKill(D_800F78E8_FlowerLotteryPeachBoard);
+    MBModelKill(D_800F78E4_FlowerLotteryPeachBoard);
     
     if (D_800F77C0_FlowerLotteryPeachBoard != NULL) {
-        DestroyObject(D_800F77C0_FlowerLotteryPeachBoard);
+        MBModelKill(D_800F77C0_FlowerLotteryPeachBoard);
     }
     
     for (i = 0; i < 4; i++) {
         if (D_800F77C4_FlowerLotteryPeachBoard[i] != NULL) {
-            DestroyObject(D_800F77C4_FlowerLotteryPeachBoard[i]);
+            MBModelKill(D_800F77C4_FlowerLotteryPeachBoard[i]);
         }
     }
     func_8004F2EC();

@@ -19,7 +19,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_69_GameModeOverworld/2BB5F0", func_80
 //     func_8006CEA0();
 //     temp_s1 = omAddObj(0x7FDA, 0, 0, -1, func_800F884C_GameModeOverworld);
 //     omSetStatBit(temp_s1, 0xA0);
-//     D_800F64F2 = 1;
+//     omSysPauseEnableFlag = 1;
 //     omAddObj(0x2710, 0, 0, -1, &func_800F8AB8_GameModeOverworld);
 //     CZoom = 7120.0f;
 //     Center.x = 54.9103f;

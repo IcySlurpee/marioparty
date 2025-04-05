@@ -29,7 +29,7 @@ void func_800F66BC_BowserVisitYoshiBoard(Object* arg0) {
         D_800F75F8_BowserVisitYoshiBoard = D_800F75F8_BowserVisitYoshiBoard + 0.05f;
         D_800F75FC_BowserVisitYoshiBoard = ((10.0f - D_800F75FC_BowserVisitYoshiBoard) / 30.0f) + D_800F75FC_BowserVisitYoshiBoard;
         if (D_800F75F8_BowserVisitYoshiBoard > 1.0f) {
-            func_8003E664(D_800F7628_BowserVisitYoshiBoard);
+            MBModelDispOff(D_800F7628_BowserVisitYoshiBoard);
             omDelObj(arg0);
         }
     }

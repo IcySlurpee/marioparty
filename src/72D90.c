@@ -65,9 +65,9 @@ s32 func_8007556C(Gfx**);
 s32 func_8007562C(Gfx**);
 s32 func_80075700(Gfx**);
 s32 func_80075808(Gfx**);
-void func_8007590C(void);
-void func_800759C4(Gfx**);
-void func_8007624C();
+void GMesInit(void);
+void GMesCall(Gfx**);
+void GMesSprClose();
 s32 func_800763CC(unkCommonStruct0*, Gfx**);
 s16 func_80076FF4(s16);
 s32 func_80077068(unkCommonStruct0*, Gfx**);
@@ -128,7 +128,7 @@ extern s32 D_800ECB1C;
 extern unk72D90Struct0* D_800ED438;
 extern TextWindow* D_800ED4B0;
 extern s16 D_800ED720;
-extern unkCommonStruct0 D_800ED740[];
+extern unkCommonStruct0 GMesData[];
 extern u8 D_800EDEB0;
 extern u16 D_800EDEB4[];
 extern Process* D_800F0A24;
@@ -137,7 +137,7 @@ extern s16 D_800F2CE0;
 extern u8 D_800F2CF8;
 extern s16 D_800F3182;
 extern f32 D_800F3288;
-extern u8 D_800F3394;
+extern u8 GMesCloseF;
 extern unk72D90Struct1 D_800F3744;
 extern u8 D_800F3753;
 extern s16 D_800F3768[];
@@ -152,7 +152,7 @@ extern f32 D_800F5024;
 extern u8 D_800F50B8;
 extern Mtx D_800F5340[];
 extern s32 D_800F545C;
-extern s8 D_800F64F2;
+extern s8 omSysPauseEnableFlag;
 extern s16 D_800F64F4;
 extern s16 D_800F6548;
 
@@ -164,7 +164,7 @@ void func_80072190(void) {
     D_800EDEB0 = 0;
     D_800F50B8 = 0;
 
-    func_8007590C();
+    GMesInit();
 }
 
 void func_800721D8(Gfx** arg0) {
@@ -177,7 +177,7 @@ void func_800721D8(Gfx** arg0) {
         return;
     }
 
-    func_800759C4(arg0);
+    GMesCall(arg0);
 
     if (D_800ED0D2 == 0) {
         return;
@@ -1048,40 +1048,40 @@ s32 func_80075808(Gfx** arg0) {
     return 1;
 }
 
-void func_8007590C(void) {
+void GMesInit(void) {
     s16 i;
 
     D_800F2CB8 = 0;
 
     for (i = 0; i < 8; i++) {
-        D_800ED740[i].unk_00 = 0;
+        GMesData[i].unk_00 = 0;
     }
 
     for (i = 0; i < 8; i++) {
         D_800F3B70[i] = D_800F3768[i] = -1;
     }
 
-    D_800F3394 = 0;
+    GMesCloseF = 0;
     D_800F3FFC = -1;
     D_800F3753 = 0;
 }
 
-void func_800759C4(Gfx** arg0) {
+void GMesCall(Gfx** arg0) {
     unkCommonStruct0* var_s0;
     s16 var_s1 = 0;
     s16 i;
     s16 j;
 
-    if (D_800F384E != 0 && D_800F3394 == 0) {
+    if (D_800F384E != 0 && GMesCloseF == 0) {
         return;
     }
 
     for (i = 0; i < 8; i++) {
-        if (D_800ED740[i].unk_01 == 0) {
+        if (GMesData[i].unk_01 == 0) {
             continue;
         }
 
-        var_s0 = &D_800ED740[i];
+        var_s0 = &GMesData[i];
 
         switch (var_s0->unk_00) {
             case 0:
@@ -1150,13 +1150,13 @@ void func_800759C4(Gfx** arg0) {
 
             if (D_800F3753 == 0) {
                 for (j = 0; j < 8; j++) {
-                    if (D_800ED740[j].unk_01 != 0 && D_800ED740[j].unk_00 != 8) {
+                    if (GMesData[j].unk_01 != 0 && GMesData[j].unk_00 != 8) {
                         break;
                     }
                 }
 
                 if (j == 8) {
-                    func_8007624C();
+                    GMesSprClose();
                 }
             }
         }
@@ -1165,7 +1165,7 @@ void func_800759C4(Gfx** arg0) {
 
 // // Matches but needs rodata
 // #ifdef NON_MATCHING
-s32 func_80075CCC(s16 arg0, ...) {
+s32 GMesCreate(s16 arg0, ...) {
     unkCommonStruct0* temp_a2;
     va_list args;
     s16 var_t0;
@@ -1175,7 +1175,7 @@ s32 func_80075CCC(s16 arg0, ...) {
     va_start(args, arg0);
 
     for (var_t0 = 0; var_t0 < 8; var_t0++) {
-        if (D_800ED740[var_t0].unk_01 == 0) {
+        if (GMesData[var_t0].unk_01 == 0) {
             break;
         }
     }
@@ -1184,7 +1184,7 @@ s32 func_80075CCC(s16 arg0, ...) {
         return -1;
     }
 
-    temp_a2 = &D_800ED740[var_t0];
+    temp_a2 = &GMesData[var_t0];
     temp_a2->unk_01 = 1;
     temp_a2->unk_00 = arg0;
     temp_a2->unk_04 = 0;
@@ -1246,53 +1246,53 @@ s32 func_80075CCC(s16 arg0, ...) {
     return var_t0;
 }
 
-s32 func_80075FE0(void) {
+s32 GMesStatAllGet(void) {
     s16 var_a1;
     s16 i;
 
     for (i = 0, var_a1 = 0; i < 8; i++) {
-        if (D_800ED740[i].unk_00 != 8) {
-            var_a1 |= D_800ED740[i].unk_01;
+        if (GMesData[i].unk_00 != 8) {
+            var_a1 |= GMesData[i].unk_01;
         }
     }
 
     return var_a1;
 }
 
-s32 func_80076054(s16 arg0) {
-    return D_800ED740[arg0].unk_01;
+s32 GMesStatGet(s16 arg0) {
+    return GMesData[arg0].unk_01;
 }
 
-void func_80076080(s16 arg0, s16 arg1) {
-    D_800ED740[arg0].unk_06 = arg1;
+void GMesMaxTimeGet(s16 arg0, s16 arg1) {
+    GMesData[arg0].unk_06 = arg1;
 }
 
-void func_800760AC(s16 arg0, f32 arg1, f32 arg2) {
-    D_800ED740[arg0].unk_54 = arg1;
-    D_800ED740[arg0].unk_58 = arg2;
+void GMesPosSet(s16 arg0, f32 arg1, f32 arg2) {
+    GMesData[arg0].unk_54 = arg1;
+    GMesData[arg0].unk_58 = arg2;
 }
 
 void func_800760E4(s16 arg0) {
-    if (D_800ED740[arg0].unk_01 != 0) {
-        D_800ED740[arg0].unk_01 = 4;
+    if (GMesData[arg0].unk_01 != 0) {
+        GMesData[arg0].unk_01 = 4;
     }
 }
 
-void func_80076128(void) {
+void GMesClose(void) {
     D_800F3FFC = -1;
-    D_800F3394 = 1;
-    func_800759C4(&D_800F37DC);
-    D_800F3394 = 0;
-    func_8007624C();
+    GMesCloseF = 1;
+    GMesCall(&D_800F37DC);
+    GMesCloseF = 0;
+    GMesSprClose();
     D_800F3753 = 0;
 }
 
-s32 func_80076174(void) {
+s32 GMesWait(void) {
     s32 temp_v0;
     s32 i;
 
     if (D_800F384E == 0 && D_800F5144 == 0) {
-        temp_v0 = func_80075FE0();
+        temp_v0 = GMesStatAllGet();
 
         if (temp_v0 == 0 || temp_v0 & 2) {
             if (_CheckFlag(0x2B)) {
@@ -1315,11 +1315,11 @@ s32 func_80076174(void) {
     return 1;
 }
 
-void func_80076240(s16 arg0) {
+void GMesMaxWaitSet(s16 arg0) {
     D_800ED720 = arg0;
 }
 
-void func_8007624C(void) {
+void GMesSprClose(void) {
     s16 i;
 
     for (i = 0; i < 8; i++) {
@@ -1336,7 +1336,7 @@ void func_8007624C(void) {
     }
 }
 
-void func_80076338(unkCommonStruct0* arg0) {
+void GMesSprKill(unkCommonStruct0* arg0) {
     s16 i;
 
     for (i = 0; i < 16; i++) {
@@ -1351,7 +1351,7 @@ void func_80076338(unkCommonStruct0* arg0) {
 
 INCLUDE_ASM("asm/nonmatchings/72D90", func_800763CC);
 
-s16 func_80076740(unkCommonStruct0* arg0, char* arg1, u8 arg2, s16 arg3, s16 arg4) {
+s16 GMesFontMesCreate(unkCommonStruct0* arg0, char* arg1, u8 arg2, s16 arg3, s16 arg4) {
     s16 i;
 
     for (i = 0; i < 16; i++) {
@@ -1359,10 +1359,10 @@ s16 func_80076740(unkCommonStruct0* arg0, char* arg1, u8 arg2, s16 arg3, s16 arg
         arg0->unk_34[i] = -1;
     }
 
-    return func_800767B4(arg0, arg1, arg2, arg3, arg4);
+    return GMesFontCreate(arg0, arg1, arg2, arg3, arg4);
 }
 
-INCLUDE_ASM("asm/nonmatchings/72D90", func_800767B4);
+INCLUDE_ASM("asm/nonmatchings/72D90", GMesFontCreate);
 
 s32 func_80076B2C(u8* arg0, s32 arg1) {
     u16 var_v0;
@@ -1532,8 +1532,8 @@ s16 func_80076FF4(s16 arg0) {
 }
 
 void func_80077044(unkCommonStruct0* arg0) {
-    func_80076338(arg0);
-    func_8007624C();
+    GMesSprKill(arg0);
+    GMesSprClose();
 }
 
 s32 func_80077068(unkCommonStruct0* arg0, Gfx** arg1) {
@@ -1550,16 +1550,16 @@ s32 func_8007708C(unkCommonStruct0* arg0, char* arg1, s16 arg2) {
     temp_f30 = var_f2;
 
     if (arg0->unk_04 == 0) {
-        func_800767B4(arg0, arg1, 1, -1, -1);
+        GMesFontCreate(arg0, arg1, 1, -1, -1);
         func_80066DC4(arg0->unk_14[0], 0, 160, arg0->unk_58);
         arg0->unk_08 = -1000;
         arg0->unk_0A = 300;
         PlaySound(arg2);
-        D_800F64F2 = 1;
+        omSysPauseEnableFlag = 1;
     }
 
-    if (arg0->unk_04 > arg0->unk_06 || D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (arg0->unk_04 > arg0->unk_06 || GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -1594,11 +1594,11 @@ s32 func_800773EC(unkCommonStruct0* arg0, s32 arg1, s16 arg2) {
         arg0->unk_08 = -1000;
         arg0->unk_0A = 300;
         PlaySound(arg2);
-        D_800F64F2 = 1;
+        omSysPauseEnableFlag = 1;
     }
 
-    if (arg0->unk_04 > arg0->unk_06 || D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (arg0->unk_04 > arg0->unk_06 || GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -1694,8 +1694,8 @@ s32 func_80077838(unkCommonStruct0* arg0, Gfx** arg1) {
     temp_f30 = var_f2;
 
     if (arg0->unk_04 == 0) {
-        func_800767B4(arg0, D_800C624C[arg0->unk_08], 1, -1, -1);
-        func_800767B4(arg0, sp18, 1, -1, -1);
+        GMesFontCreate(arg0, D_800C624C[arg0->unk_08], 1, -1, -1);
+        GMesFontCreate(arg0, sp18, 1, -1, -1);
 
         temp_f22 = temp_f24 + temp_f30 + 1.0f;
         temp_f20 = (320.0f - temp_f22 * 24.0f) / 2.0f;
@@ -1721,8 +1721,8 @@ s32 func_80077838(unkCommonStruct0* arg0, Gfx** arg1) {
         }
     }
 
-    if (D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -1787,8 +1787,8 @@ s32 func_80077FC4(unkCommonStruct0* arg0, Gfx** arg1) {
     temp_f2 = var_f2;
 
     if (arg0->unk_04 == 0) {
-        func_800767B4(arg0, D_800C624C[arg0->unk_08], 1, -1, -1);
-        func_800767B4(arg0, sp18, 1, -1, -1);
+        GMesFontCreate(arg0, D_800C624C[arg0->unk_08], 1, -1, -1);
+        GMesFontCreate(arg0, sp18, 1, -1, -1);
 
         temp_f20 = (320.0f - (temp_f30 + temp_f2 + 1.0f) * 24.0f) / 2.0f;
 
@@ -1806,8 +1806,8 @@ s32 func_80077FC4(unkCommonStruct0* arg0, Gfx** arg1) {
         arg0->unk_0A = 0;
     }
 
-    if (D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -1860,15 +1860,15 @@ s32 func_800786F0(unkCommonStruct0* arg0, Gfx** arg1) {
         char* temp_v0 = HuMemDirectMalloc(256);
 
         func_8007149C((u8*) temp_v0, arg0->unk_10);
-        func_800767B4(arg0, temp_v0, arg0->unk_02, -1, -1);
+        GMesFontCreate(arg0, temp_v0, arg0->unk_02, -1, -1);
         arg0->unk_08 = strlen(temp_v0);
         func_80066DC4(arg0->unk_14[0], 0, arg0->unk_54, arg0->unk_58);
 
         HuMemDirectFree(temp_v0);
     }
 
-    if (arg0->unk_04 > arg0->unk_06 || D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (arg0->unk_04 > arg0->unk_06 || GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -1899,14 +1899,14 @@ s32 func_800789C0(unkCommonStruct0* arg0, Gfx** arg1) {
         char* temp_v0 = HuMemDirectMalloc(256);
 
         func_8007149C((u8*) temp_v0, arg0->unk_10);
-        func_800767B4(arg0, temp_v0, arg0->unk_02, -1, -1);
+        GMesFontCreate(arg0, temp_v0, arg0->unk_02, -1, -1);
         arg0->unk_08 = strlen(temp_v0);
 
         HuMemDirectFree(temp_v0);
     }
 
-    if (arg0->unk_04 > arg0->unk_06 || D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (arg0->unk_04 > arg0->unk_06 || GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -1929,7 +1929,7 @@ s32 func_80078B6C(unkCommonStruct0* arg0, Gfx** arg1) {
     u8 temp_s2;
 
     if (arg0->unk_04 == 0) {
-        func_800767B4(arg0, D_800CBAB0, 0, -1, -1);
+        GMesFontCreate(arg0, D_800CBAB0, 0, -1, -1);
         func_80066DC4(arg0->unk_14[0], 0, arg0->unk_54, arg0->unk_58);
         func_8006752C(arg0->unk_14[0], 1, 230);
         func_8006752C(arg0->unk_14[0], 2, 230);
@@ -1998,8 +1998,8 @@ s32 func_80078B6C(unkCommonStruct0* arg0, Gfx** arg1) {
 
     arg0->unk_0E = arg0->unk_08;
 
-    if (D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         D_800F3FFC = -1;
         return 0;
     }
@@ -2013,14 +2013,14 @@ INCLUDE_ASM("asm/nonmatchings/72D90", func_80078B6C);
 void func_80079078(s16 arg0) {
     // Checks if both sign bits are zero. Seems some kind of compiler optimization.
     if ((((u32) D_800F3FFC >> 31) | ((u32) (arg0 << 16) >> 31)) == 0) {
-        D_800ED740[D_800F3FFC].unk_08 = arg0;
+        GMesData[D_800F3FFC].unk_08 = arg0;
     }
 }
 
 void func_800790C0(void) {
     if (D_800F3FFC >= 0) {
-        D_800ED740[D_800F3FFC].unk_0A = 2;
-        D_800ED740[D_800F3FFC].unk_0C = 0;
+        GMesData[D_800F3FFC].unk_0A = 2;
+        GMesData[D_800F3FFC].unk_0C = 0;
     }
 }
 
@@ -2044,17 +2044,17 @@ s32 func_80079650(unkCommonStruct0* arg0, Gfx** arg1) {
     s16 i;
 
     if (arg0->unk_04 == 0) {
-        func_800767B4(arg0, "NEW RECORD", 1, -1, -1);
+        GMesFontCreate(arg0, "NEW RECORD", 1, -1, -1);
         for (i = 0; i < var_s4; i++) {
             func_800674BC(arg0->unk_14[0], i + 1, 0x8000);
             func_80067354(arg0->unk_14[0], i + 1, 1.0f, 1.0f);
         }
         func_80066DC4(arg0->unk_14[0], 0, arg0->unk_54, arg0->unk_58);
-        D_800F64F2 = 1;
+        omSysPauseEnableFlag = 1;
     }
 
-    if (D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -2094,11 +2094,11 @@ s32 func_80079884(unkCommonStruct0* arg0, Gfx** arg1) {
         }
         func_80066DC4(arg0->unk_14[0], 0, arg0->unk_54, arg0->unk_58);
         arg0->unk_08 = 0;
-        D_800F64F2 = 1;
+        omSysPauseEnableFlag = 1;
     }
 
-    if (D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -2137,8 +2137,8 @@ s32 func_80079B2C(unkCommonStruct0* arg0, Gfx** arg1) {
     var_s6 = 3;
 
     if (arg0->unk_04 == 0) {
-        func_800767B4(arg0, "READY", 1, -1, -1);
-        func_800767B4(arg0, "GO\xC4", 1, -1, -1);
+        GMesFontCreate(arg0, "READY", 1, -1, -1);
+        GMesFontCreate(arg0, "GO\xC4", 1, -1, -1);
 
         for (i = 0; i < var_s5; i++) {
             func_80067354(arg0->unk_14[0], i + 1, 5.0f, 5.0f);
@@ -2153,9 +2153,9 @@ s32 func_80079B2C(unkCommonStruct0* arg0, Gfx** arg1) {
         arg0->unk_08 = arg0->unk_0A = 0;
     }
 
-    if (arg0->unk_04 >= 56 || D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
-        D_800F64F2 = 0;
+    if (arg0->unk_04 >= 56 || GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
+        omSysPauseEnableFlag = 0;
         return 0;
     }
 
@@ -2231,11 +2231,11 @@ s32 func_8007A7A4(unkCommonStruct0* arg0, Gfx** arg1) {
             func_80067354(arg0->unk_14[0], i, 1.0f, 1.0f);
         }
         func_80066DC4(arg0->unk_14[0], 0, arg0->unk_54, arg0->unk_58);
-        D_800F64F2 = 1;
+        omSysPauseEnableFlag = 1;
     }
 
-    if (D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -2272,10 +2272,10 @@ s32 func_8007A978(unkCommonStruct0* arg0, Gfx** arg1) {
     temp_s8 = 5;
 
     if (arg0->unk_04 == 0) {
-        func_800767B4(arg0, D_800C624C[arg0->unk_08], 1, -1, -1);
-        func_800767B4(arg0, D_800C624C[arg0->unk_0A], 1, -1, -1);
-        func_800767B4(arg0, D_800C624C[arg0->unk_0C], 1, -1, -1);
-        func_800767B4(arg0, D_800CBA70, 1, -1, -1);
+        GMesFontCreate(arg0, D_800C624C[arg0->unk_08], 1, -1, -1);
+        GMesFontCreate(arg0, D_800C624C[arg0->unk_0A], 1, -1, -1);
+        GMesFontCreate(arg0, D_800C624C[arg0->unk_0C], 1, -1, -1);
+        GMesFontCreate(arg0, D_800CBA70, 1, -1, -1);
 
         for (i = 0; i < temp_s6; i++) {
             func_80067354(arg0->unk_14[0], i + 1, 5.0f, 5.0f);
@@ -2296,8 +2296,8 @@ s32 func_8007A978(unkCommonStruct0* arg0, Gfx** arg1) {
         func_80066DC4(arg0->unk_14[3], 0, 0xA0, arg0->unk_58 + 24.0f);
     }
 
-    if (D_800F3394 != 0 || arg0->unk_01 == 4) {
-        func_80076338(arg0);
+    if (GMesCloseF != 0 || arg0->unk_01 == 4) {
+        GMesSprKill(arg0);
         return 0;
     }
 
@@ -2435,7 +2435,7 @@ void func_8007B4AC(void) {
     D_800F50B8 = 0;
 }
 
-void func_8007B4EC(void) {
+void GamePauseStart(void) {
     D_800F0A24 = omAddPrcObj(func_8007B52C, 0x3FFF, 0x800, 0);
     omPrcSetStatBit(D_800F0A24, 0xA0);
 }
@@ -2554,7 +2554,7 @@ void func_8007B52C(void) {
     }
 }
 
-void func_8007BC48(void) {
+void GamePauseEnd(void) {
     if (D_800F64F4 != -1) {
         func_80067704(D_800F64F4);
     }

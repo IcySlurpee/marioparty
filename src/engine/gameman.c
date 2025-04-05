@@ -4,7 +4,7 @@
 void func_8001DFC0(void);
 void func_80025658(s32, s32);
 void func_8002B6C8(void);
-void func_800621D8(void);
+void pfClsScr(void);
 void omMain(void);
 void func_80018B2C(void);
 void func_8001E5A0(s32);
@@ -27,7 +27,7 @@ void func_80023B40(void* (*)(s32), void (*)(void*), u16, u16, s32, s32);
 void func_8003B710(void);
 s32 func_8005B0C4(void);
 void func_8005B6D0(Addr*);
-void func_80062140(void);
+void pfInit(void);
 void func_80072190(void);
 extern Addr D_1778BC0;
 extern Addr D_1832AE0;
@@ -73,7 +73,7 @@ void func_8001A0F0(void) {
     func_80072190();
     func_80023B40(HuMemDirectMalloc, HuMemDirectFree, D_800F3F30, D_800ED726, D_800F64EC, D_800F3705);
     InitCameras(1);
-    func_80062140();
+    pfInit();
     func_8005B6D0(&D_FCB860);
     func_8003B710();
     D_800F2BD0 = HuPrcCreate(func_8001A3DC, 0xF000, 0x3000, 0);
@@ -118,7 +118,7 @@ void func_8001A3DC(void) {
         func_8002B6C8();
         func_8001DFC0();
         func_80025658(0x02000000, 0x3D0800);
-        func_800621D8();        
+        pfClsScr();        
     }
 }
 

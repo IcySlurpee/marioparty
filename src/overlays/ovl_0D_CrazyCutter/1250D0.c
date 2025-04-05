@@ -6,13 +6,13 @@ void func_800F686C_CrazyCutter(omObjData* arg0) {
     D_800FD460_CrazyCutter--;
     if (D_800FD460_CrazyCutter == 0) {
         D_800FD460_CrazyCutter = 20;
-        func_80075CCC(0);
+        GMesCreate(0);
         arg0->func_ptr = &func_800F68C4_CrazyCutter;
     }
 }
 
 void func_800F68C4_CrazyCutter(omObjData* arg0) {
-    if (func_80075FE0() == 0 || func_80075FE0() & 2) {
+    if (GMesStatAllGet() == 0 || GMesStatAllGet() & 2) {
         D_800FD460_CrazyCutter--;
         if (D_800FD460_CrazyCutter == 0) {
             D_800FD4B0_CrazyCutter = 1;
@@ -179,7 +179,7 @@ void func_800F9694_CrazyCutter(Vec3f* arg0, s16 arg1[], s32 arg2) {
 void func_800F978C_CrazyCutter(void) {
     D_800FD14E_CrazyCutter = 30;
     D_800FD150_CrazyCutter = 30;
-    func_80075CCC(8, 30, 160, 32);
+    GMesCreate(8, 30, 160, 32);
 }
 
 void func_800F97C8_CrazyCutter(omObjData* arg0) {
@@ -223,7 +223,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_0D_CrazyCutter/1250D0", func_800FA38C
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_0D_CrazyCutter/1250D0", func_800FA56C_CrazyCutter);
 
 void func_800FA808_CrazyCutter(omObjData* arg0) {
-    if (func_80075FE0() == 0 || func_80075FE0() & 2) {
+    if (GMesStatAllGet() == 0 || GMesStatAllGet() & 2) {
         if (D_800FD590_CrazyCutter == 0) {
             func_800FBB2C_CrazyCutter();
             D_800FD590_CrazyCutter += 1;

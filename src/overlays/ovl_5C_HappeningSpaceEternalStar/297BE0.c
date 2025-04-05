@@ -74,9 +74,9 @@ void func_800F67E0_HappeningSpaceEternalStar(omObjData* arg0) {
 }
 
 void func_800F6824_HappeningSpaceEternalStar(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
-    D_800F69B4_HappeningSpaceEternalStar = CreateObject(6, &D_800F699C_HappeningSpaceEternalStar);
+    D_800F69B4_HappeningSpaceEternalStar = MBModelCreate(6, &D_800F699C_HappeningSpaceEternalStar);
     D_800F69B4_HappeningSpaceEternalStar->coords.x = D_800F6990_HappeningSpaceEternalStar.x;
     D_800F69B4_HappeningSpaceEternalStar->coords.y = D_800F6990_HappeningSpaceEternalStar.y;
     D_800F69B4_HappeningSpaceEternalStar->coords.z = D_800F6990_HappeningSpaceEternalStar.z;
@@ -84,7 +84,7 @@ void func_800F6824_HappeningSpaceEternalStar(void) {
 }
 
 void func_800F6898_HappeningSpaceEternalStar(void) {
-    DestroyObject(D_800F69B4_HappeningSpaceEternalStar);
+    MBModelKill(D_800F69B4_HappeningSpaceEternalStar);
     func_8004F2EC();
 }
 

@@ -10,7 +10,7 @@ extern s8 D_800F3843[];
 extern s16 D_800EDEB4[];
 extern s8 D_800ECC22;
 extern s16 D_800ED144;
-extern s8 D_800F64F2;
+extern s8 omSysPauseEnableFlag;
 extern s16 D_800FA1C0_GameModeOverworld;
 extern s16 D_800FA1C2_GameModeOverworld;
 extern Vec3f D_800FA1C4_GameModeOverworld;

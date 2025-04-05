@@ -157,7 +157,7 @@ extern u32 D_800C4210[];
 extern s32 D_800C4220[];
 extern u32 D_800C4230[];
 extern u32 D_800C4240[];
-extern s32 D_800ECB24;
+extern s32 fontcolor;
 extern s32 D_800F3FF0;
 extern s16 D_800C4C30[7];
 extern s16 D_800ECB00;

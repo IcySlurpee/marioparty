@@ -46,11 +46,11 @@ void func_800618A4(OSPfs* arg0);
 s32 func_80061714(void);
 s32 func_80061784(s16* arg0);
 
-extern box D_800ED448[];
-extern s16 D_800EE310;
+extern box pfWinData[];
+extern s16 saftyFrameF;
 extern OSMesgQueue D_800EE960;
-extern unk62140_3 D_800F09E4;
-extern u16 D_800F64E4;
+extern unk62140_3 saftyFrameColor;
+extern u16 emppfwin;
 extern OSPfs D_800D90D0[];
 s32 func_80061784(s16* arg0);
 
@@ -164,81 +164,81 @@ INCLUDE_ASM("asm/nonmatchings/62140", func_80061FE8);
 
 INCLUDE_ASM("asm/nonmatchings/62140", HuRomDmaCodeRead);
 
-INCLUDE_ASM("asm/nonmatchings/62140", func_80062140);
+INCLUDE_ASM("asm/nonmatchings/62140", pfInit);
 
-INCLUDE_ASM("asm/nonmatchings/62140", func_800621D8);
+INCLUDE_ASM("asm/nonmatchings/62140", pfClsScr);
 
-INCLUDE_ASM("asm/nonmatchings/62140", func_8006223C);
+INCLUDE_ASM("asm/nonmatchings/62140", pfClrStrLine);
 
-INCLUDE_ASM("asm/nonmatchings/62140", func_800622BC);
+INCLUDE_ASM("asm/nonmatchings/62140", print8);
 
-s16 func_80062364(s32 xPosStart, s32 yPosStart, s32 width, s32 height, s32 rgba) {
+s16 pfWinCreate(s32 xPosStart, s32 yPosStart, s32 width, s32 height, s32 rgba) {
     box* boxPtr;
     s32 i;
 
-    if (D_800F64E4 >= 4) {
+    if (emppfwin >= 4) {
         return -1;
     }
 
     for (i = 0; i < 4; i++) {
-       if (D_800ED448[i].activeBool == 0) {
+       if (pfWinData[i].activeBool == 0) {
             break;
         }
     }
 
-    boxPtr = &D_800ED448[i];
+    boxPtr = &pfWinData[i];
     boxPtr->activeBool = 1;
     boxPtr->xPosStart = xPosStart;
     boxPtr->yPosStart = yPosStart;
     boxPtr->width = width;
     boxPtr->height = height;
     boxPtr->rgba = rgba;
-    D_800F64E4++;
+    emppfwin++;
     return i;
 }
 
-void func_80062408(s16 arg0) {
-    if (D_800F64E4 != 0) {
-        D_800ED448[arg0].activeBool = 0;
-        D_800F64E4 = D_800F64E4 - 1;
+void pfWinKill(s16 arg0) {
+    if (emppfwin != 0) {
+        pfWinData[arg0].activeBool = 0;
+        emppfwin = emppfwin - 1;
     }
 }
 
-void func_80062450(void) {
+void pfWinClose(void) {
     s32 i;
-    D_800F64E4 = 0;
+    emppfwin = 0;
 
     for (i = 0; i < 4; i++) {
-        D_800ED448[i].activeBool = 0;
+        pfWinData[i].activeBool = 0;
     }
 }
 
-void func_8006248C(s8 arg0, s8 arg1, s8 arg2) {
-    D_800F09E4.unk_00 = arg0;
-    D_800F09E4.unk_01 = arg1;
-    D_800F09E4.unk_02 = arg2;
-    D_800F09E4.unk_03 = D_800F09E4.unk_04 = D_800F09E4.unk_05 = 0;
-    D_800EE310 = 1;
+void saftyFrameSet(s8 arg0, s8 arg1, s8 arg2) {
+    saftyFrameColor.unk_00 = arg0;
+    saftyFrameColor.unk_01 = arg1;
+    saftyFrameColor.unk_02 = arg2;
+    saftyFrameColor.unk_03 = saftyFrameColor.unk_04 = saftyFrameColor.unk_05 = 0;
+    saftyFrameF = 1;
 }
 
-void func_800624BC(s8 arg0, s8 arg1, s8 arg2, s8 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7, u8 arg8) {
-    D_800F09E4.unk_03 = arg0;
-    D_800F09E4.unk_04 = arg1;
-    D_800F09E4.unk_05 = arg2;
-    D_800F09E4.unk_06 = arg3;
-    D_800F09E4.unk_07 = arg4;
-    D_800F09E4.unk_08 = arg5;
-    D_800F09E4.unk_09 = arg6;
-    D_800F09E4.unk_0A = arg7;
-    D_800F09E4.unk_0B = arg8;
+void saftyFrameFlashSet(s8 arg0, s8 arg1, s8 arg2, s8 arg3, u8 arg4, u8 arg5, u8 arg6, u8 arg7, u8 arg8) {
+    saftyFrameColor.unk_03 = arg0;
+    saftyFrameColor.unk_04 = arg1;
+    saftyFrameColor.unk_05 = arg2;
+    saftyFrameColor.unk_06 = arg3;
+    saftyFrameColor.unk_07 = arg4;
+    saftyFrameColor.unk_08 = arg5;
+    saftyFrameColor.unk_09 = arg6;
+    saftyFrameColor.unk_0A = arg7;
+    saftyFrameColor.unk_0B = arg8;
 }
 
-void func_80062500(void) { 
-    D_800F09E4.unk_03 = D_800F09E4.unk_04 = D_800F09E4.unk_05 = 0;
+void saftyFrameFlashReset(void) { 
+    saftyFrameColor.unk_03 = saftyFrameColor.unk_04 = saftyFrameColor.unk_05 = 0;
 }
 
-void func_80062518(void) {
-    D_800EE310 = 0;
+void saftyFrameReset(void) {
+    saftyFrameF = 0;
 }
 
 void func_80062524(s16 arg0, u8* arg1) {
@@ -253,4 +253,4 @@ void func_80062524(s16 arg0, u8* arg1) {
     }
 }
 
-INCLUDE_ASM("asm/nonmatchings/62140", func_8006257C);
+INCLUDE_ASM("asm/nonmatchings/62140", pfDrawFonts);

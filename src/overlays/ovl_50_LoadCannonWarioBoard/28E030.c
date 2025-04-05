@@ -94,12 +94,12 @@ void func_800F68F4_LoadCannonWarioBoard(omObjData* arg0) {
 void func_800F6918_LoadCannonWarioBoard(void) {
     s32 sp18[2] = { 0xE, 0xF };
 
-    func_8003DAA8();
-    D_800F6BE4_LoadCannonWarioBoard = CreateObject(sp18[GwCommon.boardWork[0]], NULL);
+    MBModelInit();
+    D_800F6BE4_LoadCannonWarioBoard = MBModelCreate(sp18[GwCommon.boardWork[0]], NULL);
     D_800F6BE4_LoadCannonWarioBoard->coords.x = D_800F6B20_LoadCannonWarioBoard.x;
     D_800F6BE4_LoadCannonWarioBoard->coords.y = D_800F6B20_LoadCannonWarioBoard.y;
     D_800F6BE4_LoadCannonWarioBoard->coords.z = D_800F6B20_LoadCannonWarioBoard.z;
-    D_800F6BE8_LoadCannonWarioBoard = CreateObject(func_80052F04(D_800F6BE0_LoadCannonWarioBoard), D_800F6BBC_LoadCannonWarioBoard[GwPlayer[D_800F6BE0_LoadCannonWarioBoard].character]);
+    D_800F6BE8_LoadCannonWarioBoard = MBModelCreate(func_80052F04(D_800F6BE0_LoadCannonWarioBoard), D_800F6BBC_LoadCannonWarioBoard[GwPlayer[D_800F6BE0_LoadCannonWarioBoard].character]);
     D_800F6BE8_LoadCannonWarioBoard->coords.x = D_800F6B2C_LoadCannonWarioBoard.x;
     D_800F6BE8_LoadCannonWarioBoard->coords.y = D_800F6B2C_LoadCannonWarioBoard.y;
     D_800F6BE8_LoadCannonWarioBoard->coords.z = D_800F6B2C_LoadCannonWarioBoard.z;
@@ -108,8 +108,8 @@ void func_800F6918_LoadCannonWarioBoard(void) {
 }
 
 void func_800F6A28_LoadCannonWarioBoard(void) {
-    DestroyObject(D_800F6BE8_LoadCannonWarioBoard);
-    DestroyObject(D_800F6BE4_LoadCannonWarioBoard);
+    MBModelKill(D_800F6BE8_LoadCannonWarioBoard);
+    MBModelKill(D_800F6BE4_LoadCannonWarioBoard);
 }
 
 void func_800F6A54_LoadCannonWarioBoard(void) {

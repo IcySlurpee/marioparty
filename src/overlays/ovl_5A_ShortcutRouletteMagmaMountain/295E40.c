@@ -128,7 +128,7 @@ void func_800F6898_ShortcutRouletteMagmaMountain(void) {
             case 0:
                 if (((GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (D_800F5460[GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].port] & 0x8000))) {
                     var_s1 = 1;
-                    func_8003E81C(D_800F7314_ShortcutRouletteMagmaMountain, 2, 0);
+                    MBMotionSet(D_800F7314_ShortcutRouletteMagmaMountain, 2, 0);
                     func_8004F40C(D_800F7314_ShortcutRouletteMagmaMountain, 1, 2);
                 }
                 break;
@@ -216,22 +216,22 @@ void func_800F6EFC_ShortcutRouletteMagmaMountain(omObjData* arg0) {
 }
 
 void func_800F6F5C_ShortcutRouletteMagmaMountain(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_80053020();
     func_8004F2AC();
     func_8004F8DC();
     D_800F7318_ShortcutRouletteMagmaMountain = func_8004F954(0x26, 0x20);
-    D_800F7314_ShortcutRouletteMagmaMountain = CreateObject(func_80052F04(D_800F7310_ShortcutRouletteMagmaMountain), D_800F72E8_ShortcutRouletteMagmaMountain[GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].character]);
+    D_800F7314_ShortcutRouletteMagmaMountain = MBModelCreate(func_80052F04(D_800F7310_ShortcutRouletteMagmaMountain), D_800F72E8_ShortcutRouletteMagmaMountain[GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].character]);
     VEC3F_COPY_TO_OBJ(D_800F7314_ShortcutRouletteMagmaMountain, D_800F7210_ShortcutRouletteMagmaMountain);
     func_80021B14(*D_800F7314_ShortcutRouletteMagmaMountain->unk_3C->unk_40, GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].character, 0x80);
     func_8004CCD0(&D_800F7314_ShortcutRouletteMagmaMountain->coords, &D_800F7204_ShortcutRouletteMagmaMountain, &D_800F7314_ShortcutRouletteMagmaMountain->unk_18);
     func_80052E84(D_800F7310_ShortcutRouletteMagmaMountain);
-    func_8003E664(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].player_obj);
+    MBModelDispOff(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].player_obj);
     VEC3F_COPY_TO_OBJ(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].player_obj, D_800F721C_ShortcutRouletteMagmaMountain);
 }
 
 void func_800F70E8_ShortcutRouletteMagmaMountain(void) {
-    DestroyObject(D_800F7314_ShortcutRouletteMagmaMountain);
+    MBModelKill(D_800F7314_ShortcutRouletteMagmaMountain);
     func_80052FD4(D_800F7310_ShortcutRouletteMagmaMountain);
     func_8004F2EC();
 }

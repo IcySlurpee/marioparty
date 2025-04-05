@@ -48,7 +48,7 @@ void func_800F66C4_name_60(void) {
     func_80060468(0x451, GwPlayer[D_800F6EC1_name_60].character);
     func_80055960(D_800F6EC1_name_60, 20);
     HuPrcSleep(40);
-    func_8003E81C(D_800F6EC8_name_60, 1, 2);
+    MBMotionSet(D_800F6EC8_name_60, 1, 2);
     func_8004EE14(0, &D_800F6EC4_name_60->coords, 10, D_800F6EC8_name_60);
     HuPrcSleep(10);
     func_8004F4D4(D_800F6EC8_name_60, -1, 2);
@@ -90,14 +90,14 @@ void func_800F6978_name_60(omObjData* arg0) {
 }
 
 void func_800F69BC_name_60(void) {
-    func_8003DAA8();
-    D_800F6EC4_name_60 = CreateObject(8, &D_800F6E7C_name_60);
+    MBModelInit();
+    D_800F6EC4_name_60 = MBModelCreate(8, &D_800F6E7C_name_60);
     D_800F6EC4_name_60->coords.x = D_800F6D50_name_60[D_800F6EC0_name_60].x;
     D_800F6EC4_name_60->coords.y = D_800F6D50_name_60[D_800F6EC0_name_60].y;
     D_800F6EC4_name_60->coords.z = D_800F6D50_name_60[D_800F6EC0_name_60].z;
     D_800F6EC4_name_60->unk_30 = 1000.0f;
     func_8004F140(*D_800F6EC4_name_60->unk_3C->unk_40);
-    D_800F6EC8_name_60 = CreateObject(func_80052F04(D_800F6EC1_name_60), D_800F6E64_name_60[GwPlayer[D_800F6EC1_name_60].character]);
+    D_800F6EC8_name_60 = MBModelCreate(func_80052F04(D_800F6EC1_name_60), D_800F6E64_name_60[GwPlayer[D_800F6EC1_name_60].character]);
     D_800F6EC8_name_60->coords.x = D_800F6DB0_name_60[D_800F6EC0_name_60].x;
     D_800F6EC8_name_60->coords.y = D_800F6DB0_name_60[D_800F6EC0_name_60].y;
     D_800F6EC8_name_60->coords.z = D_800F6DB0_name_60[D_800F6EC0_name_60].z;
@@ -107,8 +107,8 @@ void func_800F69BC_name_60(void) {
 }
 
 void func_800F6B58_name_60(void) {
-    DestroyObject((Object*) D_800F6EC4_name_60);
-    DestroyObject((Object*) D_800F6EC8_name_60);
+    MBModelKill((Object*) D_800F6EC4_name_60);
+    MBModelKill((Object*) D_800F6EC8_name_60);
     func_8004F1D0();
 }
 

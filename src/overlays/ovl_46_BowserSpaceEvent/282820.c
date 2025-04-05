@@ -113,7 +113,7 @@ void func_800F677C_BowserSpaceEvent(void) {
         var_s0 = func_800F66FC_BowserSpaceEvent();
     }
     func_800F6744_BowserSpaceEvent();
-    func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
+    MBMotionSet(D_800F8FF4_BowserSpaceEvent, 1, 0);
     func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
     func_80060468(0x44A, GwPlayer[D_800F8FF1_BowserSpaceEvent].character);
     func_80055960(D_800F8FF1_BowserSpaceEvent, -var_s0);
@@ -174,7 +174,7 @@ void func_800F6AF8_BowserSpaceEvent(void) {
     HideTextWindow(windowID);
     func_80054868(0);
     HuPrcSleep(20);
-    func_8003E81C(D_800F8FF4_BowserSpaceEvent, 2, 0);
+    MBMotionSet(D_800F8FF4_BowserSpaceEvent, 2, 0);
     func_8004F40C(D_800F8FF4_BowserSpaceEvent, 0, 2);
     PlaySound(0x56);
     func_8005546C(0);
@@ -258,7 +258,7 @@ void func_800F6AF8_BowserSpaceEvent(void) {
     PlaySound(0x4C);
     func_8004DBD4(windowID, D_800F8FF1_BowserSpaceEvent);
     HideTextWindow(windowID);
-    func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 2);
+    MBMotionSet(D_800F8FF4_BowserSpaceEvent, 1, 2);
     switch (var_s3) {
     case 1:
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 3, 0);
@@ -339,7 +339,7 @@ void func_800F7044_BowserSpaceEvent(void) {
 
     func_800F6744_BowserSpaceEvent();
     func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
-    func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
+    MBMotionSet(D_800F8FF4_BowserSpaceEvent, 1, 0);
     if (var_s0_2 >= 10) {
         func_80060468(0x44A, GwPlayer[D_800F8FF1_BowserSpaceEvent].character);
     }
@@ -486,7 +486,7 @@ void func_800F7410_BowserSpaceEvent(void) {
     if (var_s4 == 0) {
         func_800F6744_BowserSpaceEvent();
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
-        func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
+        MBMotionSet(D_800F8FF4_BowserSpaceEvent, 1, 0);
         func_80055960(D_800F8FF1_BowserSpaceEvent, -var_s2);
         if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins != 0) {
             func_800503B0(D_800F8FF1_BowserSpaceEvent, 5);
@@ -503,7 +503,7 @@ void func_800F7410_BowserSpaceEvent(void) {
         if (GwPlayer[D_800F8FF1_BowserSpaceEvent].coins_mg == 0) {
             func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
         }
-        func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0U);
+        MBMotionSet(D_800F8FF4_BowserSpaceEvent, 1, 0U);
         
         tempVar = -1;
         var_a1_2 = 0; //a0
@@ -617,7 +617,7 @@ void func_800F7BFC_BowserSpaceEvent(void) {
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
     }
     
-    func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
+    MBMotionSet(D_800F8FF4_BowserSpaceEvent, 1, 0);
     
     tempVar = -1;
     var_a1_2 = 0; //a0
@@ -738,7 +738,7 @@ void func_800F80EC_BowserSpaceEvent(void) {
         func_8004F4D4(D_800F8FF8_BowserSpaceEvent, 0, 0);
     }
     
-    func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
+    MBMotionSet(D_800F8FF4_BowserSpaceEvent, 1, 0);
     
     tempVar = -1;
     var_a1_2 = 0;
@@ -818,9 +818,9 @@ void func_800F8608_BowserSpaceEvent(void) {
                 func_8004DBD4(windowID, D_800F8FF1_BowserSpaceEvent);
                 HideTextWindow(windowID);
                 func_800F6744_BowserSpaceEvent();
-                func_8003E81C(D_800F8FF4_BowserSpaceEvent, 1, 0);
+                MBMotionSet(D_800F8FF4_BowserSpaceEvent, 1, 0);
                 func_8004F40C(D_800F8FF4_BowserSpaceEvent, 0, 2);
-                func_8003E81C(D_800F8FF8_BowserSpaceEvent, 1, 0);
+                MBMotionSet(D_800F8FF8_BowserSpaceEvent, 1, 0);
                 func_80055994(D_800F8FF1_BowserSpaceEvent, 2);
                 new_var2 = D_800F8FF1_BowserSpaceEvent; //?
                 GwPlayer[new_var2].stars--;
@@ -947,14 +947,14 @@ void func_800F8C20_BowserSpaceEvent(omObjData* arg0) {
 }
 
 void func_800F8C6C_BowserSpaceEvent(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
-    D_800F8FF4_BowserSpaceEvent = CreateObject(6, &D_800F8F0C_BowserSpaceEvent);
+    D_800F8FF4_BowserSpaceEvent = MBModelCreate(6, &D_800F8F0C_BowserSpaceEvent);
     D_800F8FF4_BowserSpaceEvent->coords.x = D_800F8EF4_BowserSpaceEvent.x;
     D_800F8FF4_BowserSpaceEvent->coords.y = D_800F8EF4_BowserSpaceEvent.y;
     D_800F8FF4_BowserSpaceEvent->coords.z = D_800F8EF4_BowserSpaceEvent.z;
     D_800F8FF4_BowserSpaceEvent->xScale = D_800F8FF4_BowserSpaceEvent->yScale = D_800F8FF4_BowserSpaceEvent->zScale = 1.5f;
-    D_800F8FF8_BowserSpaceEvent = CreateObject(func_80052F04(D_800F8FF1_BowserSpaceEvent), D_800F8F9C_BowserSpaceEvent[GwPlayer[D_800F8FF1_BowserSpaceEvent].character]);
+    D_800F8FF8_BowserSpaceEvent = MBModelCreate(func_80052F04(D_800F8FF1_BowserSpaceEvent), D_800F8F9C_BowserSpaceEvent[GwPlayer[D_800F8FF1_BowserSpaceEvent].character]);
     D_800F8FF8_BowserSpaceEvent->coords.x = D_800F8F00_BowserSpaceEvent.x;
     D_800F8FF8_BowserSpaceEvent->coords.y = D_800F8F00_BowserSpaceEvent.y;
     D_800F8FF8_BowserSpaceEvent->coords.z = D_800F8F00_BowserSpaceEvent.z;
@@ -964,8 +964,8 @@ void func_800F8C6C_BowserSpaceEvent(void) {
 }
 
 void func_800F8DC0_BowserSpaceEvent(void) {
-    DestroyObject(D_800F8FF8_BowserSpaceEvent);
-    DestroyObject(D_800F8FF4_BowserSpaceEvent);
+    MBModelKill(D_800F8FF8_BowserSpaceEvent);
+    MBModelKill(D_800F8FF4_BowserSpaceEvent);
     func_8004F2EC();
 }
 

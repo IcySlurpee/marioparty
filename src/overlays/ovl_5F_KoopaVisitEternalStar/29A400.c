@@ -128,18 +128,18 @@ void func_800F6988_KoopaVisitEternalStar(omObjData* arg0) {
 }
 
 void func_800F69CC_KoopaVisitEternalStar(void) {
-    func_8003DAA8();
+    MBModelInit();
     if (_CheckFlag(0x2C) == 0) {
-        D_800F6D14_KoopaVisitEternalStar = CreateObject(8, NULL);
+        D_800F6D14_KoopaVisitEternalStar = MBModelCreate(8, NULL);
         func_8004F140(*D_800F6D14_KoopaVisitEternalStar->unk_3C->unk_40);
     } else {
-        D_800F6D14_KoopaVisitEternalStar = CreateObject(0x83, NULL);
+        D_800F6D14_KoopaVisitEternalStar = MBModelCreate(0x83, NULL);
     }
 
     D_800F6D14_KoopaVisitEternalStar->coords.x = D_800F6C94_KoopaVisitEternalStar.x;
     D_800F6D14_KoopaVisitEternalStar->coords.y = D_800F6C94_KoopaVisitEternalStar.y;
     D_800F6D14_KoopaVisitEternalStar->coords.z = D_800F6C94_KoopaVisitEternalStar.z;
-    D_800F6D18_KoopaVisitEternalStar = CreateObject(func_80052F04(D_800F6D11_KoopaVisitEternalStar), D_800F6CDC_KoopaVisitEternalStar[GwPlayer[D_800F6D11_KoopaVisitEternalStar].character]);
+    D_800F6D18_KoopaVisitEternalStar = MBModelCreate(func_80052F04(D_800F6D11_KoopaVisitEternalStar), D_800F6CDC_KoopaVisitEternalStar[GwPlayer[D_800F6D11_KoopaVisitEternalStar].character]);
     D_800F6D18_KoopaVisitEternalStar->coords.x = D_800F6CA0_KoopaVisitEternalStar.x;
     D_800F6D18_KoopaVisitEternalStar->coords.y = D_800F6CA0_KoopaVisitEternalStar.y;
     D_800F6D18_KoopaVisitEternalStar->coords.z = D_800F6CA0_KoopaVisitEternalStar.z;
@@ -149,8 +149,8 @@ void func_800F69CC_KoopaVisitEternalStar(void) {
 }
 
 void func_800F6B3C_KoopaVisitEternalStar(void) {
-    DestroyObject(D_800F6D14_KoopaVisitEternalStar);
-    DestroyObject(D_800F6D18_KoopaVisitEternalStar);
+    MBModelKill(D_800F6D14_KoopaVisitEternalStar);
+    MBModelKill(D_800F6D18_KoopaVisitEternalStar);
     if (_CheckFlag(0x2C) == 0) {
         func_8004F1D0();
     }

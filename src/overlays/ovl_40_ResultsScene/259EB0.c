@@ -23,7 +23,7 @@ void func_800F65E0_ResultsScene(void) {
     func_800FBF10_ResultsScene();
     func_8006CEA0();
     func_800532E0();
-    func_8003DAA8();
+    MBModelInit();
     func_8004F548();
     func_800F7F1C_ResultsScene();
     omAddPrcObj(func_800FB054_ResultsScene, 0x300, 0x2000, 0);
@@ -153,13 +153,13 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_40_ResultsScene/259EB0", func_800FB8C
 void func_800FBDF0_ResultsScene(void) {
     s32 i;
 
-    DestroyObject(D_800FC3A0_ResultsScene);
+    MBModelKill(D_800FC3A0_ResultsScene);
 
     for (i = 0; i < ARRAY_COUNT(D_800FC3A8_ResultsScene); i++) {
-        DestroyObject(D_800FC3A8_ResultsScene[i]);
+        MBModelKill(D_800FC3A8_ResultsScene[i]);
     }
     for (i = 0; i < ARRAY_COUNT(D_800FC3F8_ResultsScene); i++) {
-        DestroyObject(D_800FC3F8_ResultsScene[i]);
+        MBModelKill(D_800FC3F8_ResultsScene[i]);
     }
     for (i = 0; i < ARRAY_COUNT(D_800FC418_ResultsScene); i++) {
         EndProcess(D_800FC418_ResultsScene[i]);

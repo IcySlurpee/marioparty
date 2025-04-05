@@ -28,7 +28,7 @@ void func_800F66FC_FirstMap(void) {
     Object* temp_s0;
 
     if (D_800F8890_FirstMap == NULL) {
-        temp_s0 = CreateObject(0x3A, NULL);
+        temp_s0 = MBModelCreate(0x3A, NULL);
         func_8003E174(temp_s0);
         D_800F8890_FirstMap = temp_s0;
         temp_s0->unk_0A |= 2;
@@ -46,7 +46,7 @@ void func_800F678C_FirstMap(void) {
     Object* temp_s0;
 
     if (D_800F8894_FirstMap == NULL) {
-        temp_s0 = CreateObject(0x39, NULL);
+        temp_s0 = MBModelCreate(0x39, NULL);
         func_8003E174(temp_s0);
         D_800F8894_FirstMap = temp_s0;
         temp_s0->unk_0A |= 2;
@@ -63,7 +63,7 @@ void func_800F6814_FirstMap(void) {
     Object* temp_s0;
 
     if (D_800F8898_FirstMap == NULL) {
-        temp_s0 = CreateObject(0x6AU, NULL);
+        temp_s0 = MBModelCreate(0x6AU, NULL);
         func_8003E174(temp_s0);
         D_800F8898_FirstMap = temp_s0;
         temp_s0->unk_0A |= 2;
@@ -82,7 +82,7 @@ void func_800F68C4_FirstMap(void) {
     Object* temp_s0;
 
     if (D_800F889C_FirstMap == NULL) {
-        temp_s0 = CreateObject(0x3BU, NULL);
+        temp_s0 = MBModelCreate(0x3BU, NULL);
         func_8003E174(temp_s0);
         D_800F889C_FirstMap = temp_s0;
         temp_s0->unk_0A |= 2;
@@ -364,14 +364,14 @@ void func_800F7560_FirstMap(Object** arg0) {
     temp_v0 = *arg0;
     temp_v0->unk_34 = 20.0f;
     temp_v0->unk_38 = -3.0f;
-    func_8003E81C(*arg0, 0, 0U);
+    MBMotionSet(*arg0, 0, 0U);
     HuPrcSleep(3);
 
-    while (!(func_8003E940(*arg0))) {
+    while (!(MBMotionCheck(*arg0))) {
         HuPrcVSleep();
     }
     
-    func_8003E81C(*arg0, -1, 2);
+    MBMotionSet(*arg0, -1, 2);
 }
 
 void func_800F75F0_FirstMap(Object* arg0, s16 arg1) {
@@ -384,7 +384,7 @@ void func_800F75F0_FirstMap(Object* arg0, s16 arg1) {
     temp_v0 = arg0->prev;
     temp_v0->unk_34 = 20.0f;
     temp_v0->unk_38 = -2.5f;
-    func_8003E81C(arg0->prev, 0, 0);
+    MBMotionSet(arg0->prev, 0, 0);
     new_var = (arg1 - temp_s1) / 14;
 
     for (i = 0; i < 14; i++) {
@@ -395,11 +395,11 @@ void func_800F75F0_FirstMap(Object* arg0, s16 arg1) {
     
     func_800484C4(arg0, arg1);
     
-    while (!(func_8003E940(arg0->prev))) {
+    while (!(MBMotionCheck(arg0->prev))) {
         HuPrcVSleep();
     }
     
-    func_8003E81C(arg0->prev, -1, 2);
+    MBMotionSet(arg0->prev, -1, 2);
 }
 
 void func_800F7714_FirstMap(void) {
@@ -412,14 +412,14 @@ void func_800F7714_FirstMap(void) {
             continue;
         }
         
-        func_8003E81C(*temp_s0, D_800F8808_FirstMap, 0);
+        MBMotionSet(*temp_s0, D_800F8808_FirstMap, 0);
         D_800F8808_FirstMap = -1;
         
-        while (!(func_8003E940(*temp_s0))) {
+        while (!(MBMotionCheck(*temp_s0))) {
             HuPrcVSleep();
         }
         
-        func_8003E81C(*temp_s0, -1, 2);
+        MBMotionSet(*temp_s0, -1, 2);
     }
 }
 

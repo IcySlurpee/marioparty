@@ -77,7 +77,7 @@ INCLUDE_ASM("asm/nonmatchings/overlays/ovl_00_MemoryMatch/CDA50", func_800F68CC_
 void func_800F714C_MemoryMatch(omObjData* arg0) {
     func_800F9178_MemoryMatch();
     func_800F796C_MemoryMatch(arg0);
-    if (func_80075FE0() == 0) {
+    if (GMesStatAllGet() == 0) {
         D_800FDE2C_MemoryMatch = 0;
         D_800FE2C2_MemoryMatch = 1;
         arg0->func_ptr = &func_800F71C4_MemoryMatch;
@@ -153,20 +153,20 @@ void func_800F7874_MemoryMatch(omObjData* arg0) {
     func_800F9178_MemoryMatch();
     switch (D_800FD878_MemoryMatch) {
     case 0:
-        func_80075CCC(2);
+        GMesCreate(2);
         if (D_800FE30E_MemoryMatch < 2) {
             GwPlayer[D_800FE30C_MemoryMatch].coins_mg += 2;
         }
         D_800FD878_MemoryMatch++;
         break;
     case 1:
-        if (func_80075FE0() != 2) {
+        if (GMesStatAllGet() != 2) {
             return;
         }
         D_800FD878_MemoryMatch++;
         break;
     default:
-        if (func_80076174() == 0) {
+        if (GMesWait() == 0) {
             func_800726AC(0, 20);
             func_80060398(40);
             arg0->func_ptr = &func_800F7318_MemoryMatch;
@@ -487,7 +487,7 @@ void func_800F8E38_MemoryMatch(void) {
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_00_MemoryMatch/CDA50", func_800F8F58_MemoryMatch);
 
 void func_800F8FEC_MemoryMatch(void) {
-    func_80075CCC(8, 0x2D, 0xA0, 0x20);
+    GMesCreate(8, 0x2D, 0xA0, 0x20);
     D_800FDE2C_MemoryMatch = 0;
 }
 

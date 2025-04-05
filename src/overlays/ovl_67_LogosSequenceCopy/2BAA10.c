@@ -9,10 +9,10 @@ void func_800F6610_LogosSequenceCopy(unkLogoStruct* arg0, s16 arg1, s16 arg2, s1
     u8 character;
 
     temp_s6 = ReadMainFS(0x110005);
-    sprintf(D_800F5038, "%02d", arg2);
+    sprintf(pfStrBuf, "%02d", arg2);
 
     for (i = 0; i < 2; i++) {
-        character = D_800F5038[i];
+        character = pfStrBuf[i];
         arg0->unkC[arg1] = func_800678A4(temp_s6);
         func_80067208(arg0->unkA, arg1, arg0->unkC[arg1], character - '0');
         func_80067384(arg0->unkA, arg1, 0xA);

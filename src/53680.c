@@ -68,14 +68,14 @@ s32 PlayerHasCoins(s32 index, s32 count) {
 void SetPlayerAnimation(s32 index, s16 animation, s32 unk) {
     GW_PLAYER* player = GetPlayerStruct(index);
     if (player == GetPlayerStruct(-1)) {
-        func_8003E81C(player->player_obj, animation, unk);
+        MBMotionSet(player->player_obj, animation, unk);
     }
 }
 
 void func_80052C44(s32 index, s16 a, s16 b, s16 c, u16 d) {
     GW_PLAYER* player = GetPlayerStruct(index);
     if (player == GetPlayerStruct(-1)) {
-        func_8003E8B8(player->player_obj, a, b, c, d);
+        MBMotionShiftSet(player->player_obj, a, b, c, d);
     }
 }
 
@@ -133,7 +133,7 @@ void func_80052DC8(s16 index, void *param_2) {
         character = player->character;
     }
 
-    player->player_obj = CreateObject(character, param_2);
+    player->player_obj = MBModelCreate(character, param_2);
 
     process = omAddPrcObj(func_80052D34, 0x5000, 0, 0);
     player->process = process;
@@ -147,7 +147,7 @@ void func_80052E84(s16 index) {
 
 void func_80052ECC(s16 index, u8 param_2) {
     GW_PLAYER* player = GetPlayerStruct(index);
-    func_8003E1BC(player->player_obj, param_2);
+    MBModelIDSet(player->player_obj, param_2);
 }
 
 u8 func_80052F04(s16 index) {
@@ -174,7 +174,7 @@ void func_80052FD4(s16 index) {
     GW_PLAYER* player = GetPlayerStruct(index);
     if (player->player_obj != NULL) {
         EndProcess(player->process);
-        DestroyObject(player->player_obj);
+        MBModelKill(player->player_obj);
         player->player_obj = NULL;
     }
 }

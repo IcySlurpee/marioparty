@@ -446,12 +446,12 @@ void func_800FBAA4_RunningOfTheBulb(omObjData* arg0) {
     case 0:
         if (func_80072718() == 0) {
             D_800FE4B4_RunningOfTheBulb = 1;
-            func_80075CCC(0xD);
+            GMesCreate(0xD);
             return;
         }
         return;
     case 1:
-        if ((func_80075FE0() == 0) || (func_80075FE0() & 2)) {
+        if ((GMesStatAllGet() == 0) || (GMesStatAllGet() & 2)) {
             D_800FE464_RunningOfTheBulb = 1;
             omDelObj(arg0);
             D_800FE490_RunningOfTheBulb = NULL;

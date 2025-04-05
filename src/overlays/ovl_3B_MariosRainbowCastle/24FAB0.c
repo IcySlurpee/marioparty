@@ -11,7 +11,7 @@ void func_800F6610_MariosRainbowCastle(void) {
 
     temp_s0 = HuPrcCurrentGet()->user_data;
     PlaySound(0x6D);
-    temp_v0 = CreateObject(0x40U, NULL);
+    temp_v0 = MBModelCreate(0x40U, NULL);
     temp_v0->unk_0A |= 4;
     func_8004CDCC(temp_v0);
     func_800A0D50(&temp_v0->coords, temp_s0 + 4);
@@ -44,7 +44,7 @@ void func_800F6610_MariosRainbowCastle(void) {
     }
     func_800427D4(temp_s2);
     HuPrcSleep(0x1E);
-    DestroyObject(temp_v0);
+    MBModelKill(temp_v0);
     EndProcess(NULL);
 }
 

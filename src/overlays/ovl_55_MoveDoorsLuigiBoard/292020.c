@@ -123,13 +123,13 @@ void func_800F74C8_MoveDoorsLuigiBoard(omObjData* arg0) {
 }
 
 void func_800F7528_MoveDoorsLuigiBoard(void) {
-    func_8003DAA8();
-    D_800F7824_MoveDoorsLuigiBoard = CreateObject(0x11, D_800F773C_MoveDoorsLuigiBoard);
+    MBModelInit();
+    D_800F7824_MoveDoorsLuigiBoard = MBModelCreate(0x11, D_800F773C_MoveDoorsLuigiBoard);
     D_800F7824_MoveDoorsLuigiBoard->coords.x = D_800F7724_MoveDoorsLuigiBoard.x;
     D_800F7824_MoveDoorsLuigiBoard->coords.y = D_800F7724_MoveDoorsLuigiBoard.y;
     D_800F7824_MoveDoorsLuigiBoard->coords.z = D_800F7724_MoveDoorsLuigiBoard.z;
-    func_8003E81C(D_800F7824_MoveDoorsLuigiBoard, 1, 2);
-    D_800F7828_MoveDoorsLuigiBoard = CreateObject(func_80052F04(D_800F7820_MoveDoorsLuigiBoard), D_800C5490[GwPlayer[D_800F7820_MoveDoorsLuigiBoard].character]);
+    MBMotionSet(D_800F7824_MoveDoorsLuigiBoard, 1, 2);
+    D_800F7828_MoveDoorsLuigiBoard = MBModelCreate(func_80052F04(D_800F7820_MoveDoorsLuigiBoard), D_800C5490[GwPlayer[D_800F7820_MoveDoorsLuigiBoard].character]);
     D_800F7828_MoveDoorsLuigiBoard->coords.x = D_800F7730_MoveDoorsLuigiBoard.x;
     D_800F7828_MoveDoorsLuigiBoard->coords.y = D_800F7730_MoveDoorsLuigiBoard.y;
     D_800F7828_MoveDoorsLuigiBoard->coords.z = D_800F7730_MoveDoorsLuigiBoard.z;
@@ -138,8 +138,8 @@ void func_800F7528_MoveDoorsLuigiBoard(void) {
 }
 
 void func_800F7630_MoveDoorsLuigiBoard(void) {
-    DestroyObject(D_800F7828_MoveDoorsLuigiBoard);
-    DestroyObject(D_800F7824_MoveDoorsLuigiBoard);
+    MBModelKill(D_800F7828_MoveDoorsLuigiBoard);
+    MBModelKill(D_800F7824_MoveDoorsLuigiBoard);
 }
 
 void func_800F765C_MoveDoorsLuigiBoard(void) {

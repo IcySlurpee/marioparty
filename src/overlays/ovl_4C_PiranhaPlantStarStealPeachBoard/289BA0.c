@@ -128,7 +128,7 @@ void func_800F66B4_PiranhaPlantStarStealPeachBoard(void) {
             HuPrcVSleep();
         }
 
-        func_8003E81C(D_800F75E4_PiranhaPlantStarStealPeachBoard, 0, 0);
+        MBMotionSet(D_800F75E4_PiranhaPlantStarStealPeachBoard, 0, 0);
         D_800F750C_PiranhaPlantStarStealPeachBoard = LoadFormFile(0x1E, 0x6B9);
         func_80025798(D_800F750C_PiranhaPlantStarStealPeachBoard, D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.x, D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.y, D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.z);
         func_80025830(D_800F750C_PiranhaPlantStarStealPeachBoard, 0.5f, 0.5f, 0.5f);
@@ -138,7 +138,7 @@ void func_800F66B4_PiranhaPlantStarStealPeachBoard(void) {
         func_800503B0(D_800F75E0_PiranhaPlantStarStealPeachBoard, 6);
         PlaySound(0x6D);
         PlaySound(0x44);
-        D_800F74FC_PiranhaPlantStarStealPeachBoard = CreateObject(0x40, NULL);
+        D_800F74FC_PiranhaPlantStarStealPeachBoard = MBModelCreate(0x40, NULL);
         D_800F74FC_PiranhaPlantStarStealPeachBoard->coords.x = D_800F752C_PiranhaPlantStarStealPeachBoard.x;
         D_800F74FC_PiranhaPlantStarStealPeachBoard->coords.y = D_800F752C_PiranhaPlantStarStealPeachBoard.y + 200.0f;
         D_800F74FC_PiranhaPlantStarStealPeachBoard->coords.z = D_800F752C_PiranhaPlantStarStealPeachBoard.z;
@@ -181,13 +181,13 @@ void func_800F66B4_PiranhaPlantStarStealPeachBoard(void) {
         
         func_800726AC(0, 0x10);
         HuPrcSleep(0x1A);
-        DestroyObject(D_800F75E4_PiranhaPlantStarStealPeachBoard);
-        DestroyObject(D_800F74F0_PiranhaPlantStarStealPeachBoard);
-        DestroyObject(D_800F74F4_PiranhaPlantStarStealPeachBoard);
+        MBModelKill(D_800F75E4_PiranhaPlantStarStealPeachBoard);
+        MBModelKill(D_800F74F0_PiranhaPlantStarStealPeachBoard);
+        MBModelKill(D_800F74F4_PiranhaPlantStarStealPeachBoard);
         D_800F74F0_PiranhaPlantStarStealPeachBoard = NULL;
         D_800F74F4_PiranhaPlantStarStealPeachBoard = NULL;
         func_800F7120_PiranhaPlantStarStealPeachBoard();
-        D_800F75E4_PiranhaPlantStarStealPeachBoard = CreateObject(func_80052F04(GwCommon.boardWork[GwCommon.boardWork[14]]), D_800F75A4_PiranhaPlantStarStealPeachBoard[GwPlayer[GwCommon.boardWork[GwCommon.boardWork[14]]].character]);
+        D_800F75E4_PiranhaPlantStarStealPeachBoard = MBModelCreate(func_80052F04(GwCommon.boardWork[GwCommon.boardWork[14]]), D_800F75A4_PiranhaPlantStarStealPeachBoard[GwPlayer[GwCommon.boardWork[GwCommon.boardWork[14]]].character]);
         D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.x = 0.0f;
         D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.y = D_800F752C_PiranhaPlantStarStealPeachBoard.y;
         D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.z = D_800F752C_PiranhaPlantStarStealPeachBoard.z;
@@ -213,11 +213,11 @@ void func_800F66B4_PiranhaPlantStarStealPeachBoard(void) {
         
         PlaySound(0x474);
         func_800503B0(GwCommon.boardWork[GwCommon.boardWork[14]], 4);
-        DestroyObject(D_800F74FC_PiranhaPlantStarStealPeachBoard);
+        MBModelKill(D_800F74FC_PiranhaPlantStarStealPeachBoard);
         D_800F74FC_PiranhaPlantStarStealPeachBoard = NULL;
         func_800427D4(D_800F7510_PiranhaPlantStarStealPeachBoard);
         D_800F7510_PiranhaPlantStarStealPeachBoard = NULL;
-        func_8003E81C(D_800F75E4_PiranhaPlantStarStealPeachBoard, 1, 0U);
+        MBMotionSet(D_800F75E4_PiranhaPlantStarStealPeachBoard, 1, 0U);
         func_80021CDC(*D_800F75E4_PiranhaPlantStarStealPeachBoard->unk_3C->unk_40, GwPlayer[GwCommon.boardWork[GwCommon.boardWork[14]]].character, 0x81);
         func_80055994(GwCommon.boardWork[GwCommon.boardWork[14]], 1);
 
@@ -282,22 +282,22 @@ void func_800F7120_PiranhaPlantStarStealPeachBoard(void) {
 }
 
 void func_800F718C_PiranhaPlantStarStealPeachBoard(void) {
-    func_8003DAA8();
+    MBModelInit();
     func_8004F2AC();
-    D_800F74F0_PiranhaPlantStarStealPeachBoard = CreateObject(0xC, &D_800F75BC_PiranhaPlantStarStealPeachBoard);
+    D_800F74F0_PiranhaPlantStarStealPeachBoard = MBModelCreate(0xC, &D_800F75BC_PiranhaPlantStarStealPeachBoard);
     func_800A0D00(&D_800F74F0_PiranhaPlantStarStealPeachBoard->coords, D_800F7514_PiranhaPlantStarStealPeachBoard.x, D_800F7514_PiranhaPlantStarStealPeachBoard.y, D_800F7514_PiranhaPlantStarStealPeachBoard.z);
     func_800A0D00(&D_800F74F0_PiranhaPlantStarStealPeachBoard->unk_18, 1.0f, 0.0f, 0.0f);
-    D_800F74F8_PiranhaPlantStarStealPeachBoard = CreateObject(0xB, NULL);
+    D_800F74F8_PiranhaPlantStarStealPeachBoard = MBModelCreate(0xB, NULL);
     D_800F74F8_PiranhaPlantStarStealPeachBoard->coords.x = D_800F7544_PiranhaPlantStarStealPeachBoard.x;
     D_800F74F8_PiranhaPlantStarStealPeachBoard->coords.y = D_800F7544_PiranhaPlantStarStealPeachBoard.y;
     D_800F74F8_PiranhaPlantStarStealPeachBoard->coords.z = D_800F7544_PiranhaPlantStarStealPeachBoard.z;
     func_8004CCD0(&D_800F74F8_PiranhaPlantStarStealPeachBoard->coords, &D_800F32A0->coords, &D_800F74F8_PiranhaPlantStarStealPeachBoard->unk_18);
-    D_800F75E4_PiranhaPlantStarStealPeachBoard = CreateObject(func_80052F04(D_800F75E0_PiranhaPlantStarStealPeachBoard), D_800F75A4_PiranhaPlantStarStealPeachBoard[GwPlayer[D_800F75E0_PiranhaPlantStarStealPeachBoard].character]);
+    D_800F75E4_PiranhaPlantStarStealPeachBoard = MBModelCreate(func_80052F04(D_800F75E0_PiranhaPlantStarStealPeachBoard), D_800F75A4_PiranhaPlantStarStealPeachBoard[GwPlayer[D_800F75E0_PiranhaPlantStarStealPeachBoard].character]);
     D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.x = D_800F752C_PiranhaPlantStarStealPeachBoard.x;
     D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.y = D_800F752C_PiranhaPlantStarStealPeachBoard.y;
     D_800F75E4_PiranhaPlantStarStealPeachBoard->coords.z = D_800F752C_PiranhaPlantStarStealPeachBoard.z;
     func_8004CCD0(&D_800F75E4_PiranhaPlantStarStealPeachBoard->coords, &D_800F74F0_PiranhaPlantStarStealPeachBoard->coords, &D_800F75E4_PiranhaPlantStarStealPeachBoard->unk_18);
-    D_800F74F4_PiranhaPlantStarStealPeachBoard = CreateObject((GwPlayer[GwCommon.boardWork[GwCommon.boardWork[14]]].character + 0x1D), NULL);
+    D_800F74F4_PiranhaPlantStarStealPeachBoard = MBModelCreate((GwPlayer[GwCommon.boardWork[GwCommon.boardWork[14]]].character + 0x1D), NULL);
     D_800F74F4_PiranhaPlantStarStealPeachBoard->coords.x = D_800F7538_PiranhaPlantStarStealPeachBoard.x;
     D_800F74F4_PiranhaPlantStarStealPeachBoard->coords.y = D_800F7538_PiranhaPlantStarStealPeachBoard.y;
     D_800F74F4_PiranhaPlantStarStealPeachBoard->coords.z = D_800F7538_PiranhaPlantStarStealPeachBoard.z;
@@ -305,19 +305,19 @@ void func_800F718C_PiranhaPlantStarStealPeachBoard(void) {
 }
 
 void func_800F7348_PiranhaPlantStarStealPeachBoard(void) {
-    DestroyObject(D_800F75E4_PiranhaPlantStarStealPeachBoard);
-    DestroyObject(D_800F74F8_PiranhaPlantStarStealPeachBoard);
+    MBModelKill(D_800F75E4_PiranhaPlantStarStealPeachBoard);
+    MBModelKill(D_800F74F8_PiranhaPlantStarStealPeachBoard);
     
     if (D_800F74F0_PiranhaPlantStarStealPeachBoard != NULL) {
-        DestroyObject(D_800F74F0_PiranhaPlantStarStealPeachBoard);
+        MBModelKill(D_800F74F0_PiranhaPlantStarStealPeachBoard);
     }
     
     if (D_800F74F4_PiranhaPlantStarStealPeachBoard != NULL) {
-        DestroyObject(D_800F74F4_PiranhaPlantStarStealPeachBoard);
+        MBModelKill(D_800F74F4_PiranhaPlantStarStealPeachBoard);
     }
     
     if (D_800F74FC_PiranhaPlantStarStealPeachBoard != NULL) {
-        DestroyObject(D_800F74FC_PiranhaPlantStarStealPeachBoard);
+        MBModelKill(D_800F74FC_PiranhaPlantStarStealPeachBoard);
     }
     
     if (D_800F7510_PiranhaPlantStarStealPeachBoard != NULL) {

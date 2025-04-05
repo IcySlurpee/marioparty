@@ -41,7 +41,7 @@ void func_80053080(void);
 void func_800532E0(void);
 void FreeSpaceTexturesWrapper(void);
 void func_8003C30C(void);
-void func_8003DADC(void);
+void MBModelClose(void);
 void func_80043544(void);
 void func_80046760(void);
 void func_80053074(void);
@@ -135,7 +135,7 @@ void func_80056A08(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 
     func_8003C2D0(arg2);
-    func_8003DAA8();
+    MBModelInit();
     func_80053020();
     func_80053064();
     func_800532E0();
@@ -160,7 +160,7 @@ void func_80056AF4(void) {
     func_80070ED4();
     func_800532F4();
     func_80053074();
-    func_8003DADC();
+    MBModelClose();
     func_8003C30C();
     FreeBoardSpaces();
     FreeSpaceTexturesWrapper();

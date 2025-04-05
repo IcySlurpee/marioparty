@@ -166,7 +166,7 @@ void func_800F6A38_DKsJungleAdventure(void) {
     space_data = (HuPrcCurrentGet())->user_data;
 
     PlaySound(109);
-    ptr = CreateObject(64, NULL);
+    ptr = MBModelCreate(64, NULL);
     ptr->unk_0A |= 4;
     func_8004CDCC(ptr);
     func_800A0D50(&ptr->coords, &space_data->coords);
@@ -210,7 +210,7 @@ void func_800F6A38_DKsJungleAdventure(void) {
 
     func_800427D4(ret);
     HuPrcSleep(30);
-    DestroyObject(ptr);
+    MBModelKill(ptr);
     EndProcess(NULL);
 }
 
@@ -221,14 +221,14 @@ void func_800F6C48_DKsJungleAdventure(mystery_struct_ret_func_80048224* a0) { //
     unk0ptr->unk_34 = 20.0f;
     unk0ptr->unk_38 = -3.0f;
 
-    func_8003E81C(a0->unk0, 0, 0);
+    MBMotionSet(a0->unk0, 0, 0);
     HuPrcSleep(3);
 
-    while (func_8003E940(a0->unk0) == 0) {
+    while (MBMotionCheck(a0->unk0) == 0) {
         HuPrcVSleep();
     }
 
-    func_8003E81C(a0->unk0, -1, 2);
+    MBMotionSet(a0->unk0, -1, 2);
 }
 
 void func_800F6CD8_DKsJungleAdventure(void) {
@@ -434,7 +434,7 @@ void func_800F7250_DKsJungleAdventure(void) { //ov054_DrawBowserInner
         return;
     }
 
-    ptr = CreateObject(0x3B, NULL);
+    ptr = MBModelCreate(0x3B, NULL);
     func_8003E174(ptr);
     D_800FA300_DKsJungleAdventure = ptr;
 
@@ -456,7 +456,7 @@ void func_800F72EC_DKsJungleAdventure(void) { //ov054_DrawKoopaInner
         return;
     }
 
-    ptr = CreateObject(0x39, NULL);
+    ptr = MBModelCreate(0x39, NULL);
     func_8003E174(ptr);
     D_800FA304_DKsJungleAdventure = ptr;
 

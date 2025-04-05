@@ -5,7 +5,7 @@ void func_800FB7F8_OpeningScene(f32, f32, f32);
 void func_800FB810_OpeningScene(omObjData*);
 extern s16 D_800C5972;
 extern s16 D_800C59A6;
-extern s8 D_800F64F2;
+extern s8 omSysPauseEnableFlag;
 extern Vec3s D_800FD4A0_OpeningScene;
 extern Vec3s D_800FD4AC_OpeningScene;
 extern Process* D_800FD730_OpeningScene[];

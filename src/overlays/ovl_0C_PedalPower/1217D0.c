@@ -46,8 +46,8 @@ void func_800F67AC_PedalPower(void) {
 }
 
 void func_800F6870_PedalPower(void) {
-    if (func_80075FE0() != 0) {
-        func_80075FE0();
+    if (GMesStatAllGet() != 0) {
+        GMesStatAllGet();
     }
 }
 
@@ -55,11 +55,11 @@ void func_800F689C_PedalPower(s32 arg0, u32 arg1) {
     u32 new_var;
     switch (D_800ED430) {
     case 0:
-        func_80075FE0();
+        GMesStatAllGet();
         if (arg1 == 0) {
-            func_80075CCC(0);
-            if (func_80075FE0() != 0) {
-                func_80075FE0();
+            GMesCreate(0);
+            if (GMesStatAllGet() != 0) {
+                GMesStatAllGet();
                 break;
             }
         } else {
