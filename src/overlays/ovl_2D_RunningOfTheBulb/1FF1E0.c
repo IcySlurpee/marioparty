@@ -240,16 +240,16 @@ void func_800F8210_RunningOfTheBulb(omObjData* arg0) {
     }
     
     temp_s0 = ((unkGlobalStruct_00*) arg0->unk_50)->unk_56;
-    temp_s5 = D_800ECE14[temp_s0];
-    temp_s6 = D_800F3843[temp_s0];
-    temp = D_800F5460;
+    temp_s5 = ContStkX[temp_s0];
+    temp_s6 = ContStkY[temp_s0];
+    temp = ContBtnTrg;
     temp_s2 = &temp[temp_s0];
     temp_s4 = *temp_s2;
-    temp_s1_2 = &D_800EDEB4[temp_s0];
+    temp_s1_2 = &ContBtn[temp_s0];
     temp_s3 = *temp_s1_2;
     func_80005A28(arg0);
-    D_800ECE14[temp_s0] = temp_s5;
-    D_800F3843[temp_s0] = temp_s6;
+    ContStkX[temp_s0] = temp_s5;
+    ContStkY[temp_s0] = temp_s6;
     *temp_s2 = temp_s4;
     *temp_s1_2 = temp_s3;
 }
@@ -295,29 +295,29 @@ void func_800F8EA0_RunningOfTheBulb(omObjData* arg0) {
         return;
     }
     temp_s0 = temp_a1->unk_56;
-    temp_s3 = D_800ECE14[temp_s0];
-    temp_s4 = D_800F3843[temp_s0];
-    temp = D_800EDEB4;
+    temp_s3 = ContStkX[temp_s0];
+    temp_s4 = ContStkY[temp_s0];
+    temp = ContBtn;
     temp_a0 = &temp[temp_s0];
     temp_s5 = *temp_a0;
-    temp_v0_2 = &D_800F5460[temp_s0];
+    temp_v0_2 = &ContBtnTrg[temp_s0];
     temp_s6 = *temp_v0_2;
     *temp_v0_2 = 0;
     *temp_a0 = 0;
-    D_800F3843[temp_s0] = 0;
-    D_800ECE14[temp_s0] = 0;
+    ContStkY[temp_s0] = 0;
+    ContStkX[temp_s0] = 0;
     
     if (arg0->trans.z > D_800FE364_RunningOfTheBulb[temp_a1->unk_58][1]) {
         temp_f0 = func_800FCEA0_RunningOfTheBulb(arg0, NULL, D_800FE364_RunningOfTheBulb[temp_a1->unk_58][0], D_800FE364_RunningOfTheBulb[temp_a1->unk_58][1], 40.0f, 190.0f);
-        D_800ECE14[temp_s0] = (func_800AEAC0(temp_f0) * 80.0f);
-        D_800F3843[temp_s0] = (-func_800AEFD0(temp_f0) * 80.0f);
+        ContStkX[temp_s0] = (func_800AEAC0(temp_f0) * 80.0f);
+        ContStkY[temp_s0] = (-func_800AEFD0(temp_f0) * 80.0f);
     }
     
     func_80005A28(arg0);
-    D_800ECE14[temp_s0] = temp_s3;
-    D_800F3843[temp_s0] = temp_s4;
-    D_800EDEB4[temp_s0] = temp_s5;
-    D_800F5460[temp_s0] = temp_s6;
+    ContStkX[temp_s0] = temp_s3;
+    ContStkY[temp_s0] = temp_s4;
+    ContBtn[temp_s0] = temp_s5;
+    ContBtnTrg[temp_s0] = temp_s6;
 }
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_2D_RunningOfTheBulb/1FF1E0", func_800F9094_RunningOfTheBulb); //https://decomp.me/scratch/eJF8g
@@ -497,10 +497,10 @@ void func_800FBF74_RunningOfTheBulb(omObjData* arg0) {
     
     
     temp_f20 = (rand8() & 1) + 15.0f;
-    D_800ECE14[temp_s0] = (func_800AEAC0(temp_f22) * temp_f20);
-    D_800F3843[temp_s0] = (-func_800AEFD0(temp_f22) * temp_f20);
-    D_800EDEB4[temp_s0] = 0;
-    D_800F5460[temp_s0] = 0;
+    ContStkX[temp_s0] = (func_800AEAC0(temp_f22) * temp_f20);
+    ContStkY[temp_s0] = (-func_800AEFD0(temp_f22) * temp_f20);
+    ContBtn[temp_s0] = 0;
+    ContBtnTrg[temp_s0] = 0;
 }
 
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_2D_RunningOfTheBulb/1FF1E0", func_800FC0F4_RunningOfTheBulb);

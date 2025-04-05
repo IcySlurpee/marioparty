@@ -32,8 +32,6 @@ extern s32 D_800F6F70_LogosSequenceCopy;
 void func_80063A5C(void*);
 void func_8007FEA4(void);
 
-
-extern char pfStrBuf[];
 extern const char D_800F6F80_LogosSequenceCopy[];
 extern OSMesgQueue D_800F7980_LogosSequenceCopy;
 extern OSMesgQueue D_800F6F90_LogosSequenceCopy;

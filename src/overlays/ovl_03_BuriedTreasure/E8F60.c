@@ -316,11 +316,11 @@ void func_800F7164_BuriedTreasure(omObjData* arg0) {
 
     if (D_800FC024_BuriedTreasure == 0) {
         if (!(GwPlayer[temp_v0->unk_40].unk_06 & 1)) {
-            temp_v0_4 = func_80009C90(arg0, D_800ECE14[temp_s0], D_800F3843[temp_s0]);
+            temp_v0_4 = func_80009C90(arg0, ContStkX[temp_s0], ContStkY[temp_s0]);
             var_s4 = temp_v0_4 >> 16;
             var_s5 = temp_v0_4;
-            var_s0 = D_800EDEB4[temp_s0] & ~temp_v0->unk_56;
-            temp_v0->unk_56 = D_800EDEB4[temp_s0];
+            var_s0 = ContBtn[temp_s0] & ~temp_v0->unk_56;
+            temp_v0->unk_56 = ContBtn[temp_s0];
         } else {
             var_s4 = var_s5 = 32;
             var_s0 = func_800F85B4_BuriedTreasure(arg0);

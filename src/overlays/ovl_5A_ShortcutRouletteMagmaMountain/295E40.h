@@ -11,8 +11,7 @@ void func_800F71D4_ShortcutRouletteMagmaMountain(void);
 void func_800F6E6C_ShortcutRouletteMagmaMountain(void);
 s32 func_800F66D8_ShortcutRouletteMagmaMountain(s32);
 
-extern GameStatus D_800ED154;
-extern u16 D_800F5460[];
+extern GW_SYSTEM D_800ED154;
 extern u8 D_800F7310_ShortcutRouletteMagmaMountain;
 extern Object* D_800F7314_ShortcutRouletteMagmaMountain;
 extern s32 D_800F7318_ShortcutRouletteMagmaMountain;

@@ -64,7 +64,6 @@ typedef struct Temp3 {
 } Temp3; //sizeof 0x18
 
 extern Temp3* D_800ED554;
-extern u16 D_800F5460[]; //buttons pressed
 extern u8 D_800F64F8;
 extern s32 D_800FF510_CraneGame[];
 extern s32 D_800FF550_CraneGame[];
@@ -567,7 +566,7 @@ void func_800FA770_CraneGame(omObjData* obj) {
     if ((obj->work[0] < 3U) && (D_800FFE28_CraneGame == 0)) {
         
         if (!(GwPlayer[D_800FFE80_CraneGame[obj->work[0]]].flags & 1)) {
-            var_s2 = D_800F5460[temp_s1->unk56];
+            var_s2 = ContBtnTrg[temp_s1->unk56];
         } else {
             var_s2 = 0;
             if ((rand8() & 0xFF) < ((GwPlayer[D_800FFE80_CraneGame[obj->work[0]]].cpu_difficulty) * 8 + 56) ) {

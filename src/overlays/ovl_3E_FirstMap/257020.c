@@ -270,7 +270,7 @@ void func_800F6F80_FirstMap(void) {
 
 void func_800F6FC4_FirstMap(void) {
     GW_PLAYER* temp_s0;
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
     s32 i;
 
     if (++gameStatus->curPlayerIndex >= 4) {
@@ -302,7 +302,7 @@ void func_800F70AC_FirstMap(void) {
 
 void func_800F70F0_FirstMap(s16 arg0) {
     Process* temp_s0;
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
 
     func_800415CC(gameStatus->curPlayerIndex, arg0);
     temp_s0 = HuPrcCurrentGet();
@@ -313,7 +313,7 @@ void func_800F70F0_FirstMap(s16 arg0) {
 INCLUDE_ASM("asm/nonmatchings/overlays/ovl_3E_FirstMap/257020", func_800F714C_FirstMap); //has rodata jump table
 
 void func_800F73A0_FirstMap(void) {
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
     GW_PLAYER* player = GetPlayerStruct(CURRENT_PLAYER);
     BoardSpace* space = BoardSpaceGet(GetAbsSpaceIndexFromChainSpaceIndex(player->cur_chain, player->cur_space));
 
@@ -338,7 +338,7 @@ void func_800F73A0_FirstMap(void) {
 
 void func_800F7484_FirstMap(s16 arg0) {
     Process* temp_s0;
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
 
     func_800415CC(gameStatus->curPlayerIndex, arg0);
     temp_s0 = HuPrcCurrentGet();
@@ -482,7 +482,7 @@ void func_800F83D4_FirstMap(void) {
         playerIndex = GetCurrentPlayerIndex();
     
         for (i = 0; i < 4; i++) {
-            if (D_800EC6EA[i] & 0x1000) {
+            if (ContDStkTrg[i] & 0x1000) {
                 func_80041F84(playerIndex);
                 func_8004B6D8(&coords);
                 func_8004B61C(&coords);

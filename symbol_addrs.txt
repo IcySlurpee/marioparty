@@ -611,3 +611,10 @@ MBModelCheck = 0x8003E7E4;
 MBMotionSet = 0x8003E81C;
 MBMotionShiftSet = 0x8003E8B8;
 MBMotionCheck = 0x8003E940;
+
+ContBtnTrg = 0x800F5460;
+ContBtn = 0x800EDEB4;
+ContStkX = 0x800ECE14;
+ContStkY = 0x800F3843;
+ContDStk = 0x800F544C;
+ContDStkTrg = 0x800EC6EA;

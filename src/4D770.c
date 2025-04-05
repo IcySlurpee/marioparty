@@ -12,7 +12,7 @@ typedef struct unkProcessUserDataStruct {
     } unk_1C;
 } unkProcessUserDataStruct;
 
-extern s8 D_800F3843[];
+extern s8 ContStkY[];
 
 void func_8004CB70(s16 arg0, s16 arg1, Vec3f* arg2) {
     BoardSpace* temp_v0;
@@ -147,16 +147,16 @@ s16 RNGPercentChance(s8 arg0) {
 }
 
 s16 GetTurnsElapsed(void) {
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
     return gameStatus->maxTurns - gameStatus->currentTurn + 1;
 }
 
 s32 func_8004D02C(s16 arg0, f32 arg1) {
     Vec3f sp10;
 
-    sp10.x = D_800ECE14[arg0];
+    sp10.x = ContStkX[arg0];
     sp10.y = 0.0f;
-    sp10.z = D_800F3843[arg0];
+    sp10.z = ContStkY[arg0];
     
     if ((arg1 <= func_800A1200(&sp10))) {
         return 1;
@@ -345,7 +345,7 @@ void SetNextChainAndSpace(s16 arg0, s16 arg1, s16 arg2) {
 }
 
 s32 func_8004D8A4(void) {
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
     s32 var_s0 = 0;
     
     SetBoardFeatureFlag(GwSystem.unk_1A);

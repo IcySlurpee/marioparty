@@ -12,7 +12,6 @@ void func_800F7560_BowservisitMagmaMountain(void);
 void func_800F7074_BowservisitMagmaMountain(void);
 
 //bss
-extern u16 D_800F5460[];
 extern Object* D_800F7590_BowservisitMagmaMountain;
 extern s32 D_800F7594_BowservisitMagmaMountain;
 extern s32 D_800F7598_BowservisitMagmaMountain;

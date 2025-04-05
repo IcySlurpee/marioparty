@@ -126,7 +126,7 @@ void func_800F6898_ShortcutRouletteMagmaMountain(void) {
         while (var_s1 != 2) {
             switch (var_s1) {
             case 0:
-                if (((GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (D_800F5460[GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].port] & 0x8000))) {
+                if (((GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].flags & 1) && (ContBtnTrg[GwPlayer[D_800F7310_ShortcutRouletteMagmaMountain].port] & 0x8000))) {
                     var_s1 = 1;
                     MBMotionSet(D_800F7314_ShortcutRouletteMagmaMountain, 2, 0);
                     func_8004F40C(D_800F7314_ShortcutRouletteMagmaMountain, 1, 2);

@@ -7,7 +7,6 @@ s32 func_8004D8A4(void);
 void func_8004DBD4(s32, u8);
 void func_80055994(u8, s32);
 extern s32 D_800F3FF0;
-extern u16 D_800F5460[];
 
 Object* D_800F7DC0_StarVisitEternalStar = 0;
 Object* D_800F7DC4_StarVisitEternalStar = 0;
@@ -183,7 +182,7 @@ void func_800F6898_StarVisitEternalStar(void) {
     while (var_s0 != 2) {
         switch (var_s0) {
         case 0:
-            if (((GwPlayer[D_800F7F00_StarVisitEternalStar].flags & 1) && (var_s2 >= 0xF)) || (!(GwPlayer[D_800F7F00_StarVisitEternalStar].flags & 1) && (D_800F5460[GwPlayer[D_800F7F00_StarVisitEternalStar].port] & 0x8000))) {
+            if (((GwPlayer[D_800F7F00_StarVisitEternalStar].flags & 1) && (var_s2 >= 0xF)) || (!(GwPlayer[D_800F7F00_StarVisitEternalStar].flags & 1) && (ContBtnTrg[GwPlayer[D_800F7F00_StarVisitEternalStar].port] & 0x8000))) {
                 var_s0 = 1;
                 MBMotionSet(D_800F7F08_StarVisitEternalStar, 2, 0);
                 func_8004F40C(D_800F7F08_StarVisitEternalStar, 1, 2);

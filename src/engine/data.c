@@ -1,14 +1,14 @@
 #include "engine/data.h"
 
 
-extern u16 D_800EC6EA[4];
-extern u16 D_800EDEB4[4];
+extern u16 ContDStkTrg[4];
+extern u16 ContBtn[4];
 
 extern u16 D_800F2CF0[4];
 extern u16 D_800F32A4[4];
 extern u16 D_800F3396[4];
-extern u8 *D_800F3843;
-extern u16 D_800F544C[4];
+extern u8 *ContStkY;
+extern u16 ContDStk[4];
 
 typedef struct mainfsTableHeader {
     s32 dir;
@@ -34,24 +34,24 @@ typedef struct unkMallocPermStruct {
 void func_80014220(void) {
     s16 i;
 
-    u16 *D_800F544C_ptr;
+    u16 *ContDStk_ptr;
     u16 *D_800F32A4_ptr;
     u16 *D_800F2CF0_ptr;
-    u16 *D_800EC6EA_ptr;
+    u16 *ContDStkTrg_ptr;
     u16 *D_800F3396_ptr;
 
     for (i = 0; i < 4; i++) {
-        D_800F544C_ptr = (D_800F544C + i);
+        ContDStk_ptr = (ContDStk + i);
         D_800F3396_ptr = (D_800F3396 + i);
-        D_800EC6EA_ptr = (D_800EC6EA + i);
+        ContDStkTrg_ptr = (ContDStkTrg + i);
         D_800F2CF0_ptr = (D_800F2CF0 + i);
         D_800F32A4_ptr = (D_800F32A4 + i);
 
         *(D_800F32A4_ptr) = 0;
         *(D_800F2CF0_ptr) = 0;
-        *(D_800EC6EA_ptr) = 0;
+        *(ContDStkTrg_ptr) = 0;
         *(D_800F3396_ptr) = 0;
-        *(D_800F544C_ptr) = 0;
+        *(ContDStk_ptr) = 0;
     }
 }
 
@@ -238,7 +238,7 @@ void* func_80014828(s32 arg0, s32 arg1) {
         func_80014504(arg0, arg1, &sp10);
         temp_s0->unk4 = sp10.size;
         temp_s0->unk0 = (u16)sp10.compType;
-        temp_s0->unk8 = HuMemDirectMalloc(0x400);
+        temp_s0->unk8 = HuMemDirectMalloc(1024);
         temp_s0->unkC = 1;
         temp_s0->unkE = 0;
         temp_s0->unk10 = temp_s0->unk14 = sp10.bytes;

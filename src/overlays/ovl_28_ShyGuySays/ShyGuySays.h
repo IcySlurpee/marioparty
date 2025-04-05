@@ -102,7 +102,6 @@ extern u8 D_800F64F8;
 extern unkStruct_ShyGuySays_05* D_800FDC64_ShyGuySays;
 extern unkStruct_ShyGuySays_01 D_800FD9CE_ShyGuySays[];
 extern u16 D_800F5144;
-extern u16 D_800F5460[];
 extern u16 D_800FD5CC_ShyGuySays;
 extern s16 D_800FD5CE_ShyGuySays;
 extern unkStructShyGuySays_03 D_800FDCE8_ShyGuySays[];

@@ -398,7 +398,7 @@ typedef struct board_overlay_entrypoint {
     void (*fn)();
 } board_overlay_entrypoint;
 
-typedef struct GameStatus {
+typedef struct GW_SYSTEM {
 /* 0x00 */ s16 unk_00;
 /* 0x02 */ s16 curBoardIndex;
 /* 0x04 */ s16 playType; //lite play, standard play, full play (20, 35, 50 turns)
@@ -414,7 +414,7 @@ typedef struct GameStatus {
 /* 0x23 */ s8 minigameExplanation;
 /* 0x24 */ u8 messageSpeed;
 /* 0x25 */ char unk_25;
-} GameStatus; //sizeof 0x26
+} GW_SYSTEM; //sizeof 0x26
 
 typedef struct GwQuest_s {
 /* 0x00 */ s8 charNo;

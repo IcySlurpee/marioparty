@@ -170,7 +170,7 @@ void func_80056AF4(void) {
 
 void func_80056B78(void) {
     GW_PLAYER* temp_v0;
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
     s32 i;
 
     D_800F65B8 = 0;
@@ -307,7 +307,7 @@ void func_80056E6C(void) {
 INCLUDE_ASM("asm/nonmatchings/57330", func_80056F40);
 
 // void func_80056F40(void) {
-//     GameStatus* gameStatus = &GwSystem;
+//     GW_SYSTEM* gameStatus = &GwSystem;
     
 //     if (++GwSystem.curPlayerIndex >= 4) {
 //         gameStatus->curPlayerIndex = 0;

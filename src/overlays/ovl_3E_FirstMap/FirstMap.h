@@ -28,7 +28,7 @@ extern Object* D_800F8890_FirstMap;
 extern Object* D_800F8894_FirstMap;
 extern Object* D_800F8898_FirstMap;
 extern Object* D_800F889C_FirstMap;
-extern GameStatus D_800ED154;
+extern GW_SYSTEM D_800ED154;
 extern s32 D_800F8788_FirstMap;
 extern s16 D_800F8790_FirstMap[];
 typedef struct ovl_3E_HeapStruct {

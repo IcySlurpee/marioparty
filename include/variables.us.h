@@ -8,7 +8,7 @@
 #define CURRENT_PLAYER -1
 
 extern s16 D_800F64F6; //matrix stack position
-extern u16 D_800EC6EA[];
+extern u16 ContDStkTrg[];
 extern s8 D_800ECC22;
 extern u8 D_800ED0D2;
 //extern s16 D_800ED15E;
@@ -42,9 +42,9 @@ extern s16 processcnt;
 extern Process* processtop;
 extern jmp_buf process_jmp_buf; // 800E2370
 extern Process* processcur;
-extern GameStatus GwSystem;
+extern GW_SYSTEM GwSystem;
 extern f32 D_800C34A4;
-extern s8 D_800ECE14[];
+extern s8 ContStkX[];
 extern Vec2f D_800C51C0[];
 extern Vec2f D_800C51E0[];
 extern s32 D_800C5200[];
@@ -172,3 +172,5 @@ extern void* D_800EE318;
 extern void* D_800F33A8;
 extern void* D_800F3714;
 extern s32 D_800ED4A8;
+extern char pfStrBuf[];
+extern u16 ContBtnTrg[4];

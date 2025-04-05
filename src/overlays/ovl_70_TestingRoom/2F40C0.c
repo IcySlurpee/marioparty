@@ -58,7 +58,7 @@ void func_800F6A44_TestingRoom(void) {
         break;
     case 1:
         D_800F9498_TestingRoom -= 2;
-        if ((D_800EDEB4[0] & 0x30) == 0x30) { //D_800EDEB4 maybe not an array
+        if ((ContBtn[0] & 0x30) == 0x30) { //ContBtn maybe not an array
             omOvlReturnEx(1);
         }
         break;

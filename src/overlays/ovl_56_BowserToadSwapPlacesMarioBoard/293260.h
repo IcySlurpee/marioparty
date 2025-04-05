@@ -9,7 +9,7 @@ void func_800F6B1C_BowserToadSwapPlacesMarioBoard(void);
 void func_800F6CE8_BowserToadSwapPlacesMarioBoard(void);
 void func_800F6AC8_BowserToadSwapPlacesMarioBoard(omObjData*);
 
-extern GameStatus D_800ED154;
+extern GW_SYSTEM D_800ED154;
 extern Vec3f D_800F6DB0_BowserToadSwapPlacesMarioBoard;
 extern Vec3f D_800F6DBC_BowserToadSwapPlacesMarioBoard;
 extern s32 D_800F6DC8_BowserToadSwapPlacesMarioBoard[];

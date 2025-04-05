@@ -12,7 +12,7 @@ extern u32 D_800F9494_TestingRoom;
 extern s32 D_800F9498_TestingRoom;
 extern u32 D_800F949C_TestingRoom;
 extern s32 D_800F94A0_TestingRoom;
-extern s16 D_800EDEB4[];
+extern s16 ContBtn[];
 
 void func_800F72DC_TestingRoom(void*, s32, s32, s32, f32, f32, f32);
 extern unkStructSize14 D_800C59AC[];

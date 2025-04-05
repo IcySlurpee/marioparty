@@ -118,7 +118,7 @@ s16 func_8007186C(s32);
 s32 func_8003EDDC(s32*);
 void func_8003EE3C(s32);
 s32 func_8003EE58(s32);
-unk_Struct02* func_8005077C(s32);
+unk_Struct02* func_8005077C(s16);
 void func_80050A7C(unk_Struct02*);
 void func_80053454(unk_Struct02*);
 void func_8004501C(s32);
@@ -269,7 +269,7 @@ void func_8004F00C(Object*, f32, f32);
 void func_8004F044(Object*);
 void func_8004F4D4(void*, s32, s32);
 void func_80060468(s32, u8);
-void MBMotionSet(void*, s32, u16);
+void MBMotionSet(Object*, s32, u16);
 void func_800A40D0(void*, f32);
 u16 MBMotionCheck(Object*);
 omObjData* func_8004E3E0(s32, Vec3f*, s32, void*); //arg2 should be Vec3f*

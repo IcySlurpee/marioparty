@@ -35,7 +35,6 @@ s32 func_8004D8A4(void);
 void func_8004DBD4(s32, u8);
 void func_80055994(u8, s32);
 extern s32 D_800F3FF0;
-extern u16 D_800F5460[];
 extern Vec3f D_800F7DD4_StarVisitEternalStar;
 extern Vec3f D_800F7DE0_StarVisitEternalStar;
 

@@ -194,7 +194,7 @@ void func_800F667C_EternalStar(void) {
 }
 
 void func_800F66C8_EternalStar(void) {
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
     if (++gameStatus->chosenStarSpaceIndex >= ARRAY_COUNT(gameStatus->starSpaces)) {
         gameStatus->chosenStarSpaceIndex = 0;
         SetBoardFeatureFlag(0x44);
@@ -215,7 +215,7 @@ void func_800F671C_EternalStar(void) {
 }
 
 s16 func_800F67AC_EternalStar(s16 arg0) {
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
     s32 i;
     
     for (i = 0; i < ARRAY_COUNT(D_800F8BD0_EternalStar); i++) {

@@ -121,7 +121,7 @@ Process* func_800444DC(void) {
 
 void func_8004452C(void) { //TODO: fix goto
     unkUserData_00* temp_s0 = HuPrcCurrentGet()->user_data;
-    u16* temp = D_800F5460;
+    u16* temp = ContBtnTrg;
 
 loop_1:
     switch (temp_s0->unk_00) {

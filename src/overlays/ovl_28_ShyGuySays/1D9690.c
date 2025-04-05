@@ -431,10 +431,10 @@ void func_800F8818_ShyGuySays(omObjData* arg0) {
         temp_s0 = temp_s2->unk_14;
         temp_s2->unk_04 = 0;
         if (temp_s2->unk_08 != -1) {
-            if (D_800F5460[temp_s2->unk_08] & 0x4000) {
+            if (ContBtnTrg[temp_s2->unk_08] & B_BUTTON) {
                 func_800F9118_ShyGuySays(arg0, 1);
                 temp_s2->unk_04 = temp_s0;
-            } else if (D_800F5460[temp_s2->unk_08] & 0x8000) {
+            } else if (ContBtnTrg[temp_s2->unk_08] & A_BUTTON) {
                 func_800F9118_ShyGuySays(arg0, 2);
                 temp_s2->unk_04 = 2;
             }

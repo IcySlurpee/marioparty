@@ -160,7 +160,7 @@ void func_800F66C4_BowservisitMagmaMountain(void) { //fix me: remove gotos
         while (tempVar != 2) {
             switch (tempVar) {
             case 0:
-                if (((GwPlayer[D_800F7650_BowservisitMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(GwPlayer[D_800F7650_BowservisitMagmaMountain].flags & 1) && (D_800F5460[GwPlayer[D_800F7650_BowservisitMagmaMountain].port] & 0x8000))) {
+                if (((GwPlayer[D_800F7650_BowservisitMagmaMountain].flags & 1) && (temp_s2 >= 0xF)) || (!(GwPlayer[D_800F7650_BowservisitMagmaMountain].flags & 1) && (ContBtnTrg[GwPlayer[D_800F7650_BowservisitMagmaMountain].port] & 0x8000))) {
                     tempVar = 1;
                     func_8004F4D4(D_800F7658_BowservisitMagmaMountain, 1, 0);
                     func_8004F40C(D_800F7658_BowservisitMagmaMountain, 3, 2); 

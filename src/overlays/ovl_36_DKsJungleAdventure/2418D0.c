@@ -33,7 +33,7 @@ void func_800F663C_DKsJungleAdventure(void) { //ov054_func_800F663C
     s32 rand1;
     s32 rand2;
     s32 swap1;
-    GameStatus* ed5c0;
+    GW_SYSTEM* ed5c0;
 
     ed5c0 = &GwSystem;
     for (s1 = 0; s1 < 30; s1++) {
@@ -67,7 +67,7 @@ void func_800F663C_DKsJungleAdventure(void) { //ov054_func_800F663C
 
 void func_800F67A4_DKsJungleAdventure(void) {
     s32 starSpaceTemp;
-    GameStatus* ed5c0;
+    GW_SYSTEM* ed5c0;
 
     ed5c0 = &GwSystem;
 
@@ -92,7 +92,7 @@ void func_800F67A4_DKsJungleAdventure(void) {
 
 void func_800F6830_DKsJungleAdventure(void) { //ov054_func_800F6830
     s32 s0, s1;
-    GameStatus* ed5c0 = &GwSystem;
+    GW_SYSTEM* ed5c0 = &GwSystem;
 
     for (s1 = 0; s1 < DK_STAR_COUNT; s1++) {
         BoardSpaceTypeSet(D_800F9900_DKsJungleAdventure[s1], 1);
@@ -118,7 +118,7 @@ s32 func_800F6958_DKsJungleAdventure(s32 current_space_index) {
     s32 i;
     s32 j;
     s16* ov054_star_space_indicesptr;
-    GameStatus* ed5c0 = &GwSystem;
+    GW_SYSTEM* ed5c0 = &GwSystem;
 
     i = 0;
 
@@ -232,7 +232,7 @@ void func_800F6C48_DKsJungleAdventure(mystery_struct_ret_func_80048224* a0) { //
 }
 
 void func_800F6CD8_DKsJungleAdventure(void) {
-    GameStatus* ed5c0;
+    GW_SYSTEM* ed5c0;
     mystery_struct_ret_func_80048224 *str;
     BoardSpace* spacedata;
     Process* proc_struct;
@@ -303,7 +303,7 @@ void func_800F6CD8_DKsJungleAdventure(void) {
 }
 
 void func_800F6F0C_DKsJungleAdventure(void) {  //ov054_Entrypoint0
-    GameStatus* gameStatus = &GwSystem;
+    GW_SYSTEM* gameStatus = &GwSystem;
 
     gameStatus->curBoardIndex = 0;
     omInitObjMan(10, 0); // InitObjectSystem
@@ -311,7 +311,7 @@ void func_800F6F0C_DKsJungleAdventure(void) {  //ov054_Entrypoint0
 }
 
 void func_800F6F44_DKsJungleAdventure(void) { //ov054_Entrypoint1
-    GameStatus* ed5c0;
+    GW_SYSTEM* ed5c0;
     ed5c0 = &GwSystem;
 
     omInitObjMan(10, 0); // InitObjectSystem

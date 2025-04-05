@@ -150,26 +150,26 @@ void func_800F86EC_GameModeOverworld(void) {
 }
 
 s32 func_800F8758_GameModeOverworld(u8 arg0) {
-    if ((D_800EDEB4[arg0] & 0x300) == 0) {
-        return D_800ECE14[arg0];
+    if ((ContBtn[arg0] & 0x300) == 0) {
+        return ContStkX[arg0];
     }
     
-    if ((D_800EDEB4[arg0] & 0x200) != 0) {
+    if ((ContBtn[arg0] & 0x200) != 0) {
         return -0x50;
     } else {
-        return -((D_800EDEB4[arg0] & 0x100) != 0) & 0x50;
+        return -((ContBtn[arg0] & 0x100) != 0) & 0x50;
     }
 }
 
 s32 func_800F87D0_GameModeOverworld(u8 arg0) {
-    if ((D_800EDEB4[arg0] & 0xC00) == 0) {
-        return D_800F3843[arg0];
+    if ((ContBtn[arg0] & 0xC00) == 0) {
+        return ContStkY[arg0];
     }
     
-    if ((D_800EDEB4[arg0] & 0x800) != 0) {
+    if ((ContBtn[arg0] & 0x800) != 0) {
         return 0x50;
     } else {
-        return -((D_800EDEB4[arg0] & 0x400) != 0) & -0x50;
+        return -((ContBtn[arg0] & 0x400) != 0) & -0x50;
     }
 }
 

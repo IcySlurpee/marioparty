@@ -130,7 +130,7 @@ extern TextWindow* D_800ED4B0;
 extern s16 D_800ED720;
 extern unkCommonStruct0 GMesData[];
 extern u8 D_800EDEB0;
-extern u16 D_800EDEB4[];
+extern u16 ContBtn[];
 extern Process* D_800F0A24;
 extern s8 D_800F2CB8;
 extern s16 D_800F2CE0;
@@ -1305,7 +1305,7 @@ s32 GMesWait(void) {
             }
 
             for (i = 0; i < MAX_PLAYERS; i++) {
-                if (D_800EDEB4[GwPlayer[i].port] & 0xC000) {
+                if (ContBtn[GwPlayer[i].port] & 0xC000) {
                     return 0;
                 }
             }

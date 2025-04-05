@@ -8,8 +8,6 @@ typedef struct unk_800F5460 {
 /* 0x00 */ s16 unk_06;
 } unk_800F5460;
 
-extern u16 D_800F5460[];
-
 void func_800F6610_SaveDataCorrupted(void) {
     s16 temp_s2;
     s16 new_var;
@@ -33,7 +31,7 @@ void func_800F6610_SaveDataCorrupted(void) {
 
     do {
         HuPrcVSleep();
-    } while (((((D_800F5460[0] | D_800F5460[1]) | D_800F5460[2]) | D_800F5460[3]) & 0xF00F) == 0);
+    } while (((((ContBtnTrg[0] | ContBtnTrg[1]) | ContBtnTrg[2]) | ContBtnTrg[3]) & 0xF00F) == 0);
   
     func_800726AC(0xFF, 8);
     

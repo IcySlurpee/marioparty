@@ -122,8 +122,8 @@ void func_800F7AD4_HammerDrop(omObjData *arg0) {
     if (test2->unk_50 && temp_s0->unk_E4) {}
     rand8();
     temp = 70.0f;
-    D_800ECE14[temp_s0->unk_56] = func_800AEAC0(temp_f22) * temp;
-    D_800F3843[temp_s0->unk_56] = func_800AEFD0(temp_f22) * -temp;
+    ContStkX[temp_s0->unk_56] = func_800AEAC0(temp_f22) * temp;
+    ContStkY[temp_s0->unk_56] = func_800AEFD0(temp_f22) * -temp;
 }
 
 void func_800F7B6C_HammerDrop(omObjData* arg0) {
@@ -131,16 +131,16 @@ void func_800F7B6C_HammerDrop(omObjData* arg0) {
     s32 tempVar = 0x8000;
 
     temp_a0 = arg0->unk_50;
-    D_800F5460[temp_a0->unk_56] |= tempVar;
-    D_800EDEB4[temp_a0->unk_56] |= tempVar;
+    ContBtnTrg[temp_a0->unk_56] |= tempVar;
+    ContBtn[temp_a0->unk_56] |= tempVar;
 }
 
 void func_800F7BB4_HammerDrop(omObjData* arg0) {
     unkGlobalStruct_00* temp_a0;
 
     temp_a0 = arg0->unk_50;
-    D_800F5460[temp_a0->unk_56] |= 0x2000;
-    D_800EDEB4[temp_a0->unk_56] |= 0x2000;
+    ContBtnTrg[temp_a0->unk_56] |= 0x2000;
+    ContBtn[temp_a0->unk_56] |= 0x2000;
 }
 
 s32 func_800F7BFC_HammerDrop(omObjData* arg0, f32 arg1) {

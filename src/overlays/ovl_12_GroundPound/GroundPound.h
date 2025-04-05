@@ -10,9 +10,8 @@ typedef struct unkStructGroundPound_00 {
 s32 func_800184A8(unkGlobalStruct_00*, s32);
 void func_800F9870_GroundPound(omObjData*);
 void func_800F9B18_GroundPound(omObjData*);
-extern s16 D_800EDEB4[];
-extern u8 D_800F3843[];
-extern s16 D_800F5460[];
+extern s16 ContBtn[];
+extern u8 ContStkY[];
 extern s32 D_800FA2D0_GroundPound;
 extern s32 D_800FA2E0_GroundPound;
 
