@@ -1,7 +1,7 @@
 #include "common.h"
 
 typedef struct unk51200 {
-/* 0x00 */ s32* unk0;
+/* 0x00 */ Object* obj;
 /* 0x04 */ u16 unk4;
 /* 0x06 */ s16 unk6;
 /* 0x08 */ s16 unk8;
@@ -26,7 +26,7 @@ void func_80050600(unk_Struct02* arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
     void* temp_s6;
     s32 i;
 
-    temp_s6 = ReadMainFS(0xA0122);
+    temp_s6 = ReadMainFS(0x000A0122);
     sprintf(pfStrBuf, "%2d", arg2);
     for (i = 0; i < 2; i++, arg3 += 0x10) {
         asciiChar = pfStrBuf[i];
@@ -36,7 +36,7 @@ void func_80050600(unk_Struct02* arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
             func_80067384(arg0->unk_0A, arg1, 7U);
             func_800674BC(arg0->unk_0A, arg1, 0x01001000);
             func_80066DC4(arg0->unk_0A, arg1, arg3, arg4);
-            func_80067558(arg0->unk_0A, arg1, 0xFFU, 0xFFU, 0xFFU, 0xFF);
+            func_80067558(arg0->unk_0A, arg1, 0xFF, 0xFF, 0xFF, 0xFF);
             arg1++;
         }        
     }
@@ -180,7 +180,8 @@ void func_80050D68(void) {
     s16 temp;
     Process* process = HuPrcCurrentGet();
 
-    temp_s2 = ((unk51200*)process->user_data)->unk0;
+    //TODO: sort out types here
+    temp_s2 = ((unk51200*)process->user_data)->obj;
     temp = ((unk51200*)process->user_data)->unk4;
     var_s0 = -1;
     while (1) {
@@ -205,7 +206,110 @@ Process* func_80050E10(s16 arg0, s32* arg1) {
     return process;
 }
 
-INCLUDE_ASM("asm/nonmatchings/51200", func_80050E7C);
+void func_800484C4(Object*, s16);
+Process* func_80050E10(s16, s32*);
+void func_80071788(s16, s32);
+void func_80072108(s16, s32);
+extern s16 D_800C5328;
+extern s32 D_800C5330[6];
+extern s32 D_800C5348[6];
+extern s16 D_800D8374;
+extern s16 D_800D8376;
+
+s32 func_80050E7C(s32 arg0) {
+    Process* var_s2;
+    s16 var_s1;
+    s32 temp_a0;
+    s16 temp_v0_2;
+    s16 var_s0;
+    s32 var_v0;
+    Object* temp_v1;
+    s32 temp_v1_2;
+    unk51200* temp_v0;
+    void* var_a1;
+    s32 temp;
+
+    var_s0 = 0;
+    var_s1 = -1;
+    var_s2 = NULL;
+    if (D_800D8376 == 0) {
+        var_s1 = func_8006D010(0x6E, 0x32, 0x81, 0x5A, 0, 0);
+        func_8006E0A4(var_s1, 5);
+        func_8006E154(var_s1, 0);
+        if (_CheckFlag(0x2C) == 0) {
+            LoadStringIntoWindow(var_s1, (void* )0x156, -1, -1);
+        } else {
+            LoadStringIntoWindow(var_s1, (void* )0x16A, -1, -1);
+        }
+        func_8006E070(var_s1, 0);
+        while (func_8006FCC0(var_s1) != 0) {
+            HuPrcVSleep();
+        }
+        if (D_800D8370 == NULL) {
+            HuPrcVSleep();
+            temp_v0 = func_80048224(&D_800C5328);
+            D_800D8370 = temp_v0;
+            func_8003E174(temp_v0->obj);
+            func_800258EC(D_800D8370->obj->unk_3C->unk_40[0], 0x8000, 0x8000);
+            temp_v1 = D_800D8370->obj;
+            temp_v1->unk_0A |= 0x10;
+            func_800484C4(D_800D8370, 0x104);
+            func_80050BE0(D_800D8370, 0x69);
+            func_80072108(D_800D8370->unk8, 5);
+            func_80071C8C(D_800D8370->unk8, 1);
+        }
+        if (_CheckFlag(0x2C) == 0) {
+            var_s2 = func_80050E10(var_s1, D_800C5330);
+        } else {
+            var_s2 = func_80050E10(var_s1, D_800C5348);
+        }
+        func_8007155C(var_s1, (0x10000 << arg0) >> 0x10);
+        if (_CheckFlag(0x2C) != 0) {
+            func_80071788(var_s1, 2);
+        }
+        temp_v0_2 = func_8006FCF0(var_s1, D_800D8374, 0);
+        if (temp_v0_2 >= 0) {
+            D_800D8374 = temp_v0_2;
+        }
+        switch (temp_v0_2) {
+        case 0:
+            var_s0 = 2;
+            break;
+        case 1:
+            var_s0 = 5;
+            break;
+        case 2:
+            var_s0 = 6;
+            break;
+        case 3:
+            var_s0 = 7;
+            break;
+        case 4:
+            var_s0 = 8;
+            break;
+        default:
+            var_s0 = 1;
+            break;
+        }
+    }
+    if (var_s0 < 2) {
+        if (var_s0 >= 0) {
+            if (D_800D8370 != NULL) {
+                func_80071E80(D_800D8370->unk8, 1);
+                func_80050BE0(D_800D8370, 0x104);
+                func_8004847C((mystery_struct_ret_func_80048224* ) D_800D8370);
+                D_800D8370 = NULL;
+            }
+        }
+    }
+    if (var_s2 != NULL) {
+        EndProcess(var_s2);
+    }
+    if (var_s1 != -1) {
+        func_80070D90(var_s1);
+    }
+    return var_s0;
+}
 
 Process* func_80050E10(s16, s32*);
 extern s32 D_800C5360[2];

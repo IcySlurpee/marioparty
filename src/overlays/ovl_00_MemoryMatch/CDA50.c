@@ -51,9 +51,9 @@ void func_800F65E0_MemoryMatch(void) {
     D_800FE2C4_MemoryMatch = 0;
     D_800FE2C0_MemoryMatch = 0;
     D_800FE180_MemoryMatch = 0;
-    func_8007B168(&D_800FD8D0_MemoryMatch, 1);
-    func_8007B168(&D_800FD8DC_MemoryMatch, 1);
-    func_8007B168(&D_800FD8EC_MemoryMatch, 1);
+    func_8007B168(D_800FD8D0_MemoryMatch, 1);
+    func_8007B168(D_800FD8DC_MemoryMatch, 1);
+    func_8007B168(D_800FD8EC_MemoryMatch, 1);
     PlaySound(0x1A2);
 }
 

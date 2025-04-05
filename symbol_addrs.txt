@@ -618,3 +618,5 @@ ContStkX = 0x800ECE14;
 ContStkY = 0x800F3843;
 ContDStk = 0x800F544C;
 ContDStkTrg = 0x800EC6EA;
+
+D_800FD8C0_MemoryMatch = 0x800FD8C0; //force_migration:true

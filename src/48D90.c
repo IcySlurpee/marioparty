@@ -94,7 +94,66 @@ INCLUDE_ASM("asm/nonmatchings/48D90", func_80048190);
 
 INCLUDE_ASM("asm/nonmatchings/48D90", func_800481F8);
 
-INCLUDE_ASM("asm/nonmatchings/48D90", func_80048224);
+void func_80048190(Vec3f*);
+void func_800481F8(omObjData*);
+extern Vec3f D_800D6670;
+extern Vec3f D_800D667C;
+extern Vec3f D_800D6688;
+extern Vec3f D_800D6694;
+extern Vec3f D_800D66A0;
+extern s16 D_800D66AC;
+extern s16 D_800D66AE;
+
+mystery_struct_ret_func_80048224* func_80048224(s16* ptr) {
+    Process* process;
+    mystery_struct_ret_func_80048224* temp_v0;
+
+    temp_v0 = MallocTemp(sizeof(mystery_struct_ret_func_80048224));
+    if (temp_v0 != NULL) {
+        if (_CheckFlag(0x2C) == 0) {
+            temp_v0->unk0 = MBModelCreate(0x5D, ptr);
+            func_800A0D00(&temp_v0->unk0->xScale, 0.5f, 0.5f, 0.5f);
+            D_800D66AC = 0;
+            D_800D66AE = 0;
+        } else {
+            temp_v0->unk0 = MBModelCreate(0x88, NULL);
+            func_800A0D00(&temp_v0->unk0->xScale, 0.3f, 0.3f, 0.3f);
+            D_800D66AC = 0xA;
+            D_800D66AE = -0xA;
+        }
+        
+        func_80025F10(*temp_v0->unk0->unk_3C->unk_40, 2);
+        process = omAddPrcObj(func_800481F8, 0x4000U, 0, 0);
+        temp_v0->unk4 = process;
+        process->user_data = temp_v0;
+        temp_v0->unkA = 0x69;
+        
+        D_800D6670.x = 0;
+        D_800D6670.y = 0;
+        D_800D6670.z = 600.0f;
+        
+        D_800D667C.x = 0;
+        D_800D667C.y = 0;
+        D_800D667C.z = 0;
+        
+        D_800D6688.x = 0;
+        D_800D6688.y = 1.0f;
+        D_800D6688.z = 0;
+        
+        D_800D6694.x = 1280.0f;
+        D_800D6694.y = 960.0f;
+        D_800D6694.z = 511.0f;
+        
+        D_800D66A0.x = (-100.0f - D_800D66AC) * 4.0f + 640.0f;
+        D_800D66A0.y = (temp_v0->unkA + D_800D66AE) * 4.0f + 480.0f;
+        D_800D66A0.z = 511.5f;
+        
+        func_80048190(&D_800D66A0);
+        temp_v0->unk8 = func_8007194C(0x4B, temp_v0->unkA + 0x5A, 3);
+        func_8006E070(temp_v0->unk8, 0);
+    }
+    return temp_v0;
+}
 
 INCLUDE_ASM("asm/nonmatchings/48D90", func_8004847C);
 

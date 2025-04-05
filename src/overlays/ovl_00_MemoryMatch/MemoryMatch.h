@@ -68,9 +68,9 @@ void func_800FAD94_MemoryMatch(omObjData* arg0, s16 arg1);
 
 extern u32 D_800FD7E0_MemoryMatch;
 extern u16 D_800FD7E2_MemoryMatch;
-extern s32 D_800FD8D0_MemoryMatch;
-extern s32 D_800FD8DC_MemoryMatch;
-extern s32 D_800FD8EC_MemoryMatch;
+extern u8 D_800FD8D0_MemoryMatch[]; //sjis string
+extern u8 D_800FD8DC_MemoryMatch[]; //sjis string
+extern u8 D_800FD8EC_MemoryMatch[]; //sjis string
 extern omObjData* D_800FDDDC_MemoryMatch;
 extern Matrix4f D_800FDDE8_MemoryMatch;
 extern f32 D_800FDE28_MemoryMatch;

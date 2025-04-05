@@ -302,7 +302,7 @@ typedef struct Object {
 /* 0x34 */ f32 unk_34;
 /* 0x38 */ f32 unk_38;
 /* 0x3C */ unk_Struct04* unk_3C;
-/* 0x3C */ unk_Struct04* unk_40;
+/* 0x40 */ unk_Struct04* unk_40;
 /* 0x44 */ f32 unk_44;
 /* 0x48 */ f32 unk_48;
 /* 0x4C */ s32 unk_4C;
@@ -457,11 +457,11 @@ typedef struct mpSource_object_indirect {
 
 
 typedef struct mystery_struct_ret_func_80048224 {
-    struct Object* unk0;
-    s8 pad[4];
-    s16 unk8; // window id
+    /* 0x0 */ Object* unk0;
+    /* 0x4 */ Process* unk4;
+    /* 0x8 */ s16 unk8;
+    /* 0xA */ s16 unkA;
 } mystery_struct_ret_func_80048224;
-
 
 typedef struct mpSource_object {
     /*0x00*/ struct object *prev; // may be NULL
