@@ -86,7 +86,6 @@ extern Light* D_800ECB28;
 extern u8 D_800ECB30;
 extern u8 D_800ED0C8;
 extern s16 D_800ED0D0;
-extern unk2C0C0StructF0* D_800ED0D8[];
 extern s16 D_800ED194;
 extern s16 D_800ED4AC;
 extern s16 D_800ED52C;
@@ -150,7 +149,10 @@ extern Matrix4f D_800F5500;
 extern u32 D_800F64C0;
 extern s16 D_800F64FA;
 extern unk2C0C0StructE0* D_800F6500[];
-extern s16 D_800F6538[];
+
+#define UNK_SIZE 8
+extern unk2C0C0StructF0* D_800ED0D8[UNK_SIZE];
+extern s16 D_800F6538[UNK_SIZE];
 extern s16 D_800F65DA;
 extern u32 D_800C4200[];
 extern u32 D_800C4210[];

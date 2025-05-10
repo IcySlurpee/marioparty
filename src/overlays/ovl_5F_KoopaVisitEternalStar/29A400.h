@@ -16,13 +16,12 @@ extern s32 D_800F6C68_KoopaVisitEternalStar[];
 extern koopaStartSpace D_800ED192;
 extern Vec3f D_800F6C94_KoopaVisitEternalStar;
 extern Vec3f D_800F6CA0_KoopaVisitEternalStar;
-extern Object* D_800F6D14_KoopaVisitEternalStar;
-extern Object* D_800F6D18_KoopaVisitEternalStar;
 extern u8 D_800F6C60_KoopaVisitEternalStar[];
 extern const char D_800F6D00_KoopaVisitEternalStar[]; //is just "%d" in ascii
+
+//bss
+extern u8 D_800F6D10_KoopaVisitEternalStar;
 extern u8 D_800F6D11_KoopaVisitEternalStar; //player index
 extern u8 D_800F6D12_KoopaVisitEternalStar; //bonus to give
+extern Object* D_800F6D14_KoopaVisitEternalStar;
 extern Object* D_800F6D18_KoopaVisitEternalStar;
-extern u8 D_800F6D10_KoopaVisitEternalStar;
-extern u8 D_800F6D11_KoopaVisitEternalStar;
-extern u8 D_800F6D12_KoopaVisitEternalStar;

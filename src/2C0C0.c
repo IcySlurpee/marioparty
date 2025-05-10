@@ -79,7 +79,7 @@ void func_8002B808(void) {
     unk2C0C0StructF0** temp_v1;
     s16 i;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < UNK_SIZE; i++) {
         D_800F6538[i] = 2;
 
         temp_v1 = &D_800ED0D8[i];
@@ -179,11 +179,11 @@ void func_8002B890(unk2C0C0StructC0* arg0) {
 
     func_8002BDC0(arg0);
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < ARRAY_COUNT(arg0->unk_08); i++) {
         arg0->unk_08[i] = temp_v0;
     }
 
-    if (D_800EE992 > 4095) {
+    if (D_800EE992 >= 4096) {
         osSyncPrintf("Vertex Over!\n");
     }
 
