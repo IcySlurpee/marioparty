@@ -10,6 +10,7 @@ rsp/
 include/ld_addrs.h
 marioparty.ld
 ctx.c
+*.m2c
 build.ninja
 .ninja_deps
 .ninja_log
